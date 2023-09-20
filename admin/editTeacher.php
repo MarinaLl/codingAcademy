@@ -38,7 +38,7 @@
             mysqli_error($connect);
         } else {
             $line = mysqli_fetch_array($query);
-            echo '<form action="admin.php" method="post" enctype="multipart/form-data" name="editTeacher">
+            echo '<form action="editTeacher.php" method="post" enctype="multipart/form-data" name="editTeacher">
                 <label for="teacherName">Name</label>
                 <input type="text" name="teacherName" value="'.$line['name'].'" id="teacherName"><br>
                 <label for="teacherLastNames">Last Names</label>

@@ -58,7 +58,7 @@ function showAllTeachers(){
                 <td>'.$line['name'].'</td>
                 <td>'.$line['lastNames'].'</td>
                 <td>'.$line['title'].'</td>
-                <td>'.$line['photo'].'</td>
+                <td><img src='.$line['photo'].'></td>
                 <td>'.$line['active'].'</td>
                 <td><button type="submit" name="buttonEdit" value='.$line['email'].'>Edit</button></td>
                 <td><button type="submit" name="buttonDis" value='.$line['email'].'>Disable</button></td>
@@ -75,7 +75,7 @@ function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $te
     if($query = mysqli_query($connect, $sql)){
         echo "registro deshabilitado";
     } else {
-        echo mysqli_errno($connect);
+        echo mysqli_error($connect);
     }
 }
 
