@@ -28,8 +28,8 @@ function uploadPhoto($profileImageTmp, $profileImageName){
     return $imagePath;
 }
 
-function createNewTeacher($email, $password, $name, $lastNames, $title, $photo){
-    $sql = "INSERT INTO teacher (email, password, name, lastNames, title, photo, active) VALUES ('$email', '$password', '$name', '$lastNames', '$title', '$photo', '1')";
+function createNewTeacher($email, $password, $name, $lastNames, $title, $photo, $dni){
+    $sql = "INSERT INTO teacher (email, password, dni, name, lastNames, title, photo, active) VALUES ('$email', '$password', '$dni', '$name', '$lastNames', '$title', '$photo', '1')";
     $connect = connectDataBase();
 
     if($query = mysqli_query($connect, $sql)){
@@ -53,6 +53,7 @@ function showAllTeachers(){
             $line = mysqli_fetch_array($query);
             echo '<tr>
                 <td>'.$line['email'].'</td>
+                <td>'.$line['dni'].'</td>
                 <td>'.$line['name'].'</td>
                 <td>'.$line['lastNames'].'</td>
                 <td>'.$line['title'].'</td>
@@ -78,5 +79,23 @@ function disableTeacher($email){
     
 }
 
+
+function listTeacherNames(){
+    $sql = "SELECT * FROM teacher";
+
+    $connect = connectDataBase();
+    
+    $query = mysqli_query($connect, $sql);
+
+    if ($query == false){
+        mysqli_error($connect);
+    } else {
+        $numLines = mysqli_num_rows($query);
+        for($i = 0; $i < $numLines; $i++){
+            $line = mysqli_fetch_array($query);
+            echo '<option value='.$line['name'].'-'.$line['lastNames'].'>'.$line['name'].' '.$line['lastNames'] .'</option>';
+        }
+    }
+}
 
 ?>

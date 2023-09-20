@@ -16,14 +16,15 @@
                 $teacherEmail = $_POST['teacherEmail'];
                 $teacherPasswd = $_POST['teacherPass'];
                 $teacherPhoto = $_FILES['teacherPhoto']['tmp_name'];
-    
+                $teacherDni = $_POST['teacherDni'];
+
                 $teacherPasswd = md5($teacherPasswd);
     
                 $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
     
                 connectDataBase();
     
-                createNewTeacher($teacherEmail, $teacherPasswd, $teacherName, $teacherLastNames, $teacherTitle, $profileImage);
+                createNewTeacher($teacherEmail, $teacherPasswd, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $teacherDni);
             }
 
         } else {
@@ -33,6 +34,8 @@
         <input type="text" name="teacherName" id="teacherName"><br>
         <label for="teacherLastNames">Last Names</label>
         <input type="text" name="teacherLastNames" id="teacherLastNames"><br>
+        <label for="teacherDni">DNI</label>
+        <input type="text" name="teacherDni" id="teacherDni"><br>
         <label for="teacherTitle">Title</label>
         <input type="text" name="teacherTitle" id="teacherTitle"><br>
         <label for="teacherPhoto">Photo</label>

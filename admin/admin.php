@@ -6,10 +6,13 @@
     <title>Administrator Pannel</title>
 </head>
 <body>
-
+    
     <h1>Create Teacher</h1>
     <form action="createTeacher.php" method="post">
         <input type="submit" value="Add New Teacher">
+    </form>
+    <form action="createCourse.php" method="post">
+     <input type="submit" value="Add New Course">
     </form>
     
     <?php  
@@ -18,6 +21,8 @@
             if(isset($_POST['button'])){
                 $teacher = $_POST['button'];
                 disableTeacher($teacher);
+                header('Location: '. $_SERVER['PHP_SELF']);
+                exit;
             }
 
         }else {
@@ -27,6 +32,7 @@
         <table border="1">
             <tr>
                 <th>Email</th>
+                <th>DNI</th>
                 <th>Name</th>
                 <th>Last Names</th>
                 <th>Title</th>
@@ -39,6 +45,8 @@
         </table>
     </form>
    <?php };?>
+
+
 
 
 
