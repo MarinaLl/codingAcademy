@@ -15,9 +15,9 @@ function connectDataBase(){
     return $connect;
 }
 
-function uploadPhoto($profileImageTmp, $profileImageName){
+function uploadPhoto($profileImageTmp, $profileImageName, $type) {
     if(is_uploaded_file($profileImageTmp)){
-        $directory = "img/";
+        $directory = "img/$type";
         $imagePath = $directory.$profileImageName;
         move_uploaded_file($profileImageTmp, $imagePath);
     
@@ -68,12 +68,19 @@ function showAllTeachers(){
     }
 }
 
-function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $active) {
-    $sql = "UPDATE teacher(email, name, lastNames, title, photo, active) SET active = CASE WHEN active = TRUE THEN FALSE ELSE TRUE END WHERE email = '$email'";
+function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage, $active) {
+    $sql = "UPDATE teacher(email, name, lastNames, title, photo, active) 
+            SET email = '$teacherEmail', 
+                name = '$teacherName', 
+                lastNames = '$teacherLastNames', 
+                title = '$teacherTitle',
+                photo = '$profileImage',
+                active = $active
+            WHERE email = '$email'";
     $connect = connectDataBase();
 
     if($query = mysqli_query($connect, $sql)){
-        echo "registro deshabilitado";
+        echo "profesor editado";
     } else {
         echo mysqli_error($connect);
     }

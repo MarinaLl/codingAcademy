@@ -20,12 +20,13 @@
             $teacherEmail = $_POST['teacherEmail'];
             $teacherPhoto = $_FILES['teacherPhoto']['tmp_name'];
             $teacherActive = $_POST['teacherActive'];
-
-            $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
+            $teacherDni = $_POST['teacherDni'];
+            rename($_FILES['teacherPhoto']['name'], $teacherDni);
+            $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name'], "Courses");
 
             connectDataBase();
 
-            editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $teacherActive);
+            editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage, $teacherActive);
         }
 
     } else {
@@ -49,8 +50,8 @@
                 <input type="file" name="teacherPhoto" id="teacherPhoto"><br>
                 <label for="teacherEmail">Email</label>
                 <input type="email" name="teacherEmail" value="'.$line['email'].'" id="teacherEmail"><br>
-                <label for="teacherPass">Password</label>
-                <input type="password" name="teacherPass" id="teacherPass">
+                <label for="teacherDni">DNI</label>
+                <input type="text" name="teacherDni" value="'.$line['dni'].'" id="teacherDni"><br>
                 <input type="submit" value="Confirma">';
         }
     }?>
