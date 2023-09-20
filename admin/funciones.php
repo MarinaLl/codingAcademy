@@ -34,6 +34,7 @@ function createNewTeacher($email, $password, $name, $lastNames, $title, $photo, 
 
     if($query = mysqli_query($connect, $sql)){
         echo "registro insertado";
+        header("Location: admin.php");
     } else {
         echo mysqli_errno($connect);
     }
@@ -104,9 +105,22 @@ function listTeacherNames(){
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
             $line = mysqli_fetch_array($query);
-            echo '<option value='.$line['name'].'-'.$line['lastNames'].'>'.$line['name'].' '.$line['lastNames'] .'</option>';
+            echo '<option value='.$line['email'].'>'.$line['name'].' '.$line['lastNames'] .'</option>';
         }
     }
+}
+
+function createNewCourse($name,$description, $category, $duration, $startDate, $endDate, $teacher){
+    $sql = "INSERT INTO course (name, description, category, duration, start, end, teacher_email, photo) VALUES ('$name', '$description', '$category', '$duration', '$startDate', '$endDate', '$teacher', '')";
+
+    $connect = connectDataBase();
+
+    if($query = mysqli_query($connect, $sql)){
+        echo "registro deshabilitado";
+    } else {
+        echo mysqli_errno($connect);
+    }
+
 }
 
 ?>

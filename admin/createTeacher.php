@@ -9,7 +9,7 @@
     <?php
         include('funciones.php');
         if($_POST){
-            if (isset($_POST['createTeacher'])){
+            
                 $teacherName = $_POST['teacherName'];
                 $teacherLastNames = $_POST['teacherLastNames'];
                 $teacherTitle = $_POST['teacherTitle'];
@@ -25,11 +25,12 @@
                 connectDataBase();
     
                 createNewTeacher($teacherEmail, $teacherPasswd, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $teacherDni);
-            }
+                
+            
 
         } else {
     ?>
-    <form action="admin.php" method="post" enctype="multipart/form-data" name="createTeacher">
+    <form action="createTeacher.php" method="post" enctype="multipart/form-data" name="createTeacher">
         <label for="teacherName">Name</label>
         <input type="text" name="teacherName" id="teacherName"><br>
         <label for="teacherLastNames">Last Names</label>

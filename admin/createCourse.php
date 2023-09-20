@@ -6,8 +6,24 @@
     <title>Create New Course</title>
 </head>
 <body>
-    <?php include('funciones.php'); ?>
-    <form action="admin.php" method="post">
+    <?php include('funciones.php');
+        if ($_POST){
+            $courseName = $_POST['courseName'];
+            $courseDescription = $_POST['courseDescription'];
+            $category = $_POST['courseCategory'];
+            $courseDuration = $_POST['courseDuration'];
+            $courseStart = $_POST['courseStart'];
+            $courseEnd = $_POST['courseEnd'];
+            $courseTeacher = $_POST['courseTeacher'];
+            //$courseImage = $_FILES['coursePhoto']['tmp_name'];
+
+            //$image = uploadPhoto($courseImage, $_FILES['coursePhoto']['name']);
+
+            createNewCourse($courseName, $courseDescription, $category, $courseDuration, $courseStart, $courseEnd, $courseTeacher);
+            
+        } else {
+    ?>
+    <form action="createCourse.php" method="post">
         <label for="courseName">Course Name</label>
         <input type="text" name="courseName" id="courseName"><br>
         <label for="courseDescription">Description</label>
@@ -19,18 +35,22 @@
             <option value="web-development">Web Development</option>
             <option value="game-developmen">Game Development</option>
             <option value="computer-science">Computer Science</option>
-        </select>
+        </select><br>
         <label for="courseDuration">Duration</label>
-        <input type="number" name="courseDuration" id="courseDuration">
+        <input type="number" name="courseDuration" id="courseDuration"><br>
         <label for="courseStart">Course Start</label>
-        <input type="date" name="courseStart" id="courseStart">
+        <input type="date" name="courseStart" id="courseStart"><br>
         <label for="courseEnd">Course Start</label>
-        <input type="date" name="courseEnd" id="courseEnd">
+        <input type="date" name="courseEnd" id="courseEnd"><br>
         <label for="courseTeacher">Teacher</label>
         <select name="courseTeacher" id="courseTeacher">
             <option value="" default></option>
             <?php listTeacherNames(); ?>
-        </select>
+        </select><br>
+        <label for="coursePhoto">Photo</label>
+        <input type="file" name="coursePhoto" id="coursePhoto">
+        <input type="submit" value="Confirm">
     </form>
+    <?php }?>
 </body>
 </html>
