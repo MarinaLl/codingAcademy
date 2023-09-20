@@ -66,8 +66,15 @@ function showAllTeachers(){
     }
 }
 
-function disableTeacher(){
+function disableTeacher($email){
+    $sql = "UPDATE teacher SET active = CASE WHEN active = TRUE THEN FALSE ELSE TRUE END WHERE email = $email";
+    $connect = connectDataBase();
 
+    if($query = mysqli_query($connect, $sql)){
+        echo "registro deshabilitado";
+    } else {
+        echo mysqli_errno($connect);
+    }
 }
 
 
