@@ -26,7 +26,7 @@
 
             connectDataBase();
 
-            editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $teacherActive);
+            editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage, $teacherActive);
         }
 
     } else {

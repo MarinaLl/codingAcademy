@@ -68,7 +68,7 @@ function showAllTeachers(){
     }
 }
 
-function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $active) {
+function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage, $active) {
     $sql = "UPDATE teacher(email, name, lastNames, title, photo, active) 
             SET email = '$teacherEmail', 
                 name = '$teacherName', 
