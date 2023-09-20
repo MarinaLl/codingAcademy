@@ -58,11 +58,16 @@ function showAllTeachers(){
                 <td>'.$line['title'].'</td>
                 <td>'.$line['photo'].'</td>
                 <td>'.$line['active'].'</td>
-                <td><input></td>
+                <td></td>
+                <td><button type="submit" name="button" value='.$line['email'].'>Disable</button></td>
             </tr>
             ';
         }
     }
+}
+
+function disableTeacher(){
+
 }
 
 

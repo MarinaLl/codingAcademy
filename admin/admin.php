@@ -48,19 +48,22 @@
     </form>
     <?php }; ?>
 
-
-    <table border="1">
-        <tr>
-            <th>Email</th>
-            <th>Name</th>
-            <th>Last Names</th>
-            <th>Title</th>
-            <th>Photo</th>
-            <th>Active</th>
-            <th>Edit</th>
-        </tr>
-        <?php showAllTeachers(); ?>
-    </table>
+    <form action="" method="post">
+        <table border="1">
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Last Names</th>
+                <th>Title</th>
+                <th>Photo</th>
+                <th>Active</th>
+                <th>Edit</th>
+                <th>Disable</th>
+            </tr>
+            <?php showAllTeachers(); ?>
+        </table>
+    </form>
+    
 
 
 
