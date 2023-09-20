@@ -39,7 +39,7 @@ function createNewTeacher($email, $password, $name, $lastNames, $title, $photo){
     }
 }
 function showAllTeachers(){
-    $sql = "SELECT * FROM course";
+    $sql = "SELECT * FROM teacher";
 
     $connect = connectDataBase();
     
@@ -51,7 +51,16 @@ function showAllTeachers(){
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
             $line = mysqli_fetch_array($query);
-            echo $line['email'];
+            echo '<tr>
+                <td>'.$line['email'].'</td>
+                <td>'.$line['name'].'</td>
+                <td>'.$line['lastNames'].'</td>
+                <td>'.$line['title'].'</td>
+                <td>'.$line['photo'].'</td>
+                <td>'.$line['active'].'</td>
+                <td><input></td>
+            </tr>
+            ';
         }
     }
 }

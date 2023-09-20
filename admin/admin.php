@@ -30,7 +30,7 @@
         } else {
     ?>
     <h1>Create Teacher</h1>
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="admin.php" method="post" enctype="multipart/form-data">
         <label for="teacherName">Name</label>
         <input type="text" name="teacherName" id="teacherName"><br>
         <label for="teacherLastNames">Last Names</label>
@@ -46,7 +46,23 @@
         <input type="submit" value="Confirma">
 
     </form>
-    <?php }; 
-    ?>
+    <?php }; ?>
+
+
+    <table border="1">
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Last Names</th>
+            <th>Title</th>
+            <th>Photo</th>
+            <th>Active</th>
+            <th>Edit</th>
+        </tr>
+        <?php showAllTeachers(); ?>
+    </table>
+
+
+
 </body>
 </html>
