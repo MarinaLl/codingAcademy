@@ -17,10 +17,11 @@
                 $teacherPasswd = $_POST['teacherPass'];
                 $teacherPhoto = $_FILES['teacherPhoto']['tmp_name'];
                 $teacherDni = $_POST['teacherDni'];
-
                 $teacherPasswd = md5($teacherPasswd);
-    
-                $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
+
+                
+
+                $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name'], "Courses");
     
                 connectDataBase();
     
