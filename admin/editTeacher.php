@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,7 @@
 <body>
     <?php
     include('funciones.php');
+    $email = $_SESSION['email'];
     if($_POST){
         if (isset($_POST['editTeacher'])){
             $teacherName = $_POST['teacherName'];

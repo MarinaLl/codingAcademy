@@ -1,3 +1,7 @@
+<?php
+ session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +22,15 @@
     <?php  
     include('funciones.php');
         if($_POST){
-            if(isset($_POST['button'])){
-                $teacher = $_POST['button'];
+            if(isset($_POST['buttonDis'])){
+                $teacher = $_POST['buttonDis'];
                 disableTeacher($teacher);
                 header('Location: '. $_SERVER['PHP_SELF']);
                 exit;
+            } else if (isset($_POST['buttonEdit'])) {
+                echo $_POST['buttonEdit'];
+                $_SESSION['email'] = $_POST['buttonEdit'];
+                header('Location: editTeacher.php');
             }
 
         }else {

@@ -60,8 +60,8 @@ function showAllTeachers(){
                 <td>'.$line['title'].'</td>
                 <td>'.$line['photo'].'</td>
                 <td>'.$line['active'].'</td>
-                <td></td>
-                <td><button type="submit" name="button" value='.$line['email'].'>Disable</button></td>
+                <td><button type="submit" name="buttonEdit" value='.$line['email'].'>Edit</button></td>
+                <td><button type="submit" name="buttonDis" value='.$line['email'].'>Disable</button></td>
             </tr>
             ';
         }
