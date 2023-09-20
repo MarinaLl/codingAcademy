@@ -67,7 +67,7 @@ function showAllTeachers(){
 }
 
 function disableTeacher($email){
-    $sql = "UPDATE teacher SET active = CASE WHEN active = TRUE THEN FALSE ELSE TRUE END WHERE email = $email";
+    $sql = "UPDATE teacher SET active = CASE WHEN active = TRUE THEN FALSE ELSE TRUE END WHERE email = '$email'";
     $connect = connectDataBase();
 
     if($query = mysqli_query($connect, $sql)){
@@ -75,6 +75,7 @@ function disableTeacher($email){
     } else {
         echo mysqli_errno($connect);
     }
+    
 }
 
 
