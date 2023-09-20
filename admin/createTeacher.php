@@ -21,7 +21,7 @@
 
                 
 
-                $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name'], "Courses");
+                $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
     
                 connectDataBase();
     

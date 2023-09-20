@@ -15,16 +15,19 @@ function connectDataBase(){
     return $connect;
 }
 
-function uploadPhoto($profileImageTmp, $profileImageName, $type) {
+function uploadPhoto($profileImageTmp, $profileImageName) {
     if(is_uploaded_file($profileImageTmp)){
-        $directory = "img/$type";
-        $imagePath = $directory.$profileImageName;
+        $directory = "img/";
+
+       $date = time();
+
+        $imagePath = $directory.$date."-".$profileImageName;
         move_uploaded_file($profileImageTmp, $imagePath);
     
     } else {
         echo "no se ha podido subir el fichero";
     }
-
+    
     return $imagePath;
 }
 
@@ -68,14 +71,45 @@ function showAllTeachers(){
     }
 }
 
-function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage, $active) {
-    $sql = "UPDATE teacher(email, name, lastNames, title, photo, active) 
+function showAllCourses(){
+    $sql = "SELECT * FROM course";
+
+    $connect = connectDataBase();
+
+    $query = mysqli_query($connect, $sql);
+
+    if($query == false){
+        mysqli_error($connect);
+    } else {
+        $numLines = mysqli_num_rows($query);
+        for($i = 0; $i < $numLines; $i++){
+            $line = mysqli_fetch_array($query);
+            echo '<tr>
+                <td><img src='.$line['photo'].'></td>
+                <td>'.$line['code'].'</td>
+                <td>'.$line['name'].'</td>
+                <td>'.$line['description'].'</td>
+                <td>'.$line['category'].'</td>
+                <td>'.$line['duration'].'</td>
+                <td>'.$line['start'].'</td>
+                <td>'.$line['end'].'</td>
+                <td>'.$line['teacher_email'].'</td>
+                <td>'.$line['active'].'</td>
+                <td><button type="submit" name="buttonEditCourse" value='.$line['code'].'>Edit</button></td>
+                <td><button type="submit" name="buttonDisCourse" value='.$line['code'].'>Disable</button></td>
+            </tr>
+            ';
+        }
+    }
+}
+
+function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage) {
+    $sql = "UPDATE teacher 
             SET email = '$teacherEmail', 
                 name = '$teacherName', 
                 lastNames = '$teacherLastNames', 
                 title = '$teacherTitle',
-                photo = '$profileImage',
-                active = $active
+                photo = '$profileImage'
             WHERE email = '$email'";
     $connect = connectDataBase();
 
@@ -86,8 +120,40 @@ function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $te
     }
 }
 
+function editCourse($code, $courseName, $courseDescription, $courseCategory, $courseDuration, $startDate, $endDate, $courseTeacher, $coursePhoto) {
+    $sql = "UPDATE course 
+            SET name = '$courseName', 
+                description = '$courseDescription', 
+                category = '$courseCategory', 
+                duration = '$courseDuration',
+                start = '$startDate',
+                end = '$endDate',
+                teacher_email = '$courseTeacher',
+                photo = '$coursePhoto'
+            WHERE code = '$code'";
+    $connect = connectDataBase();
+
+    if($query = mysqli_query($connect, $sql)){
+        echo "curso editado";
+    } else {
+        echo mysqli_error($connect);
+    }
+}
+
 function disableTeacher($email){
     $sql = "UPDATE teacher SET active = CASE WHEN active = TRUE THEN FALSE ELSE TRUE END WHERE email = '$email'";
+    $connect = connectDataBase();
+
+    if($query = mysqli_query($connect, $sql)){
+        echo "registro deshabilitado";
+    } else {
+        echo mysqli_errno($connect);
+    }
+    
+}
+
+function disableCourse($code){
+    $sql = "UPDATE course SET active = CASE WHEN active = TRUE THEN FALSE ELSE TRUE END WHERE code = '$code'";
     $connect = connectDataBase();
 
     if($query = mysqli_query($connect, $sql)){
@@ -117,13 +183,14 @@ function listTeacherNames(){
     }
 }
 
-function createNewCourse($name,$description, $category, $duration, $startDate, $endDate, $teacher){
-    $sql = "INSERT INTO course (name, description, category, duration, start, end, teacher_email, photo) VALUES ('$name', '$description', '$category', '$duration', '$startDate', '$endDate', '$teacher', '')";
+function createNewCourse($name,$description, $category, $duration, $startDate, $endDate, $teacher, $photo){
+    $sql = "INSERT INTO course (name, description, category, duration, start, end, teacher_email, photo) VALUES ('$name', '$description', '$category', '$duration', '$startDate', '$endDate', '$teacher', '$photo')";
 
     $connect = connectDataBase();
 
     if($query = mysqli_query($connect, $sql)){
-        echo "registro deshabilitado";
+        echo "registro creado";
+        //header("Location: admin.php");
     } else {
         echo mysqli_errno($connect);
     }

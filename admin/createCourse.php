@@ -15,15 +15,15 @@
             $courseStart = $_POST['courseStart'];
             $courseEnd = $_POST['courseEnd'];
             $courseTeacher = $_POST['courseTeacher'];
-            //$courseImage = $_FILES['coursePhoto']['tmp_name'];
+            $courseImage = $_FILES['coursePhoto']['tmp_name'];
 
-            //$image = uploadPhoto($courseImage, $_FILES['coursePhoto']['name']);
+            $image = uploadPhoto($courseImage, $_FILES['coursePhoto']['name']);
 
-            createNewCourse($courseName, $courseDescription, $category, $courseDuration, $courseStart, $courseEnd, $courseTeacher);
+            createNewCourse($courseName, $courseDescription, $category, $courseDuration, $courseStart, $courseEnd, $courseTeacher, $image);
             
         } else {
     ?>
-    <form action="createCourse.php" method="post">
+    <form action="createCourse.php" method="post" enctype="multipart/form-data">
         <label for="courseName">Course Name</label>
         <input type="text" name="courseName" id="courseName"><br>
         <label for="courseDescription">Description</label>

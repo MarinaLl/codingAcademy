@@ -12,22 +12,35 @@
     <?php
     include('funciones.php');
     $email = $_SESSION['email'];
+    
     if($_POST){
-        if (isset($_POST['editTeacher'])){
             $teacherName = $_POST['teacherName'];
             $teacherLastNames = $_POST['teacherLastNames'];
             $teacherTitle = $_POST['teacherTitle'];
             $teacherEmail = $_POST['teacherEmail'];
             $teacherPhoto = $_FILES['teacherPhoto']['tmp_name'];
-            $teacherActive = $_POST['teacherActive'];
+            if ($teacherPhoto == null){
+                $sql = "SELECT photo FROM teacher WHERE email = '$email'";
+
+                $connect = connectDataBase();
+
+                $query = mysqli_query($connect, $sql);
+
+                $line = mysqli_fetch_array($query);
+
+                echo $line[0];
+                $profileImage = $line[0];
+                
+            }else {
+                $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
+            }
+
             $teacherDni = $_POST['teacherDni'];
-            rename($_FILES['teacherPhoto']['name'], $teacherDni);
-            $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name'], "Courses");
 
             connectDataBase();
 
-            editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage, $teacherActive);
-        }
+            editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage);
+        
 
     } else {
     
@@ -47,12 +60,13 @@
                 <label for="teacherTitle">Title</label>
                 <input type="text" name="teacherTitle" value="'.$line['title'].'" id="teacherTitle"><br>
                 <label for="teacherPhoto">Photo</label>
-                <input type="file" name="teacherPhoto" id="teacherPhoto"><br>
+                <input type="file" name="teacherPhoto" value='.$line['photo'].' id="teacherPhoto"><br>
                 <label for="teacherEmail">Email</label>
                 <input type="email" name="teacherEmail" value="'.$line['email'].'" id="teacherEmail"><br>
                 <label for="teacherDni">DNI</label>
                 <input type="text" name="teacherDni" value="'.$line['dni'].'" id="teacherDni"><br>
                 <input type="submit" value="Confirma">';
+                echo $line['photo'];
         }
     }?>
 </body>
