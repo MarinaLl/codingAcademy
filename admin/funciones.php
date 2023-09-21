@@ -43,7 +43,7 @@ function createNewTeacher($email, $password, $name, $lastNames, $title, $photo, 
     }
 }
 function showAllTeachers(){
-    $sql = "SELECT * FROM teacher";
+    $sql = "SELECT * FROM teacher WHERE active = 1";
 
     $connect = connectDataBase();
     
@@ -56,12 +56,11 @@ function showAllTeachers(){
         for($i = 0; $i < $numLines; $i++){
             $line = mysqli_fetch_array($query);
             echo '<tr>
-                <td>'.$line['email'].'</td>
-                <td>'.$line['dni'].'</td>
-                <td>'.$line['name'].'</td>
-                <td>'.$line['lastNames'].'</td>
-                <td>'.$line['title'].'</td>
                 <td><img src='.$line['photo'].'></td>
+                <td>'.$line['name'].' '.$line['lastNames'].'</td>
+                <td>'.$line['email'].'</td>
+                <td>'.$line['title'].'</td>
+                <td>'.$line['dni'].'</td>
                 <td>'.$line['active'].'</td>
                 <td><button type="submit" name="buttonEdit" value='.$line['email'].'>Edit</button></td>
                 <td><button type="submit" name="buttonDis" value='.$line['email'].'>Disable</button></td>
@@ -72,7 +71,7 @@ function showAllTeachers(){
 }
 
 function showAllCourses(){
-    $sql = "SELECT * FROM course";
+    $sql = "SELECT * FROM course WHERE active = 1";
 
     $connect = connectDataBase();
 
@@ -86,14 +85,12 @@ function showAllCourses(){
             $line = mysqli_fetch_array($query);
             echo '<tr>
                 <td><img src='.$line['photo'].'></td>
-                <td>'.$line['code'].'</td>
                 <td>'.$line['name'].'</td>
-                <td>'.$line['description'].'</td>
+                <td>'.$line['teacher_email'].'</td>
                 <td>'.$line['category'].'</td>
                 <td>'.$line['duration'].'</td>
                 <td>'.$line['start'].'</td>
                 <td>'.$line['end'].'</td>
-                <td>'.$line['teacher_email'].'</td>
                 <td>'.$line['active'].'</td>
                 <td><button type="submit" name="buttonEditCourse" value='.$line['code'].'>Edit</button></td>
                 <td><button type="submit" name="buttonDisCourse" value='.$line['code'].'>Disable</button></td>
@@ -115,6 +112,8 @@ function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $te
 
     if($query = mysqli_query($connect, $sql)){
         echo "profesor editado";
+        header('Location: admin.php');
+        exit;
     } else {
         echo mysqli_error($connect);
     }
@@ -135,6 +134,8 @@ function editCourse($code, $courseName, $courseDescription, $courseCategory, $co
 
     if($query = mysqli_query($connect, $sql)){
         echo "curso editado";
+        header('Location: admin.php');
+        exit;
     } else {
         echo mysqli_error($connect);
     }
@@ -190,7 +191,7 @@ function createNewCourse($name,$description, $category, $duration, $startDate, $
 
     if($query = mysqli_query($connect, $sql)){
         echo "registro creado";
-        //header("Location: admin.php");
+        header("Location: admin.php");
     } else {
         echo mysqli_errno($connect);
     }

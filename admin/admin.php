@@ -10,9 +10,60 @@
     <title>Administrator Pannel</title>
     <style>
         img{
-            width: 100px;
+            width: 40px;
         }
-    </style>
+        #teacher-form{
+            visibility: hidden;
+            position: absolute;
+            width: 1268px;
+            height: 506px;
+            background-color: #00a3a0;
+            color: white;
+            border-radius: 0px 0px 20px 20px;  
+        }
+        #course-form{
+            position: absolute;
+            border-radius: 0px 0px 20px 20px;       
+            width: 1268px;
+            height: 506px;
+            background-color: #007A78;
+            color: white;
+            
+        }
+        #form-container{
+            width: 1268px;
+            height: 565px;
+            border-radius: 20px;
+            background-color: rgba(0, 122, 120, 0.56);
+        }
+        .btnFolderStyle{
+            width: 168px;
+            height: 50px;
+            border-radius: 20px 20px 0px 0px;
+            border: none;
+            color: white;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin-top: 11px;
+        }
+        
+        #btnCourse{
+            background-color: #007A78;  
+            margin-left: 32px;
+            
+        }
+        #btnTeacher{
+            background-color: rgba(0, 163, 160, 0.75);
+            margin-left: -30px;
+    
+        }
+        table{
+            width: 100%;
+        }
+        </style>
+    
 </head>
 <body>
     <?php include('../header.php');?>
@@ -46,7 +97,6 @@
                     header('Location: '. $_SERVER['PHP_SELF']);
                     exit;
                 } else if (isset($_POST['buttonEditCourse'])) {
-                    echo $_POST['buttonEdit'];
                     $_SESSION['code'] = $_POST['buttonEditCourse'];
                     header('Location: editCourse.php');
                 }
@@ -55,45 +105,57 @@
         }else {
         
     ?>
-    <form action="admin.php" method="post" name="disableTeacher">
-        <table border="1">
-            <tr>
-                <th>Email</th>
-                <th>DNI</th>
-                <th>Name</th>
-                <th>Last Names</th>
-                <th>Title</th>
-                <th>Photo</th>
-                <th>Active</th>
-                <th>Edit</th>
-                <th>Disable</th>
-            </tr>
-            <?php showAllTeachers(); ?>
-        </table>
-    </form>
-    <form action="admin.php" method="post" name="disableCourse">
-        <table border="1">
-            <tr>
-                <th>Photo</th>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Duration</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Teacher</th>
-                <th>Active</th>
-                <th>Edit</th>
-                <th>Disable</th>
-            </tr>
-            <?php showAllCourses(); ?>
-        </table>
-    </form>
+
+    <div id="form-container">
+    
+    <button id="btnCourse" class="btnFolderStyle">Courses</button>
+    <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
+    
+        
+        <div id="teacher-form">
+            <form action="admin.php" method="post" name="disableTeacher">
+                <table border="1">
+                    <tr>
+                        <th>Photo</th>
+                        <th>Teacher Name</th>
+                        <th>Email</th>
+                        <th>Title</th>
+                        <th>DNI</th>
+                        <th>Active</th>
+                        <th>Edit</th>
+                        <th>Disable</th>
+                    </tr>
+                    <?php showAllTeachers(); ?>
+                </table>
+            </form>
+        </div>
+        
+        <div id="course-form">
+            <form action="admin.php" method="post" name="disableCourse">
+                <table border="1">
+                    <tr>
+                        <th>Photo</th>
+                        <th>Course Name</th>
+                        <th>Teacher</th>
+                        <th>Category</th>
+                        <th>Duration</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Active</th>
+                        <th>Edit</th>
+                        <th>Disable</th>
+                    </tr>
+                    <?php showAllCourses(); ?>
+                </table>
+            </form>
+        </div>
+    </div>
+    
    <?php };?>
 
 
 
+   <script src="main.js"></script>
 
 
 </body>
