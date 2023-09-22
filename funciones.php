@@ -31,11 +31,17 @@ function loginRedirect($role) {
     }
 }
 
+// Only possible values for $path = "" or $path = "../"
+function logout($path) {
+    session_destroy();
+    header('Location: '.$path.'login.php');
+}
+
 function uploadPhoto($profileImageTmp, $profileImageName) {
     if(is_uploaded_file($profileImageTmp)){
         $directory = "img/";
 
-       $date = time();
+        $date = time();
 
         $imagePath = $directory.$date."-".$profileImageName;
         move_uploaded_file($profileImageTmp, $imagePath);
@@ -46,7 +52,7 @@ function uploadPhoto($profileImageTmp, $profileImageName) {
     
     return $imagePath;
 }
-
+// Parte Administrador
 function createNewTeacher($email, $password, $name, $lastNames, $title, $photo, $dni){
     $sql = "INSERT INTO teacher (email, password, dni, name, lastNames, title, photo, active) VALUES ('$email', '$password', '$dni', '$name', '$lastNames', '$title', '$photo', '1')";
     $connect = connectDataBase();

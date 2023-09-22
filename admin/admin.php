@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrator Pannel</title>
+    <title>Administrator Panel</title>
     <style>
         img{
             width: 40px;
@@ -88,7 +88,7 @@
                 } else if (isset($_POST['buttonEdit'])) {
                     echo $_POST['buttonEdit'];
                     $_SESSION['email'] = $_POST['buttonEdit'];
-                    header('Location: editTeacher.php');
+                    include('createTeacher.php');
                 }
            
                 if(isset($_POST['buttonDisCourse'])){

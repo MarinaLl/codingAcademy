@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="createTeacher.css">
 </head>
 <body>
     <?php
@@ -26,28 +27,33 @@
                 connectDataBase();
     
                 createNewTeacher($teacherEmail, $teacherPasswd, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $teacherDni);
-                
+                echo '<meta http-equiv="refresh" content="0;url=admin.php">';
             
 
         } else {
     ?>
-    <form action="createTeacher.php" method="post" enctype="multipart/form-data" name="createTeacher">
-        <label for="teacherName">Name</label>
-        <input type="text" name="teacherName" id="teacherName"><br>
-        <label for="teacherLastNames">Last Names</label>
-        <input type="text" name="teacherLastNames" id="teacherLastNames"><br>
-        <label for="teacherDni">DNI</label>
-        <input type="text" name="teacherDni" id="teacherDni"><br>
-        <label for="teacherTitle">Title</label>
-        <input type="text" name="teacherTitle" id="teacherTitle"><br>
-        <label for="teacherPhoto">Photo</label>
-        <input type="file" name="teacherPhoto" id="teacherPhoto"><br>
-        <label for="teacherEmail">Email</label>
-        <input type="email" name="teacherEmail" id="teacherEmail"><br>
-        <label for="teacherPass">Password</label>
-        <input type="password" name="teacherPass" id="teacherPass">
-        <input type="submit" value="Confirma">
-    </form>
+    <div class="pop-up-background">
+        <div id="createTeacherPopUp">
+            <form action="createTeacher.php" method="post" enctype="multipart/form-data" name="createTeacher">
+                <label for="teacherName">Name</label>
+                <input type="text" name="teacherName" id="teacherName"><br>
+                <label for="teacherLastNames">Last Names</label>
+                <input type="text" name="teacherLastNames" id="teacherLastNames"><br>
+                <label for="teacherDni">DNI</label>
+                <input type="text" name="teacherDni" id="teacherDni"><br>
+                <label for="teacherTitle">Title</label>
+                <input type="text" name="teacherTitle" id="teacherTitle"><br>
+                <label for="teacherPhoto">Photo</label>
+                <input type="file" name="teacherPhoto" id="teacherPhoto"><br>
+                <label for="teacherEmail">Email</label>
+                <input type="email" name="teacherEmail" id="teacherEmail"><br>
+                <label for="teacherPass">Password</label>
+                <input type="password" name="teacherPass" id="teacherPass">
+                <input type="submit" value="Confirma">
+            </form>
+        </div>
+    </div>
+    
     <?php }?>
 </body>
 </html>
