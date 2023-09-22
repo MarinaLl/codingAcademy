@@ -1,10 +1,12 @@
 *{
     padding: 0;
     margin: 0;
+    /*border: #000 solid 1px;*/
 }
 body {
     background-color: transparent;
     font-family: 'Inter';
+    
 }
 .pop-up-background {
     width: 100%;
@@ -22,6 +24,30 @@ body {
     background: white;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
+.name { grid-area: name; }
+.lastnames { grid-area: lastnames; }
+.dni { grid-area: dni; }
+.title { grid-area: title; }
+.photo { grid-area: photo; }
+.email { grid-area: email; }
+.password { grid-area: password; }
+.buttons { grid-area: buttons; }
+
+.grid-container {
+    width: 910px;
+    height: 378px;
+    margin-top: 39px;
+    margin-left: 106px;
+    display: grid;
+    grid-template-areas:
+      'name name lastnames lastnames dni dni'
+      'title title title title title title'
+      'photo photo photo photo photo photo'
+      'email email email password password password'
+      'buttons buttons buttons buttons buttons buttons';
+}
+
 h1 {
     color: #000;
     text-align: center;
@@ -39,4 +65,88 @@ label {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    margin-left: 10px;
+}
+
+.textbox {
+    border-radius: 15px;
+    border: none;
+    background: #D9D9D9;
+    height: 55px;
+    margin-bottom: 18px;
+    font-size: 20px;
+    color: #000;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 10px;
+}
+
+#teacherName { width: 270px; }
+
+#teacherLastnames { width: 410px; }
+
+#teacherDni { width: 300px; }
+
+#teacherTitle { width: 320px; }
+
+#teacherPhotoText { width: 320px; }
+
+#teacherPhoto {
+    display: none;
+}
+
+#teacherPhotoBtn {
+    padding: 15px 35px;
+    width: 175px;
+    height: 55px;
+    border-radius: 15px;
+    background: #007A78;
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+}
+
+#teacherEmail { width: 433px; }
+
+#teacherPass { width: 443px; }
+
+#confirmBtn {
+    margin-right: 5px;
+    margin-top: 29px;
+    width: 175px;
+    height: 55px;
+    border-radius: 15px;
+    border: none;
+    background: #007A78;
+    color: #FFF;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    float: right;
+}
+
+#cancelBtn {
+    
+    margin-top: 29px;
+    width: 175px;
+    height: 55px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 2px solid #007A78;
+    background: #FFF;
+    color: #007A78;
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    float: right;
 }
