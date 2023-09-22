@@ -184,8 +184,8 @@ function listTeacherNames(){
     }
 }
 
-function createNewCourse($name,$description, $category, $duration, $startDate, $endDate, $teacher, $photo){
-    $sql = "INSERT INTO course (name, description, category, duration, start, end, teacher_email, photo) VALUES ('$name', '$description', '$category', '$duration', '$startDate', '$endDate', '$teacher', '$photo')";
+function createNewCourse($name,$description, $category, $duration, $startDate, $endDate, $teacher, $photo, $difficulty){
+    $sql = "INSERT INTO course (name, description, category, duration, difficulty, start, end, teacher_email, photo) VALUES ('$name', '$description', '$category', '$duration', '$difficulty', '$startDate', '$endDate', '$teacher', '$photo')";
 
     $connect = connectDataBase();
 

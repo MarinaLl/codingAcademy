@@ -12,6 +12,7 @@
             $courseDescription = $_POST['courseDescription'];
             $category = $_POST['courseCategory'];
             $courseDuration = $_POST['courseDuration'];
+            $courseDifficulty = $_POST['difficulty'];
             $courseStart = $_POST['courseStart'];
             $courseEnd = $_POST['courseEnd'];
             $courseTeacher = $_POST['courseTeacher'];
@@ -19,7 +20,7 @@
 
             $image = uploadPhoto($courseImage, $_FILES['coursePhoto']['name']);
 
-            createNewCourse($courseName, $courseDescription, $category, $courseDuration, $courseStart, $courseEnd, $courseTeacher, $image);
+            createNewCourse($courseName, $courseDescription, $category, $courseDuration, $courseStart, $courseEnd, $courseTeacher, $image, $courseDifficulty);
             
         } else {
     ?>
@@ -35,6 +36,14 @@
             <option value="web-development">Web Development</option>
             <option value="game-developmen">Game Development</option>
             <option value="computer-science">Computer Science</option>
+        </select><br>
+        <label for="difficulty">Difficulty</label>
+        <select name="difficulty" id="difficulty">
+            <option value="" default></option>
+            <option value="beginner-friendly">Beginner Friendly</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+            <option value="expert">Expert</option>
         </select><br>
         <label for="courseDuration">Duration</label>
         <input type="number" name="courseDuration" id="courseDuration"><br>
