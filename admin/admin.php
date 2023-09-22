@@ -76,7 +76,7 @@
     </form>
     
     <?php  
-    include('funciones.php');
+    include('../funciones.php');
         if($_POST){
             
 

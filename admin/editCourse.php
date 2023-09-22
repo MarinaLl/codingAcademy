@@ -12,7 +12,7 @@ session_start();
 
 <body>
     <?php
-    include('funciones.php');
+    include('../funciones.php');
     $code = $_SESSION['code'];
 
     if ($_POST) {

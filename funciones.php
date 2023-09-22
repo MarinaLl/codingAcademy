@@ -15,6 +15,22 @@ function connectDataBase(){
     return $connect;
 }
 
+function loginRedirect($role) {
+    switch ($role) {
+        case 'admin':
+            header('Location: admin/admin.php');
+            break;
+        
+        case 'teacher':
+            header('Location: teacher/teacher.php');
+            break;
+            
+        case 'student':
+            header('Location: student/student.php');
+            break;
+    }
+}
+
 function uploadPhoto($profileImageTmp, $profileImageName) {
     if(is_uploaded_file($profileImageTmp)){
         $directory = "img/";

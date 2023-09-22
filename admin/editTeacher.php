@@ -10,7 +10,7 @@
 </head>
 <body>
     <?php
-    include('funciones.php');
+    include('../funciones.php');
     $email = $_SESSION['email'];
     
     if($_POST){

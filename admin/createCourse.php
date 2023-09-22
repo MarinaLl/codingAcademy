@@ -6,7 +6,7 @@
     <title>Create New Course</title>
 </head>
 <body>
-    <?php include('funciones.php');
+    <?php include('../funciones.php');
         if ($_POST){
             $courseName = $_POST['courseName'];
             $courseDescription = $_POST['courseDescription'];

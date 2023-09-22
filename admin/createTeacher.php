@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-        include('funciones.php');
+        include('../funciones.php');
         if($_POST){
             
                 $teacherName = $_POST['teacherName'];
