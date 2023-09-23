@@ -52,7 +52,7 @@ if (isset($_SESSION['user'])) {
                 <input type="password" name="userPassword" id="userPassword" placeholder="Password">
                 <input type="submit" value="Log In" id="loginBtn">
             </form>
-            <a id="linkRegister" href="./student/register.php">No account yet? Sign Up now</a>
+            <a id="linkRegister" href="student/register.php">No account yet? Sign Up now</a>
         </div>
         </body>
     </html>
