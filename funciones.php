@@ -14,12 +14,19 @@ function connectDataBase(){
 
     return $connect;
 }
+// Add the Inter font from Google Fonts
+function addFonts() {
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">';
+}
 
 function loginRedirect($role) {
     switch ($role) {
         case 'admin':
             header('Location: admin/admin.php');
             break;
+            
         
         case 'teacher':
             header('Location: teacher/teacher.php');

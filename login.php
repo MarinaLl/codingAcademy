@@ -31,13 +31,31 @@ if (isset($_SESSION['user'])) {
         $conn->close();
 
     } else { ?>
-        <form action="login.php" method="post" enctype="multipart/form-data" name="login">
-        <label for="userEmail">Email</label>
-        <input type="email" name="userEmail" id="userEmail"><br>
-        <label for="userPassword">Password</label>
-        <input type="password" name="userPassword" id="userPassword">
-        <input type="submit" value="Log In">
-    </form>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Log In</title>
+            <link rel="stylesheet" type="text/css" href="login.css">
+            <?php addFonts(); ?>
+        </head>
+        <body>
+        <div id="left">
+            <div id="image">
+                <img src="src/login.png">
+            </div>
+        </div>
+        <div id="right">
+            <img id="logo" src="src/codingAcademyLogo2.png" alt="codingAcademy">
+            <h1>Log In</h1>
+            <form action="login.php" method="post" enctype="multipart/form-data" name="login">
+                <input type="email" name="userEmail" id="userEmail" placeholder="Email"><br>
+                <input type="password" name="userPassword" id="userPassword" placeholder="Password">
+                <input type="submit" value="Log In" id="loginBtn">
+            </form>
+            <a id="linkRegister" href="./student/register.php">No account yet? Sign Up now</a>
+        </div>
+        </body>
+    </html>
     <?php }
 }
 ?>
