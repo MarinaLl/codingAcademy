@@ -21,20 +21,8 @@ function addFonts() {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">';
 }
 
-function loginRedirect($role) {
-    switch ($role) {
-        case 'admin':
-            header('Location: admin/admin.php');
-            break;
-            
-        case 'teacher':
-            header('Location: teacher/teacher.php');
-            break;
-            
-        case 'student':
-            header('Location: student/student.php');
-            break;
-    }
+function loginRedirect() {
+    header('Location: '.$_SESSION['role'].'/'.$_SESSION['role'].'.php');
 }
 
 // Only possible values for $path = "" or $path = "../"
@@ -47,7 +35,23 @@ function logout($path) {
     header('Location: '.$path.'login.php');
 }
 
-// Upload photo
+function getName() {
+    if ($_SESSION['role'] != 'admin') {
+        $sql = "SELECT name, lastNames FROM ".$_SESSION['role']." WHERE email = '".$_SESSION['user']."'";
+        $connect = connectDataBase();
+        $result = $connect->query($sql);
+        
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $completeName = $row['name']." ".$row['lastNames'];
+        } else {
+            $completeName = 'Administrator';
+        }
+        return $completeName;
+    }
+}
+
+// Photo management
 
 function uploadPhoto($profileImageTmp, $profileImageName) {
     if(is_uploaded_file($profileImageTmp)){

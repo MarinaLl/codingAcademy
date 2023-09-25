@@ -9,11 +9,11 @@ if (isset($_SESSION['user'])) {
         $email = $_POST['userEmail'];
         $password = md5($_POST['userPassword']);
         $sql = "
-            (SELECT 'admin' AS role, email FROM administrator WHERE email = '$email' AND password = '$password')
+            (SELECT 'admin' AS role, email, NULL AS photo FROM admin WHERE email = '$email' AND password = '$password')
             UNION ALL
-            (SELECT 'teacher' AS role, email FROM teacher WHERE email = '$email' AND password = '$password')
+            (SELECT 'teacher' AS role, email, photo FROM teacher WHERE email = '$email' AND password = '$password')
             UNION ALL
-            (SELECT 'student' AS role, email FROM student WHERE email = '$email' AND password = '$password')";
+            (SELECT 'student' AS role, email, photo FROM student WHERE email = '$email' AND password = '$password')";
 
         $connect = connectDataBase();
         $result = $connect->query($sql);
@@ -22,9 +22,13 @@ if (isset($_SESSION['user'])) {
             $row = $result->fetch_assoc();
             $_SESSION['user'] = $row['email'];
             $_SESSION['role'] = $row['role'];
-            loginRedirect($_SESSION['role']);
+            if (is_null($row['photo'])) {
+                $_SESSION['photo'] = 'img/defaultProfileImage.png';
+            } else {
+                $_SESSION['photo'] = $row['photo'];
             }
-        else {
+            loginRedirect();
+        } else {
             echo "Correo electrónico o contraseña incorrectos.";
         }
 
