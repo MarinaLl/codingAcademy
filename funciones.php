@@ -235,7 +235,24 @@ function addNewUser($username, $lastNames, $dni, $age, $photo, $email, $passwd){
 
 }
 
+function listCoursesToEnroll(){
 
+    $sql = "SELECT * FROM courses";
+
+    $conn = connectDataBase();
+
+    $query = mysqli_query($conn, $sql);
+
+    if($query == false){
+        echo mysqli_error($conn);
+    } else {
+        $numLines = mysqli_num_rows($query);
+        for($i = 0; $i < $numLines; $i++){
+            $line = mysqli_fetch_array($query);
+            echo '<option value='.$line['email'].'>'.$line['name'].' '.$line['lastNames'] .'</option>';
+        }
+    }
+}
 
 
 
