@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php addFonts(); ?>
-    <title>Document</title>
     <style>
         *{
             padding: 0;
@@ -66,10 +65,21 @@
             <a href="'.$path.'contact.php">Contact</a>';
             ?>
         </div>
-        <div id="session">
-            <a id="signUp-btn" href="">Sign Up</a>
-            <a id="logIn-btn" href="">Log In</a>
-        </div>
+        <?php
+        if(isset($_SESSION['user'])) {
+            echo '<div id="session">
+            <a id="profileImageBtn" href="'.$path.$_SESSION['role'].'/'.$_SESSION['role'].'.php"><img src="'.$path.$_SESSION['photo'].'"></a>
+            <a id="nameBtn" href="'.$path.$_SESSION['role'].'/'.$_SESSION['role'].'.php">'.getName().'</a>
+            </div>';
+        } else {
+            
+            echo '<div id="session">
+            <a id="signUpBtn" href="'.$path.'register.php">Sign Up</a>
+            <a id="logInBtn" href="'.$path.'login.php">Log In</a>
+            </div>';
+        }
+        ?>
+        
     </header>
 </body>
 </html>
