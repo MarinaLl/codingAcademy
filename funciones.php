@@ -35,22 +35,6 @@ function logout($path) {
     header('Location: '.$path.'login.php');
 }
 
-function getName() {
-    if ($_SESSION['role'] != 'admin') {
-        $sql = "SELECT name, lastNames FROM ".$_SESSION['role']." WHERE email = '".$_SESSION['user']."'";
-        $connect = connectDataBase();
-        $result = $connect->query($sql);
-        
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $completeName = $row['name']." ".$row['lastNames'];
-        } else {
-            $completeName = 'Administrator';
-        }
-        return $completeName;
-    }
-}
-
 // Photo management
 
 function uploadPhoto($profileImageTmp, $profileImageName) {

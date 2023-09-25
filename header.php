@@ -70,7 +70,7 @@
         if(isset($_SESSION['user'])) {
             echo '<div id="session">
             <a id="profileImageBtn" href="'.$path.$_SESSION['role'].'/'.$_SESSION['role'].'.php"><img src="'.$path.$_SESSION['photo'].'"></a>
-            <a id="nameBtn" href="'.$path.$_SESSION['role'].'/'.$_SESSION['role'].'.php">'.getName().'</a>
+            <a id="nameBtn" href="'.$path.$_SESSION['role'].'/'.$_SESSION['role'].'.php">'.$_SESSION['completeName'].'</a>
             </div>';
         } else {
             
