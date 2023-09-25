@@ -37,11 +37,14 @@
             text-decoration: underline;
             color: #007A78;
         }
-        #signUp-btn{
+        #signUpBtn{
             color:#007A78;
             margin-right: 10px
         }
-        #logIn-btn{
+        #signUpBtn:hover{
+            text-decoration: underline;
+        }
+        #logInBtn{
             padding: 10px 40px;
             background-color: #007A78;
             color: white;
@@ -49,7 +52,7 @@
             border-radius: 10px;
             margin-right: 10px;
         }
-        #logIn-btn:hover{
+        #logInBtn:hover{
             text-decoration: underline;
             color: white;
         }
