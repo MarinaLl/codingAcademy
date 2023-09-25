@@ -2,18 +2,18 @@
 session_start();
 include('funciones.php');
 if (isset($_SESSION['user'])) {
-    loginRedirect($_SESSION['role']);
+    loginRedirect();
 } else {
     if ($_POST) {
         
         $email = $_POST['userEmail'];
         $password = md5($_POST['userPassword']);
         $sql = "
-            (SELECT 'admin' AS role, email, NULL AS photo FROM admin WHERE email = '$email' AND password = '$password')
+            (SELECT 'admin' AS role, email, NULL AS photo, 'Administrator' AS name, '' AS lastNames FROM admin WHERE email = '$email' AND password = '$password')
             UNION ALL
-            (SELECT 'teacher' AS role, email, photo FROM teacher WHERE email = '$email' AND password = '$password')
+            (SELECT 'teacher' AS role, email, photo, name, lastNames FROM teacher WHERE email = '$email' AND password = '$password')
             UNION ALL
-            (SELECT 'student' AS role, email, photo FROM student WHERE email = '$email' AND password = '$password')";
+            (SELECT 'student' AS role, email, photo, name, lastNames FROM student WHERE email = '$email' AND password = '$password')";
 
         $connect = connectDataBase();
         $result = $connect->query($sql);
@@ -22,6 +22,8 @@ if (isset($_SESSION['user'])) {
             $row = $result->fetch_assoc();
             $_SESSION['user'] = $row['email'];
             $_SESSION['role'] = $row['role'];
+            $completeName = $row['name']." ".$row['lastNames'];
+            $_SESSION['completeName'] = $completeName;
             if (is_null($row['photo'])) {
                 $_SESSION['photo'] = 'img/defaultProfileImage.png';
             } else {
