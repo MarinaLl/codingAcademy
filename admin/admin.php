@@ -1,5 +1,7 @@
 <?php
- session_start();
+    include('../funciones.php');
+    session_start();
+    if (isset($_SESSION['user']) && $_SESSION['role'] == 'student') {
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +68,7 @@
     
 </head>
 <body>
-    <?php include('../funciones.php'); addHeader('../');?>
+    <?php addHeader('../');?>
 
     <form action="createTeacher.php" method="post">
         <input type="submit" value="Add New Teacher">
@@ -158,3 +160,6 @@
 
 </body>
 </html>
+<?php } else {
+        logout("../");
+    }?>
