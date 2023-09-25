@@ -1,7 +1,7 @@
 <?php
     include('../funciones.php');
     session_start();
-    if (isset($_SESSION['user']) && $_SESSION['role'] == 'student') {
+    if (isset($_SESSION['user']) && $_SESSION['role'] == 'admin') {
 ?>
 
 <!DOCTYPE html>

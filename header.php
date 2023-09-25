@@ -60,10 +60,12 @@
 </head>
 <body>
     <header id="grid">
-        <img src="src/codingAcademyLogo.png" alt="logo">
-        <div id="nav">
-            <?php
-            echo '<a href="'.$path.'index.php">Home</a>
+        <?php 
+            echo '
+            <img src="'.$path.'src/codingAcademyLogo.png" alt="logo">
+            <div id="nav">
+            
+            <a href="'.$path.'index.php">Home</a>
             <a href="'.$path.'courses.php">Courses</a>
             <a href="'.$path.'aboutUs.php">About Us</a>
             <a href="'.$path.'contact.php">Contact</a>';

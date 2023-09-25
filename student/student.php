@@ -1,4 +1,5 @@
 <?php   
+    include('../funciones.php');
     session_start();
     if (isset($_SESSION['user']) && $_SESSION['role'] == 'student') {
 ?>
@@ -11,6 +12,7 @@
 </head>
 <body>
     <h1>Hello, <?php echo $_SESSION['completeName']; ?></h1>
+    <a id="editProfileButton" href="">Edit Profile</a>
 </body>
 </html>
 <?php } else {
