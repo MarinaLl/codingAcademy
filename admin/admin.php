@@ -66,7 +66,7 @@
     
 </head>
 <body>
-    <?php include('../header.php');?>
+    <?php include('../funciones.php'); addHeader('../');?>
 
     <form action="createTeacher.php" method="post">
         <input type="submit" value="Add New Teacher">
@@ -76,7 +76,6 @@
     </form>
     
     <?php  
-    include('../funciones.php');
         if($_POST){
             
 
@@ -100,7 +99,6 @@
                     $_SESSION['code'] = $_POST['buttonEditCourse'];
                     header('Location: editCourse.php');
                 }
-            
 
         }else {
         

@@ -1,3 +1,4 @@
+<?php if (isset($path)) { ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +49,7 @@
             border-radius: 10px;
             margin-right: 10px;
         }
-        #logIn-btn:hover-bottom{
+        #logIn-btn:hover{
             text-decoration: underline;
             color: white;
         }
@@ -58,10 +59,12 @@
     <header id="grid">
         <img src="src/codingAcademyLogo.png" alt="logo">
         <div id="nav">
-            <a href="index.php">Home</a>
-            <a href="courses.php">Courses</a>
-            <a href="aboutUs.php">About Us</a>
-            <a href="contact.php">Contact</a>
+            <?php
+            echo '<a href="'.$path.'index.php">Home</a>
+            <a href="'.$path.'courses.php">Courses</a>
+            <a href="'.$path.'aboutUs.php">About Us</a>
+            <a href="'.$path.'contact.php">Contact</a>';
+            ?>
         </div>
         <div id="session">
             <a id="signUp-btn" href="">Sign Up</a>
@@ -70,3 +73,7 @@
     </header>
 </body>
 </html>
+<?php
+} else {
+    header('Location: index.php');
+}?>
