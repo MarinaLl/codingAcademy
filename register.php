@@ -2,7 +2,7 @@
 session_start();
 include("funciones.php");
 if (isset($_SESSION['user'])) {
-    loginRedirect($_SESSION['role']);
+    loginRedirect();
 } else {
     ?>
 <!DOCTYPE html>
