@@ -23,13 +23,22 @@
                 <a href="">Beginner Friendly</a>
             </div>
             <div class="categoryBox">
-                <img class="categoryImage" src="src/newbie(1).png" alt="newbie">
+                <div class="imageBox">
+                    <img class="categoryImage" src="src/devops(1).png" alt="newbie">
+                </div>
+                <a href="">Web Development</a>
             </div>
             <div class="categoryBox">
-                <img class="categoryImage" src="src/newbie(1).png" alt="newbie">
+                <div class="imageBox">
+                    <img class="categoryImage" src="src/game-development.png" alt="newbie">
+                </div>
+                <a href="">Game Development</a>
             </div>
             <div class="categoryBox">
-                <img class="categoryImage" src="src/newbie(1).png" alt="newbie">
+                <div class="imageBox">
+                    <img class="categoryImage" src="src/artificial-intelligence.png" alt="newbie">
+                </div>
+                <a href="">Computer Science</a>
             </div>
         </div>
         <div class="left"></div>
