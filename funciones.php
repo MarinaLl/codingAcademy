@@ -38,10 +38,16 @@ function loginRedirect($role) {
 }
 
 // Only possible values for $path = "" or $path = "../"
+
+function addHeader($path) {
+    include(''.$path.'header.php');
+}
 function logout($path) {
     session_destroy();
     header('Location: '.$path.'login.php');
 }
+
+// Upload photo
 
 function uploadPhoto($profileImageTmp, $profileImageName) {
     if(is_uploaded_file($profileImageTmp)){
