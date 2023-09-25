@@ -64,7 +64,7 @@ if (isset($_SESSION['user'])) {
                 <input type="password" name="userPassword" id="userPassword">
                 <input type="submit" value="Sign Up" id="registerBtn">
             </form>
-            <a id="linkLogin" href="../login.php">I already have an account.</a>
+            <a id="linkLogin" href="login.php">I already have an account.</a>
         </div>
         </body>
     </html>
