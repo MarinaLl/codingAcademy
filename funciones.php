@@ -27,7 +27,6 @@ function loginRedirect($role) {
             header('Location: admin/admin.php');
             break;
             
-        
         case 'teacher':
             header('Location: teacher/teacher.php');
             break;
@@ -226,5 +225,27 @@ function createNewCourse($name,$description, $category, $duration, $startDate, $
     }
 
 }
+
+function addNewUser($username, $lastNames, $dni, $age, $photo, $email, $passwd){
+
+    $sql = "INSERT INTO student (email, password, dni, name, lastNames, age, photo) VALUES ('$email', '$passwd', '$dni', '$username', '$lastNames', '$age', '$photo')";
+
+    $conn = connectDataBase();
+
+    if($query = mysqli_query($conn, $sql)){
+        echo "registro creado";
+        header('Location: student/student.php');
+    } else {
+        echo mysqli_error($conn);
+    }
+
+}
+
+
+
+
+
+
+
 
 ?>

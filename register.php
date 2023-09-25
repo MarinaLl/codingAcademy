@@ -1,41 +1,15 @@
 <?php
 session_start();
-include("../funciones.php");
+include("funciones.php");
 if (isset($_SESSION['user'])) {
     loginRedirect($_SESSION['role']);
 } else {
-    if ($_POST) {
-        /*
-        $email = $_POST['userEmail'];
-        $password = md5($_POST['userPassword']);
-        $sql = "
-            (SELECT 'admin' AS role, email FROM administrator WHERE email = '$email' AND password = '$password')
-            UNION ALL
-            (SELECT 'teacher' AS role, email FROM teacher WHERE email = '$email' AND password = '$password')
-            UNION ALL
-            (SELECT 'student' AS role, email FROM student WHERE email = '$email' AND password = '$password')";
-
-        $connect = connectDataBase();
-        $result = $connect->query($sql);
-        
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $_SESSION['user'] = $row['email'];
-            $_SESSION['role'] = $row['role'];
-            loginRedirect($_SESSION['role']);
-            }
-        else {
-            echo "Correo electrónico o contraseña incorrectos.";
-        }
-
-        $conn->close();
-        */
-    } else { ?>
+    ?>
 <!DOCTYPE html>
     <html>
         <head>
             <title>Sign Up</title>
-            <link rel="stylesheet" type="text/css" href="login.css">
+            <!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
             <?php addFonts(); ?>
         </head>
         <body>
@@ -45,6 +19,25 @@ if (isset($_SESSION['user'])) {
             </div>
         </div>
         <div id="right">
+            <?php 
+                if ($_POST){
+                    $username = $_POST['userName'];
+                    $userLastNames = $_POST['userLastnames'];
+                    $userDni = $_POST['userDni'];
+                    $userAge = $_POST['userAge'];
+                    $userPhoto = $_FILES['userPhoto']['tmp_name'];
+                    $userEmail = $_POST['userEmail'];
+                    $userPass = md5($_POST['userPassword']);
+
+                    $_SESSION['username'] = $username;
+
+                    $photo = uploadPhoto($userPhoto, $_FILES['userPhoto']['name']);
+
+                    addNewUser($username, $userLastNames, $userDni, $userAge, $photo, $userEmail, $userPass);
+
+
+                } else {
+            ?>
             <img id="logo" src="../src/codingAcademyLogo2.png" alt="codingAcademy">
             <h1>Sign Up</h1>
             <form action="register.php" method="post" enctype="multipart/form-data" name="register">
@@ -55,7 +48,7 @@ if (isset($_SESSION['user'])) {
                 <label for="userDni">DNI</label>
                 <input type="text" name="userDni" id="userDni"><br>
                 <label for="userAge">Age</label>
-                <input type="select" name="userAge" id="userAge"><br>
+                <input type="text" name="userAge" id="userAge"><br>
                 <label for="userPhoto">Photo</label>
                 <input type="file" name="userPhoto" id="userPhoto"><br>
                 <label for="userEmail">Email</label>
@@ -68,6 +61,7 @@ if (isset($_SESSION['user'])) {
         </div>
         </body>
     </html>
-    <?php }
+    <?php 
+                }
 }
 ?>
