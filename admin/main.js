@@ -20,3 +20,4 @@ btnTeacher.addEventListener('click', function(){
     courseForm.style.visibility = 'hidden';
     teacherForm.style.visibility = 'visible';
 });
+
