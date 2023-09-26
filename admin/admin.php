@@ -102,7 +102,7 @@
                     header('Location: editCourse.php');
                 }
 
-        }else {
+        } else {
         
     ?>
 

@@ -18,7 +18,7 @@
     <h2 id="filterBy">Filter by</h2>
     <div class="cardComponent">
         <?php
-            $sql = "SELECT * FROM course WHERE category = '".$_SESSION['courseCategory']."'";
+            $sql = "SELECT * FROM course WHERE category = '".$_SESSION['courseCategory']."' AND active = 1";
             $connect = connectDataBase();
     
             $query = mysqli_query($connect, $sql);
@@ -30,17 +30,8 @@
                 for($i = 0; $i < $numLines; $i++){
                     $line = mysqli_fetch_array($query);
                     
-                    echo '<tr>
-                        <td><img src='.$line['photo'].'></td>
-                        <td>'.$line['name'].' '.$line['lastNames'].'</td>
-                        <td>'.$line['email'].'</td>
-                        <td>'.$line['title'].'</td>
-                        <td>'.$line['dni'].'</td>
-                        <td>'.$line['active'].'</td>
-                        <td><button type="submit" name="buttonEdit" value='.$line['email'].'>Edit</button></td>
-                        <td><button type="submit" name="buttonDis" value='.$line['email'].'>Disable</button></td>
-                    </tr>
-                    ';
+
+
                 }
             }
             echo '<img class="courseImage" src="src/'.$_SESSION['courseCategory'].'.png" alt="'.$_SESSION['courseCategory'].'">';
