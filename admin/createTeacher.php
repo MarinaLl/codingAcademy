@@ -34,7 +34,7 @@
         } else {
     ?>
     
-        <div id="createTeacherPopUp">
+        
             <h1>Add new teacher</h1>
             <form action="createTeacher.php" method="post" enctype="multipart/form-data" name="createTeacher">
                 <div class="grid-container">
@@ -77,7 +77,7 @@
                 </div>
                     
             </form>
-        </div>
+       
     
     
     <?php }?>
