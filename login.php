@@ -34,7 +34,7 @@ if (isset($_SESSION['user'])) {
             echo "Correo electrónico o contraseña incorrectos.";
         }
 
-        $conn->close();
+        $connect->close();
 
     } else { ?>
     <!DOCTYPE html>

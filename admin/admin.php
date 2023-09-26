@@ -2,6 +2,7 @@
     include('../funciones.php');
     session_start();
     if (isset($_SESSION['user']) && $_SESSION['role'] == 'admin') {
+        addHeader("../");
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
     <title>Administrator Panel</title>
     <style>
         img{
@@ -68,14 +70,14 @@
     
 </head>
 <body>
-    <?php addHeader('../');?>
-
-    <form action="createTeacher.php" method="post">
-        <input type="submit" value="Add New Teacher">
-    </form>
+    
+    
+    <!-- <form action="" method="post">
+        <input type="submit" value="Add New Teacher" id="createTeacherBtn">
+    </form> 
     <form action="createCourse.php" method="post">
-     <input type="submit" value="Add New Course">
-    </form>
+     <input type="submit" value="Add New Course" id="createCourseBtn">
+    </form>-->
     
     <?php  
         if($_POST){
@@ -105,7 +107,8 @@
         } else {
         
     ?>
-
+    <button id="createTeacherBtn">Add New Teacher</button>
+    <button id="createCourseBtn">Add New Course</button>
     <div id="form-container">
     
     <button id="btnCourse" class="btnFolderStyle">Courses</button>
@@ -150,12 +153,16 @@
             </form>
         </div>
     </div>
-    
-   <?php };?>
-
-
-
-   <script src="main.js"></script>
+    <div id="popupBackground">
+        <div id="popup">
+            <?php include('a.php'); ?>
+        </div>
+    </div>
+    <?php }?>
+        
+       
+    <script src="popup.js"></script>
+    <script src="main.js"></script>
 
 
 </body>

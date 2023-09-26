@@ -1,42 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="createTeacher.css">
-</head>
-<body>
-    
-    <?php 
-        include('../funciones.php'); addFonts();
-        if($_POST){
-            
-                $teacherName = $_POST['teacherName'];
-                $teacherLastNames = $_POST['teacherLastNames'];
-                $teacherTitle = $_POST['teacherTitle'];
-                $teacherEmail = $_POST['teacherEmail'];
-                $teacherPasswd = $_POST['teacherPass'];
-                $teacherPhoto = $_FILES['teacherPhoto']['tmp_name'];
-                $teacherDni = $_POST['teacherDni'];
-                $teacherPasswd = md5($teacherPasswd);
-
-                
-
-                $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
-    
-                connectDataBase();
-    
-                createNewTeacher($teacherEmail, $teacherPasswd, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $teacherDni);
-                echo '<meta http-equiv="refresh" content="0;url=admin.php">';
-            
-
-        } else {
-    ?>
-    
-        <div id="createTeacherPopUp">
+<?php 
+    echo "mostrando en el poup";
+    echo '
+    <div id="createTeacherPopUp">
             <h1>Add new teacher</h1>
-            <form action="createTeacher.php" method="post" enctype="multipart/form-data" name="createTeacher">
+            <form action="test.php" method="post" enctype="multipart/form-data" name="createTeacher">
                 <div class="grid-container">
                     <div class="name">
                         <label for="teacherName">Name</label><br>
@@ -78,8 +45,5 @@
                     
             </form>
         </div>
-    
-    
-    <?php }?>
-</body>
-</html>
+    ';
+?>
