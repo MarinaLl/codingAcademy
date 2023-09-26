@@ -235,7 +235,15 @@ function addNewUser($username, $lastNames, $dni, $age, $photo, $email, $passwd){
 
 }
 
+function checkDNI($dni){
+    $combinations = '/^\d{8}[A-HJ-NP-TV-Z]$/i';
 
+    if(preg_match($combinations, $dni)){
+        return true;
+    } 
+
+    return false;
+}
 
 
 ?>

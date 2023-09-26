@@ -21,15 +21,17 @@
                 $teacherDni = $_POST['teacherDni'];
                 $teacherPasswd = md5($teacherPasswd);
 
-                
+                if(checkDNI($teacherDni)){
+                    $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
+        
+                    connectDataBase();
+        
+                    createNewTeacher($teacherEmail, $teacherPasswd, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $teacherDni);
+                    echo '<meta http-equiv="refresh" content="0;url=admin.php">';
 
-                $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
-    
-                connectDataBase();
-    
-                createNewTeacher($teacherEmail, $teacherPasswd, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $teacherDni);
-                echo '<meta http-equiv="refresh" content="0;url=admin.php">';
-            
+                } else {
+                    echo "<script>alert('dni no valido');</script>";
+                }
 
         } else {
     ?>
