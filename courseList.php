@@ -3,7 +3,7 @@
     include('funciones.php');
     addHeader("");
     addFonts();
-    $_SESSION['courseCategory'] = "beginner-friendly";
+    $_SESSION['courseCategory'] = "web-development";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,12 +14,25 @@
     <title>Courses</title>
 </head>
 <body>
+    <?php 
+        if ($_POST) {
+            $courseCode = $_POST['coursecode'];
+            $studentEmail = $_SESSION['user'];
+            $sqlInsert = "INSERT INTO enrollment (student_email, course_code, grade) VALUES ('$studentEmail','$courseCode', NULL)";
+            $connectEnrollment = connectDataBase();
+            $query = mysqli_query($connectEnrollment, $sqlInsert);
+            if ($query == false){
+                mysqli_error($connectEnrollment);
+            }
+        }
+    ?>
     <h1 id="courseTitle">
         <?php $category = str_replace('-', ' ', $_SESSION['courseCategory']);
         $category = ucwords($category); echo $category;
         ?></h1>
     <h2 id="allCourses">All Courses</h2>
     <h2 id="filterBy">Filter by</h2>
+    <form action="courseList.php" method="post" name="courseEnrollment">
         <?php
             $sql = "SELECT * FROM course WHERE category = '".$_SESSION['courseCategory']."' AND active = 1";
             
@@ -34,9 +47,8 @@
                 echo '<table>';
                 for($i = 0; $i < $numLines; $i++){
                     $line = mysqli_fetch_array($query);
-                    $sql2 = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$line['teacher_email']."'";
-                    $connect2 = connectDataBase();
-                    $query2 = mysqli_query($connect2, $sql2);
+                    $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$line['teacher_email']."'";
+                    $query2 = mysqli_query($connect, $sql);
                     $teacher = mysqli_fetch_array($query2);
                     $courseImage = $line['photo'];
                     $courseName = $line['name'];
@@ -52,7 +64,7 @@
                         <tr>
                             <td><img src="'.$courseImage.'"></td>
                             <td>'.$courseName.'</td>
-                            <td>'.$courseCode.'</td>
+                            <td><button type="submit" name="buttonEnroll" value='.$courseCode.'>Enroll</button></td>
                             <td><img src="'.$teacherPhoto.'"></td>
                             <td>'.$teacherCompleteName.'</td>
                             <td>'.$courseDescription.'</td>
@@ -61,7 +73,7 @@
                             <td>'.$courseDifficulty.'</td>
                         </tr>';
                 }
-                echo '</table>';
+                echo '</table></form>';
             }
         ?>
 </body>
