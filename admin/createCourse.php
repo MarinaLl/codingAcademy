@@ -46,7 +46,7 @@
             <option value="expert">Expert</option>
         </select><br>
         <label for="courseDuration">Duration</label>
-        <input type="number" name="courseDuration" id="courseDuration"><br>
+        <input type="number" name="courseDuration" id="courseDuration" min=1><br>
         <label for="courseStart">Course Start</label>
         <input type="date" name="courseStart" id="courseStart"><br>
         <label for="courseEnd">Course Start</label>

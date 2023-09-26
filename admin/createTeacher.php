@@ -57,7 +57,7 @@
                     </div>
                     <div class="photo">
                         <label for="teacherPhotoText">Photo</label><br>
-                        <input type="text" name="teacherPhotoText" id="teacherPhotoText" class="textbox" disabled>
+                        <input type="text" name="teacherPhotoText" id="teacherPhotoText" class="textbox" readonly>
                         <label for="teacherPhoto" id="teacherPhotoBtn">Browse</label>
                         <input type="file" name="teacherPhoto" id="teacherPhoto">
                     </div>
@@ -78,8 +78,6 @@
                     
             </form>
        
-    
-    
     <?php }?>
 </body>
 </html>

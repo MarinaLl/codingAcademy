@@ -22,13 +22,20 @@
             height: 60px;
             border-bottom: 1px solid lightgrey;
         }
-        img {
+        #logo {
             width: 165px;
             
         }
         a{
             text-decoration: none;
             color: black;
+        }
+        #nav {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
         #nav a{
             margin: auto 20px;
@@ -56,34 +63,46 @@
             text-decoration: underline;
             color: white;
         }
+        #profileImageBtn img{
+            width: 50px;
+            margin-right: -40px;   
+        }
+        #links, #session{
+            display: flex;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
-    <header id="grid">
+    <header>
         <?php 
             echo '
-            <img src="'.$path.'src/codingAcademyLogo.png" alt="logo">
             <div id="nav">
-            
-            <a href="'.$path.'index.php">Home</a>
-            <a href="'.$path.'courses.php">Courses</a>
-            <a href="'.$path.'aboutUs.php">About Us</a>
-            <a href="'.$path.'contact.php">Contact</a>';
+                <img id="logo" src="'.$path.'src/codingAcademyLogo.png" alt="logo">
+                <div id="links">
+                    <a href="'.$path.'index.php">Home</a>
+                    <a href="'.$path.'courses.php">Courses</a>
+                    <a href="'.$path.'aboutUs.php">About Us</a>
+                    <a href="'.$path.'contact.php">Contact</a>
+                </div>';
+                echo '<div id="session">';
+                    if(isset($_SESSION['user'])) {
+                        echo '
+                        <a id="profileImageBtn" href="'.$path.$_SESSION['role'].'/'.$_SESSION['role'].'.php"><img src="'.$path.$_SESSION['photo'].'"></a>
+                        <a id="nameBtn" href="'.$path.$_SESSION['role'].'/'.$_SESSION['role'].'.php">'.$_SESSION['completeName'].'</a>
+                        ';
+                    } else {
+                        echo '
+                        <a id="signUpBtn" href="'.$path.'register.php">Sign Up</a>
+                        <a id="logInBtn" href="'.$path.'login.php">Log In</a>
+                        
+                        ';
+                    }
+                echo "</div>";
+            echo "</div>";
             ?>
-        </div>
+        
         <?php
-        if(isset($_SESSION['user'])) {
-            echo '<div id="session">
-            <a id="profileImageBtn" href="'.$path.$_SESSION['role'].'/'.$_SESSION['role'].'.php"><img src="'.$path.$_SESSION['photo'].'"></a>
-            <a id="nameBtn" href="'.$path.$_SESSION['role'].'/'.$_SESSION['role'].'.php">'.$_SESSION['completeName'].'</a>
-            </div>';
-        } else {
-            
-            echo '<div id="session">
-            <a id="signUpBtn" href="'.$path.'register.php">Sign Up</a>
-            <a id="logInBtn" href="'.$path.'login.php">Log In</a>
-            </div>';
-        }
         ?>
         
     </header>
