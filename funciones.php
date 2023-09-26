@@ -39,11 +39,11 @@ function logout($path) {
 
 function uploadPhoto($profileImageTmp, $profileImageName) {
     if(is_uploaded_file($profileImageTmp)){
-        $directory = "img/";
+        $directory = "../img/";
 
         $date = time();
-
-        $imagePath = $directory.$date."-".$profileImageName;
+        $imageName = str_replace(' ', '-', $profileImageName);
+        $imagePath = $directory.$date."-".$imageName;
         move_uploaded_file($profileImageTmp, $imagePath);
     
     } else {
@@ -78,7 +78,7 @@ function showAllTeachers(){
         for($i = 0; $i < $numLines; $i++){
             $line = mysqli_fetch_array($query);
             echo '<tr>
-                <td><img src=../'.$line['photo'].'></td>
+                <td><img src='.$line['photo'].'></td>
                 <td>'.$line['name'].' '.$line['lastNames'].'</td>
                 <td>'.$line['email'].'</td>
                 <td>'.$line['title'].'</td>
@@ -106,7 +106,7 @@ function showAllCourses(){
         for($i = 0; $i < $numLines; $i++){
             $line = mysqli_fetch_array($query);
             echo '<tr>
-                <td><img src=../'.$line['photo'].'></td>
+                <td><img src='.$line['photo'].'></td>
                 <td>'.$line['name'].'</td>
                 <td>'.$line['teacher_email'].'</td>
                 <td>'.$line['category'].'</td>

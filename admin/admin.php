@@ -74,7 +74,7 @@
         if($_POST){
             
 
-                if(isset($_POST['buttonDis'])){
+                if(isset($_POST['buttonDis'])) {
                     $teacher = $_POST['buttonDis'];
                     disableTeacher($teacher);
                     header('Location: '. $_SERVER['PHP_SELF']);
@@ -84,7 +84,7 @@
                     $_SESSION['email'] = $_POST['buttonEdit'];
                     include('createTeacher.php');
                 }
-           
+        
                 if(isset($_POST['buttonDisCourse'])){
                     $code = $_POST['buttonDisCourse'];
                     disableCourse($code);
