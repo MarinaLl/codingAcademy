@@ -32,10 +32,12 @@ if (isset($_SESSION['user'])) {
                     $_SESSION['username'] = $username;
 
                     $photo = uploadPhoto($userPhoto, $_FILES['userPhoto']['name']);
-
-                    addNewUser($username, $userLastNames, $userDni, $userAge, $photo, $userEmail, $userPass);
-
-
+                    if (checkDNI($userDni) && !isEmailUsed($userEmail)) {
+                        addNewUser($username, $userLastNames, $userDni, $userAge, $photo, $userEmail, $userPass);
+                    } else {
+                        # Añadir mensaje de que el dni no es valido o ya esta en uso
+                    }
+                    
                 } else {
             ?>
             <img id="logo" src="../src/codingAcademyLogo2.png" alt="codingAcademy">
