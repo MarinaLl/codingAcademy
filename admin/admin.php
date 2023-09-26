@@ -70,15 +70,6 @@
     
 </head>
 <body>
-    
-    
-    <!-- <form action="" method="post">
-        <input type="submit" value="Add New Teacher" id="createTeacherBtn">
-    </form> 
-    <form action="createCourse.php" method="post">
-     <input type="submit" value="Add New Course" id="createCourseBtn">
-    </form>-->
-    
     <?php  
         if($_POST){
             
@@ -155,14 +146,12 @@
     </div>
     <div id="popupBackground">
         <div id="popup">
-            <?php include('a.php'); ?>
+            
         </div>
     </div>
     <?php }?>
-        
-       
-    <script src="popup.js"></script>
-    <script src="main.js"></script>
+
+    <script src="admin.js"></script>
 
 
 </body>

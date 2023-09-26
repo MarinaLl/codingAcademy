@@ -1,5 +1,4 @@
 <?php 
-    echo "mostrando en el poup";
     echo '
     <div id="createTeacherPopUp">
             <h1>Add new teacher</h1>
