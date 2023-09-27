@@ -67,7 +67,6 @@ div{
             @include defaultBtn(none, white);
         }
         
-
         div{
             @include boxSize($adminFormWidth, $adminFormHeight,  0px 0px 20px 20px);
             position: absolute;
