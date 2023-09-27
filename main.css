@@ -1,0 +1,91 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  border-bottom: 1px solid lightgray;
+}
+header > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: fit-content;
+}
+header > div img {
+  width: 165px;
+}
+header > div div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+header > div div a {
+  margin: auto 20px;
+  text-decoration: none;
+  color: black;
+}
+header > div div a:hover {
+  text-decoration: underline;
+  color: #007A78;
+}
+header > div div:last-child #signUpBtn {
+  color: #007A78;
+  margin-right: 10px;
+}
+header > div div:last-child #logInBtn {
+  padding: 10px 40px;
+  background-color: #007A78;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+header > div div:last-child #logInBtn:hover {
+  text-decoration: underline;
+  color: white;
+}
+header > div div:last-child img {
+  width: 50px;
+  margin-right: -40px;
+}
+
+div {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  grid-template-rows: 1fr;
+}
+div:first-child {
+  width: 1268px;
+  height: 565px;
+  border-radius: 20px;
+  background-color: rgba(0, 122, 120, 0.56);
+}
+div:first-child button {
+  width: 168px;
+  height: 50px;
+  border-radius: 20px 20px 0px 0px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+div:first-child div {
+  width: 1268px;
+  height: 506px;
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+}
+
+/*# sourceMappingURL=main.css.map */

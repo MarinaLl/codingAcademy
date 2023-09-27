@@ -11,70 +11,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos.css">
-    <link rel="stylesheet" href="../style.css">
-    <title>Administrator Panel</title>
-    <style>
-        img{
-            width: 40px;
-        }
-        #teacher-form{
-            visibility: hidden;
-            position: absolute;
-            width: 1268px;
-            height: 506px;
-            background-color: #00a3a0;
-            color: white;
-            border-radius: 0px 0px 20px 20px;  
-        }
-        #course-form{
-            position: absolute;
-            border-radius: 0px 0px 20px 20px;       
-            width: 1268px;
-            height: 506px;
-            background-color: #007A78;
-            color: white;
-            
-        }
-        #form-container{
-            width: 1268px;
-            height: 565px;
-            border-radius: 20px;
-            background-color: rgba(0, 122, 120, 0.56);
-        }
-        .btnFolderStyle{
-            width: 168px;
-            height: 50px;
-            border-radius: 20px 20px 0px 0px;
-            border: none;
-            color: white;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-            margin-top: 11px;
-        }
-        
-        #btnCourse{
-            background-color: #007A78;  
-            margin-left: 32px;
-            
-        }
-        #btnTeacher{
-            background-color: rgba(0, 163, 160, 0.75);
-            margin-left: -30px;
-    
-        }
-        table{
-            width: 100%;
-        }
-        </style>
-    
+    <!-- <link rel="stylesheet" href="../style.css"> -->
+    <title>Administrator Panel</title>    
 </head>
 <body>
     <?php  
         if($_POST){
-            
-
                 if(isset($_POST['buttonDis'])) {
                     $teacher = $_POST['buttonDis'];
                     disableTeacher($teacher);
@@ -99,58 +41,61 @@
         } else {
         
     ?>
-    <button id="createTeacherBtn">Add New Teacher</button>
-    <button id="createCourseBtn">Add New Course</button>
-    <div id="form-container">
-    
-    <button id="btnCourse" class="btnFolderStyle">Courses</button>
-    <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
-    
-        
-        <div id="teacher-form">
-            <form action="admin.php" method="post" name="disableTeacher">
-                <table border="1">
-                    <tr>
-                        <th>Photo</th>
-                        <th>Teacher Name</th>
-                        <th>Email</th>
-                        <th>Title</th>
-                        <th>DNI</th>
-                        <th>Active</th>
-                        <th>Edit</th>
-                        <th>Disable</th>
-                    </tr>
-                    <?php showAllTeachers(); ?>
-                </table>
-            </form>
-        </div>
-        
-        <div id="course-form">
-            <form action="admin.php" method="post" name="disableCourse">
-                <table border="1">
-                    <tr>
-                        <th>Photo</th>
-                        <th>Course Name</th>
-                        <th>Teacher</th>
-                        <th>Category</th>
-                        <th>Duration</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Active</th>
-                        <th>Edit</th>
-                        <th>Disable</th>
-                    </tr>
-                    <?php showAllCourses(); ?>
-                </table>
-            </form>
-        </div>
-    </div>
-    <div id="popupBackground">
-        <div id="popup">
+    <div>
+
+        <button id="createTeacherBtn">Add New Teacher</button>
+        <button id="createCourseBtn">Add New Course</button>
+        <div id="form-container">
             
+            <button id="btnCourse" class="btnFolderStyle">Courses</button>
+            <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
+        
+            
+            <div id="teacher-form">
+                <form action="admin.php" method="post" name="disableTeacher">
+                    <table border="1">
+                        <tr>
+                            <th>Photo</th>
+                            <th>Teacher Name</th>
+                            <th>Email</th>
+                            <th>Title</th>
+                            <th>DNI</th>
+                            <th>Active</th>
+                            <th>Edit</th>
+                            <th>Disable</th>
+                        </tr>
+                        <?php showAllTeachers(); ?>
+                    </table>
+                </form>
+            </div>
+            
+            <div id="course-form">
+                <form action="admin.php" method="post" name="disableCourse">
+                    <table border="1">
+                        <tr>
+                            <th>Photo</th>
+                            <th>Course Name</th>
+                            <th>Teacher</th>
+                            <th>Category</th>
+                            <th>Duration</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Active</th>
+                            <th>Edit</th>
+                            <th>Disable</th>
+                        </tr>
+                        <?php showAllCourses(); ?>
+                    </table>
+                </form>
+            </div>
         </div>
+        <div id="popupBackground">
+            <div id="popup">
+                
+            </div>
+        </div>
+        <?php }?>
     </div>
-    <?php }?>
 
     <script src="admin.js"></script>
 
