@@ -270,7 +270,7 @@ function isEmailUsed($email) {
     
 }
 
-function checkDate($date) {
+function isOnDate($date) {
 
     $timestampDate = strtotime($date);
 

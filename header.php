@@ -4,85 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php addFonts(); ?>
     
-    <style>
-        /**/
-        *{
-            padding: 0;
-            margin: 0;
-        }
-        /**/
-        body{
-            font-family: 'Inter', sans-serif;
-        }
-        /**/
-        header{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px;
-            border-bottom: 1px solid lightgrey;
-        }
-        /**/
-        #logo {
-            width: 165px;
-            
-        }
-        a{
-            text-decoration: none;
-            color: black;
-        }
-        /**/
-        #nav {
-            width: 100%;
-            height: fit-content;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        #nav a{
-            margin: auto 20px;
-        }
-        #nav a:hover, #signUp-btn:hover{
-            text-decoration: underline;
-            color: #007A78;
-        }
-        #signUpBtn{
-            color:#007A78;
-            margin-right: 10px
-        }
-        #signUpBtn:hover{
-            text-decoration: underline;
-        }
-        #logInBtn{
-            padding: 10px 40px;
-            background-color: #007A78;
-            color: white;
-            font-weight: bold;
-            border-radius: 10px;
-            margin-right: 10px;
-        }
-        #logInBtn:hover{
-            text-decoration: underline;
-            color: white;
-        }
-        #profileImageBtn img{
-            width: 50px;
-            margin-right: -40px;   
-        }
-        #links, #session{
-            display: flex;
-            align-items: center;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <header>
         <?php 
             echo '
-            <div id="nav">
+            <div>
                 <img id="logo" src="'.$path.'src/codingAcademyLogo.png" alt="logo">
                 <div id="links">
                     <a href="'.$path.'index.php">Home</a>
@@ -90,7 +22,7 @@
                     <a href="'.$path.'aboutUs.php">About Us</a>
                     <a href="'.$path.'contact.php">Contact</a>
                 </div>';
-                echo '<div id="session">';
+                echo '<div>';
                     if(isset($_SESSION['user'])) {
                         echo '
                         <a id="profileImageBtn" href="'.$path.$_SESSION['role'].'/'.$_SESSION['role'].'.php"><img src="'.$path.$_SESSION['photo'].'"></a>
