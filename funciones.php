@@ -37,9 +37,9 @@ function logout($path) {
 
 // Photo management
 
-function uploadPhoto($profileImageTmp, $profileImageName) {
+function uploadPhoto($profileImageTmp, $profileImageName, $path) {
     if(is_uploaded_file($profileImageTmp)){
-        $directory = "../img/";
+        $directory = $path."img/";
 
         $date = time();
         $imageName = str_replace(' ', '-', $profileImageName);

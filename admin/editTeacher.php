@@ -32,7 +32,7 @@
                 $profileImage = $line[0];
                 
             }else {
-                $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
+                $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name'], "../");
             }
 
             $teacherDni = $_POST['teacherDni'];

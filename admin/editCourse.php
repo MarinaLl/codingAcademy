@@ -37,7 +37,7 @@ session_start();
             $courseImage = $line[0];
 
         } else {
-            $courseImage = uploadPhoto($coursePhoto, $_FILES['coursePhoto']['name']);
+            $courseImage = uploadPhoto($coursePhoto, $_FILES['coursePhoto']['name'], "../");
         }
 
         connectDataBase();
