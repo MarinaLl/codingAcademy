@@ -34,6 +34,7 @@ if (isset($_SESSION['user'])) {
                     $photo = uploadPhoto($userPhoto, $_FILES['userPhoto']['name'], "");
                     if (checkDNI($userDni) && !isEmailUsed($userEmail)) {
                         addNewUser($username, $userLastNames, $userDni, $userAge, $photo, $userEmail, $userPass);
+                        # Añadir Pop Up Concurso
                         header("Location: login.php");
                     } else {
                         # Añadir mensaje de que el dni no es valido o ya esta en uso

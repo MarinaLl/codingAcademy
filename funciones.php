@@ -284,4 +284,33 @@ function isOnDate($date) {
 
 }
 
+function editProfile($studentName, $studentLastNames, $studentDni, $studentEmail, $studentPassword, $profileImage, $studentAge, $changePassword) {
+    
+    if ($changePassword == true) {
+        $sql = "UPDATE student SET  
+                email = '$studentEmail', 
+                password = '$studentPassword', 
+                dni = '$studentDni', 
+                name = '$studentName', 
+                lastNames '$studentLastNames',
+                age = $studentAge,
+                photo = $profileImage,
+                active = 1 WHERE email = '".$_SESSION['user']."'";
+    } else {
+        $sql = "UPDATE student SET  
+                email = '$studentEmail', 
+                dni = '$studentDni', 
+                name = '$studentName', 
+                lastNames '$studentLastNames',
+                age = $studentAge,
+                photo = $profileImage,
+                active = 1 WHERE email = '".$_SESSION['user']."'";
+    }
+
+    $connectEditProfile = connectDataBase();
+    if(!$query = mysqli_query($connectEditProfile, $sql)){
+        echo mysqli_errno($connectEditProfile);
+    }
+}
+
 ?>
