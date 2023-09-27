@@ -30,6 +30,12 @@
                 connectDataBase();
                     
                 editProfile($studentName, $studentLastNames, $studentDni, $studentEmail, $studentPassword, $profileImage, $studentAge, false);
+                $_SESSION['user'] = $row['email'];
+                $completeName = $studentName." ".$studentLastNames;
+                $_SESSION['completeName'] = $completeName;
+                if (!is_null($row['photo'])) {
+                    $_SESSION['photo'] = $profileImage;
+                }
                 echo '<meta http-equiv="refresh" content="0;url=student.php">';
 
             } else {
@@ -49,6 +55,8 @@
                 <div class="grid-container">
                     <?php echo '
                     <div class="photo">
+                        <label for="studentPhoto"><img src=../'.$student[6].'></label>
+                        <input type="file" name="studentPhoto" id="studentPhoto" value="'.$student[3].'" class="textbox">
                     </div>
                     <div class="name">
                         <label for="studentName">Name</label><br>
