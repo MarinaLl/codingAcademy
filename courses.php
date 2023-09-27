@@ -41,8 +41,15 @@
                 <a href="">Computer Science</a>
             </div>
         </div>
-        <div class="left"></div>
-        <div class="right"></div>
     </div>
+    <h2>MOST POPULAR</h2>
+    <?php
+        $sql = "SELECT TOP 3 course_code, COUNT(*) AS enrollment_count
+        FROM enrollment
+        GROUP BY course_code
+        ORDER BY enrollment_count DESC;";
+        $connect = connectDataBase();
+        
+    ?>
 </body>
 </html>
