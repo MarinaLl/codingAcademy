@@ -235,15 +235,53 @@ function addNewUser($username, $lastNames, $dni, $age, $photo, $email, $passwd){
 
 }
 
+// Error handling
 function checkDNI($dni){
+
     $combinations = '/^\d{8}[A-HJ-NP-TV-Z]$/i';
 
     if(preg_match($combinations, $dni)){
         return true;
-    } 
-
+    }
     return false;
 }
 
+function isEmailUsed($email) {
+    
+        $connectEmail = connectDataBase();
+        // Realiza una consulta a la tabla 'student'
+        $sql_student = "SELECT email FROM student WHERE email = '$email'";
+        $result_student = mysqli_query($connectEmail, $sql_student);
+        
+        // Realiza una consulta a la tabla 'teacher'
+        $sql_teacher = "SELECT email FROM teacher WHERE email = '$email'";
+        $result_teacher = mysqli_query($connectEmail, $sql_teacher);
+        
+        // Realiza una consulta a la tabla 'admin'
+        $sql_admin = "SELECT email FROM admin WHERE email = '$email'";
+        $result_admin = mysqli_query($connectEmail, $sql_admin);
+        
+        // Verifica si el correo electrónico está en uso en alguna de las tablas
+        if (mysqli_num_rows($result_student) > 0 || mysqli_num_rows($result_teacher) > 0 || mysqli_num_rows($result_admin) > 0) {
+            return true; // El correo electrónico está en uso
+        } else {
+            return false; // El correo electrónico no está en uso
+        }
+    
+}
+
+function checkDate($date) {
+
+    $timestampDate = strtotime($date);
+
+    $timestampActualDate = time();
+
+    // Compara las fechas
+    if ($timestampDate < $timestampActualDate) {
+        return false;
+    } 
+    return true;
+
+}
 
 ?>
