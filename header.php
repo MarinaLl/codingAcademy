@@ -7,13 +7,16 @@
     <?php addFonts(); ?>
     
     <style>
+        /**/
         *{
             padding: 0;
             margin: 0;
         }
+        /**/
         body{
             font-family: 'Inter', sans-serif;
         }
+        /**/
         header{
             display: flex;
             flex-direction: row;
@@ -22,6 +25,7 @@
             height: 60px;
             border-bottom: 1px solid lightgrey;
         }
+        /**/
         #logo {
             width: 165px;
             
@@ -30,6 +34,7 @@
             text-decoration: none;
             color: black;
         }
+        /**/
         #nav {
             width: 100%;
             height: fit-content;
