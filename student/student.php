@@ -1,6 +1,7 @@
 <?php   
     include('../funciones.php');
     session_start();
+    addHeader("../");
     if (isset($_SESSION['user']) && $_SESSION['role'] == 'student') {
 ?>
 <!DOCTYPE html>
