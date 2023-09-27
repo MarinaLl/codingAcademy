@@ -1,24 +1,10 @@
-$primaryColor: #007A78;
-$danger: #8e0000;
-$font: 'Inter', sans-serif;
-$buttonRadius: 15px;
+@import 'variables.scss';
+@import 'mixin.scss';
 
 *{
     padding: 0;
     margin: 0;
     font-family: $font;
-}
-
-@mixin flex($direction, $align, $justify){
-    display: flex;
-    flex-direction: $direction;
-    align-items: $align;
-    justify-content: $justify;
-}
-
-@mixin hoverLinks($lineType, $color){
-    text-decoration: $lineType;
-    color: $color;
 }
 
 header{
@@ -28,8 +14,7 @@ header{
 
     > div {
         @include flex(row, center,space-between);
-        width: 100%;
-        height: fit-content;
+        @include boxSize(100%, fit-content);
 
         img {
             width: 165px;
@@ -67,6 +52,28 @@ header{
                 margin-right: -40px;
             }
         }
+    }
+}
+
+div{
+    @include grid();
+
+    &:first-child{
+        @include boxSize($adminFormWidth, 565px, $boxRadius);
+        background-color: rgba(0, 122, 120, 0.56);
+
+        button{
+            @include boxSize(168px, 50px, $radiusFolders);
+            @include defaultBtn(none, white);
+        }
+        
+
+        div{
+            @include boxSize($adminFormWidth, $adminFormHeight,  0px 0px 20px 20px);
+            position: absolute;
+
+        }
+        
     }
 }
 

@@ -1,0 +1,39 @@
+@mixin flex($direction, $align, $justify){
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin hoverLinks($lineType, $color){
+    text-decoration: $lineType;
+    color: $color;
+}
+
+@mixin boxSize($width, $height, $borderRadius: 0){
+    width: $width;
+    height: $height;
+
+    @if $borderRadius != 0 {
+        border-radius: $borderRadius;
+    }
+}
+
+@mixin grid(){
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 1fr;
+}
+
+@mixin gridArea($areaName){
+    grid-area: $areaName;
+}
+
+@mixin defaultBtn($border, $color){
+    border: $border;
+    color: $color;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
