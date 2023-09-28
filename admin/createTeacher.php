@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="createTeacher.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
     
@@ -37,9 +37,9 @@
     ?>
     
         
-            <h1>Add new teacher</h1>
+            <h1 class="popup-title">Add new teacher</h1>
             <form action="createTeacher.php" method="post" enctype="multipart/form-data" name="createTeacher">
-                <div class="grid-container">
+                <div class="popup-container">
                     <div class="name">
                         <label for="teacherName">Name</label><br>
                         <input type="text" name="teacherName" id="teacherName" class="textbox">

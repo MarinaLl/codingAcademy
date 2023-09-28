@@ -1,7 +1,8 @@
 @import 'mixin.scss';
+@import 'variables.scss';
 
 .grid-container {
-    @include grid();
+    @include grid($gridColumns, $gridRows);
 
     &:nth-child(2){
         grid-column: 2;

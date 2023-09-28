@@ -1,7 +1,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: 15% 70% 15%;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto;
 }
 .grid-container:nth-child(2) {
   grid-column: 2;
