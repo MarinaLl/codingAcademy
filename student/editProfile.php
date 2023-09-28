@@ -30,7 +30,7 @@
 
             $changePhoto = "";
             if ($studentPhoto != "") {
-                $profileImage = uploadPhoto($studentPhoto, $_FILES['studentPhoto']['name'], "");
+                $profileImage = uploadPhoto($studentPhoto, $_FILES['studentPhoto']['name']);
                 $changePhoto = "photo = '$profileImage',";  
             }
             
