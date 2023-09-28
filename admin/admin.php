@@ -10,8 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../main.css">
-    <!-- <link rel="stylesheet" href="../style.css"> -->
+    <link rel="stylesheet" href="../css/main.css">
+    
     <title>Administrator Panel</title>    
 </head>
 <body>
@@ -41,64 +41,67 @@
         } else {
         
     ?>
-    <div>
-
-        <button id="createTeacherBtn">Add New Teacher</button>
-        <button id="createCourseBtn">Add New Course</button>
-        <div id="form-container">
-            
-            <button id="btnCourse" class="btnFolderStyle">Courses</button>
-            <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
-        
-            
-            <div id="teacher-form">
-                <form action="admin.php" method="post" name="disableTeacher">
-                    <table border="1">
-                        <tr>
-                            <th>Photo</th>
-                            <th>Teacher Name</th>
-                            <th>Email</th>
-                            <th>Title</th>
-                            <th>DNI</th>
-                            <th>Active</th>
-                            <th>Edit</th>
-                            <th>Disable</th>
-                        </tr>
-                        <?php showAllTeachers(); ?>
-                    </table>
-                </form>
-            </div>
-            
-            <div id="course-form">
-                <form action="admin.php" method="post" name="disableCourse">
-                    <table border="1">
-                        <tr>
-                            <th>Photo</th>
-                            <th>Course Name</th>
-                            <th>Teacher</th>
-                            <th>Category</th>
-                            <th>Duration</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Active</th>
-                            <th>Edit</th>
-                            <th>Disable</th>
-                        </tr>
-                        <?php showAllCourses(); ?>
-                    </table>
-                </form>
-            </div>
-        </div>
-        <div id="popupBackground">
-            <div id="popup">
+    <div class="grid-container">
+        <div></div>
+        <div>
+            <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
+            <button id="createTeacherBtn">Add New Teacher</button>
+            <button id="createCourseBtn">Add New Course</button>
+            <div id="form-container">
                 
+                <button id="btnCourse" class="btnFolderStyle">Courses</button>
+                <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
+            
+                
+                <div id="teacher-form">
+                    <form action="admin.php" method="post" name="disableTeacher">
+                        <table border="1">
+                            <tr>
+                                <th>Photo</th>
+                                <th>Teacher Name</th>
+                                <th>Email</th>
+                                <th>Title</th>
+                                <th>DNI</th>
+                                <th>Active</th>
+                                <th>Edit</th>
+                                <th>Disable</th>
+                            </tr>
+                            <?php showAllTeachers(); ?>
+                        </table>
+                    </form>
+                </div>
+                
+                <div id="course-form">
+                    <form action="admin.php" method="post" name="disableCourse">
+                        <table border="1">
+                            <tr>
+                                <th>Photo</th>
+                                <th>Course Name</th>
+                                <th>Teacher</th>
+                                <th>Category</th>
+                                <th>Duration</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Active</th>
+                                <th>Edit</th>
+                                <th>Disable</th>
+                            </tr>
+                            <?php showAllCourses(); ?>
+                        </table>
+                    </form>
+                </div>
             </div>
+            <div id="popupBackground">
+                <div id="popup">
+                    
+                </div>
+            </div>
+            <?php }?>
         </div>
-        <?php }?>
+        <div></div>
     </div>
 
     <script src="admin.js"></script>
-
 
 </body>
 </html>

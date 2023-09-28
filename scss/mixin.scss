@@ -22,7 +22,7 @@
 @mixin grid(){
     display: grid;
     grid-template-columns: 15% 70% 15%;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
 }
 
 @mixin gridArea($areaName){

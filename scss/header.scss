@@ -1,0 +1,49 @@
+@import 'mixin.scss';
+
+header{
+    @include flex(row, center, space-between);
+    height:  60px;
+    border-bottom: 1px solid lightgray;
+
+    > div {
+        @include flex(row, center,space-between);
+        @include boxSize(100%, fit-content);
+
+        img {
+            width: 165px;
+        }
+
+        div {
+            @include flex(row, center, center);
+            a {
+                margin: auto 20px;
+                @include hoverLinks(none, black);
+                
+                &:hover{
+                   @include hoverLinks(underline, $primaryColor);
+                }
+            }
+        }
+        div:last-child{
+            #signUpBtn{
+                color: $primaryColor;
+                margin-right: 10px;
+            }
+            #logInBtn{
+                padding: 10px 40px;
+                background-color: $primaryColor;
+                color: white;
+                font-weight: bold;
+                border-radius: $buttonRadius;
+                margin-right: 10px;
+                &:hover{
+                    @include hoverLinks(underline, white);
+                }
+            }
+            img {
+                width: 50px;
+                margin-right: -40px;
+            }
+        }
+    }
+}
