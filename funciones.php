@@ -37,9 +37,9 @@ function logout($path) {
 
 // Photo management
 
-function uploadPhoto($profileImageTmp, $profileImageName, $path) {
+function uploadPhoto($profileImageTmp, $profileImageName) {
     if(is_uploaded_file($profileImageTmp)){
-        $directory = $path."img/";
+        $directory = "img/";
 
         $date = time();
         $imageName = str_replace(' ', '-', $profileImageName);
@@ -284,31 +284,34 @@ function isOnDate($date) {
 
 }
 
-function editProfile($studentName, $studentLastNames, $studentDni, $studentEmail, $studentPassword, $profileImage, $studentAge, $changePassword) {
+function editProfile($studentName, $studentLastNames, $changeDni, $studentEmail, $changePhoto, $studentAge, $changePassword) {
     
-    if ($changePassword == true) {
-        $sql = "UPDATE student SET  
-                email = '$studentEmail', 
-                password = '$studentPassword', 
-                dni = '$studentDni', 
-                name = '$studentName', 
-                lastNames '$studentLastNames',
-                age = $studentAge,
-                photo = $profileImage,
-                active = 1 WHERE email = '".$_SESSION['user']."'";
-    } else {
-        $sql = "UPDATE student SET  
-                email = '$studentEmail', 
-                dni = '$studentDni', 
-                name = '$studentName', 
-                lastNames '$studentLastNames',
-                age = $studentAge,
-                photo = $profileImage,
-                active = 1 WHERE email = '".$_SESSION['user']."'";
-    }
-
+    
+    $sql = "UPDATE student SET  
+            email = '$studentEmail', 
+            ".$changePassword."
+             ".$changeDni."
+            name = '$studentName', 
+            lastNames = '$studentLastNames',
+            age = $studentAge,
+            ".$changePhoto."
+            active = 1 WHERE email = '".$_SESSION['user']."'";
+    
     $connectEditProfile = connectDataBase();
-    if(!$query = mysqli_query($connectEditProfile, $sql)){
+    $query = mysqli_query($connectEditProfile, $sql);
+    if($query) {
+        $sql = "SELECT photo FROM student WHERE email = '$studentEmail'";
+        $queryPhoto = mysqli_query($connectEditProfile, $sql);
+        if ($queryPhoto) {
+            echo 'hola';
+            $photo = mysqli_fetch_array($queryPhoto);
+            $_SESSION['photo'] = $photo['photo'];
+            $_SESSION['completeName'] = "".$studentName." ".$studentLastNames."";
+        } else {
+            echo mysqli_errno($connectEditProfile);
+        }
+        
+    } else {
         echo mysqli_errno($connectEditProfile);
     }
 }
