@@ -1,5 +1,8 @@
-@import 'variables.scss';
-@import 'mixin.scss';
+@import 'scss/variables.scss';
+@import 'scss/mixin.scss';
+@import 'scss/header.scss';
+@import 'scss/grid.scss';
+@import 'scss/popUP.scss';
 
 *{
     padding: 0;
@@ -7,73 +10,61 @@
     font-family: $font;
 }
 
-header{
-    @include flex(row, center, space-between);
-    height:  60px;
-    border-bottom: 1px solid lightgray;
+
+#form-container{
+    @include boxSize($adminFormWidth, 565px, $boxRadius);
+    background-color: rgba(0, 122, 120, 0.56);
+
+    > button{
+        @include boxSize(168px, 50px, $radiusFolders);
+        @include defaultBtn(none, white);
+        margin-top: 11px;
+
+        &:first-child{
+            background-color: $primaryColor;
+            margin-left: 32px;
+        }
+        
+        &:nth-child(2){
+            background-color: rgba(0, 163, 160, 0.75);
+            margin-left: -30px;
+        }
+    }
+
+    div:nth-child(3) {
+        @include boxSize($adminFormWidth, $adminFormHeight, 0px 0px 20px 20px);
+        color: white;
+        visibility: hidden;
+        position: absolute;
+        background-color: #00a3a0;
+    }
+
+    div:nth-child(4){
+        @include boxSize($adminFormWidth, $adminFormHeight, 0px 0px 20px 20px);
+        color: white;
+        background-color: $primaryColor;
+        position: absolute;
+    }
+    table {
+        width: 100%;
+        img {
+            width: 100px;
+        }
+    }
+}
+
+#popupBackground {
+    @include boxSize(100%, 100vh);
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    display: none;
 
     > div {
-        @include flex(row, center,space-between);
-        @include boxSize(100%, fit-content);
-
-        img {
-            width: 165px;
-        }
-
-        div {
-            @include flex(row, center, center);
-            a {
-                margin: auto 20px;
-                @include hoverLinks(none, black);
-                
-                &:hover{
-                   @include hoverLinks(underline, $primaryColor);
-                }
-            }
-        }
-        div:last-child{
-            #signUpBtn{
-                color: $primaryColor;
-                margin-right: 10px;
-            }
-            #logInBtn{
-                padding: 10px 40px;
-                background-color: $primaryColor;
-                color: white;
-                font-weight: bold;
-                border-radius: $buttonRadius;
-                margin-right: 10px;
-                &:hover{
-                    @include hoverLinks(underline, white);
-                }
-            }
-            img {
-                width: 50px;
-                margin-right: -40px;
-            }
-        }
+        @include boxSize(1100px, 720px, $boxRadius);
     }
+
 }
-
-div{
-    @include grid();
-
-    &:first-child{
-        @include boxSize($adminFormWidth, 565px, $boxRadius);
-        background-color: rgba(0, 122, 120, 0.56);
-
-        button{
-            @include boxSize(168px, 50px, $radiusFolders);
-            @include defaultBtn(none, white);
-        }
-        
-        div{
-            @include boxSize($adminFormWidth, $adminFormHeight,  0px 0px 20px 20px);
-            position: absolute;
-
-        }
-        
-    }
-}
-
 

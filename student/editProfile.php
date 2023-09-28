@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="createTeacher.css">
 </head>
 <body>
     
@@ -22,25 +21,27 @@
             $studentPassword = $_POST['studentPassword'];
             $studentPhoto = $_FILES['studentPhoto']['tmp_name'];
             $studentAge = $_POST['studentAge'];
-            $studentPassword = md5($studentPassword);
 
-            if(checkDNI($studentDni)){
-                $profileImage = uploadPhoto($studentPhoto, $_FILES['studentPhoto']['name'], "../");
-    
-                connectDataBase();
-                    
-                editProfile($studentName, $studentLastNames, $studentDni, $studentEmail, $studentPassword, $profileImage, $studentAge, false);
-                $_SESSION['user'] = $row['email'];
-                $completeName = $studentName." ".$studentLastNames;
-                $_SESSION['completeName'] = $completeName;
-                if (!is_null($row['photo'])) {
-                    $_SESSION['photo'] = $profileImage;
-                }
-                echo '<meta http-equiv="refresh" content="0;url=student.php">';
-
-            } else {
-                echo "<script>alert('dni no valido');</script>";
+            $changePassword = "";
+            if ($studentPassword != "") {
+                $studentPassword = md5($studentPassword);
+                $changePassword = "password = '$studentPassword',";
             }
+
+            $changePhoto = "";
+            if ($studentPhoto != "") {
+                $profileImage = uploadPhoto($studentPhoto, $_FILES['studentPhoto']['name'], "");
+                $changePhoto = "photo = '$profileImage',";  
+            }
+            
+            $changeDni = "";
+            if(checkDNI($studentDni)){
+                $changeDni = "dni = '$studentDni',";
+            }
+                    
+            editProfile($studentName, $studentLastNames, $changeDni, $studentEmail, $changePhoto, $studentAge, $changePassword);
+            
+            echo '<meta http-equiv="refresh" content="0;url=student.php">';
 
         } else {
             $sql = "SELECT * FROM student WHERE email = '".$_SESSION['user']."'";
@@ -56,7 +57,7 @@
                     <?php echo '
                     <div class="photo">
                         <label for="studentPhoto"><img src=../'.$student[6].'></label>
-                        <input type="file" name="studentPhoto" id="studentPhoto" value="'.$student[3].'" class="textbox">
+                        <input type="file" name="studentPhoto" id="studentPhoto" value="'.$student[3].'">
                     </div>
                     <div class="name">
                         <label for="studentName">Name</label><br>
@@ -81,7 +82,7 @@
                     <div class="password">
                         <label for="studentPassword">Password</label><br>
                         <input type="password" name="studentPassword" id="studentPassword" class="textbox" readonly>
-                        <label for="studentPassword" id="studentPasswordBtn">Change</label>
+                        <div id="studentPasswordBtn">Change</div>
                     </div>
                     <div class="buttons">
                         <input id="cancelBtn" type="reset" value="Cancel">  
@@ -91,7 +92,7 @@
                 </div>
                     
             </form>
-       
+            <script src="../main.js"></script>
     <?php }?>
 </body>
 </html>
