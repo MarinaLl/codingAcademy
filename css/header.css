@@ -12,6 +12,7 @@ header > div {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
 }
 header > div img {
@@ -51,23 +52,4 @@ header > div div:last-child #logInBtn:hover {
 header > div div:last-child img {
   width: 50px;
   margin-right: -40px;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  font-family: "Inter", sans-serif;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 15% 70% 15%;
-  grid-template-rows: 1fr;
-}
-.grid-container:nth-child(2) {
-  grid-column: 2;
-  border: 1px solid black;
-  background-color: red;
-}
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=header.css.map */
