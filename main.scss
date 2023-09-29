@@ -3,6 +3,7 @@
 @import 'scss/header.scss';
 @import 'scss/grid.scss';
 @import 'scss/popUP.scss';
+@import 'scss/popUpCourse.scss';
 
 *{
     padding: 0;
@@ -46,8 +47,39 @@
     }
     table {
         width: 100%;
+        border-collapse: separate;
+        border-spacing: 0px 10px;
         img {
             width: 100px;
+        }
+        tr{
+            
+            td{
+                width: 1204px;
+                height: 57px;
+                flex-shrink: 0;
+                background: #018C8A;
+                box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.25);
+
+                &:first-child{
+                    border-top-left-radius: $boxRadius;
+                    border-bottom-left-radius: $boxRadius;
+                    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                }
+                &:last-child{
+                    border-top-right-radius: $boxRadius;
+                    border-bottom-right-radius: $boxRadius;
+                    
+                }
+
+            }
+            th {
+                padding-top: 20px;
+                text-align: left;
+                &:first-child{
+                    padding-left: 10px;
+                }
+            }
         }
     }
 }

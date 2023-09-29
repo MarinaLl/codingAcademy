@@ -12,7 +12,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(5, auto);
-  border: 1px solid black;
+  padding: 30px;
 }
 .popup-container div label {
   color: #000;
@@ -54,6 +54,20 @@
 .popup-container div:nth-child(5) {
   grid-area: 3/1/4/4;
 }
+.popup-container div:nth-child(5) #teacherPhotoBtn {
+  width: 175px;
+  height: 55px;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  background-color: #007A78;
+  padding: 15px 35px;
+}
 .popup-container div:nth-child(6) {
   grid-area: 4/1/5/2;
 }
@@ -62,6 +76,7 @@
 }
 .popup-container div:nth-child(8) {
   grid-area: 5/1/6/4;
+  margin-top: 111px;
 }
 .popup-container div:nth-child(8) input[type=submit] {
   width: 175px;
@@ -77,6 +92,25 @@
   margin-top: 29px;
   background-color: #007A78;
   float: right;
+  cursor: pointer;
+  padding-left: 0;
+}
+.popup-container div:nth-child(8) input[type=reset] {
+  width: 175px;
+  height: 55px;
+  border-radius: 15px;
+  border: 2px solid #007A78;
+  color: #007A78;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: white;
+  float: right;
+  margin-top: 29px;
+  margin-right: 20px;
+  cursor: pointer;
+  padding-left: 0;
 }
 .popup-container div #teacherPhoto {
   display: none;

@@ -69,5 +69,13 @@ popUpBackground.addEventListener('click', function(event){
     }
 });
 
+const cancelBtn = document.getElementById('cancelBtn');
+
+cancelBtn.addEventListener('click', function(){
+        popUpBackground.style.display = 'none';   
+        console.log('cancel btn');
+});
+
+
 
 

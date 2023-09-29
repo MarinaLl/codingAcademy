@@ -55,7 +55,7 @@
                 
                 <div id="teacher-form">
                     <form action="admin.php" method="post" name="disableTeacher">
-                        <table border="1">
+                        <table>
                             <tr>
                                 <th>Photo</th>
                                 <th>Teacher Name</th>
@@ -73,7 +73,7 @@
                 
                 <div id="course-form">
                     <form action="admin.php" method="post" name="disableCourse">
-                        <table border="1">
+                        <table>
                             <tr>
                                 <th>Photo</th>
                                 <th>Course Name</th>

@@ -64,6 +64,19 @@
     margin-left: 10px;
 }
 
-@mixin textbox(){
-    
+@mixin textbox($width){
+    @include defaultBtn(none, black);
+    @include boxSize($width, 55px, $buttonRadius);
+    background-color: #D9D9D9;
+    height: 55px;
+    margin-bottom: 18px;
+    padding-left: 10px;
+}
+
+@mixin browsePhotoBtn(){
+    @include boxSize(175px, 55px, $buttonRadius);
+    @include defaultBtn(none, white);
+    cursor: pointer;
+    background-color: $primaryColor;
+    padding: 15px 35px;
 }

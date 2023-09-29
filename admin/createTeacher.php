@@ -22,7 +22,7 @@
                 $teacherPasswd = md5($teacherPasswd);
 
                 if(checkDNI($teacherDni)){
-                    $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name'], "../");
+                    $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
         
                     connectDataBase();
         
@@ -36,7 +36,6 @@
         } else {
     ?>
     
-        
             <h1 class="popup-title">Add new teacher</h1>
             <form action="createTeacher.php" method="post" enctype="multipart/form-data" name="createTeacher">
                 <div class="popup-container">
@@ -79,7 +78,7 @@
                 </div>
                     
             </form>
-       
+            <script src="admin.js"></script>
     <?php }?>
 </body>
 </html>
