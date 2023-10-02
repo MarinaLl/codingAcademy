@@ -1,0 +1,17 @@
+#loginContainer {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  grid-template-rows: 100vh;
+}
+#loginContainer div {
+  border: 1px solid black;
+}
+#loginContainer div:first-child {
+  background-image: url("../src/login.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+#loginContainer div:last-child {
+  border-left: 2px solid grey;
+}/*# sourceMappingURL=login.css.map */

@@ -337,6 +337,21 @@ header > div div:last-child img {
   padding-left: 0;
 }
 
+#loginContainer {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  grid-template-rows: 100vh;
+}
+#loginContainer div {
+  border: 1px solid black;
+}
+#loginContainer div:first-child {
+  background-image: url("../src/login.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
 * {
   padding: 0;
   margin: 0;

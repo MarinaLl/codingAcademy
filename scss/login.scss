@@ -1,0 +1,22 @@
+@import 'variables.scss';
+@import 'mixin.scss';
+
+
+#loginContainer {
+    @include grid(65% 35%, 100vh);
+    
+    div {
+        border: 1px solid black;
+
+        &:first-child{
+            background-image: url("../src/login.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+        &:last-child{
+            border-left: 2px solid grey;
+        }
+    }
+
+}

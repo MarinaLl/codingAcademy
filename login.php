@@ -41,25 +41,23 @@ if (isset($_SESSION['user'])) {
     <html>
         <head>
             <title>Log In</title>
-            <link rel="stylesheet" type="text/css" href="login.css">
-            <?php addFonts(); ?>
+            <link rel="stylesheet" href="css/main.css">
+            
         </head>
         <body>
-        <div id="left">
-            <div id="image">
-                <img src="src/login.png">
+            <div id="loginContainer">
+                <div></div>
+                <div>
+                    <img id="logo" src="src/codingAcademyLogo2.png" alt="codingAcademy">
+                    <h1>Log In</h1>
+                    <form action="login.php" method="post" enctype="multipart/form-data" name="login">
+                        <input type="email" name="userEmail" id="userEmail" placeholder="Email"><br>
+                        <input type="password" name="userPassword" id="userPassword" placeholder="Password">
+                        <input type="submit" value="Log In" id="loginBtn">
+                    </form>
+                    <a id="linkRegister" href="register.php">No account yet? Sign Up now.</a>
+                </div>
             </div>
-        </div>
-        <div id="right">
-            <img id="logo" src="src/codingAcademyLogo2.png" alt="codingAcademy">
-            <h1>Log In</h1>
-            <form action="login.php" method="post" enctype="multipart/form-data" name="login">
-                <input type="email" name="userEmail" id="userEmail" placeholder="Email"><br>
-                <input type="password" name="userPassword" id="userPassword" placeholder="Password">
-                <input type="submit" value="Log In" id="loginBtn">
-            </form>
-            <a id="linkRegister" href="register.php">No account yet? Sign Up now.</a>
-        </div>
         </body>
     </html>
     <?php }
