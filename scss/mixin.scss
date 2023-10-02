@@ -73,8 +73,8 @@
     padding-left: 10px;
 }
 
-@mixin browsePhotoBtn(){
-    @include boxSize(175px, 55px, $buttonRadius);
+@mixin browsePhotoBtn($width){
+    @include boxSize($width, 55px, $buttonRadius);
     @include defaultBtn(none, white);
     cursor: pointer;
     background-color: $primaryColor;

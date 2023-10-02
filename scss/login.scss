@@ -6,7 +6,6 @@
     @include grid(65% 35%, 100vh);
     
     div {
-        border: 1px solid black;
 
         &:first-child{
             background-image: url("../src/login.png");
@@ -16,6 +15,27 @@
         }
         &:last-child{
             border-left: 2px solid grey;
+            @include flex(column, center, center);
+            img {
+                margin-top: -100px;
+                border: 1px solid black;
+                @include boxSize(500px, 500px);
+            }
+            h1{
+                @include boxSize(378px, 137px);
+                @include flex(column, center, center);
+                @include title();
+                font-size: 64px;
+            }
+            input {
+                @include textbox(351px);
+                border: 1px solid rgba(0, 0, 0, 0.24);
+                &[type="submit"]{
+                    @include browsePhotoBtn(351px);
+                    font-weight: bold;
+                }
+            }
+            
         }
     }
 

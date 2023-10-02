@@ -33,7 +33,7 @@
         &:nth-child(5){
             grid-area: 3/1/4/4;
             #teacherPhotoBtn{
-                @include browsePhotoBtn();
+                @include browsePhotoBtn(175px);
             }
 
         }

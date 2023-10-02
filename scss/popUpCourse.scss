@@ -51,7 +51,7 @@
         grid-area: 4/3/5/5;
 
         #coursePhotoBtn{
-          @include browsePhotoBtn();
+          @include browsePhotoBtn(175px);
 
         }
         #coursePhoto{display: none;}

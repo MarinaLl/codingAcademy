@@ -51,7 +51,7 @@ if (isset($_SESSION['user'])) {
                     <img id="logo" src="src/codingAcademyLogo2.png" alt="codingAcademy">
                     <h1>Log In</h1>
                     <form action="login.php" method="post" enctype="multipart/form-data" name="login">
-                        <input type="email" name="userEmail" id="userEmail" placeholder="Email"><br>
+                        <input type="email" name="userEmail" id="userEmail" placeholder="Email">
                         <input type="password" name="userPassword" id="userPassword" placeholder="Password">
                         <input type="submit" value="Log In" id="loginBtn">
                     </form>
