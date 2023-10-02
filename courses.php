@@ -59,13 +59,13 @@
             if ($numLines < 3) {
                 echo '<table>';
                 for($i = 0; $i < $numLines; $i++){
-                    $line = mysqli_fetch_array($query);
+                    $line = mysqli_fetch_array($query, MYSQL_ASSOC);
                     $sql = "SELECT * FROM course WHERE code = ".$line['course_code']."";
                     $queryCourse = mysqli_query($connect, $sql);
-                    $course = mysqli_fetch_array($queryCourse);
+                    $course = mysqli_fetch_array($queryCourse, MYSQL_ASSOC);
                     $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
                     $queryTeacher = mysqli_query($connect, $sql);
-                    $teacher = mysqli_fetch_array($queryTeacher);
+                    $teacher = mysqli_fetch_array($queryTeacher, MYSQL_ASSOC);
                     $courseImage = $course['photo'];
                     $courseName = $course['name'];
                     $courseCode = $line['course_code'];

@@ -48,10 +48,10 @@
                 if ($numLines > 0) {
                     echo '<table>';
                     for($i = 0; $i < $numLines; $i++){
-                        $line = mysqli_fetch_array($query);
+                        $line = mysqli_fetch_array($query, MYSQL_ASSOC);
                         $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$line['teacher_email']."'";
                         $query2 = mysqli_query($connect, $sql);
-                        $teacher = mysqli_fetch_array($query2);
+                        $teacher = mysqli_fetch_array($query2, MYSQL_ASSOC);
                         $courseImage = $line['photo'];
                         $courseName = $line['name'];
                         $courseCode = $line['code'];

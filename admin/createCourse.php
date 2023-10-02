@@ -19,7 +19,7 @@
             $courseTeacher = $_POST['courseTeacher'];
             $courseImage = $_FILES['coursePhoto']['tmp_name'];
 
-            $image = uploadPhoto($courseImage, $_FILES['coursePhoto']['name']);
+            $image = uploadPhoto($courseImage, $_FILES['coursePhoto']['name'], "../");
 
             createNewCourse($courseName, $courseDescription, $category, $courseDuration, $courseStart, $courseEnd, $courseTeacher, $image, $courseDifficulty);
             
