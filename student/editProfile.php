@@ -9,6 +9,7 @@
     
     <?php
         session_start();
+        echo $_SESSION['photo'];
         include('../funciones.php'); addFonts();
         if($_POST){
 
@@ -30,7 +31,7 @@
 
             $changePhoto = "";
             if ($studentPhoto != "") {
-                $profileImage = uploadPhoto($studentPhoto, $_FILES['studentPhoto']['name']);
+                $profileImage = uploadPhoto($studentPhoto, $_FILES['studentPhoto']['name'], "../");
                 $changePhoto = "photo = '$profileImage',";  
             }
             

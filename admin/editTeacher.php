@@ -26,7 +26,7 @@
 
                 $query = mysqli_query($connect, $sql);
 
-                $line = mysqli_fetch_array($query);
+                $line = mysqli_fetch_array($query, MYSQL_ASSOC);
 
                 echo $line[0];
                 $profileImage = $line[0];
@@ -51,7 +51,7 @@
         if ($query == false){
             mysqli_error($connect);
         } else {
-            $line = mysqli_fetch_array($query);
+            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
             echo '<form action="editTeacher.php" method="post" enctype="multipart/form-data" name="editTeacher">
                 <label for="teacherName">Name</label>
                 <input type="text" name="teacherName" value="'.$line['name'].'" id="teacherName"><br>

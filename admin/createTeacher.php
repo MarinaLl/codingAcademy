@@ -22,7 +22,7 @@
                 $teacherPasswd = md5($teacherPasswd);
 
                 if(checkDNI($teacherDni)){
-                    $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name']);
+                    $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name'], "../");
         
                     connectDataBase();
         

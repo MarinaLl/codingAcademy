@@ -35,7 +35,7 @@ if (isset($_SESSION['user'])) {
                     if (checkDNI($userDni) && !isEmailUsed($userEmail)) {
                         addNewUser($username, $userLastNames, $userDni, $userAge, $photo, $userEmail, $userPass);
                         # Añadir Pop Up Concurso
-                        header("Location: login.php");
+                        echo '<meta http-equiv="refresh" content="0;url=login.php">';
                     } else {
                         # Añadir mensaje de que el dni no es valido o ya esta en uso
                     }

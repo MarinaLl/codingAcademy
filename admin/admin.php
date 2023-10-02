@@ -20,7 +20,7 @@
                 if(isset($_POST['buttonDis'])) {
                     $teacher = $_POST['buttonDis'];
                     disableTeacher($teacher);
-                    header('Location: '. $_SERVER['PHP_SELF']);
+                    echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
                     exit;
                 } else if (isset($_POST['buttonEdit'])) {
                     echo $_POST['buttonEdit'];
@@ -31,11 +31,11 @@
                 if(isset($_POST['buttonDisCourse'])){
                     $code = $_POST['buttonDisCourse'];
                     disableCourse($code);
-                    header('Location: '. $_SERVER['PHP_SELF']);
+                    echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
                     exit;
                 } else if (isset($_POST['buttonEditCourse'])) {
                     $_SESSION['code'] = $_POST['buttonEditCourse'];
-                    header('Location: editCourse.php');
+                    echo '<meta http-equiv="refresh" content="0;url=editCourse.php">';
                 }
 
         } else {

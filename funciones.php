@@ -22,7 +22,7 @@ function addFonts() {
 }
 
 function loginRedirect() {
-    header('Location: '.$_SESSION['role'].'/'.$_SESSION['role'].'.php');
+    echo '<meta http-equiv="refresh" content="0;url='.$_SESSION['role'].'/'.$_SESSION['role'].'.php">';
 }
 
 // Only possible values for $path = "" or $path = "../"
@@ -32,19 +32,17 @@ function addHeader($path) {
 }
 function logout($path) {
     session_destroy();
-    header('Location: '.$path.'login.php');
+    echo '<meta http-equiv="refresh" content="0;url='.$path.'login.php">';
 }
 
 // Photo management
 
-function uploadPhoto($profileImageTmp, $profileImageName) {
+function uploadPhoto($profileImageTmp, $profileImageName, $path) {
     if(is_uploaded_file($profileImageTmp)){
-        $directory = "img/";
-
         $date = time();
         $imageName = str_replace(' ', '-', $profileImageName);
-        $imagePath = $directory.$date."-".$imageName;
-        move_uploaded_file($profileImageTmp, $imagePath);
+        $imagePath = "img/".$date."-".$imageName;
+        move_uploaded_file($profileImageTmp, $path.$imagePath);
     
     } else {
         echo "no se ha podido subir el fichero";
@@ -52,6 +50,13 @@ function uploadPhoto($profileImageTmp, $profileImageName) {
     
     return $imagePath;
 }
+
+function deletePhoto($imagePath, $path) {
+    if(file_exists($path.$imagePath) && $imagePath != "img/defaultProfileImage.png") {
+        unlink($path.$imagePath);
+    }
+}
+
 // Parte Administrador
 function createNewTeacher($email, $password, $name, $lastNames, $title, $photo, $dni){
     $sql = "INSERT INTO teacher (email, password, dni, name, lastNames, title, photo, active) VALUES ('$email', '$password', '$dni', '$name', '$lastNames', '$title', '$photo', '1')";
@@ -59,7 +64,7 @@ function createNewTeacher($email, $password, $name, $lastNames, $title, $photo, 
 
     if($query = mysqli_query($connect, $sql)){
         echo "registro insertado";
-        header("Location: admin.php");
+        echo '<meta http-equiv="refresh" content="0;url=admin.php">';
     } else {
         echo mysqli_errno($connect);
     }
@@ -76,7 +81,7 @@ function showAllTeachers(){
     } else {
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
-            $line = mysqli_fetch_array($query);
+            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
             echo '<tr>
                 <td><img src='.$line['photo'].'></td>
                 <td>'.$line['name'].' '.$line['lastNames'].'</td>
@@ -104,7 +109,7 @@ function showAllCourses(){
     } else {
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
-            $line = mysqli_fetch_array($query);
+            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
             echo '<tr>
                 <td><img src='.$line['photo'].'></td>
                 <td>'.$line['name'].'</td>
@@ -134,7 +139,7 @@ function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $te
 
     if($query = mysqli_query($connect, $sql)){
         echo "profesor editado";
-        header('Location: admin.php');
+        echo '<meta http-equiv="refresh" content="0;url=admin.php">';
         exit;
     } else {
         echo mysqli_error($connect);
@@ -156,7 +161,7 @@ function editCourse($code, $courseName, $courseDescription, $courseCategory, $co
 
     if($query = mysqli_query($connect, $sql)){
         echo "curso editado";
-        header('Location: admin.php');
+        echo '<meta http-equiv="refresh" content="0;url=admin.php">';
         exit;
     } else {
         echo mysqli_error($connect);
@@ -200,7 +205,7 @@ function listTeacherNames(){
     } else {
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
-            $line = mysqli_fetch_array($query);
+            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
             echo '<option value='.$line['email'].'>'.$line['name'].' '.$line['lastNames'] .'</option>';
         }
     }
@@ -213,7 +218,7 @@ function createNewCourse($name,$description, $category, $duration, $startDate, $
 
     if($query = mysqli_query($connect, $sql)){
         echo "registro creado";
-        header("Location: admin.php");
+        echo '<meta http-equiv="refresh" content="0;url=admin.php">';
     } else {
         echo mysqli_errno($connect);
     }
@@ -228,7 +233,7 @@ function addNewUser($username, $lastNames, $dni, $age, $photo, $email, $passwd){
 
     if($query = mysqli_query($conn, $sql)){
         echo "registro creado";
-        header('Location: student/student.php');
+        echo '<meta http-equiv="refresh" content="0;url=student/student.php">';
     } else {
         echo mysqli_error($conn);
     }
@@ -300,17 +305,20 @@ function editProfile($studentName, $studentLastNames, $changeDni, $studentEmail,
     $connectEditProfile = connectDataBase();
     $query = mysqli_query($connectEditProfile, $sql);
     if($query) {
+        $_SESSION['completeName'] = "".$studentName." ".$studentLastNames."";
+
         $sql = "SELECT photo FROM student WHERE email = '$studentEmail'";
         $queryPhoto = mysqli_query($connectEditProfile, $sql);
         if ($queryPhoto) {
-            echo 'hola';
             $photo = mysqli_fetch_array($queryPhoto);
-            $_SESSION['photo'] = $photo['photo'];
-            $_SESSION['completeName'] = "".$studentName." ".$studentLastNames."";
+            echo $photo['photo'];
+            if ($_SESSION['photo'] != $photo['photo']) {
+                deletePhoto($_SESSION['photo'], "../");
+                $_SESSION['photo'] = $photo['photo'];    
+            }
         } else {
             echo mysqli_errno($connectEditProfile);
         }
-        
     } else {
         echo mysqli_errno($connectEditProfile);
     }

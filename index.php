@@ -3,7 +3,6 @@
     include('funciones.php');
     addHeader("");
     addFonts();
-    echo $_SESSION['photo'];
 ?>
 
 <!DOCTYPE html>

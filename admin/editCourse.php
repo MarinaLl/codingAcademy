@@ -31,7 +31,7 @@ session_start();
 
             $query = mysqli_query($connect, $sql);
 
-            $line = mysqli_fetch_array($query);
+            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
 
             echo $line[0];
             $courseImage = $line[0];
@@ -52,7 +52,7 @@ session_start();
         if ($query == false) {
             mysqli_error($connect);
         } else {
-            $line = mysqli_fetch_array($query);
+            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
             echo ' <form action="editCourse.php" method="post" enctype="multipart/form-data">
             <label for="courseName">Course Name</label>
             <input type="text" name="courseName" value="' . $line['name'] . '" id="courseName"><br>
