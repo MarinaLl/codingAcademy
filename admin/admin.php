@@ -104,7 +104,7 @@
         <div></div>
     </div>
     
-    <script src="test.js"></script>
+    <script src="admin.js"></script>
 
 </body>
 </html>
