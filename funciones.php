@@ -355,7 +355,7 @@ function showStudentCourses($user){
                             
                     echo '
                     <div class="card">
-                        <div id="img"><img src="'.$line['coursePhoto'].'"</div>
+                        <div><img src="'.$line['coursePhoto'].'"></div>
                         <div>
                             <h3>'.$line['courseName'].'</h3>
                             <h4>'.$line['teacherName'].' '.$line['teacherLastNames'].'</h4>

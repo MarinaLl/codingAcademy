@@ -93,7 +93,7 @@
                     </form>
                 </div>
             </div>
-            <div id="popupBackground">
+            <div id="popupBackground" class="popupBackground">
                 <div id="popup">
                     
                 </div>

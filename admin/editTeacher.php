@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include('../funciones.php');
     if ($_SESSION['role'] != 'admin') {
         logout("../");
     } else {
@@ -13,7 +14,6 @@
 </head>
 <body>
     <?php
-    include('../funciones.php');
     $email = $_SESSION['email'];
     
     if($_POST){
@@ -22,14 +22,14 @@
             $teacherTitle = $_POST['teacherTitle'];
             $teacherEmail = $_POST['teacherEmail'];
             $teacherPhoto = $_FILES['teacherPhoto']['tmp_name'];
+            $connect = connectDataBase();
             if ($teacherPhoto == null){
                 $sql = "SELECT photo FROM teacher WHERE email = '$email'";
 
-                $connect = connectDataBase();
 
                 $query = mysqli_query($connect, $sql);
 
-                $line = mysqli_fetch_array($query, MYSQL_ASSOC);
+                $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
                 echo $line[0];
                 $profileImage = $line[0];
@@ -40,15 +40,13 @@
 
             $teacherDni = $_POST['teacherDni'];
 
-            connectDataBase();
-
             editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage);
         
 
     } else {
     
         $sql = "SELECT * FROM teacher WHERE email = '$email'";
-        $connect = connectDataBase();
+        // $connect = connectDataBase();
         $query = mysqli_query($connect, $sql);
 
         if ($query == false){

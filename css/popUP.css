@@ -77,7 +77,11 @@
   grid-area: 5/1/6/4;
   margin-top: 111px;
 }
-.popup-container div:nth-child(8) input[type=submit] {
+.popup-container div #teacherPhoto {
+  display: none;
+}
+
+input[type=submit] {
   width: 175px;
   height: 55px;
   border-radius: 15px;
@@ -94,7 +98,8 @@
   cursor: pointer;
   padding-left: 0;
 }
-.popup-container div:nth-child(8) input[type=reset] {
+
+input[type=reset] {
   width: 175px;
   height: 55px;
   border-radius: 15px;
@@ -110,7 +115,4 @@
   margin-right: 20px;
   cursor: pointer;
   padding-left: 0;
-}
-.popup-container div #teacherPhoto {
-  display: none;
 }/*# sourceMappingURL=popUP.css.map */

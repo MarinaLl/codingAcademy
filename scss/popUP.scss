@@ -46,31 +46,32 @@
         &:nth-child(8){
             grid-area: 5/1/6/4;
             margin-top: 111px;
-            input[type="submit"]{
-                @include boxSize(175px, 55px, $buttonRadius);
-                @include defaultBtn(none, #FFF);
-                margin-right: 5px;
-                margin-top: 29px;
-                background-color: $primaryColor;
-                float: right;
-                cursor: pointer;
-                padding-left: 0;
-            }
-
-            input[type="reset"]{
-                @include boxSize(175px, 55px, $buttonRadius);
-                @include defaultBtn(2px solid $primaryColor, $primaryColor);
-                background-color: white;
-                float: right;
-                margin-top: 29px;
-                margin-right: 20px;
-                cursor: pointer;
-                padding-left: 0;
-            }
+            
         }
 
         
         #teacherPhoto { display: none; }
     }
 
+}
+input[type="submit"]{
+    @include boxSize(175px, 55px, $buttonRadius);
+    @include defaultBtn(none, #FFF);
+    margin-right: 5px;
+    margin-top: 29px;
+    background-color: $primaryColor;
+    float: right;
+    cursor: pointer;
+    padding-left: 0;
+}
+
+input[type="reset"]{
+    @include boxSize(175px, 55px, $buttonRadius);
+    @include defaultBtn(2px solid $primaryColor, $primaryColor);
+    background-color: white;
+    float: right;
+    margin-top: 29px;
+    margin-right: 20px;
+    cursor: pointer;
+    padding-left: 0;
 }

@@ -45,7 +45,7 @@
                     <option value="" default></option>
                     <option value="beginner-friendly">Beginner Friendly</option>
                     <option value="web-development">Web Development</option>
-                    <option value="game-developmen">Game Development</option>
+                    <option value="game-development">Game Development</option>
                     <option value="computer-science">Computer Science</option>
                 </select>
             </div>
