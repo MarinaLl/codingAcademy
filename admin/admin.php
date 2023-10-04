@@ -3,107 +3,106 @@
     session_start();
     if (isset($_SESSION['user']) && $_SESSION['role'] == 'admin') {
         addHeader("../");
+
+    } else {
+        logout("../");
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <title>Administrator Panel</title>    
-</head>
-<body>
-    <?php  
-        if($_POST){
-                if(isset($_POST['buttonDis'])) {
-                    $teacher = $_POST['buttonDis'];
-                    disableTeacher($teacher);
-                    echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
-                    exit;
-                } else if (isset($_POST['buttonEdit'])) {
-                    echo $_POST['buttonEdit'];
-                    $_SESSION['email'] = $_POST['buttonEdit'];
-                    include('createTeacher.php');
-                }
-        
-                if(isset($_POST['buttonDisCourse'])){
-                    $code = $_POST['buttonDisCourse'];
-                    disableCourse($code);
-                    echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
-                    exit;
-                } else if (isset($_POST['buttonEditCourse'])) {
-                    $_SESSION['code'] = $_POST['buttonEditCourse'];
-                    echo '<meta http-equiv="refresh" content="0;url=editCourse.php">';
-                }
-
-        } else {
-        
-    ?>
-    <div class="grid-container">
-        <div></div>
-        <div>
-            <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
-            <button id="createTeacherBtn">Add New Teacher</button>
-            <button id="createCourseBtn">Add New Course</button>
-            <div id="form-container">
-                
-                <button id="btnCourse" class="btnFolderStyle">Courses</button>
-                <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/main.css">
+        <title>Administrator Panel</title>    
+    </head>
+    <body>
+        <?php  
+            if($_POST) {
+                    if(isset($_POST['buttonDis'])) {
+                        $teacher = $_POST['buttonDis'];
+                        disableTeacher($teacher);
+                        echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
+                        exit;
+                    } else if (isset($_POST['buttonEdit'])) {
+                        echo $_POST['buttonEdit'];
+                        $_SESSION['email'] = $_POST['buttonEdit'];
+                        include('createTeacher.php');
+                    }
             
-                
-                <div id="teacher-form">
-                    <form action="admin.php" method="post" name="disableTeacher">
-                        <table>
-                            <tr>
-                                <th>Photo</th>
-                                <th>Teacher Name</th>
-                                <th>Email</th>
-                                <th>Title</th>
-                                <th>DNI</th>
-                                <th>Active</th>
-                                <th>Edit</th>
-                                <th>Disable</th>
-                            </tr>
-                            <?php showAllTeachers(); ?>
-                        </table>
-                    </form>
-                </div>
-                
-                <div id="course-form">
-                    <form action="admin.php" method="post" name="disableCourse">
-                        <table>
-                            <tr>
-                                <th>Photo</th>
-                                <th>Course Name</th>
-                                <th>Teacher</th>
-                                <th>Category</th>
-                                <th>Duration</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Active</th>
-                                <th>Edit</th>
-                                <th>Disable</th>
-                            </tr>
-                            <?php showAllCourses(); ?>
-                        </table>
-                    </form>
-                </div>
-            </div>
-            <div id="popupBackground">
-                <div id="popup">
-                    
-                </div>
-            </div>
-            <?php }?>
-        </div>
-        <div></div>
-    </div>
-    
-    <script src="test.js"></script>
+                    if(isset($_POST['buttonDisCourse'])){
+                        $code = $_POST['buttonDisCourse'];
+                        disableCourse($code);
+                        echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
+                        exit;
+                    } else if (isset($_POST['buttonEditCourse'])) {
+                        $_SESSION['code'] = $_POST['buttonEditCourse'];
+                        echo '<meta http-equiv="refresh" content="0;url=editCourse.php">';
+                    }
 
-</body>
+            } else {
+            
+        ?>
+        <div class="grid-container">
+            <div></div>
+            <div>
+                <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
+                <button id="createTeacherBtn">Add New Teacher</button>
+                <button id="createCourseBtn">Add New Course</button>
+                <div id="form-container">
+                    
+                    <button id="btnCourse" class="btnFolderStyle">Courses</button>
+                    <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
+                
+                    
+                    <div id="teacher-form">
+                        <form action="admin.php" method="post" name="disableTeacher">
+                            <table>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Teacher Name</th>
+                                    <th>Email</th>
+                                    <th>Title</th>
+                                    <th>DNI</th>
+                                    <th>Active</th>
+                                    <th>Edit</th>
+                                    <th>Disable</th>
+                                </tr>
+                                <?php showAllTeachers(); ?>
+                            </table>
+                        </form>
+                    </div>
+                    
+                    <div id="course-form">
+                        <form action="admin.php" method="post" name="disableCourse">
+                            <table>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Course Name</th>
+                                    <th>Teacher</th>
+                                    <th>Category</th>
+                                    <th>Duration</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Active</th>
+                                    <th>Edit</th>
+                                    <th>Disable</th>
+                                </tr>
+                                <?php showAllCourses(); ?>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                <div id="popupBackground">
+                    <div id="popup">
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <script src="admin.js"></script>
+        <?php }?>
+    </body>
 </html>
-<?php } else {
-        logout("../");
-    }?>
