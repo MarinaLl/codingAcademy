@@ -30,6 +30,7 @@ if (isset($_SESSION['user'])) {
                         # Añadir Pop Up Concurso
                         echo '<meta http-equiv="refresh" content="0;url=login.php">';
                     } else {
+                        echo "dato incoorecot";
                         # Añadir mensaje de que el dni no es valido o ya esta en uso
                     }
                     
@@ -41,20 +42,20 @@ if (isset($_SESSION['user'])) {
                     <img src="src/codingAcademyLogo2copia.png" alt="codingAcademy">
                     <h1>Sign Up</h1>
                     <form action="register.php" method="post" enctype="multipart/form-data" name="register">
-                        <label for="userName">Name</label>
-                        <label for="userLastnames">Last Names</label>
-                        <input type="text" name="userName" id="userName">
-                        <input type="text" name="userLastnames" id="userLastnames">
-                        <label for="userDni">DNI</label>
+                        <!-- <label for="userName">Name</label>
+                        <label for="userLastnames">Last Names</label> -->
+                        <input type="text" name="userName" id="userName" placeholder="Name">
+                        <input type="text" name="userLastnames" id="userLastnames" placeholder="Last Names">
+                        <!-- <label for="userDni">DNI</label>
                         <label for="userAge">Age</label>
-                        <label for="userPhoto">Photo</label>
-                        <input type="text" name="userDni" id="userDni">
-                        <input type="text" name="userAge" id="userAge">
+                        <label for="userPhoto">Photo</label> -->
+                        <input type="text" name="userDni" id="userDni" placeholder="DNI">
+                        <input type="text" name="userAge" id="userAge" placeholder="Age">
                         <input type="file" name="userPhoto" id="userPhoto">
-                        <label for="userEmail">Email</label>
-                        <label for="userPassword">Password</label>
-                        <input type="email" name="userEmail" id="userEmail">
-                        <input type="password" name="userPassword" id="userPassword">
+                        <!-- <label for="userEmail">Email</label>
+                        <label for="userPassword">Password</label> -->
+                        <input type="email" name="userEmail" id="userEmail" placeholder="Email">
+                        <input type="password" name="userPassword" id="userPassword" placeholder="Password">
                         <input type="submit" value="Sign Up" id="registerBtn">
                     </form>
                     <a id="linkLogin" href="login.php">I already have an account.</a>
