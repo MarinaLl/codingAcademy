@@ -422,7 +422,6 @@ function showStudentCourses($user){
             
             for($i = 0; $i < $numLines; $i++){
                 $line = mysqli_fetch_array($query);
-                            
                     echo '
                     <div class="card">
                         <div><img src=../"'.$line['coursePhoto'].'"></div>
