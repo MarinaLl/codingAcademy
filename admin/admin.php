@@ -1,13 +1,12 @@
 <?php
     include('../funciones.php');
     session_start();
-    if (isset($_SESSION['user']) && $_SESSION['role'] == 'admin') {
-        addHeader("../");
-
-    } else {
+    if (!isset($_SESSION['user']) || $_SESSION['role'] != 'admin') {
         logout("../");
-    }
-?>
+        
+    } else {
+        addHeader("../");
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -108,3 +107,4 @@
 
 </body>
 </html>
+<?php } ?>

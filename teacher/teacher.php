@@ -1,7 +1,9 @@
 <?php   
     include('../funciones.php');
     session_start();
-    if (isset($_SESSION['user']) && $_SESSION['role'] == 'teacher') {
+    if ($_SESSION['role'] != 'teacher') {
+        logout("../");
+    } else {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +16,4 @@
     <h1>Hello, <?php echo $_SESSION['completeName']; ?></h1>
 </body>
 </html>
-<?php } else {
-        logout("../");
-    }?>
+<?php } ?>

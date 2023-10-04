@@ -30,10 +30,9 @@ if (isset($_SESSION['user'])) {
                         # Añadir Pop Up Concurso
                         echo '<meta http-equiv="refresh" content="0;url=login.php">';
                     } else {
-                        echo "dato incoorecot";
+                        echo "Email usado o DNI no valido";
                         # Añadir mensaje de que el dni no es valido o ya esta en uso
                     }
-                    
                 } else {
             ?>
             <div class="loginContainer">

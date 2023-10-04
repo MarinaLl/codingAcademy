@@ -1,5 +1,8 @@
-<?php 
+<?php
     session_start();
+    if ($_SESSION['role'] != 'admin') {
+        logout("../");
+    } else {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,3 +74,4 @@
     }?>
 </body>
 </html>
+<?php } ?>

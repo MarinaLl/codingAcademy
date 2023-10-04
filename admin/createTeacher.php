@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    include('../funciones.php');
+    if ($_SESSION['role'] != 'admin') {
+        logout("../");
+    } else {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +15,7 @@
 </head>
 <body>
     
-    <?php 
-        include('../funciones.php'); addFonts();
+    <?php
         if($_POST){
             
                 $teacherName = $_POST['teacherName'];
@@ -79,6 +85,6 @@
                     
             </form>
             <script src="admin.js"></script>
-    <?php }?>
+    <?php }}?>
 </body>
 </html>
