@@ -26,10 +26,7 @@
             if ($teacherPhoto == null){
                 $sql = "SELECT photo FROM teacher WHERE email = '$email'";
 
-<<<<<<< HEAD
-=======
                 
->>>>>>> 877d04f0eba3baf32c00d164e4031dd17261fed1
 
                 $query = mysqli_query($connect, $sql);
 
@@ -44,20 +41,12 @@
 
             $teacherDni = $_POST['teacherDni'];
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 877d04f0eba3baf32c00d164e4031dd17261fed1
             editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage);
         
 
     } else {
     
         $sql = "SELECT * FROM teacher WHERE email = '$email'";
-<<<<<<< HEAD
-        // $connect = connectDataBase();
-=======
->>>>>>> 877d04f0eba3baf32c00d164e4031dd17261fed1
         $query = mysqli_query($connect, $sql);
 
         if ($query == false){
