@@ -1,0 +1,17 @@
+div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+div p:nth-child(1) {
+  grid-area: 0.125;
+}
+div p:nth-child(2) {
+  grid-area: 0.3333333333;
+}
+div p:nth-child(3) {
+  grid-area: 0.0833333333;
+}
+div p:nth-child(4) {
+  grid-area: 0.1875;
+}/*# sourceMappingURL=test.css.map */

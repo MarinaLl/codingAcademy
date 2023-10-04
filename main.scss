@@ -102,3 +102,42 @@
 
 }
 
+#studentPanel{
+    div:not(.cardComponent) {
+        @include flex(row, center, space-between);
+        margin-top: 50px;
+        a{
+            @include browsePhotoBtn(fit-content);
+            float: right;
+            height: fit-content;
+            text-decoration: none;
+        }
+    }
+}
+
+.cardComponent{
+    @include boxSize(270px, 240px, 20px);
+    border: 1px solid black;
+    background-image: url("../src/javascript.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    div {
+        &:first-child{
+            height: 158px;
+            width: 100%;
+            border: 1px solid red;
+            position: absolute;
+            
+            
+        }
+        &:last-child{
+            width: 100%;
+            height: 81px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        
+        }
+    }
+}

@@ -37,7 +37,7 @@
   margin-bottom: 60px;
 }
 .loginContainer > div:last-child form {
-  width: 378px;
+  width: 400px;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -85,46 +85,27 @@
   line-height: normal;
   margin-left: 10px;
 }
-.loginContainer > div:last-child form[name=register]:first-child {
+.loginContainer > div:last-child form[name=register] input:nth-child(1) {
   grid-area: 1/1/2/2;
 }
-.loginContainer > div:last-child form[name=register]:nth-child(2) {
+.loginContainer > div:last-child form[name=register] input:nth-child(2) {
   grid-area: 1/2/2/4;
-  background-color: pink;
 }
-.loginContainer > div:last-child form[name=register]:nth-child(3) {
+.loginContainer > div:last-child form[name=register] input:nth-child(3) {
   grid-area: 2/1/3/2;
 }
-.loginContainer > div:last-child form[name=register]:nth-child(4) {
-  grid-area: 2/2/3/4;
+.loginContainer > div:last-child form[name=register] input:nth-child(4) {
+  grid-area: 2/2/3/3;
 }
-.loginContainer > div:last-child form[name=register]:nth-child(5) {
-  grid-area: 3/1/4/2;
+.loginContainer > div:last-child form[name=register] input:nth-child(5) {
+  grid-area: 2/3/3/4;
 }
-.loginContainer > div:last-child form[name=register]:nth-child(6) {
-  grid-area: 3/2/4/3;
+.loginContainer > div:last-child form[name=register] input:nth-child(6) {
+  grid-area: 3/1/4/4;
 }
-.loginContainer > div:last-child form[name=register]:nth-child(7) {
-  grid-area: 3/3/4/4;
+.loginContainer > div:last-child form[name=register] input:nth-child(7) {
+  grid-area: 4/1/5/4;
 }
-.loginContainer > div:last-child form[name=register]:nth-child(8) {
-  grid-area: 4/1/5/2;
-}
-.loginContainer > div:last-child form[name=register]:nth-child(9) {
-  grid-area: 4/2/5/3;
-}
-.loginContainer > div:last-child form[name=register]:nth-child(10) {
-  grid-area: 4/3/5/4;
-}
-.loginContainer > div:last-child form[name=register]:nth-child(11) {
+.loginContainer > div:last-child form[name=register] input:nth-child(8) {
   grid-area: 5/1/6/4;
-}
-.loginContainer > div:last-child form[name=register]:nth-child(12) {
-  grid-area: 6/1/7/4;
-}
-.loginContainer > div:last-child form[name=register]:nth-child(13) {
-  grid-area: 7/1/8/4;
-}
-.loginContainer > div:last-child form[name=register]:last-child {
-  grid-area: 8/1/9/4;
 }/*# sourceMappingURL=login.css.map */
