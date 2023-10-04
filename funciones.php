@@ -81,7 +81,7 @@ function showAllTeachers(){
     } else {
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
-            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
+            $line = mysqli_fetch_array($query);
             echo '<tr>
                 <td><img src='.$line['photo'].'></td>
                 <td>'.$line['name'].' '.$line['lastNames'].'</td>
@@ -109,7 +109,7 @@ function showAllCourses(){
     } else {
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
-            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
+            $line = mysqli_fetch_array($query);
             echo '<tr>
                 <td><img src='.$line['photo'].'></td>
                 <td>'.$line['name'].'</td>
@@ -205,7 +205,7 @@ function listTeacherNames(){
     } else {
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
-            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
+            $line = mysqli_fetch_array($query);
             echo '<option value='.$line['email'].'>'.$line['name'].' '.$line['lastNames'] .'</option>';
         }
     }
