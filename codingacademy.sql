@@ -189,6 +189,18 @@ ALTER TABLE `enrollment`
   ADD CONSTRAINT `enrollment_ibfk_2` FOREIGN KEY (`course_code`) REFERENCES `course` (`code`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- Añadir la tabla category
+CREATE TABLE `category` (
+  `ID` varchar(255),
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `category`(`ID`) VALUES ('beginner-friendly');
+INSERT INTO `category`(`ID`) VALUES ('web-development');
+INSERT INTO `category`(`ID`) VALUES ('game-development');
+INSERT INTO `category`(`ID`) VALUES ('computer-science');
+
+-- Agregar la restricción de clave foránea en la columna existente `category`
+ALTER TABLE `course`
+  ADD CONSTRAINT `FK_course_category` FOREIGN KEY (`category`) REFERENCES `category` (`ID`);

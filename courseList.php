@@ -2,7 +2,6 @@
     session_start();
     include('funciones.php');
     addHeader("");
-    addFonts();
 ?>
 <!DOCTYPE html>
 <html lang="en">
