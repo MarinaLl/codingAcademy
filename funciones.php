@@ -424,11 +424,12 @@ function showStudentCourses($user){
                 $line = mysqli_fetch_array($query);
                     echo '
                     <div class="card">
-                        <div><img src=../"'.$line['coursePhoto'].'"></div>
+                        <div><img src="../'.$line['coursePhoto'].'"></div>
                         <div>
                             <h3>'.$line['courseName'].'</h3>
                             <h4>'.$line['teacherName'].' '.$line['teacherLastNames'].'</h4>
-                            <button type="submit" name="buttonUnenroll" value='.$line['courseCode'].'>Unenroll</button>   
+                            <p>'.$line['grade'].'</p>
+                            <button type="submit" name="buttonUnenroll" value='.$line['courseCode'].'>Unenroll</button> 
                         </div>
                     </div>';
                         

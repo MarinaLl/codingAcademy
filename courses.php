@@ -28,25 +28,25 @@ if (isset($_GET['category'])) {
                 <div class="imageBox">
                     <img class="categoryImage" src="src/newbie(1).png" alt="newbie">
                 </div>
-                <a href="">Beginner Friendly</a>
+                <p>Beginner Friendly</p>
             </div>
             <div id="web-development" class="categoryBox">
                 <div class="imageBox">
                     <img class="categoryImage" src="src/devops(1).png" alt="web development">
                 </div>
-                <a href="">Web Development</a>
+                <p>Web Development</p>
             </div>
             <div id="game-development" class="categoryBox">
                 <div class="imageBox">
                     <img class="categoryImage" src="src/game-development.png" alt="game development">
                 </div>
-                <a href="">Game Development</a>
+                <p>Game Development</p>
             </div>
             <div id="computer-science" class="categoryBox">
                 <div class="imageBox">
                     <img class="categoryImage" src="src/artificial-intelligence.png" alt="computer science">
                 </div>
-                <a href="">Computer Science</a>
+                <p>Computer Science</p>
             </div>
         </div>
     </div>
