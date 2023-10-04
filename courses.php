@@ -6,7 +6,11 @@
     if (isset($_GET['category'])) {
         $_SESSION['courseCategory'] = $_GET['category'];
         echo '<meta http-equiv="refresh" content="0;url=courseList.php">';
-    }
+    } else {
+        if ($_POST) {
+            enroll();
+        }
+    
     
 ?>
 <!DOCTYPE html>
@@ -64,7 +68,7 @@
             $numLines = mysqli_num_rows($query);
             echo $numLines;
             if ($numLines < 3) {
-                echo '<table>';
+                echo '<form action="courses.php" method="post" name="mostPopularEnrollment"><table>';
                 for($i = 0; $i < $numLines; $i++){
                     $line = mysqli_fetch_array($query);
                     $sql = "SELECT * FROM course WHERE code = ".$line['course_code']."";
@@ -82,12 +86,23 @@
                     $courseDuration = $course['duration'];
                     $courseStartDate = $course['start'];
                     $courseDifficulty = $course['difficulty'];
+                    echo $_SESSION['user'];
+                    $sql = "SELECT * FROM enrollment WHERE course_code = ".$courseCode." AND student_email = ".$_SESSION['user']."";
+                    $queryEnrollments = mysqli_query($connect, $sql);
+                    $enrollButton = '<button type="submit" name="buttonEnroll" value='.$courseCode.'>Enroll</button>';
+                    if($queryEnrollments) {
+                        if(mysqli_num_rows($queryEnrollments) > 0) {
+                            $enrollButton = "";
+                        }
+                    } else {
+                        mysqli_errno($connect);
+                    }
                     
                     echo '
                         <tr>
                             <td><img src="'.$courseImage.'"></td>
                             <td>'.$courseName.'</td>
-                            <td><button type="submit" name="buttonEnroll" value='.$courseCode.'>Enroll</button></td>
+                            <td>'.$enrollButton.'</td>
                             <td><img src="'.$teacherPhoto.'"></td>
                             <td>'.$teacherCompleteName.'</td>
                             <td>'.$courseDescription.'</td>
@@ -105,3 +120,4 @@
     
 </body>
 </html>
+<?php } ?>

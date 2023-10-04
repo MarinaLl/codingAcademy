@@ -14,14 +14,7 @@
 <body>
     <?php 
         if ($_POST) {
-            $courseCode = $_POST['buttonEnroll'];
-            $studentEmail = $_SESSION['user'];
-            $sqlInsert = "INSERT INTO enrollment (student_email, course_code, grade) VALUES ('$studentEmail','$courseCode', 0.00)";
-            $connectEnrollment = connectDataBase();
-            $query = mysqli_query($connectEnrollment, $sqlInsert);
-            if ($query == false) {
-                mysqli_error($connectEnrollment);
-            }
+            enroll();
         }
     ?>
     <h1 id="courseTitle">
@@ -56,7 +49,7 @@
                                 <td><img src="'.$course['photo'].'"></td>
                                 <td>'.$course['name'].'</td>
                                 <td><button type="submit" name="buttonEnroll" value='.$course['code'].'>Enroll</button></td>
-                                <td><img src="'.$teacher['photo'].'"></td>
+                                <td><img src=../"'.$teacher['photo'].'"></td>
                                 <td>'.$teacherCompleteName.'</td>
                                 <td>'.$course['description'].'</td>
                                 <td>'.$course['duration'].'</td>

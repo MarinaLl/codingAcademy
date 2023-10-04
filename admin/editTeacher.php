@@ -15,7 +15,7 @@
     <?php
     include('../funciones.php');
     $email = $_SESSION['email'];
-    
+    $connect = connectDataBase();
     if($_POST){
             $teacherName = $_POST['teacherName'];
             $teacherLastNames = $_POST['teacherLastNames'];
@@ -25,11 +25,11 @@
             if ($teacherPhoto == null){
                 $sql = "SELECT photo FROM teacher WHERE email = '$email'";
 
-                $connect = connectDataBase();
+                
 
                 $query = mysqli_query($connect, $sql);
 
-                $line = mysqli_fetch_array($query, MYSQL_ASSOC);
+                $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
                 echo $line[0];
                 $profileImage = $line[0];
@@ -40,7 +40,6 @@
 
             $teacherDni = $_POST['teacherDni'];
 
-            connectDataBase();
 
             editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage);
         
@@ -48,13 +47,12 @@
     } else {
     
         $sql = "SELECT * FROM teacher WHERE email = '$email'";
-        $connect = connectDataBase();
         $query = mysqli_query($connect, $sql);
 
         if ($query == false){
             mysqli_error($connect);
         } else {
-            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
+            $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
             echo '<form action="editTeacher.php" method="post" enctype="multipart/form-data" name="editTeacher">
                 <label for="teacherName">Name</label>
                 <input type="text" name="teacherName" value="'.$line['name'].'" id="teacherName"><br>

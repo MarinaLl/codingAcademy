@@ -17,7 +17,7 @@
     <?php
     include('../funciones.php');
     $code = $_SESSION['code'];
-
+    $connect = connectDataBase();
     if ($_POST) {
         $courseName = $_POST['courseName'];
         $courseDescription = $_POST['courseDescription'];
@@ -30,11 +30,11 @@
         if ($coursePhoto == null) {
             $sql = "SELECT photo FROM course WHERE code = '$code'";
 
-            $connect = connectDataBase();
+            
 
             $query = mysqli_query($connect, $sql);
 
-            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
+            $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
             echo $line[0];
             $courseImage = $line[0];
@@ -43,19 +43,17 @@
             $courseImage = uploadPhoto($coursePhoto, $_FILES['coursePhoto']['name'], "../");
         }
 
-        connectDataBase();
 
         editCourse($code, $courseName, $courseDescription, $courseCategory, $courseDuration, $courseStartDate, $courseEndDate, $courseTeacher, $courseImage);
     } else {
 
         $sql = "SELECT * FROM course WHERE code = '$code'";
-        $connect = connectDataBase();
         $query = mysqli_query($connect, $sql);
 
         if ($query == false) {
             mysqli_error($connect);
         } else {
-            $line = mysqli_fetch_array($query, MYSQL_ASSOC);
+            $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
             echo ' <form action="editCourse.php" method="post" enctype="multipart/form-data">
             <label for="courseName">Course Name</label>
             <input type="text" name="courseName" value="' . $line['name'] . '" id="courseName"><br>
