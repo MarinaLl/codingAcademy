@@ -95,12 +95,12 @@
                     
                 </div>
             </div>
-            <?php }?>
         </div>
         <div></div>
     </div>
     
-    <script src="test.js"></script>
+    <script src="admin.js"></script>
+    <?php }?>
 
 </body>
 </html>

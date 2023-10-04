@@ -13,7 +13,7 @@ if (isset($_SESSION['user'])) {
             <?php addFonts(); ?>
         </head>
         <body>
-        <div id="left">
+        <div>
             <div id="image">
                 <img src="../src/login.png">
             </div>

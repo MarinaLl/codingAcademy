@@ -31,7 +31,7 @@
                 padding: 0px;
                 margin-bottom: 60px;
             }
-            form{
+            form[name="login"]{
                 @include boxSize(378px, fit-content);
                 
                 input {
