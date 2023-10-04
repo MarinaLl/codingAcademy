@@ -15,24 +15,33 @@
         }
         &:last-child{
             border-left: 2px solid grey;
-            @include flex(column, center, center);
+            @include grid(1fr, repeat(7, auto));
+            text-align: center;
+            justify-items: center;
+
             img {
-                margin-top: -100px;
-                border: 1px solid black;
-                @include boxSize(500px, 500px);
+                margin-top: 50px;
+                margin-bottom: -40px;
             }
+
             h1{
-                @include boxSize(378px, 137px);
-                @include flex(column, center, center);
+                @include boxSize(378px, fit-content);
                 @include title();
                 font-size: 64px;
+                padding: 0px;
+                margin-bottom: 60px;
             }
-            input {
-                @include textbox(351px);
-                border: 1px solid rgba(0, 0, 0, 0.24);
-                &[type="submit"]{
-                    @include browsePhotoBtn(351px);
-                    font-weight: bold;
+            form{
+                @include boxSize(378px, fit-content);
+                
+                input {
+                    @include textbox(100%);
+                    border: 1px solid rgba(0, 0, 0, 0.24);
+                    
+                    &[type="submit"]{
+                        @include browsePhotoBtn(100%);
+                        font-weight: bold;
+                    }
                 }
             }
             

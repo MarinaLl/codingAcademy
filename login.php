@@ -48,7 +48,8 @@ if (isset($_SESSION['user'])) {
             <div id="loginContainer">
                 <div></div>
                 <div>
-                    <img id="logo" src="src/codingAcademyLogo2.png" alt="codingAcademy">
+                    
+                    <img id="logo" src="src/codingAcademyLogo2copia.png" alt="codingAcademy">
                     <h1>Log In</h1>
                     <form action="login.php" method="post" enctype="multipart/form-data" name="login">
                         <input type="email" name="userEmail" id="userEmail" placeholder="Email">
