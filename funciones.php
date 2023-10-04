@@ -325,4 +325,49 @@ function editProfile($studentName, $studentLastNames, $changeDni, $studentEmail,
     }
 }
 
+function showStudentCourses($user){
+    $sql = "SELECT  t.photo AS teacherPhoto, 
+                                t.name AS teacherName,
+                                t.lastNames AS teacherLastNames,
+                                c.code AS courseCode,
+                                c.photo AS coursePhoto, 
+                                c.name AS courseName, 
+                                c.start AS courseStart, 
+                                c.end AS courseEnd,
+                                e.grade AS grade 
+                        FROM ((course c INNER JOIN teacher t ON c.teacher_email = t.email) 
+                        INNER JOIN enrollment e ON e.course_code = c.code)
+                        WHERE e.student_email = '".$user."'";
+    $connect = connectDataBase();
+                
+    $query = mysqli_query($connect, $sql);
+
+    if ($query == false){
+        mysqli_error($connect);
+    } else {
+        $numLines = mysqli_num_rows($query);
+                    
+        if ($numLines > 0) {
+            
+            for($i = 0; $i < $numLines; $i++){
+                $line = mysqli_fetch_array($query);
+                            
+                    echo '
+                    <div class="card">
+                        <div id="img"><img src="'.$line['coursePhoto'].'"</div>
+                        <div>
+                            <h3>'.$line['courseName'].'</h3>
+                            <h4>'.$line['teacherName'].' '.$line['teacherLastNames'].'</h4>
+                            <button type="submit" name="buttonUnenroll" value='.$line['courseCode'].'>Unenroll</button>   
+                        </div>
+                    </div>';
+                        
+            }
+        } else {
+            echo 'You are not enrolled in any course.';
+        }
+
+    }
+}
+
 ?>

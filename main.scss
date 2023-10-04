@@ -103,7 +103,7 @@
 }
 
 #studentPanel{
-    div:not(.cardComponent) {
+    > div {
         @include flex(row, center, space-between);
         margin-top: 50px;
         a{
@@ -113,31 +113,28 @@
             text-decoration: none;
         }
     }
+    
 }
-
-.cardComponent{
-    @include boxSize(270px, 240px, 20px);
-    border: 1px solid black;
-    background-image: url("../src/javascript.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    div {
-        &:first-child{
-            height: 158px;
-            width: 100%;
-            border: 1px solid red;
-            position: absolute;
-            
-            
-        }
-        &:last-child{
-            width: 100%;
-            height: 81px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+#wrap {
+    display: flex;
+    flex-wrap: wrap;
+    .card{
+        width: 270px;
+        height: 240px;
+        border-radius: 20px;
+        border: 1px solid black;
+    
+            #img {
+                width: 270px;
+                height: 158px;
+                background-image: url("../src/javascript.png");
+                background-size: cover;
+                background-position: bottom;
+                background-repeat: no-repeat;
+                border-radius: 20px 20px 0px 0px;
+                opacity: 50%;
+            }
         
-        }
     }
+
 }

@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="css/test.css">
 </head>
 <body>
-    <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime tenetur saepe quae velit adipisci possimus atque molestiae nisi a consequatur fugiat veniam mollitia consectetur, distinctio hic autem eius ab quis?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime tenetur saepe quae velit adipisci possimus atque molestiae nisi a consequatur fugiat veniam mollitia consectetur, distinctio hic autem eius ab quis?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime tenetur saepe quae velit adipisci possimus atque molestiae nisi a consequatur fugiat veniam mollitia consectetur, distinctio hic autem eius ab quis?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime tenetur saepe quae velit adipisci possimus atque molestiae nisi a consequatur fugiat veniam mollitia consectetur, distinctio hic autem eius ab quis?</p>
+    <div class="card">
+        
+        <div id="img"></div>
+        <div>
+            <h3>Javascript basics</h3>
+            <h4>Joel gurrera</h4>    
+        </div>
     </div>
 </body>
 </html>
