@@ -22,7 +22,7 @@
             $teacherTitle = $_POST['teacherTitle'];
             $teacherEmail = $_POST['teacherEmail'];
             $teacherPhoto = $_FILES['teacherPhoto']['tmp_name'];
-            $connect = connectDataBase();
+            
             if ($teacherPhoto == null){
                 $sql = "SELECT photo FROM teacher WHERE email = '$email'";
 

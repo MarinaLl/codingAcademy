@@ -1,5 +1,7 @@
 <?php
     session_start();
+    include('../funciones.php');
+    addHeader("../");
     if ($_SESSION['role'] != 'admin') {
         logout("../");
     } else {
@@ -15,7 +17,6 @@
 
 <body>
     <?php
-    include('../funciones.php');
     $code = $_SESSION['code'];
     $connect = connectDataBase();
     if ($_POST) {

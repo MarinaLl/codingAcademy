@@ -15,5 +15,9 @@
             <h4>Joel gurrera</h4>    
         </div>
     </div>
+    <button id="contest"></button>
+    <div id="prize"></div>
+
+    <script src="main.js"></script>
 </body>
 </html>
