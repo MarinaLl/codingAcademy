@@ -1,17 +1,15 @@
 <?php 
-    session_start();
-    include('funciones.php');
-    addHeader("");
+session_start();
+include('funciones.php');
+addHeader("");
 
-    if (isset($_GET['category'])) {
-        $_SESSION['courseCategory'] = $_GET['category'];
-        echo '<meta http-equiv="refresh" content="0;url=courseList.php">';
-    } else {
-        if ($_POST) {
-            enroll();
-        }
-    
-    
+if (isset($_GET['category'])) {
+    $_SESSION['courseCategory'] = $_GET['category'];
+    echo '<meta http-equiv="refresh" content="0;url=courseList.php">';
+} else {
+    if ($_POST) {
+        enroll();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +18,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Courses</title>
-    
 </head>
 <body>
     <script src="courses.js"></script>
@@ -35,19 +32,19 @@
             </div>
             <div id="web-development" class="categoryBox">
                 <div class="imageBox">
-                    <img class="categoryImage" src="src/devops(1).png" alt="newbie">
+                    <img class="categoryImage" src="src/devops(1).png" alt="web development">
                 </div>
                 <a href="">Web Development</a>
             </div>
             <div id="game-development" class="categoryBox">
                 <div class="imageBox">
-                    <img class="categoryImage" src="src/game-development.png" alt="newbie">
+                    <img class="categoryImage" src="src/game-development.png" alt="game development">
                 </div>
                 <a href="">Game Development</a>
             </div>
             <div id="computer-science" class="categoryBox">
                 <div class="imageBox">
-                    <img class="categoryImage" src="src/artificial-intelligence.png" alt="newbie">
+                    <img class="categoryImage" src="src/artificial-intelligence.png" alt="computer science">
                 </div>
                 <a href="">Computer Science</a>
             </div>
@@ -55,69 +52,8 @@
     </div>
     <h2>MOST POPULAR</h2>
     <?php
-        $sql = "SELECT course_code, COUNT(*) AS enrollment_count
-        FROM enrollment
-        GROUP BY course_code
-        ORDER BY enrollment_count DESC
-        LIMIT 3";
-        $connect = connectDataBase();
-        $query = mysqli_query($connect, $sql);
-        if ($query == false) {
-            mysqli_error($connect);
-        } else {
-            $numLines = mysqli_num_rows($query);
-            echo $numLines;
-            if ($numLines < 3) {
-                echo '<form action="courses.php" method="post" name="mostPopularEnrollment"><table>';
-                for($i = 0; $i < $numLines; $i++){
-                    $line = mysqli_fetch_array($query);
-                    $sql = "SELECT * FROM course WHERE code = ".$line['course_code']."";
-                    $queryCourse = mysqli_query($connect, $sql);
-                    $course = mysqli_fetch_array($queryCourse);
-                    $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
-                    $queryTeacher = mysqli_query($connect, $sql);
-                    $teacher = mysqli_fetch_array($queryTeacher);
-                    $courseImage = $course['photo'];
-                    $courseName = $course['name'];
-                    $courseCode = $line['course_code'];
-                    $teacherPhoto = $teacher['photo'];
-                    $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
-                    $courseDescription = $course['description'];
-                    $courseDuration = $course['duration'];
-                    $courseStartDate = $course['start'];
-                    $courseDifficulty = $course['difficulty'];
-                    echo $_SESSION['user'];
-                    $sql = "SELECT * FROM enrollment WHERE course_code = ".$courseCode." AND student_email = ".$_SESSION['user']."";
-                    $queryEnrollments = mysqli_query($connect, $sql);
-                    $enrollButton = '<button type="submit" name="buttonEnroll" value='.$courseCode.'>Enroll</button>';
-                    if($queryEnrollments) {
-                        if(mysqli_num_rows($queryEnrollments) > 0) {
-                            $enrollButton = "";
-                        }
-                    } else {
-                        mysqli_errno($connect);
-                    }
-                    
-                    echo '
-                        <tr>
-                            <td><img src="'.$courseImage.'"></td>
-                            <td>'.$courseName.'</td>
-                            <td>'.$enrollButton.'</td>
-                            <td><img src="'.$teacherPhoto.'"></td>
-                            <td>'.$teacherCompleteName.'</td>
-                            <td>'.$courseDescription.'</td>
-                            <td>'.$courseDuration.'</td>
-                            <td>'.$courseStartDate.'</td>
-                            <td>'.$courseDifficulty.'</td>
-                        </tr>';
-                }
-                echo '</table></form>';
-            } else {
-                echo 'No hay cursos en esta categoria';
-            }
-        }
+        countTopCourses();
     ?>
-    
 </body>
 </html>
 <?php } ?>

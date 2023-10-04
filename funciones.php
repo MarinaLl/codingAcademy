@@ -325,6 +325,66 @@ function editProfile($studentName, $studentLastNames, $changeDni, $studentEmail,
     }
 }
 
+function countTopCourses() {
+    $sql = "SELECT course_code, COUNT(*) AS enrollment_count
+    FROM enrollment
+    GROUP BY course_code
+    ORDER BY enrollment_count DESC
+    LIMIT 3";
+    $connectTopCourses = connectDataBase();
+    $query = mysqli_query($connectTopCourses, $sql);
+    if (!$query) {
+        echo mysqli_error($connectTopCourses);
+    } else {
+        $numLines = mysqli_num_rows($query);
+        if ($numLines > 0) {
+            echo '<form action="courses.php" method="post" name="mostPopularEnrollment"><table>';
+            while ($line = mysqli_fetch_array($query)) {
+                $courseCode = $line['course_code'];
+                $sql = "SELECT * FROM course WHERE code = " . $courseCode;
+                $queryCourse = mysqli_query($connectTopCourses, $sql);
+                $course = mysqli_fetch_array($queryCourse);
+                $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
+                $queryTeacher = mysqli_query($connectTopCourses, $sql);
+                $teacher = mysqli_fetch_array($queryTeacher);
+                $courseImage = $course['photo'];
+                $courseName = $course['name'];
+                $teacherPhoto = $teacher['photo'];
+                $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
+                $courseDescription = $course['description'];
+                $courseDuration = $course['duration'];
+                $courseStartDate = $course['start'];
+                $courseDifficulty = $course['difficulty'];
+                $sqlEnrolled = "SELECT * FROM enrollment WHERE course_code = ".$courseCode." AND student_email = '".$_SESSION['user']."'";
+                $queryEnrollments = mysqli_query($connectTopCourses, $sqlEnrolled);
+                $enrollButton = '<button type="submit" name="buttonEnroll" value="'.$courseCode.'">Enroll</button>';
+                if($queryEnrollments) {
+                    if(mysqli_num_rows($queryEnrollments) > 0) {
+                        $enrollButton = "";
+                    }
+                } else {
+                    echo mysqli_error($connectTopCourses);
+                }
+                echo '
+                <tr>
+                    <td><img src="'.$courseImage.'"></td>
+                    <td>'.$courseName.'</td>
+                    <td>'.$enrollButton.'</td>
+                    <td><img src="'.$teacherPhoto.'"></td>
+                    <td>'.$teacherCompleteName.'</td>
+                    <td>'.$courseDescription.'</td>
+                    <td>'.$courseDuration.'</td>
+                    <td>'.$courseStartDate.'</td>
+                    <td>'.$courseDifficulty.'</td>
+                </tr>';
+            }
+            echo '</table></form>';
+        } else {
+            echo 'No hay cursos en esta categoria';
+        }
+    }
+}
+
 function enroll() {
     $courseCode = $_POST['buttonEnroll'];
     $studentEmail = $_SESSION['user'];
