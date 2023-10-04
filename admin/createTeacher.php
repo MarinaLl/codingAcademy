@@ -1,5 +1,8 @@
 <?php
-    session_start();
+    if (!$_SESSION) {
+        session_start();
+    } 
+
     include('../funciones.php');
     if ($_SESSION['role'] != 'admin') {
         logout("../");
@@ -30,7 +33,6 @@
                 if(checkDNI($teacherDni)){
                     $profileImage = uploadPhoto($teacherPhoto, $_FILES['teacherPhoto']['name'], "../");
         
-                    connectDataBase();
         
                     createNewTeacher($teacherEmail, $teacherPasswd, $teacherName, $teacherLastNames, $teacherTitle, $profileImage, $teacherDni);
                     echo '<meta http-equiv="refresh" content="0;url=admin.php">';

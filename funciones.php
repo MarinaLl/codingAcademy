@@ -1,6 +1,5 @@
-<?php 
-
-function connectDataBase(){
+<?php
+function connectDataBase() {
     $host = 'localhost';
     $dbName = 'codingacademy';
     $dbUsername = 'root';
@@ -60,30 +59,30 @@ function deletePhoto($imagePath, $path) {
 // Parte Administrador
 function createNewTeacher($email, $password, $name, $lastNames, $title, $photo, $dni){
     $sql = "INSERT INTO teacher (email, password, dni, name, lastNames, title, photo, active) VALUES ('$email', '$password', '$dni', '$name', '$lastNames', '$title', '$photo', '1')";
-    $connect = connectDataBase();
+    $connectCreateTeacher = connectDataBase();
 
-    if($query = mysqli_query($connect, $sql)){
+    if($query = mysqli_query($connectCreateTeacher, $sql)){
         echo "registro insertado";
         echo '<meta http-equiv="refresh" content="0;url=admin.php">';
     } else {
-        echo mysqli_errno($connect);
+        echo mysqli_errno($connectCreateTeacher);
     }
 }
 function showAllTeachers(){
     $sql = "SELECT * FROM teacher WHERE active = 1";
 
-    $connect = connectDataBase();
+    $connectShowTeachers = connectDataBase();
     
-    $query = mysqli_query($connect, $sql);
+    $query = mysqli_query($connectShowTeachers, $sql);
 
     if ($query == false){
-        mysqli_error($connect);
+        mysqli_error($connectShowTeachers);
     } else {
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
             $line = mysqli_fetch_array($query);
             echo '<tr>
-                <td><img src='.$line['photo'].'></td>
+                <td><img src=../'.$line['photo'].'></td>
                 <td>'.$line['name'].' '.$line['lastNames'].'</td>
                 <td>'.$line['email'].'</td>
                 <td>'.$line['title'].'</td>
@@ -100,18 +99,18 @@ function showAllTeachers(){
 function showAllCourses(){
     $sql = "SELECT * FROM course WHERE active = 1";
 
-    $connect = connectDataBase();
+    $connectShowCourses = connectDataBase();
 
-    $query = mysqli_query($connect, $sql);
+    $query = mysqli_query($connectShowCourses, $sql);
 
     if($query == false){
-        mysqli_error($connect);
+        mysqli_error($connectShowCourses);
     } else {
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
             $line = mysqli_fetch_array($query);
             echo '<tr>
-                <td><img src='.$line['photo'].'></td>
+                <td><img src=../'.$line['photo'].'></td>
                 <td>'.$line['name'].'</td>
                 <td>'.$line['teacher_email'].'</td>
                 <td>'.$line['category'].'</td>
@@ -135,14 +134,14 @@ function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $te
                 title = '$teacherTitle',
                 photo = '$profileImage'
             WHERE email = '$email'";
-    $connect = connectDataBase();
+    $connectEditTeacher = connectDataBase();
 
-    if($query = mysqli_query($connect, $sql)){
+    if($query = mysqli_query($connectEditTeacher, $sql)){
         echo "profesor editado";
         echo '<meta http-equiv="refresh" content="0;url=admin.php">';
         exit;
     } else {
-        echo mysqli_error($connect);
+        echo mysqli_error($connectEditTeacher);
     }
 }
 
@@ -157,37 +156,37 @@ function editCourse($code, $courseName, $courseDescription, $courseCategory, $co
                 teacher_email = '$courseTeacher',
                 photo = '$coursePhoto'
             WHERE code = '$code'";
-    $connect = connectDataBase();
+    $connectEditCourse = connectDataBase();
 
-    if($query = mysqli_query($connect, $sql)){
+    if($query = mysqli_query($connectEditCourse, $sql)){
         echo "curso editado";
         echo '<meta http-equiv="refresh" content="0;url=admin.php">';
         exit;
     } else {
-        echo mysqli_error($connect);
+        echo mysqli_error($connectEditCourse);
     }
 }
 
 function disableTeacher($email){
     $sql = "UPDATE teacher SET active = CASE WHEN active = TRUE THEN FALSE ELSE TRUE END WHERE email = '$email'";
-    $connect = connectDataBase();
+    $connectDisableTeacher = connectDataBase();
 
-    if($query = mysqli_query($connect, $sql)){
+    if($query = mysqli_query($connectDisableTeacher, $sql)){
         echo "registro deshabilitado";
     } else {
-        echo mysqli_errno($connect);
+        echo mysqli_errno($connectDisableTeacher);
     }
     
 }
 
 function disableCourse($code){
     $sql = "UPDATE course SET active = CASE WHEN active = TRUE THEN FALSE ELSE TRUE END WHERE code = '$code'";
-    $connect = connectDataBase();
+    $connectDisableCourse = connectDataBase();
 
-    if($query = mysqli_query($connect, $sql)){
+    if($query = mysqli_query($connectDisableCourse, $sql)){
         echo "registro deshabilitado";
     } else {
-        echo mysqli_errno($connect);
+        echo mysqli_errno($connectDisableCourse);
     }
     
 }
@@ -196,12 +195,12 @@ function disableCourse($code){
 function listTeacherNames(){
     $sql = "SELECT * FROM teacher";
 
-    $connect = connectDataBase();
+    $connectListTeachers = connectDataBase();
     
-    $query = mysqli_query($connect, $sql);
+    $query = mysqli_query($connectListTeachers, $sql);
 
     if ($query == false){
-        mysqli_error($connect);
+        mysqli_error($connectListTeachers);
     } else {
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
@@ -214,13 +213,13 @@ function listTeacherNames(){
 function createNewCourse($name,$description, $category, $duration, $startDate, $endDate, $teacher, $photo, $difficulty){
     $sql = "INSERT INTO course (name, description, category, duration, difficulty, start, end, teacher_email, photo) VALUES ('$name', '$description', '$category', '$duration', '$difficulty', '$startDate', '$endDate', '$teacher', '$photo')";
 
-    $connect = connectDataBase();
+    $connectCreateCourse = connectDataBase();
 
-    if($query = mysqli_query($connect, $sql)){
+    if($query = mysqli_query($connectCreateCourse, $sql)){
         echo "registro creado";
         echo '<meta http-equiv="refresh" content="0;url=admin.php">';
     } else {
-        echo mysqli_errno($connect);
+        echo mysqli_errno($connectCreateCourse);
     }
 
 }
@@ -323,6 +322,77 @@ function editProfile($studentName, $studentLastNames, $changeDni, $studentEmail,
         }
     } else {
         echo mysqli_errno($connectEditProfile);
+    }
+}
+
+function countTopCourses() {
+    $sql = "SELECT course_code, COUNT(*) AS enrollment_count
+    FROM enrollment
+    GROUP BY course_code
+    ORDER BY enrollment_count DESC
+    LIMIT 3";
+    $connectTopCourses = connectDataBase();
+    $query = mysqli_query($connectTopCourses, $sql);
+    if (!$query) {
+        echo mysqli_error($connectTopCourses);
+    } else {
+        $numLines = mysqli_num_rows($query);
+        if ($numLines > 0) {
+            echo '<form action="courses.php" method="post" name="mostPopularEnrollment"><table>';
+            while ($line = mysqli_fetch_array($query)) {
+                $courseCode = $line['course_code'];
+                $sql = "SELECT * FROM course WHERE code = " . $courseCode;
+                $queryCourse = mysqli_query($connectTopCourses, $sql);
+                $course = mysqli_fetch_array($queryCourse);
+                $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
+                $queryTeacher = mysqli_query($connectTopCourses, $sql);
+                $teacher = mysqli_fetch_array($queryTeacher);
+                $courseImage = $course['photo'];
+                $courseName = $course['name'];
+                $teacherPhoto = $teacher['photo'];
+                $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
+                $courseDescription = $course['description'];
+                $courseDuration = $course['duration'];
+                $courseStartDate = $course['start'];
+                $courseDifficulty = $course['difficulty'];
+                $sqlEnrolled = "SELECT * FROM enrollment WHERE course_code = ".$courseCode." AND student_email = '".$_SESSION['user']."'";
+                $queryEnrollments = mysqli_query($connectTopCourses, $sqlEnrolled);
+                $enrollButton = '<button type="submit" name="buttonEnroll" value="'.$courseCode.'">Enroll</button>';
+                if($queryEnrollments) {
+                    if(mysqli_num_rows($queryEnrollments) > 0) {
+                        $enrollButton = "";
+                    }
+                } else {
+                    echo mysqli_error($connectTopCourses);
+                }
+                echo '
+                <tr>
+                    <td><img src="'.$courseImage.'"></td>
+                    <td>'.$courseName.'</td>
+                    <td>'.$enrollButton.'</td>
+                    <td><img src="'.$teacherPhoto.'"></td>
+                    <td>'.$teacherCompleteName.'</td>
+                    <td>'.$courseDescription.'</td>
+                    <td>'.$courseDuration.'</td>
+                    <td>'.$courseStartDate.'</td>
+                    <td>'.$courseDifficulty.'</td>
+                </tr>';
+            }
+            echo '</table></form>';
+        } else {
+            echo 'No hay cursos en esta categoria';
+        }
+    }
+}
+
+function enroll() {
+    $courseCode = $_POST['buttonEnroll'];
+    $studentEmail = $_SESSION['user'];
+    $sqlInsert = "INSERT INTO enrollment (student_email, course_code, grade) VALUES ('$studentEmail','$courseCode', 0.00)";
+    $connectEnrollment = connectDataBase();
+    $query = mysqli_query($connectEnrollment, $sqlInsert);
+    if ($query == false) {
+        mysqli_error($connectEnrollment);
     }
 }
 

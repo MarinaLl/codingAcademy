@@ -14,14 +14,7 @@
 <body>
     <?php 
         if ($_POST) {
-            $courseCode = $_POST['buttonEnroll'];
-            $studentEmail = $_SESSION['user'];
-            $sqlInsert = "INSERT INTO enrollment (student_email, course_code, grade) VALUES ('$studentEmail','$courseCode', 0.00)";
-            $connectEnrollment = connectDataBase();
-            $query = mysqli_query($connectEnrollment, $sqlInsert);
-            if ($query == false) {
-                mysqli_error($connectEnrollment);
-            }
+            enroll();
         }
     ?>
     <div class="grid-container">
