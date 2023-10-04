@@ -2,7 +2,12 @@
     session_start();
     include('funciones.php');
     addHeader("");
-    addFonts();
+
+    if (isset($_GET['category'])) {
+        $_SESSION['courseCategory'] = $_GET['category'];
+        /*echo '<meta http-equiv="refresh" content="0;url=courseList.php">';*/
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

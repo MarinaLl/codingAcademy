@@ -3,7 +3,6 @@
     include('funciones.php');
     addHeader("");
     addFonts();
-    $_SESSION['courseCategory'] = "web-development";
 ?>
 <!DOCTYPE html>
 <html lang="en">

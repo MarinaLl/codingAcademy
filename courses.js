@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(categoryBox);
       categoryBox.addEventListener("click", function (event) {
         console.log(categoryBox.id);
+        window.location.href = window.location.href + "?category=" + categoryBox.id;
+        console.log(window.location.href);
       });
     });
   });
