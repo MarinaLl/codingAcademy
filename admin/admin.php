@@ -3,39 +3,43 @@
     session_start();
     if (isset($_SESSION['user']) && $_SESSION['role'] == 'admin') {
         addHeader("../");
+
+    } else {
+        logout("../");
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <title>Administrator Panel</title>    
-</head>
-<body>
-    <?php  
-        if($_POST){
-                if(isset($_POST['buttonDis'])) {
-                    $teacher = $_POST['buttonDis'];
-                    disableTeacher($teacher);
-                    echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
-                    exit;
-                } else if (isset($_POST['buttonEdit'])) {
-                    echo $_POST['buttonEdit'];
-                    $_SESSION['email'] = $_POST['buttonEdit'];
-                    include('createTeacher.php');
-                }
-        
-                if(isset($_POST['buttonDisCourse'])){
-                    $code = $_POST['buttonDisCourse'];
-                    disableCourse($code);
-                    echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
-                    exit;
-                } else if (isset($_POST['buttonEditCourse'])) {
-                    $_SESSION['code'] = $_POST['buttonEditCourse'];
-                    echo '<meta http-equiv="refresh" content="0;url=editCourse.php">';
-                }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/main.css">
+        <title>Administrator Panel</title>    
+    </head>
+    <body>
+        <?php  
+            if($_POST) {
+                    if(isset($_POST['buttonDis'])) {
+                        $teacher = $_POST['buttonDis'];
+                        disableTeacher($teacher);
+                        echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
+                        exit;
+                    } else if (isset($_POST['buttonEdit'])) {
+                        echo $_POST['buttonEdit'];
+                        $_SESSION['email'] = $_POST['buttonEdit'];
+                        include('createTeacher.php');
+                    }
+            
+                    if(isset($_POST['buttonDisCourse'])){
+                        $code = $_POST['buttonDisCourse'];
+                        disableCourse($code);
+                        echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
+                        exit;
+                    } else if (isset($_POST['buttonEditCourse'])) {
+                        $_SESSION['code'] = $_POST['buttonEditCourse'];
+                        echo '<meta http-equiv="refresh" content="0;url=editCourse.php">';
+                    }
 
         } else {
         
@@ -95,15 +99,12 @@
                     
                 </div>
             </div>
+            <?php }?>
         </div>
         <div></div>
     </div>
     
-    <script src="admin.js"></script>
-    <?php }?>
+    <script src="test.js"></script>
 
 </body>
 </html>
-<?php } else {
-        logout("../");
-    }?>

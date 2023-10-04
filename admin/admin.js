@@ -1,82 +1,82 @@
-let btnCourses = document.getElementById('btnCourse');
-let btnTeacher = document.getElementById('btnTeacher');
+window.addEventListener('load', function() {
+    console.log("Admin.js cargado");
 
-btnCourses.addEventListener('click', function(){
-    let teacherForm = document.getElementById('teacher-form');
-    let courseForm = document.getElementById('course-form');
+    let btnCourses = document.getElementById('btnCourse');
+    let btnTeacher = document.getElementById('btnTeacher');
 
-    console.log('boton curso');
+    btnCourses.addEventListener('click', function(){
+        let teacherForm = document.getElementById('teacher-form');
+        let courseForm = document.getElementById('course-form');
 
-    courseForm.style.visibility = 'visible';
-    teacherForm.style.visibility = 'hidden';
-});
+        console.log('boton curso');
 
-btnTeacher.addEventListener('click', function(){
-    let teacherForm = document.getElementById('teacher-form');
-    let courseForm = document.getElementById('course-form');
+        courseForm.style.visibility = 'visible';
+        teacherForm.style.visibility = 'hidden';
+    });
 
-    console.log('boton prof');
+    btnTeacher.addEventListener('click', function(){
+        let teacherForm = document.getElementById('teacher-form');
+        let courseForm = document.getElementById('course-form');
 
-    courseForm.style.visibility = 'hidden';
-    teacherForm.style.visibility = 'visible';
-});
+        console.log('boton prof');
 
-// desplegar el popup
+        courseForm.style.visibility = 'hidden';
+        teacherForm.style.visibility = 'visible';
+    });
 
-const createNewTeacher = document.getElementById('createTeacherBtn');
-const createNewCourse = document.getElementById('createCourseBtn');
-const popUpBackground = document.getElementById('popupBackground');
-const popUp = document.getElementById('popup');
+    // desplegar el popup
 
-createNewCourse.addEventListener('click', function(){
-    popUpBackground.style.display = 'block';
-    console.log('cargado curso');
-    
-    // cargar contenido php
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'createCourse.php', true);
+    const createNewTeacher = document.getElementById('createTeacherBtn');
+    const createNewCourse = document.getElementById('createCourseBtn');
+    const popUpBackground = document.getElementById('popupBackground');
+    const popUp = document.getElementById('popup');
 
-    xhr.onload = function() {
-        if (xhr.status === 200){
-            popUp.innerHTML = xhr.responseText;
+    createNewCourse.addEventListener('click', function(){
+        popUpBackground.style.display = 'block';
+        console.log('cargado curso');
+        
+        // cargar contenido php
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'createCourse.php', true);
+
+        xhr.onload = function() {
+            if (xhr.status === 200){
+                popUp.innerHTML = xhr.responseText;
+            }
+        };
+
+        xhr.send();
+        
+    });
+
+    createNewTeacher.addEventListener('click', function(){
+        popUpBackground.style.display = 'block';
+        console.log('cargado prof');
+
+        //cargar contenido php
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'createTeacher.php', true);
+
+        xhr.onload = function() {
+            if (xhr.status === 200){
+                popUp.innerHTML = xhr.responseText;
+            }
+        };
+
+        xhr.send();
+    });
+
+    popUpBackground.addEventListener('click', function(event){
+        if(event.target === this){
+            popUpBackground.style.display = 'none';     
         }
-    };
+    });
 
-    xhr.send();
-    
+    const cancelBtn = document.getElementById('cancelBtn');
+
+    cancelBtn.addEventListener('click', function(){
+            popUpBackground.style.display = 'none';   
+            console.log('cancel btn');
+    });
+
 });
-
-createNewTeacher.addEventListener('click', function(){
-    popUpBackground.style.display = 'block';
-    console.log('cargado prof');
-
-    //cargar contenido php
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'createTeacher.php', true);
-
-    xhr.onload = function() {
-        if (xhr.status === 200){
-            popUp.innerHTML = xhr.responseText;
-        }
-    };
-
-    xhr.send();
-});
-
-popUpBackground.addEventListener('click', function(event){
-    if(event.target === this){
-        popUpBackground.style.display = 'none';     
-    }
-});
-
-const cancelBtn = document.getElementById('cancelBtn');
-
-cancelBtn.addEventListener('click', function(){
-        popUpBackground.style.display = 'none';   
-        console.log('cancel btn');
-});
-
-
-console.log('aa');
-
-

@@ -48,31 +48,22 @@
                 if ($numLines > 0) {
                     echo '<table>';
                     for($i = 0; $i < $numLines; $i++){
-                        $line = mysqli_fetch_array($query, MYSQL_ASSOC);
-                        $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$line['teacher_email']."'";
-                        $query2 = mysqli_query($connect, $sql);
-                        $teacher = mysqli_fetch_array($query2, MYSQL_ASSOC);
-                        $courseImage = $line['photo'];
-                        $courseName = $line['name'];
-                        $courseCode = $line['code'];
-                        $teacherPhoto = $teacher['photo'];
+                        $course = mysqli_fetch_array($query);
+                        $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
+                        $queryTeacher = mysqli_query($connect, $sql);
+                        $teacher = mysqli_fetch_array($queryTeacher);
                         $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
-                        $courseDescription = $line['description'];
-                        $courseDuration = $line['duration'];
-                        $courseStartDate = $line['start'];
-                        $courseDifficulty = $line['difficulty'];
-                        
                         echo '
                             <tr>
-                                <td><img src="'.$courseImage.'"></td>
-                                <td>'.$courseName.'</td>
-                                <td><button type="submit" name="buttonEnroll" value='.$courseCode.'>Enroll</button></td>
-                                <td><img src="'.$teacherPhoto.'"></td>
+                                <td><img src="'.$course['photo'].'"></td>
+                                <td>'.$course['name'].'</td>
+                                <td><button type="submit" name="buttonEnroll" value='.$course['code'].'>Enroll</button></td>
+                                <td><img src="'.$teacher['photo'].'"></td>
                                 <td>'.$teacherCompleteName.'</td>
-                                <td>'.$courseDescription.'</td>
-                                <td>'.$courseDuration.'</td>
-                                <td>'.$courseStartDate.'</td>
-                                <td>'.$courseDifficulty.'</td>
+                                <td>'.$course['description'].'</td>
+                                <td>'.$course['duration'].'</td>
+                                <td>'.$course['start'].'</td>
+                                <td>'.$course['difficulty'].'</td>
                             </tr>';
                     }
                     echo '</table></form>';

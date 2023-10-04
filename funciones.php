@@ -241,11 +241,12 @@ function addNewUser($username, $lastNames, $dni, $age, $photo, $email, $passwd){
 }
 
 // Error handling
-function checkDNI($dni){
+function checkDNI($id){
 
-    $combinations = '/^\d{8}[A-HJ-NP-TV-Z]$/i';
+    $combinationsDNI = '/^\d{8}[A-HJ-NP-TV-Z]$/i';
+    $combinationsNIE = '/^[XYZ]\d{7}[A-HJ-NP-TV-Z]$/i';
 
-    if(preg_match($combinations, $dni)){
+    if(preg_match($combinationsDNI, $id) || preg_match($combinationsNIE, $id)){
         return true;
     }
     return false;
