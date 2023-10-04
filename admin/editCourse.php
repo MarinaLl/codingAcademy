@@ -1,5 +1,8 @@
 <?php
-session_start();
+    session_start();
+    if ($_SESSION['role'] != 'admin') {
+        logout("../");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

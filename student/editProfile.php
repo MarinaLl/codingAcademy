@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if ($_SESSION['role'] != 'student') {
+        logout("../");
+    } else {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,6 +99,6 @@
                     
             </form>
             <script src="../main.js"></script>
-    <?php }?>
+    <?php }}?>
 </body>
 </html>

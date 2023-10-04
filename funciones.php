@@ -241,6 +241,7 @@ function addNewUser($username, $lastNames, $dni, $age, $photo, $email, $passwd){
 }
 
 // Error handling
+
 function checkDNI($id){
 
     $combinationsDNI = '/^\d{8}[A-HJ-NP-TV-Z]$/i';
