@@ -43,6 +43,7 @@ if (isset($_SESSION['user'])) {
             <title>Log In</title>
             <link rel="stylesheet" href="css/main.css">
             
+            <script src="main.js">contest();</script>
         </head>
         <body>
             <div class="loginContainer">

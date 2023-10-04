@@ -73,23 +73,4 @@ window.addEventListener('load', function() {
         }
     });
 
-    const editBtn = document.getElementById('editBtn');
-
-    editBtn.addEventListener('click', function(){
-        popUpBackground.style.display = 'block';
-        console.log('cargado edit');
-
-        //cargar contenido php
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'editCourse.php', true);
-
-        xhr.onload = function() {
-            if (xhr.status === 200){
-                popUp.innerHTML = xhr.responseText;
-            }
-        };
-
-        xhr.send();
-    });
-
 });

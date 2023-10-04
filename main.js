@@ -1,24 +1,30 @@
-function contest() {
-	let prizeList = ['Sale', 'Free Course', 'Nothing'];
-	let i = Math.floor(Math.random() * prizeList.length);
-	return prizeList[i];
+
+
+function openWindow(){
+	const newWindow = window.open("test.php", "_blank", "width=500, height=500");
 }
 
-const contestBtn = document.getElementById("contest");
+function contest() {
+    let prizeList = ['Sale', 'Free Course', 'Nothing'];
+    let i = Math.floor(Math.random() * prizeList.length);
 
-contestBtn.addEventListener('click', function(){
-	window.open("test.php", "_blank", "width=500, height=500");
-	const txt = document.getElementById("prize");
-	txt.innerText = contest();
-	
-});
+    
+	return prizeList[i];
 
+   
+}
+function showPrize(){
+	const prizeText = document.getElementById("prize");
+	prizeText.textContent = "Congratulations! You've won: " + contest();
+}
+
+
+console.log("Main.js cargado");
 
 // Obtén una referencia al elemento de entrada y al botón
 var studentPassword = document.getElementById("studentPassword");
 var studentPasswordBtn = document.getElementById("studentPasswordBtn");
 
-console.log("Main.js cargado");
 
 studentPasswordBtn.addEventListener("click", function() {
   if (studentPassword.readOnly) {
@@ -35,5 +41,4 @@ function isPasswordChanged() {
 		return false;
 	}
 }
-
 

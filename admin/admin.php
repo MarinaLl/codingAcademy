@@ -27,6 +27,7 @@
                     } else if (isset($_POST['buttonEdit'])) {
                         echo $_POST['buttonEdit'];
                         $_SESSION['email'] = $_POST['buttonEdit'];
+                        echo '<meta http-equiv="refresh" content="0;url=editTeacher.php">';
                     }
             
                     if(isset($_POST['buttonDisCourse'])){
@@ -36,7 +37,8 @@
                         exit;
                     } else if (isset($_POST['buttonEditCourse'])) {
                         $_SESSION['code'] = $_POST['buttonEditCourse'];
-                      //echo '<meta http-equiv="refresh" content="0;url=editCourse.php">';
+
+                      echo '<meta http-equiv="refresh" content="0;url=editCourse.php">';
                     }
 
         } else {
