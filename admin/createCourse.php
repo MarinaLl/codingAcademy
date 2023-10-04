@@ -1,7 +1,9 @@
 <?php
+    session_start();
+    include('../funciones.php');
     if ($_SESSION['role'] != 'admin') {
         logout("../");
-    }
+    } else {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +14,7 @@
     <title>Create New Course</title>
 </head>
 <body>
-    <?php include('../funciones.php');
+    <?php
         if ($_POST){
             $courseName = $_POST['courseName'];
             $courseDescription = $_POST['courseDescription'];
@@ -93,6 +95,6 @@
         </div>
         
     </form>
-    <?php }?>
+    <?php }}?>
 </body>
 </html>

@@ -1,8 +1,10 @@
 <?php   
     include('../funciones.php');
     session_start();
-    addHeader("../");
-    if (isset($_SESSION['user']) && $_SESSION['role'] == 'student') {
+    if (!isset($_SESSION['user']) || $_SESSION['role'] != 'student') {
+        logout("../");
+    } else {
+        addHeader("../");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,6 +92,4 @@
     </div>
 </body>
 </html>
-<?php } else {
-        logout("../");
-    }?>
+<?php } ?>
