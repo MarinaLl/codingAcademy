@@ -325,6 +325,25 @@ function editProfile($studentName, $studentLastNames, $changeDni, $studentEmail,
     }
 }
 
+function isCategory($category) {
+	$sql = "SELECT COUNT(*) FROM category WHERE ID = ?";
+    $connectCategories = connectDataBase();
+    
+	if ($stmt = mysqli_prepare($connectCategories, $sql)) {
+    	mysqli_stmt_bind_param($stmt, "s", $category);
+    	mysqli_stmt_execute($stmt);
+    	mysqli_stmt_bind_result($stmt, $count);
+    	mysqli_stmt_fetch($stmt);
+    	mysqli_stmt_close($stmt);
+
+    	if ($count > 0) {
+        	return true;
+    	}
+	}
+	return false;
+}
+
+
 function countTopCourses() {
     $sql = "SELECT course_code, COUNT(*) AS enrollment_count
     FROM enrollment

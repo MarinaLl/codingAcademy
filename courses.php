@@ -4,8 +4,13 @@ include('funciones.php');
 addHeader("");
 
 if (isset($_GET['category'])) {
-    $_SESSION['courseCategory'] = $_GET['category'];
-    echo '<meta http-equiv="refresh" content="0;url=courseList.php">';
+    if (isCategory(($_GET['category']))) {
+        $category = $_GET['category'];
+        include("courseList.php");
+    } else {
+        echo '<meta http-equiv="refresh" content="0;url=courses.php">';
+    }
+    
 } else {
     if ($_POST) {
         enroll();

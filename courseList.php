@@ -1,7 +1,7 @@
-<?php 
-    session_start();
-    include('funciones.php');
-    addHeader("");
+<?php
+    if (!isset($category)) {
+        echo '<meta http-equiv="refresh" content="0;url=courses.php">';
+    } else {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +23,8 @@
         <div class="courseList">
 
         <h1 id="courseTitle">
-            <?php $category = str_replace('-', ' ', $_SESSION['courseCategory']);
-            $category = ucwords($category); echo $category;
+            <?php $categoryName = str_replace('-', ' ', $category);
+            $categoryName = ucwords($categoryName); echo $categoryName;
             ?></h1>
         <div>
             <h3 id="allCourses">All Courses</h3>
@@ -32,7 +32,7 @@
         </div>
         <form action="courseList.php" method="post" name="courseEnrollment">
             <?php
-                showCourseList($_SESSION['courseCategory'], $_SESSION['user']);
+                showCourseList($category, $_SESSION['user']);
                 
             ?>
             </form>
@@ -41,3 +41,4 @@
     </div>
 </body>
 </html>
+<?php } ?>
