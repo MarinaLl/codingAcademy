@@ -8,6 +8,7 @@
 @mixin hoverLinks($lineType, $color){
     text-decoration: $lineType;
     color: $color;
+    cursor: pointer;
 }
 
 @mixin boxSize($width, $height, $borderRadius: 0){
@@ -87,4 +88,11 @@
             grid-area: #{nth($area, 1)} / #{nth($area, 2)} / #{nth($area, 3)} / #{nth($area, 4)};
         }
     }
+}
+@mixin courseTitles(){
+    color: black;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }

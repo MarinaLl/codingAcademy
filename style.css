@@ -1,13 +1,5 @@
-#categoryGrid{
-    display: grid;
-    border: 1px solid black;
-    grid-template-areas: 'left title right'
-    'left categories right';
-    row-gap: 20px;
-}
-#categoryGrid > *{
-    border: 1px solid black;
-}
+
+
 .left{
     grid-area: left;
 }
@@ -29,7 +21,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding-top: 50px;
-    border: 1px solid black;
+   
 
 }
 .categoryBox{
@@ -73,28 +65,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.name { grid-area: name; }
-.lastnames { grid-area: lastnames; }
-.dni { grid-area: dni; }
-.title { grid-area: title; }
-.photo { grid-area: photo; }
-.email { grid-area: email; }
-.password { grid-area: password; }
-.buttons { grid-area: buttons; }
 
-.grid-container {
-    width: 910px;
-    height: 378px;
-    margin-top: 39px;
-    margin-left: 106px;
-    display: grid;
-    grid-template-areas:
-      'name name lastnames lastnames dni dni'
-      'title title title title title title'
-      'photo photo photo photo photo photo'
-      'email email email password password password'
-      'buttons buttons buttons buttons buttons buttons';
-}
+
+
 
 #createTeacherPopUp h1 {
     color: #000;

@@ -1,4 +1,5 @@
-
+@import 'mixin.scss';
+@import 'variables.scss';
 
 .card{
     width: 270px;
@@ -18,3 +19,108 @@
         }
     
 }
+*{padding: 0; margin: 0; font-family: $font;}
+.cardComponent{
+    @include boxSize(906px, 187px, $boxRadius);
+    border: 5px solid rgba(0, 122, 120, 0.27);
+    display: flex;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    > img {
+        height: 100%;
+        border-bottom-left-radius: 15px ;
+        border-top-left-radius: 15px;
+    }
+    > div{
+        width: 100%;
+        padding: 15px;
+        $cuadricula: 
+        (1, 1, 2, 3),
+          (2, 1, 3, 3),
+          (1, 3, 3, 5),
+          (3, 1, 4, 5),
+          (4, 1, 5, 2),
+          (4, 2, 5, 3),
+          (4, 3, 5, 5);
+        
+        @include grid(repeat(4, 1fr), repeat(4, 1fr));
+        @include generateGridArea(div, $cuadricula);
+        
+        h1 {
+            @include courseTitles();
+        }
+
+        div{
+            &:nth-child(2){
+                display: flex;
+                
+                img {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                }
+                p{color: gray;}
+            }
+            button {
+                width: 182px;
+                height: 37px;
+                border-radius: 10px;
+                background-color: $primaryColor;
+                font-weight: 700;
+                color: white;
+                font-size: 16px;
+                float: right;
+                border: none;
+
+            }
+           
+        }
+        .bottomCard{
+            color: gray;
+            margin-top: 20px;
+            &:last-child{text-align: right;}
+        }
+        p{text-align: justify;}
+    }
+
+
+}
+
+
+.topComponent{
+    width: 309px;
+    height: 467px;
+    border: 1px solid black;
+    border-radius: 20px;
+    > img {
+        width: 100%;
+        height: 208px;
+        border-radius: 20px 20px 0px 0px;
+    }
+    > div {
+        height: 259px;
+        @include grid(repeat(2, 1fr), repeat(4, 1fr));
+        padding: 15px;
+        $cuadricula: 
+        (1, 1, 3, 3),
+          (3, 1, 4, 3),
+          (4, 1, 5, 2),
+          (4, 2, 5, 3);
+        
+        @include generateGridArea(div, $cuadricula);
+        img{
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+        > div{
+            > div {
+                display: flex;
+            }
+            &:nth-child(2){
+                background-color: pink;
+                text-align: justify;
+            }
+        }
+    }
+}
+

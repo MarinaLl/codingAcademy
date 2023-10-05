@@ -35,12 +35,14 @@
                 @include boxSize(400px, fit-content);
                 
                 input {
-                    @include textbox(100%);
+                    @include textbox(calc(100% - 10px));
                     border: 1px solid rgba(0, 0, 0, 0.24);
+                    padding :0;
                     
                     &[type="submit"]{
                         @include browsePhotoBtn(100%);
                         font-weight: bold;
+                        margin-right: -10px;
                     }
                 }
 

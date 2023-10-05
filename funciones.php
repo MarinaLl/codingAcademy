@@ -441,4 +441,56 @@ function showStudentCourses($user){
     }
 }
 
+function showCourseList($courseCategory, $user){
+    $sql = "SELECT * FROM course WHERE category = '".$courseCategory."' AND active = 1 AND code NOT IN (SELECT course_code FROM enrollment WHERE student_email = '".$user."')";
+                
+                $connect = connectDataBase();
+        
+                $query = mysqli_query($connect, $sql);
+
+                if ($query == false){
+                    mysqli_error($connect);
+                } else {
+                    $numLines = mysqli_num_rows($query);
+                    
+                    if ($numLines > 0) {
+                        
+                        for($i = 0; $i < $numLines; $i++){
+                            $course = mysqli_fetch_array($query);
+                            $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
+                            $queryTeacher = mysqli_query($connect, $sql);
+                            $teacher = mysqli_fetch_array($queryTeacher);
+                            $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
+                            echo '<div class="cardComponent">';
+                            echo '
+                                <img src="'.$course['photo'].'">
+                                <div class="gridComponent">
+                                    <div>
+                                        <h2>'.$course['name'].'</h2>
+                                    </div>
+                                    <div>
+                                        <img src="'.$teacher['photo'].'">
+                                        <p>'.$teacherCompleteName.'</p>
+                                    </div>
+                                    <div>
+                                        <button type="submit" name="buttonEnroll" value='.$course['code'].'>Enroll Now</button>
+                                    </div>
+                                    <div>
+                                        <p>'.$course['description'].'</p>
+                                    </div>
+                                    <div class="bottomCard">'.$course['duration'].' Hours</div>
+                                    <div class="bottomCard">Starts: '.$course['start'].'</div>
+                                    <div class="bottomCard">Level: '.$course['difficulty'].'</div>
+                                </div>';
+                                
+                                echo '</div>';
+                        }
+                    } else {
+                        echo 'No hay cursos en esta categoria';
+                    }
+                    
+                    
+                }
+}
+
 ?>

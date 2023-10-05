@@ -48,13 +48,14 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  width: 100%;
+  width: calc(100% - 10px);
   height: 55px;
   border-radius: 15px;
   background-color: #D9D9D9;
   margin-bottom: 18px;
   padding-left: 10px;
   border: 1px solid rgba(0, 0, 0, 0.24);
+  padding: 0;
 }
 .loginContainer > div:last-child form input[type=submit] {
   width: 100%;
@@ -70,6 +71,7 @@
   background-color: #007A78;
   padding: 15px 35px;
   font-weight: bold;
+  margin-right: -10px;
 }
 .loginContainer > div:last-child form[name=register] {
   display: grid;

@@ -12,6 +12,12 @@
     font-family: $font;
 }
 
+h1{
+    @include title();
+    margin: 20px auto;
+    text-transform: uppercase;
+}
+
 #form-container{
     @include boxSize($adminFormWidth, 565px, $boxRadius);
     background-color: rgba(0, 122, 120, 0.56);
@@ -161,4 +167,126 @@ form[name="editProfile"]{
         @include textbox(fit-content);
     }
 
+}
+
+.courseList{
+    
+    @include flex(column, center, flex-start);
+    > div {
+        @include flex(row, center, space-between);
+        width: 70%;
+        margin-bottom: 15px;
+        h3{
+            font-weight: 500;
+        }
+    }
+}
+
+.cardComponent{
+    @include boxSize(906px, 187px, $boxRadius);
+    border: 5px solid rgba(0, 122, 120, 0.27);
+    display: flex;
+    box-shadow: $boxShadow;
+    margin-bottom: 27px;
+    > img {
+        width: 229px;
+        height: 100%;
+        border-bottom-left-radius: 15px ;
+        border-top-left-radius: 15px;
+    }
+    > div{
+        width: 100%;
+        padding: 15px;
+        
+        $cuadricula: 
+        (1, 1, 2, 3),
+          (2, 1, 3, 3),
+          (1, 3, 3, 5),
+          (3, 1, 4, 5),
+          (4, 1, 5, 2),
+          (4, 2, 5, 3),
+          (4, 3, 5, 5);
+        
+        @include grid(repeat(4, 1fr), repeat(4, 1fr));
+        @include generateGridArea(div, $cuadricula);
+
+        div{
+            &:nth-child(2){
+                display: flex;
+                
+                img {
+                    @include boxSize(24px, 24px, 50%);
+                }
+
+                p{color: gray;}
+            }
+            button {
+                @include boxSize(182px, 37px, 10px);
+                @include defaultBtn(none, white);
+                background-color: $primaryColor;
+                font-weight: 700;
+                font-size: 16px;
+                float: right;
+                
+                &:hover {
+                    @include hoverLinks(underline, white);
+                }
+
+            }
+           
+        }
+        .bottomCard{
+            color: gray;
+            margin-top: 20px;
+            &:last-child{text-align: right;}
+        }
+        p{text-align: justify;}
+    }
+
+
+}
+form[name="mostPopularEnrollment"]{
+    img{
+        width: 100px;
+    }
+}
+
+// cambiar a scss --------------------
+#courseCategoriesContainer{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 50px;
+    
+    .categoryBox{
+        @include flex(column, center, center);
+    }
+    .imageBox{
+        width: 170px;
+        height: 170px;
+        background-color: #007A78;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .categoryImage{
+        width: 93px;
+    }
+    p{
+        width: 156px;
+        height: 59px;
+        font-size: 24px;
+        text-align: center;
+        font-weight: 500;
+        margin-top: 16px;
+    }
+}
+#popular{
+    margin-top: 130px;
+    font-size: 24px;
+    
+    font-weight: 500;
 }

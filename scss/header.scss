@@ -23,6 +23,7 @@ header{
                 &:hover{
                    @include hoverLinks(underline, $primaryColor);
                 }
+
             }
         }
         div:last-child{

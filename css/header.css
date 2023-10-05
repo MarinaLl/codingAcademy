@@ -28,10 +28,12 @@ header > div div a {
   margin: auto 20px;
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 header > div div a:hover {
   text-decoration: underline;
   color: #007A78;
+  cursor: pointer;
 }
 header > div div:last-child #signUpBtn {
   color: #007A78;
@@ -48,6 +50,7 @@ header > div div:last-child #logInBtn {
 header > div div:last-child #logInBtn:hover {
   text-decoration: underline;
   color: white;
+  cursor: pointer;
 }
 header > div div:last-child img {
   width: 50px;
