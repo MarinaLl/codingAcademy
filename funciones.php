@@ -460,56 +460,114 @@ function showStudentCourses($user){
     }
 }
 
-function showCourseList($courseCategory, $user){
-    $sql = "SELECT * FROM course WHERE category = '".$courseCategory."' AND active = 1 AND code NOT IN (SELECT course_code FROM enrollment WHERE student_email = '".$user."')";
-                
-                $connect = connectDataBase();
-        
-                $query = mysqli_query($connect, $sql);
+function showCourseList($courseCategory) {
+    $sql = "SELECT * FROM course WHERE category = '".$courseCategory."' AND active = 1 AND code NOT IN (SELECT course_code FROM enrollment WHERE student_email = '".$_SESSION['user']."')";
+    
+    $connect = connectDataBase();
 
-                if ($query == false){
-                    mysqli_error($connect);
-                } else {
-                    $numLines = mysqli_num_rows($query);
-                    
-                    if ($numLines > 0) {
+    $query = mysqli_query($connect, $sql);
+
+    if ($query == false){
+        mysqli_error($connect);
+    } else {
+        $numLines = mysqli_num_rows($query);
+        
+        if ($numLines > 0) {
+                for($i = 0; $i < $numLines; $i++){
+                    $course = mysqli_fetch_array($query);
+                    $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
+                    $queryTeacher = mysqli_query($connect, $sql);
+                    $teacher = mysqli_fetch_array($queryTeacher);
+                    $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
+                    echo '<div class="cardComponent">';
+                    echo '
+                        <img src="'.$course['photo'].'">
+                        <div class="gridComponent">
+                            <div>
+                                <h2>'.$course['name'].'</h2>
+                            </div>
+                            <div>
+                                <img src="'.$teacher['photo'].'">
+                                <p>'.$teacherCompleteName.'</p>
+                            </div>
+                            <div>
+                                <button type="submit" name="buttonEnroll" value='.$course['code'].'>Enroll Now</button>
+                            </div>
+                            <div>
+                                <p>'.$course['description'].'</p>
+                            </div>
+                            <div class="bottomCard">'.$course['duration'].' Hours</div>
+                            <div class="bottomCard">Starts: '.$course['start'].'</div>
+                            <div class="bottomCard">Level: '.$course['difficulty'].'</div>
+                        </div>';
                         
-                        for($i = 0; $i < $numLines; $i++){
-                            $course = mysqli_fetch_array($query);
-                            $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
-                            $queryTeacher = mysqli_query($connect, $sql);
-                            $teacher = mysqli_fetch_array($queryTeacher);
-                            $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
-                            echo '<div class="cardComponent">';
-                            echo '
-                                <img src="'.$course['photo'].'">
-                                <div class="gridComponent">
-                                    <div>
-                                        <h2>'.$course['name'].'</h2>
-                                    </div>
-                                    <div>
-                                        <img src="'.$teacher['photo'].'">
-                                        <p>'.$teacherCompleteName.'</p>
-                                    </div>
-                                    <div>
-                                        <button type="submit" name="buttonEnroll" value='.$course['code'].'>Enroll Now</button>
-                                    </div>
-                                    <div>
-                                        <p>'.$course['description'].'</p>
-                                    </div>
-                                    <div class="bottomCard">'.$course['duration'].' Hours</div>
-                                    <div class="bottomCard">Starts: '.$course['start'].'</div>
-                                    <div class="bottomCard">Level: '.$course['difficulty'].'</div>
-                                </div>';
-                                
-                                echo '</div>';
-                        }
-                    } else {
-                        echo 'No hay cursos en esta categoria';
-                    }
-                    
-                    
+                        echo '</div>';
                 }
+            
+        } else {
+            echo 'No hay cursos en esta categoria';
+        }
+        
+        
+    }
 }
 
+function showTeacherCourses() {
+    $sql = "SELECT * FROM course WHERE teacher_email = '".$_SESSION['user']."'";
+    
+    $connect = connectDataBase();
+
+    $query = mysqli_query($connect, $sql);
+    echo '<form action="teacherCourse.php" method="post" name="mostPopularEnrollment">';
+    while ($course = mysqli_fetch_assoc($query)) {
+        // Count the number of students for each course
+        $course_code = mysqli_real_escape_string($connect, $course['code']);
+        $sql = "SELECT COUNT(*) AS numStudents FROM enrollment WHERE course_code = '$course_code'";
+        $queryStudents = mysqli_query($connect, $sql);
+
+        if (!$queryStudents) {
+            // Handle the SQL query error here
+            echo "Error executing the student count query: " . mysqli_error($connect);
+            continue; // Move to the next course
+        }
+
+        $enrollments = mysqli_fetch_assoc($queryStudents);
+        $numStudents = $enrollments['numStudents'];
+
+        // Display course information
+        echo '<button type="submit" name="buttonCourse" value='.$course['code'].'>';
+        echo '<input type="hidden" name="courseName" value="'.$course['name'].'">';
+        echo '<div class="cardComponent">';
+        echo '<img src="../' . $course['photo'] . '">';
+        echo '<h2>' . $course['name'] . '</h2>';
+        echo '<p>' . $numStudents . ' Students</p>';
+        echo '</div></button';
+    }
+    echo '</form>';
+
+}
+
+function showAllStudents($course) {
+    $sql = "SELECT 
+        s.photo AS photo, 
+        s.name AS name,
+        s.lastNames AS lastNames,
+        s.email AS email,
+        e.grade AS grade FROM (student s INNER JOIN enrollment e ON s.email = e.student_email) WHERE course_code = '$course'";
+    
+    $connect = connectDataBase();
+
+    $query = mysqli_query($connect, $sql);
+    echo '<form action="teacherEditGrade.php" method="post" name="studentsGrade"><table>';
+    while ($student = mysqli_fetch_assoc($query)) {
+        
+        echo '<tr>
+        <td><img src="../'.$student['photo'].'"></td>
+        <td>'.$student['name'].'</td>
+        <td>'.$student['lastNames'].'</td>
+        <td>'.$student['grade'].'</td>
+        <td><button type="submit" name="editGrade" value='.$student['email'].'><img src="../src/edit.png"></button></td></tr>';
+    }
+    echo '</table></form>';
+}
 ?>

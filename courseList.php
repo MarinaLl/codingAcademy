@@ -1,5 +1,10 @@
 <?php
     if (!isset($category)) {
+        if ($_POST) {
+            session_start();
+            include("funciones.php");
+            enroll();
+        }
         echo '<meta http-equiv="refresh" content="0;url=courses.php">';
     } else {
 ?>
@@ -32,7 +37,7 @@
         </div>
         <form action="courseList.php" method="post" name="courseEnrollment">
             <?php
-                showCourseList($category, $_SESSION['user']);
+                showCourseList($category);
                 
             ?>
             </form>
