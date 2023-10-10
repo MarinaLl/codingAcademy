@@ -373,7 +373,7 @@ function countTopCourses() {
                 $courseDescription = $course['description'];
                 $courseDuration = $course['duration'];
                 $courseStartDate = $course['start'];
-                $courseDifficulty = $course['difficulty'];
+                $courseDifficulty = formatString($course['difficulty']);
                 $sqlEnrolled = "SELECT * FROM enrollment WHERE course_code = ".$courseCode." AND student_email = '".$_SESSION['user']."'";
                 $queryEnrollments = mysqli_query($connectTopCourses, $sqlEnrolled);
                 
@@ -490,6 +490,8 @@ function showCourseList($courseCategory) {
                     $queryTeacher = mysqli_query($connect, $sql);
                     $teacher = mysqli_fetch_array($queryTeacher);
                     $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
+                    $difficulty = formatString($course['difficulty']);
+
                     echo '<div class="cardComponent">';
                     echo '
                         <img src="'.$course['photo'].'">
@@ -509,7 +511,7 @@ function showCourseList($courseCategory) {
                             </div>
                             <div class="bottomCard">'.$course['duration'].' Hours</div>
                             <div class="bottomCard">Starts: '.$course['start'].'</div>
-                            <div class="bottomCard">Level: '.$course['difficulty'].'</div>
+                            <div class="bottomCard">Level: '.$difficulty.'</div>
                         </div>';
                         
                         echo '</div>';
@@ -521,6 +523,12 @@ function showCourseList($courseCategory) {
         
         
     }
+}
+
+function formatString($string) {
+    $words = explode("-", $string);
+    $formattedString = implode(" ", array_map('ucfirst', $words));
+    return $formattedString;
 }
 
 function showTeacherCourses() {
