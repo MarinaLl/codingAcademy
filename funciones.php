@@ -494,7 +494,9 @@ function showCourseList($courseCategory) {
 
                     echo '<div class="cardComponent">';
                     echo '
-                        <img src="'.$course['photo'].'">
+                        <div>
+                            <img src="'.$course['photo'].'">
+                        </div>
                         <div class="gridComponent">
                             <div>
                                 <h3>'.$course['name'].'</h3>

@@ -712,52 +712,69 @@ form[name=editProfile] input {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 27px;
 }
-.cardComponent > img {
+.cardComponent h3 {
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-top: 20px;
+  padding: 0;
+}
+.cardComponent > div {
   width: 229px;
   height: 100%;
   border-bottom-left-radius: 15px;
   border-top-left-radius: 15px;
 }
-.cardComponent > div {
+.cardComponent > div > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.cardComponent > div + div {
   width: 100%;
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
 }
-.cardComponent > div div:nth-child(1) {
+.cardComponent > div + div div:nth-child(1) {
   grid-area: 1/1/2/3;
 }
-.cardComponent > div div:nth-child(2) {
+.cardComponent > div + div div:nth-child(2) {
   grid-area: 2/1/3/3;
 }
-.cardComponent > div div:nth-child(3) {
+.cardComponent > div + div div:nth-child(3) {
   grid-area: 1/3/3/5;
 }
-.cardComponent > div div:nth-child(4) {
+.cardComponent > div + div div:nth-child(4) {
   grid-area: 3/1/4/5;
 }
-.cardComponent > div div:nth-child(5) {
+.cardComponent > div + div div:nth-child(5) {
   grid-area: 4/1/5/2;
 }
-.cardComponent > div div:nth-child(6) {
+.cardComponent > div + div div:nth-child(6) {
   grid-area: 4/2/5/3;
 }
-.cardComponent > div div:nth-child(7) {
+.cardComponent > div + div div:nth-child(7) {
   grid-area: 4/3/5/5;
 }
-.cardComponent > div div:nth-child(2) {
+.cardComponent > div + div div:nth-child(2) {
   display: flex;
 }
-.cardComponent > div div:nth-child(2) img {
+.cardComponent > div + div div:nth-child(2) img {
   width: 24px;
   height: 24px;
   border-radius: 50%;
 }
-.cardComponent > div div:nth-child(2) p {
+.cardComponent > div + div div:nth-child(2) p {
   color: gray;
 }
-.cardComponent > div div button {
+.cardComponent > div + div div button {
   width: 182px;
   height: 37px;
   border-radius: 10px;
@@ -772,19 +789,19 @@ form[name=editProfile] input {
   font-size: 16px;
   float: right;
 }
-.cardComponent > div div button:hover {
+.cardComponent > div + div div button:hover {
   text-decoration: underline;
   color: white;
   cursor: pointer;
 }
-.cardComponent > div .bottomCard {
+.cardComponent > div + div .bottomCard {
   color: gray;
   margin-top: 20px;
 }
-.cardComponent > div .bottomCard:last-child {
+.cardComponent > div + div .bottomCard:last-child {
   text-align: right;
 }
-.cardComponent > div p {
+.cardComponent > div + div p {
   text-align: justify;
 }
 
@@ -833,7 +850,7 @@ form[name=editProfile] input {
 .topComponent {
   width: 309px;
   height: 490px;
-  border: 1px solid black;
+  box-shadow: 2px 3px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   margin: 10px;
 }
