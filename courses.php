@@ -58,7 +58,9 @@ if (isset($_GET['category'])) {
                     </div>
                 </div>
                 <h2 id="popular">MOST POPULAR</h2>
-                <?php countTopCourses(); ?>
+                <div class="wrap">
+                    <?php countTopCourses(); ?>
+                </div>
         </div>
         <div></div>
     </div>

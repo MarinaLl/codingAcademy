@@ -36,12 +36,11 @@
                 
             </div>
             <form action="student.php" method="post" name="unenrollCourse">
-                <div id="wrap">
+                <div class="wrap">
                     <?php
                         showStudentCourses($_SESSION['user']);
                         
                     ?>
-                    
                     
                 </div>
             </form>

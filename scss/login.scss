@@ -26,7 +26,7 @@
 
             h1{
                 @include boxSize(378px, fit-content);
-                @include title();
+                @include title(64px, 500);
                 font-size: 64px;
                 padding: 0px;
                 margin-bottom: 60px;

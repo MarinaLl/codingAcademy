@@ -2,7 +2,8 @@
 @import 'variables.scss';
 
 .popup-title{
-    @include title();
+    @include title(32px, 500);
+    text-align: center;
 }
 
 .popup-container{

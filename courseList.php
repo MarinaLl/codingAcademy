@@ -27,7 +27,7 @@
         <div></div>
         <div class="courseList">
 
-        <h1 id="courseTitle">
+        <h1 class="pageTitle">
             <?php $categoryName = str_replace('-', ' ', $category);
             $categoryName = ucwords($categoryName); echo $categoryName;
             ?></h1>
@@ -41,6 +41,7 @@
                 
             ?>
             </form>
+            
         </div>
         <div></div>
     </div>
