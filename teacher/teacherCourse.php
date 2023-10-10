@@ -4,6 +4,7 @@
     if ($_SESSION['role'] != 'teacher') {
         logout("../");
     } else {
+        if (isset($_POST['editGrade']))
         if (!$_POST) {
             echo '<meta http-equiv="refresh" content="0;url=teacher.php">';
         }
@@ -16,7 +17,7 @@
     <title>Teacher Panel</title>
 </head>
 <body>
-    <h1>Welcome to, <?php  echo $_POST['courseName']?></h1>
+    <h1>Welcome to, <?php  echo $_POST['courseName']; ?></h1>
     <p>Teacher: <?php echo $_SESSION['completeName']; ?></p>
     <h2>All Students</h2>
     <?php showAllStudents($_POST['buttonCourse'])?>

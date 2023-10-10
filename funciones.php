@@ -543,7 +543,7 @@ function showTeacherCourses() {
         echo '<img src="../' . $course['photo'] . '">';
         echo '<h2>' . $course['name'] . '</h2>';
         echo '<p>' . $numStudents . ' Students</p>';
-        echo '</div></button';
+        echo '</div></button>';
     }
     echo '</form>';
 
@@ -568,7 +568,8 @@ function showAllStudents($course) {
         <td>'.$student['name'].'</td>
         <td>'.$student['lastNames'].'</td>
         <td>'.$student['grade'].'</td>
-        <td><button type="submit" name="editGrade" value='.$student['email'].'><img src="../src/edit.png"></button></td></tr>';
+        <td><button type="submit" name="editGrade" value='.$student['email'].'><img src="../src/edit.png"></button></td>
+        <input type="hidden" name="studentGrade" value="'.$student['grade'].'"</tr>';
     }
     echo '</table></form>';
 }
