@@ -8,19 +8,25 @@
 </head>
 <body>
     <div class="topComponent">
-        <img src="src/javascript.png" alt="">
+        <div>
+            <img src="src/javascript.png" alt="">
+        </div>
         <div>
             <div>
                 <h2>Javascript Basics</h2>
                 <div>
                     <img src="src/gato.webp" alt="">
-                    <p>joel gurrera</p>
+                    <p>Joel Gurrera</p>
                 </div>
             </div>
             <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem ab doloribus consequatur ipsa maxime! Dolor a officia dicta voluptatibus hic repellat, odio, facilis ad nam saepe ea dolore libero sunt!</div>
             <div>290 hour</div>
             <div>level beginner</div>
+            <div>
+                <button>Enroll</button>
+            </div>
         </div>
     </div>
+    
 </body>
 </html>

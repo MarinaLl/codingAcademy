@@ -376,7 +376,9 @@ function countTopCourses() {
                 $courseDifficulty = $course['difficulty'];
                 $sqlEnrolled = "SELECT * FROM enrollment WHERE course_code = ".$courseCode." AND student_email = '".$_SESSION['user']."'";
                 $queryEnrollments = mysqli_query($connectTopCourses, $sqlEnrolled);
+
                 $enrollButton = '<button type="submit" name="buttonEnroll" value="'.$courseCode.'">Enroll</button>';
+                
                 if($queryEnrollments) {
                     if(mysqli_num_rows($queryEnrollments) > 0) {
                         $enrollButton = "";

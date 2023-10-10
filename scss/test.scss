@@ -91,34 +91,57 @@
     height: 467px;
     border: 1px solid black;
     border-radius: 20px;
-    > img {
-        width: 100%;
-        height: 208px;
-        border-radius: 20px 20px 0px 0px;
+    > div{
+        &:first-child{
+            width: 100%;
+            height: 208px;
+            
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 20px 20px 0px 0px;
+            }
+        }
     }
-    > div {
+    
+    > div + div {
         height: 259px;
         @include grid(repeat(2, 1fr), repeat(4, 1fr));
         padding: 15px;
+        align-items: center;
         $cuadricula: 
-        (1, 1, 3, 3),
-          (3, 1, 4, 3),
-          (4, 1, 5, 2),
-          (4, 2, 5, 3);
-        
+            (1, 1, 2, 3),
+            (2, 1, 3, 3),
+            (3, 1, 4, 2),
+            (3, 2, 4, 3),
+            (4, 1, 5, 3);
+
         @include generateGridArea(div, $cuadricula);
         img{
             width: 24px;
             height: 24px;
             border-radius: 50%;
+            margin-right: 5px;
+        }
+        p{
+            color: gray;
         }
         > div{
+            
+            h2 {
+                font-size: 22px;
+            }
             > div {
+                
                 display: flex;
             }
             &:nth-child(2){
-                background-color: pink;
+                margin-top: 7px;
                 text-align: justify;
+            }
+            button{
+                width: 100%;
             }
         }
     }
