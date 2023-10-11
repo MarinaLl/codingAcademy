@@ -2,7 +2,7 @@
     if (!isset($category)) {
         if ($_POST) {
             session_start();
-            include("funciones.php");
+            include("../funciones.php");
             enroll();
         }
         echo '<meta http-equiv="refresh" content="0;url=courses.php">';

@@ -1,20 +1,23 @@
-<?php 
-session_start();
-include('funciones.php');
-addHeader("");
-
-if (isset($_GET['category'])) {
-    if (isCategory(($_GET['category']))) {
-        $category = $_GET['category'];
-        include("courseList.php");
+<?php   
+    include('../funciones.php');
+    session_start();
+    if ($_SESSION['role'] != 'student') {
+        logout("../");
     } else {
-        echo '<meta http-equiv="refresh" content="0;url=courses.php">';
-    }
-    
-} else {
-    if ($_POST) {
-        enroll();
-    }
+        addHeader("../");
+
+        if (isset($_GET['category'])) {
+            if (isCategory(($_GET['category']))) {
+                $category = $_GET['category'];
+                include("courseList.php");
+            } else {
+                echo '<meta http-equiv="refresh" content="0;url=courses.php">';
+            }
+            
+        } else {
+            if ($_POST) {
+                enroll();
+            }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,25 +37,25 @@ if (isset($_GET['category'])) {
                 <div id="courseCategoriesContainer">
                     <div id="beginner-friendly" class="categoryBox">
                         <div class="imageBox">
-                            <img class="categoryImage" src="src/newbie(1).png" alt="newbie">
+                            <img class="categoryImage" src="../src/newbie(1).png" alt="newbie">
                         </div>
                         <p>Beginner Friendly</p>
                     </div>
                     <div id="web-development" class="categoryBox">
                         <div class="imageBox">
-                            <img class="categoryImage" src="src/devops(1).png" alt="web development">
+                            <img class="categoryImage" src="../src/devops(1).png" alt="web development">
                         </div>
                         <p>Web Development</p>
                     </div>
                     <div id="game-development" class="categoryBox">
                         <div class="imageBox">
-                            <img class="categoryImage" src="src/game-development.png" alt="game development">
+                            <img class="categoryImage" src="../src/game-development.png" alt="game development">
                         </div>
                         <p>Game Development</p>
                     </div>
                     <div id="computer-science" class="categoryBox">
                         <div class="imageBox">
-                            <img class="categoryImage" src="src/artificial-intelligence.png" alt="computer science">
+                            <img class="categoryImage" src="../src/artificial-intelligence.png" alt="computer science">
                         </div>
                         <p>Computer Science</p>
                     </div>
@@ -67,4 +70,4 @@ if (isset($_GET['category'])) {
     
 </body>
 </html>
-<?php } ?>
+<?php }} ?>

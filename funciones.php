@@ -380,6 +380,8 @@ function countTopCourses() {
                 if($queryEnrollments) {
                     if(mysqli_num_rows($queryEnrollments) > 0) {
                         $enrollButton = "";
+                    } else {
+                        $enrollButton = '<div><button type="submit" name="buttonEnroll" value="'.$courseCode.'">Enroll</button></div>';
                     }
                 } else {
                     echo mysqli_error($connectTopCourses);
@@ -388,22 +390,20 @@ function countTopCourses() {
                 echo '
                 <div class="topComponent">
                 <div>
-                    <img src="'.$courseImage.'" alt="">
+                    <img src="../'.$courseImage.'" alt="">
                 </div>
                 <div>
                     <div>
                         <h3>'.$courseName.'</h3>
                         <div>
-                            <img src="'.$teacherPhoto.'" alt="">
+                            <img src="../'.$teacherPhoto.'" alt="">
                             <p>'.$teacherCompleteName.'</p>
                         </div>
                     </div>
                     <div>'.$courseDescription.'</div>
                     <div>'.$courseDuration.' Hours</div>
                     <div>Level: '.$courseDifficulty.'</div>
-                    <div>
-                        <button type="submit" name="buttonEnroll" value="'.$courseCode.'">Enroll</button>
-                    </div>
+                    '.$enrollButton.'
                 </div>
             </div>
                 ';
@@ -495,14 +495,14 @@ function showCourseList($courseCategory) {
                     echo '<div class="cardComponent">';
                     echo '
                         <div>
-                            <img src="'.$course['photo'].'">
+                            <img src="../'.$course['photo'].'">
                         </div>
                         <div class="gridComponent">
                             <div>
                                 <h3>'.$course['name'].'</h3>
                             </div>
                             <div>
-                                <img src="'.$teacher['photo'].'">
+                                <img src="../'.$teacher['photo'].'">
                                 <p>'.$teacherCompleteName.'</p>
                             </div>
                             <div>
