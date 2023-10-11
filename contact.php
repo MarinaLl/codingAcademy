@@ -2,6 +2,20 @@
     session_start();
     include("funciones.php");
     addHeader("");
+    if($_POST) {
+        $to = "d.duque.dev@gmail.com";
+        $completeName = $_POST['name']." ".$_POST['lastNames'];
+        $subject = "Coding Academy Contact Email";
+        $message = $_POST['message'];
+        $additional_headers = "From: ".$completeName." with email: ".$_POST['email'];
+        mail(
+            $to,
+            $subject,
+            $message,
+            $additional_headers
+        );
+        
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,11 +29,17 @@
     <div class="grid-container">
         <div></div>
         <div>
-            <h1>CONTACT</h1>
-            <img src="src/contact.png">
-            <?php
-                createContactForm();
-            ?>
+            <h1 class="pageTitle">Contact</h1>
+            <div class="contactContainer">
+                <div>
+                    <img src="src/contact.png">
+                </div>
+                <div>
+                    <?php
+                        createContactForm();
+                    ?>
+                </div>
+            </div>
         </div>
         <div></div>
     </div>

@@ -411,7 +411,6 @@ form[name="editProfile"]{
     }
 }
 
-<<<<<<< HEAD
 #slider-container {
     width: 100%;
     height: 700px;
@@ -480,8 +479,19 @@ form[name="editProfile"]{
         }
     }
 
-=======
 // Codigo de Denis DANGER DANGER
+
+.contactContainer {
+    $cuadricula:
+        (1, 1, 2, 2),
+        (1, 2, 2, 3);
+
+    @include grid(repeat(2, 1fr), 1fr);
+    @include generateGridArea(div, $cuadricula);
+    img {
+        float: right;
+    }
+}
 
 form[name="contactForm"] {
     $cuadricula: 
@@ -501,9 +511,11 @@ form[name="contactForm"] {
     @include grid(179px 265px, repeat(8, auto));
     @include generateGridArea(div, $cuadricula);
     background-color: #007A78;
+    margin-top: 21px;
     padding: 44px;
     padding-top: 18px;
     padding-bottom: 25px;
+    
     div {
         h4 {
             @include title(20px, 500);
@@ -519,19 +531,15 @@ form[name="contactForm"] {
             color: white;
         }
         input {
-            @include textbox(100%);
+            @include textbox(calc(100% - 10px));
+            color: white;
             padding: 0;
+            padding-left: 10px;
             margin: 0;
             background-color: #1CA9A6;
             box-shadow: $boxShadow;
             &[name="name"] {
-                width: 169px;
-            }
-            &[name="lastNames"] {
-                width: 265px;
-            }
-            &[name="email"] {
-                width: 444px;
+                width: calc(169px - 10px);
             }
         }
         textarea {
@@ -541,6 +549,7 @@ form[name="contactForm"] {
             border: none;
             box-shadow: $boxShadow;
             margin-bottom: 15px;
+            color: white;
         }
         button {
             @include defaultBtn(1px solid $primaryColor, $primaryColor);
@@ -552,4 +561,3 @@ form[name="contactForm"] {
         }
     }
 }
->>>>>>> 2e69bc5bb874192168c31de91dbcf644a41fa4cf
