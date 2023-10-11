@@ -1,7 +1,7 @@
 <?php
     session_start();
     include('../funciones.php');
-    addHeader("../");
+    
     if ($_SESSION['role'] != 'admin') {
         logout("../");
     } else {

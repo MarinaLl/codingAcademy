@@ -10,18 +10,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <title>CodingAcademy</title>
+  
 </head>
 <body>
-    <div class="grid-container">
-
-        <div></div>
-        <div>
-            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, rem dolorum expedita, sapiente nostrum laborum dolore molestias voluptas natus fugit et nihil quos dolores voluptatem sint. Temporibus dolor natus atque!</div>
+    <div id="slider-container">
+        <div id="slider">
+            <div class="slide"><img src="src/Python-Banner.png" alt="Imagen 1"></div>
+            <div class="slide"><img src="src/Terminal-Banner.png" alt="Imagen 2"></div>
+            <div class="slide"><img src="src/HTMLCSSJS-Banner.png" alt="Imagen 3"></div>
+            <!-- Agrega más imágenes según sea necesario -->
         </div>
-        <div></div>
-        
     </div>
+    
+    <div id="prev">&#10094;</div>
+    <div id="next">&#10095;</div>
+    
+    <div id="indicator-container"></div>
+    
+    <script src="main.js"></script>
+
 </body>
 </html>
