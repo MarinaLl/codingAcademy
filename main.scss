@@ -166,6 +166,7 @@ form[name="editProfile"]{
     (4, 1, 5, 4),
     (5, 1, 6, 4),
     (6, 1, 7, 4);
+
     @include grid(repeat(3, 1fr), repeat(5, auto));
     @include generateGridArea(div, $cuadricula);
     
@@ -410,6 +411,7 @@ form[name="editProfile"]{
     }
 }
 
+<<<<<<< HEAD
 #slider-container {
     width: 100%;
     height: 700px;
@@ -478,3 +480,76 @@ form[name="editProfile"]{
         }
     }
 
+=======
+// Codigo de Denis DANGER DANGER
+
+form[name="contactForm"] {
+    $cuadricula: 
+        (1, 1, 2, 3),
+        (2, 1, 3, 2),
+        (2, 2, 3, 3),
+        (3, 1, 4, 2),
+        (3, 2, 4, 3),
+        (4, 1, 5, 3),
+        (5, 1, 6, 3),
+        (6, 1, 7, 3),
+        (7, 1, 8, 3),
+        (8, 1, 9, 3);
+    
+
+    @include boxSize(calc(532px - 88px), calc(437px - 25px - 18px), $buttonRadius);
+    @include grid(179px 265px, repeat(8, auto));
+    @include generateGridArea(div, $cuadricula);
+    background-color: #007A78;
+    padding: 44px;
+    padding-top: 18px;
+    padding-bottom: 25px;
+    div {
+        h4 {
+            @include title(20px, 500);
+            color: white;
+            text-align: center;
+            padding: 0;
+            padding-bottom: 8px;
+        }
+        label {
+            @include labelStyles();
+            font-size: 12px;
+            font-weight: 700;
+            color: white;
+        }
+        input {
+            @include textbox(100%);
+            padding: 0;
+            margin: 0;
+            background-color: #1CA9A6;
+            box-shadow: $boxShadow;
+            &[name="name"] {
+                width: 169px;
+            }
+            &[name="lastNames"] {
+                width: 265px;
+            }
+            &[name="email"] {
+                width: 444px;
+            }
+        }
+        textarea {
+            background-color: #1CA9A6;
+            @include boxSize(444px, 119px, 10px);
+            resize: none;
+            border: none;
+            box-shadow: $boxShadow;
+            margin-bottom: 15px;
+        }
+        button {
+            @include defaultBtn(1px solid $primaryColor, $primaryColor);
+            @include boxSize(444px, 47px, 10px);
+            font-size: 12px;
+            font-weight: 700;
+            font-weight: 700;
+            box-shadow: $boxShadow;
+        }
+    }
+}
+>>>>>>> 2e69bc5bb874192168c31de91dbcf644a41fa4cf

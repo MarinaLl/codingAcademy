@@ -964,6 +964,7 @@ form[name=editProfile] input {
   top: 51px;
 }
 
+<<<<<<< HEAD
 #slider-container {
   width: 100%;
   height: 700px;
@@ -1026,4 +1027,123 @@ form[name=editProfile] input {
 }
 #indicator-container .indicator.active {
   background-color: #717171;
+=======
+form[name=contactForm] {
+  width: 444px;
+  height: 394px;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 179px 265px;
+  grid-template-rows: repeat(8, auto);
+  background-color: #007A78;
+  padding: 44px;
+  padding-top: 18px;
+  padding-bottom: 25px;
+}
+form[name=contactForm] div:nth-child(1) {
+  grid-area: 1/1/2/3;
+}
+form[name=contactForm] div:nth-child(2) {
+  grid-area: 2/1/3/2;
+}
+form[name=contactForm] div:nth-child(3) {
+  grid-area: 2/2/3/3;
+}
+form[name=contactForm] div:nth-child(4) {
+  grid-area: 3/1/4/2;
+}
+form[name=contactForm] div:nth-child(5) {
+  grid-area: 3/2/4/3;
+}
+form[name=contactForm] div:nth-child(6) {
+  grid-area: 4/1/5/3;
+}
+form[name=contactForm] div:nth-child(7) {
+  grid-area: 5/1/6/3;
+}
+form[name=contactForm] div:nth-child(8) {
+  grid-area: 6/1/7/3;
+}
+form[name=contactForm] div:nth-child(9) {
+  grid-area: 7/1/8/3;
+}
+form[name=contactForm] div:nth-child(10) {
+  grid-area: 8/1/9/3;
+}
+form[name=contactForm] div h4 {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 20px;
+  color: white;
+  text-align: center;
+  padding: 0;
+  padding-bottom: 8px;
+}
+form[name=contactForm] div label {
+  color: #000;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+}
+form[name=contactForm] div input {
+  border: none;
+  color: black;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 100%;
+  height: 55px;
+  border-radius: 15px;
+  background-color: #D9D9D9;
+  margin-bottom: 18px;
+  padding-left: 10px;
+  padding: 0;
+  margin: 0;
+  background-color: #1CA9A6;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+form[name=contactForm] div input[name=name] {
+  width: 169px;
+}
+form[name=contactForm] div input[name=lastNames] {
+  width: 265px;
+}
+form[name=contactForm] div input[name=email] {
+  width: 444px;
+}
+form[name=contactForm] div textarea {
+  background-color: #1CA9A6;
+  width: 444px;
+  height: 119px;
+  border-radius: 10px;
+  resize: none;
+  border: none;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 15px;
+}
+form[name=contactForm] div button {
+  border: 1px solid #007A78;
+  color: #007A78;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 444px;
+  height: 47px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  font-weight: 700;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+>>>>>>> 2e69bc5bb874192168c31de91dbcf644a41fa4cf
 }/*# sourceMappingURL=main.css.map */

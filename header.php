@@ -18,7 +18,7 @@
                 <img id="logo" src="'.$path.'src/codingAcademyLogo.png" alt="logo">
                 <div id="links">
                     <a href="'.$path.'index.php">Home</a>
-                    <a href="'.$path.'courses.php">Courses</a>
+                    <a href="'.$path.'student/courses.php">Courses</a>
                     <a href="'.$path.'aboutUs.php">About Us</a>
                     <a href="'.$path.'contact.php">Contact</a>
                 </div>';

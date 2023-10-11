@@ -380,6 +380,8 @@ function countTopCourses() {
                 if($queryEnrollments) {
                     if(mysqli_num_rows($queryEnrollments) > 0) {
                         $enrollButton = "";
+                    } else {
+                        $enrollButton = '<div><button type="submit" name="buttonEnroll" value="'.$courseCode.'">Enroll</button></div>';
                     }
                 } else {
                     echo mysqli_error($connectTopCourses);
@@ -388,22 +390,20 @@ function countTopCourses() {
                 echo '
                 <div class="topComponent">
                 <div>
-                    <img src="'.$courseImage.'" alt="">
+                    <img src="../'.$courseImage.'" alt="">
                 </div>
                 <div>
                     <div>
                         <h3>'.$courseName.'</h3>
                         <div>
-                            <img src="'.$teacherPhoto.'" alt="">
+                            <img src="../'.$teacherPhoto.'" alt="">
                             <p>'.$teacherCompleteName.'</p>
                         </div>
                     </div>
                     <div>'.$courseDescription.'</div>
                     <div>'.$courseDuration.' Hours</div>
                     <div>Level: '.$courseDifficulty.'</div>
-                    <div>
-                        <button type="submit" name="buttonEnroll" value="'.$courseCode.'">Enroll</button>
-                    </div>
+                    '.$enrollButton.'
                 </div>
             </div>
                 ';
@@ -495,14 +495,14 @@ function showCourseList($courseCategory) {
                     echo '<div class="cardComponent">';
                     echo '
                         <div>
-                            <img src="'.$course['photo'].'">
+                            <img src="../'.$course['photo'].'">
                         </div>
                         <div class="gridComponent">
                             <div>
                                 <h3>'.$course['name'].'</h3>
                             </div>
                             <div>
-                                <img src="'.$teacher['photo'].'">
+                                <img src="../'.$teacher['photo'].'">
                                 <p>'.$teacherCompleteName.'</p>
                             </div>
                             <div>
@@ -598,5 +598,38 @@ function showAllStudents($course) {
         <input type="hidden" name="studentGrade" value="'.$student['grade'].'"</tr>';
     }
     echo '</table></form>';
+}
+
+function createContactForm() {
+    $email = "";
+    $name = "";
+    $lastNames = "";
+    if (isset($_SESSION['user'])) {
+        $email = $_SESSION['user'];
+
+        $sql = "SELECT name, lastNames FROM student WHERE email = '".$_SESSION['user']."'";
+        $connect = connectDataBase();
+        $query = mysqli_query($connect, $sql);
+        if ($query == false){
+            mysqli_error($connect);
+        } else {
+            $student = mysqli_fetch_array($query);
+            $name = $student['name'];
+            $lastNames = $student['lastNames'];
+        }
+    }
+    echo '
+    <form action="contact.php" method="post" name="contactForm">
+        <div><h4>TALK WITH OUR TEAM</h4></div>
+        <div><label for="name">NAME</label></div>
+        <div><label for="lastNames">LAST NAMES</label></div>
+        <div><input type="text" name="name" value="'.$name.'"></div>
+        <div><input type="text" name="lastNames" value="'.$lastNames.'"></div>
+        <div><label for="email">EMAIL</label></div>
+        <div><input type="text" name="email" value="'.$email.'"></div>
+        <div><label for="message">MESSAGE</label></div>
+        <div><textarea id="message" name="message" rows="4" cols="50"></textarea></div>
+        <div><button type="submit" id="sendMessage" name="sendMessage">SEND MESSAGE</button></div>
+    ';
 }
 ?>
