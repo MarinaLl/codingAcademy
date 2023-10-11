@@ -599,4 +599,37 @@ function showAllStudents($course) {
     }
     echo '</table></form>';
 }
+
+function createContactForm() {
+    $email = "";
+    $name = "";
+    $lastNames = "";
+    if (isset($_SESSION['user'])) {
+        $email = $_SESSION['user'];
+
+        $sql = "SELECT name, lastNames FROM student WHERE email = '".$_SESSION['user']."'";
+        $connect = connectDataBase();
+        $query = mysqli_query($connect, $sql);
+        if ($query == false){
+            mysqli_error($connect);
+        } else {
+            $student = mysqli_fetch_array($query);
+            $name = $student['name'];
+            $lastNames = $student['lastNames'];
+        }
+    }
+    echo '
+    <form action="contact.php" method="post" name="contactForm">
+        <div><h4>TALK WITH OUR TEAM</h4></div>
+        <div><label for="name">NAME</label></div>
+        <div><label for="lastNames">LAST NAMES</label></div>
+        <div><input type="text" name="name" value="'.$name.'"></div>
+        <div><input type="text" name="lastNames" value="'.$lastNames.'"></div>
+        <div><label for="email">EMAIL</label></div>
+        <div><input type="text" name="email" value="'.$email.'"></div>
+        <div><label for="message">MESSAGE</label></div>
+        <div><textarea id="message" name="message" rows="4" cols="50"></textarea></div>
+        <div><button type="submit" id="sendMessage" name="sendMessage">SEND MESSAGE</button></div>
+    ';
+}
 ?>
