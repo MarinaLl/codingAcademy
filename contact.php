@@ -8,6 +8,21 @@
         $subject = "Coding Academy Contact Email";
         $message = $_POST['message'];
         $additional_headers = "From: ".$completeName." with email: ".$_POST['email'];
+        
+        // Set the SMTP server and port (for Gmail, use their SMTP server)
+        ini_set("SMTP", "smtp.gmail.com");
+        ini_set("smtp_port", 587);
+        
+        // Set your Gmail email address and password
+        ini_set("sendmail_from", "codingacademycontact@gmail.com");
+        ini_set("sendmail_path", "\"C:\xampp\sendmail\sendmail.exe\" -t");
+        
+        // Send the email
+        mail($to, $subject, $message);
+        
+        echo "Email sent successfully.";
+        
+        
         mail(
             $to,
             $subject,
