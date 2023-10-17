@@ -14,60 +14,70 @@
             background-position: center;
         }
         &:last-child{
+            $areasCuadricula: (
+                (1, 1, 2, 2),
+                (2, 1, 3, 2),
+                (3, 1, 4, 2),
+                (4, 1, 5, 2)
+            );
+
             border-left: 2px solid grey;
-            @include grid(1fr, repeat(3, auto));
+            @include grid(378px, auto 137px 261px auto);
+            @include generateGridArea(div, $areasCuadricula);
             text-align: center;
             justify-items: center;
 
-            img {
-                margin-top: 50px;
-                margin-bottom: -40px;
-            }
+            div {
+                img {
+                    margin-top: 50px;
+                    margin-bottom: -50px
+                }
 
-            h1{
-                @include boxSize(378px, fit-content);
-                @include title(64px, 500);
-                font-size: 64px;
-                padding: 0px;
-                margin-bottom: 60px;
-            }
-            form{
-                @include boxSize(400px, fit-content);
-                
-                input {
-                    @include textbox(calc(100% - 10px));
-                    border: 1px solid rgba(0, 0, 0, 0.24);
-                    padding :0;
+                h1{
+                    @include boxSize(378px, fit-content);
+                    @include title(64px, 500);
+                    padding: 0;
+                    margin-top: -50px;
+                }
+
+                form{
+                    @include boxSize(378px, 261px);
                     
-                    &[type="submit"]{
-                        @include browsePhotoBtn(100%);
-                        font-weight: bold;
-                        margin-right: -10px;
+                    input {
+                        @include textbox(378px);
+                        border: 1px solid rgba(0, 0, 0, 0.24);
+                        padding: 0;
+                        
+                        &[type="submit"]{
+                            @include browsePhotoBtn(378px);
+                            font-weight: bold;
+                        }
+                    }
+    
+                    &[name="register"]{
+                        @include grid(repeat(3, 1fr), repeat(8, 1fr));
+                        
+                        
+                        label{ @include labelStyles(); }
+    
+                        $areasCuadricula: (
+                            (1, 1, 2, 2),
+                            (1, 2, 2, 4),
+                            (2, 1, 3, 2),
+                            (2, 2, 3, 3),
+                            (2, 3, 3, 4),
+                            (3, 1, 4, 4),
+                            (4, 1, 5, 4),
+                            (5, 1, 6, 4)
+                            );
+    
+    
+                        @include generateGridArea(input, $areasCuadricula);
+    
                     }
                 }
-
-                &[name="register"]{
-                    @include grid(repeat(3, 1fr), repeat(8, 1fr));
-                    
-                    
-                    label{ @include labelStyles(); }
-
-                    $areasCuadricula: (
-                        (1, 1, 2, 2),
-                        (1, 2, 2, 4),
-                        (2, 1, 3, 2),
-                        (2, 2, 3, 3),
-                        (2, 3, 3, 4),
-                        (3, 1, 4, 4),
-                        (4, 1, 5, 4),
-                        (5, 1, 6, 4)
-                        );
-
-
-                    @include generateGridArea(input, $areasCuadricula);
-
-                }
             }
+            
 
             
         }

@@ -14,11 +14,6 @@ function connectDataBase() {
     return $connect;
 }
 // Add the Inter font from Google Fonts
-function addFonts() {
-    echo '<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">';
-}
 
 function loginRedirect() {
     echo '<meta http-equiv="refresh" content="0;url='.$_SESSION['role'].'/'.$_SESSION['role'].'.php">';
@@ -81,15 +76,16 @@ function showAllTeachers(){
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
             $line = mysqli_fetch_array($query);
+            $active = ($line['active'] == 1) ? 'Yes' : 'No';
             echo '<tr>
                 <td><img src=../'.$line['photo'].'></td>
                 <td>'.$line['name'].' '.$line['lastNames'].'</td>
                 <td>'.$line['email'].'</td>
                 <td>'.$line['title'].'</td>
                 <td>'.$line['dni'].'</td>
-                <td>'.$line['active'].'</td>
-                <td><button type="submit" id="editTeacher" name="buttonEdit" value='.$line['email'].'>Edit</button></td>
-                <td><button type="submit" name="buttonDis" value='.$line['email'].'>Disable</button></td>
+                <td>'.$active.'</td>
+                <td><button class="editTableBtn" type="submit" id="editTeacher" name="buttonEdit" value='.$line['email'].'></button></td>
+                <td><button class="disTableBtn" type="submit" name="buttonDis" value='.$line['email'].'></button></td>
             </tr>
             ';
         }
@@ -109,6 +105,7 @@ function showAllCourses(){
         $numLines = mysqli_num_rows($query);
         for($i = 0; $i < $numLines; $i++){
             $line = mysqli_fetch_array($query);
+            $active = ($line['active'] == 1) ? 'Yes' : 'No';
             echo '<tr>
                 <td><img src=../'.$line['photo'].'></td>
                 <td>'.$line['name'].'</td>
@@ -117,9 +114,9 @@ function showAllCourses(){
                 <td>'.$line['duration'].'</td>
                 <td>'.$line['start'].'</td>
                 <td>'.$line['end'].'</td>
-                <td>'.$line['active'].'</td>
-                <td><button id="editBtn" type="submit" name="buttonEditCourse" value='.$line['code'].'>Edit</button></td>
-                <td><button type="submit" name="buttonDisCourse" value='.$line['code'].'>Disable</button></td>
+                <td>'.$active.'</td>
+                <td><button class="editTableBtn" id="editBtn" type="submit" name="buttonEditCourse" value='.$line['code'].'></button></td>
+                <td><button class="disTableBtn" type="submit" name="buttonDisCourse" value='.$line['code'].'></button></td>
             </tr>
             ';
         }
