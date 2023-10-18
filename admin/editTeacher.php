@@ -14,7 +14,7 @@
 </head>
 <body>
     <?php
-    $email = $_SESSION['email'];
+    $email = $_SESSION['user'];
     $connect = connectDataBase();
     if($_POST){
             $teacherName = $_POST['teacherName'];
