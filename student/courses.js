@@ -14,6 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(window.location.href);
       });
     });
-  });
+
+  const editProfileBtn = document.getElementById("editProfileButton");
+  const popUpBackground = document.getElementById("popupBackground");
+  const editProfilePopup = document.getElementById("editProfilePopup");
+
+
+});
+
+
   
   

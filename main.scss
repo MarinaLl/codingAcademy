@@ -66,37 +66,59 @@ h2 {
         width: 100%;
         border-collapse: separate;
         border-spacing: 0px 10px;
+        padding: 32px;
+        padding-top: 0;
+        text-align: left;
         img {
-            width: 100px;
+            @include boxSize(32px, 32px, 50%);
+            object-fit: cover;
         }
-        tr{
-            
+        tr:not(:first-child){
+            height: 57px;
+            border-radius: $boxRadius;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
             td{
-                width: 1204px;
-                height: 57px;
-                flex-shrink: 0;
+                
                 background: #018C8A;
-                box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.25);
-
                 &:first-child{
                     border-top-left-radius: $boxRadius;
                     border-bottom-left-radius: $boxRadius;
-                    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
                 }
                 &:last-child{
                     border-top-right-radius: $boxRadius;
                     border-bottom-right-radius: $boxRadius;
+                    text-align: center;
+                }
+                button{
+                    cursor: pointer;
                     
                 }
-
+                .editTableBtn{
+                    background-image: url("../src/edit-1.png");
+                    background-size: cover;
+                    width: 32px;
+                    height: 32px;
+                    border: none;
+                    background-color: transparent;
+                }
+                .disTableBtn{
+                    background-image: url("../src/unactive.png");
+                    background-size: cover;
+                    width: 32px;
+                    height: 32px;
+                    border: none;
+                    background-color: transparent;
+                }
+    
             }
             th {
-                padding-top: 20px;
+               
                 text-align: left;
                 &:first-child{
                     padding-left: 10px;
                 }
             }
+        
         }
     }
 }
@@ -119,16 +141,19 @@ h2 {
 }
 
 #studentPanel{
-    > div {
-        @include flex(row, center, space-between);
-        margin-top: 50px;
-        a{
-            @include browsePhotoBtn(fit-content);
-            float: right;
-            height: fit-content;
-            text-decoration: none;
-        }
+    $cuadricula: 
+        (1, 1, 2, 2),
+        (1, 2, 2, 3),
+        (2, 1, 3, 3),
+        (3, 1, 4, 3);
+    @include grid(1133px 173px, 100px auto auto);
+    @include generateGridArea(div, $cuadricula);
+    
+    #editProfileButton{
+        @include browsePhotoBtn(175px);    
+        margin-top: 40px;
     }
+    
     
 }
 .wrap {
@@ -137,10 +162,10 @@ h2 {
     
 }
 .card{
-width: 270px;
+    width: 270px;
     height: 240px;
     border-radius: 20px;
-    border: 1px solid black;
+    box-shadow: $boxShadow;
 
         > div {
             width: 270px;
@@ -150,8 +175,20 @@ width: 270px;
             img{
                 width: 100%;
                 height: 100%;
+                border-radius: 20px 20px 0px 0px;
+                object-fit: cover;
             }
         }
+    h3 {
+        margin-top: 16px;
+        margin-left: 18px;
+    }
+    h4{
+        margin-top: 13px;
+        color: gray;
+        margin-left: 18px;
+    }
+    
     
 }
 
@@ -398,7 +435,7 @@ form[name="editProfile"]{
     h2{
         padding: 0;
         position: absolute;
-        top: 22px;
+        top: 0px;
         left: 19px;
     }
     p{
@@ -407,7 +444,7 @@ form[name="editProfile"]{
         font-weight: 400;
         position: absolute;
         left: 20px;
-        top: 51px;
+        top: 100px;
     }
 }
 

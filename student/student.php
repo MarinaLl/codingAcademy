@@ -32,21 +32,33 @@
         <div id="studentPanel">
             <div>
                 <h1>Hello, <?php echo $_SESSION['completeName']; ?></h1>
-                <a id="editProfileButton" href="editProfile.php">Edit Profile</a>
-                
             </div>
-            <form action="student.php" method="post" name="unenrollCourse">
-                <div class="wrap">
-                    <?php
-                        showStudentCourses($_SESSION['user']);
+            <div>
+                <button id="editProfileButton">Edit Profile</button>
+            </div>
+            <div>
+                <h2>My Courses</h2>
+            </div>
+            <div>
+                <form action="student.php" method="post" name="unenrollCourse">
+                    <div class="wrap">
+                        <?php
+                            showStudentCourses($_SESSION['user']);
+                            
+                        ?>
                         
-                    ?>
+                    </div>
+                </form>
+            </div>
+            <div id="popupBackground" class="popupBackground">
+                <div id="editProfilePopup">
                     
                 </div>
-            </form>
+            </div>
         </div>
         <div></div>
     </div>
+    <script src="courses.js"></script>
 </body>
 </html>
 <?php } ?>

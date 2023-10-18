@@ -49,15 +49,22 @@ if (isset($_SESSION['user'])) {
             <div class="loginContainer">
                 <div></div>
                 <div>
-                    <img src="src/codingAcademyLogo2copia.png" alt="codingAcademy">
-                    <h1>Log In</h1>
-                    
-                    <form action="login.php" method="post" enctype="multipart/form-data" name="login">
-                        <input type="email" name="userEmail" id="userEmail" placeholder="Email">
-                        <input type="password" name="userPassword" id="userPassword" placeholder="Password">
-                        <input type="submit" value="Log In" id="loginBtn">
-                    </form>
-                    <a id="linkRegister" href="register.php">No account yet? Sign Up now.</a>
+                    <div>
+                        <img src="src/codingAcademyLogo2copia.png" alt="codingAcademy">
+                    </div>
+                    <div>
+                        <h1>Log In</h1>
+                    </div>
+                    <div>
+                        <form action="login.php" method="post" enctype="multipart/form-data" name="login">
+                            <input type="email" name="userEmail" id="userEmail" placeholder="Email">
+                            <input type="password" name="userPassword" id="userPassword" placeholder="Password">
+                            <input type="submit" value="Log In" id="loginBtn">
+                        </form>
+                    </div>
+                    <div>
+                        <a id="linkRegister" href="register.php">No account yet? Sign Up now.</a>
+                    </div>
                 </div>
             </div>
         </body>
