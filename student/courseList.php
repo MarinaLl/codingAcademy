@@ -5,7 +5,7 @@
             include("../funciones.php");
             enroll();
         }
-        echo '<meta http-equiv="refresh" content="0;url=courses.php">';
+        echo '<meta http-equiv="refresh" content="0;url=courses.php?category='.$_POST['courseCategory'].'">';
     } else {
 ?>
 <!DOCTYPE html>
