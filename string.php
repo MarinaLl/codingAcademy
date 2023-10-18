@@ -21,9 +21,9 @@
 </head>
 <body>
 
-    <input type="file" id="fileInput" />
+    <input type="file" id="fileInput"/>
     <div id="tableContainer"></div>
-    <button id="insertDataButton">Insertar en la Base de Daos</button>
+    <button id="insertDataButton">Insertar en la Base de Datos</button>
     <script src="strings.js"></script>
 </body>
 </html>
