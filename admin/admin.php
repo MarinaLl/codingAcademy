@@ -37,8 +37,9 @@
                     echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
                     exit;
                 } else if (isset($_POST['buttonEditCourse'])) {
-                    echo $_POST['buttonEditCourse'];
-                    
+                    //echo $_POST['buttonEditCourse'];
+                    $_SESSION['code'] = $_POST['buttonEditCourse'];
+                    echo '<script src="admin.js">editCourse()</script>';
                 }
             }
         ?>
@@ -48,11 +49,11 @@
             <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
             <button id="createTeacherBtn">Add New Teacher</button>
             <button id="createCourseBtn">Add New Course</button>
-            <div id="popupBackground" class="popupBackground">
+            <!-- <div id="popupBackground" class="popupBackground">
                 <div id="popup">
                     
                 </div>
-            </div>
+            </div> -->
             <div id="form-container">
                 
                 <button id="btnCourse" class="btnFolderStyle">Courses</button>
@@ -77,7 +78,7 @@
                 </div>
                 
                 <div id="course-form">
-                    <form action="admin.php" method="post" name="disableCourse">
+                    <form action="admin.php" id="courseForm" method="post" name="disableCourse">
                         <table>
                             <tr>
                                 <th>Photo</th>

@@ -28,7 +28,7 @@
         $courseEndDate = $_POST['courseEnd'];
         $coursePhoto = $_FILES['coursePhoto']['tmp_name'];
         if ($coursePhoto == null) {
-            $sql = "SELECT photo FROM course WHERE code = '$code'";
+            $sql = "SELECT photo FROM course WHERE code = '".$_SESSION['code']."'";
 
             
 

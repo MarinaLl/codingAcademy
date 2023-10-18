@@ -115,7 +115,7 @@ function showAllCourses(){
                 <td>'.$line['start'].'</td>
                 <td>'.$line['end'].'</td>
                 <td>'.$active.'</td>
-                <td><button class="editCourseTableBtn editTableBtn" id="editBtn" type="submit" name="buttonEditCourse" value='.$line['code'].'></button></td>
+                <td><button class="editCourseTableBtn editTableBtn"  type="submit" name="buttonEditCourse" value='.$line['code'].'></button></td>
                 <td><button class="disCourseTableBtn disTableBtn" type="submit" name="buttonDisCourse" value='.$line['code'].'></button></td>
             </tr>
             ';
