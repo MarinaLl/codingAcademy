@@ -38,8 +38,7 @@
                     exit;
                 } else if (isset($_POST['buttonEditCourse'])) {
                     echo $_POST['buttonEditCourse'];
-                    echo'<script> console.log("aaa"); editCourse(); </script>';
-                    //echo '<meta http-equiv="refresh" content="0;url=editCourse.php">';
+                    
                 }
             }
         ?>
@@ -49,6 +48,11 @@
             <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
             <button id="createTeacherBtn">Add New Teacher</button>
             <button id="createCourseBtn">Add New Course</button>
+            <div id="popupBackground" class="popupBackground">
+                <div id="popup">
+                    
+                </div>
+            </div>
             <div id="form-container">
                 
                 <button id="btnCourse" class="btnFolderStyle">Courses</button>
@@ -92,11 +96,7 @@
                     </form>
                 </div>
             </div>
-            <div id="popupBackground" class="popupBackground">
-                <div id="popup">
-                    
-                </div>
-            </div>
+            
             <?php }?>
         </div>
         <div></div>
