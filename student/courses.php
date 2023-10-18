@@ -29,7 +29,7 @@
     <title>Courses</title>
 </head>
 <body>
-    <script src="courses.js"></script>
+    <script src="../main.js"></script>
     <div class="grid-container">
         <div></div>
         <div>

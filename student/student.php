@@ -58,7 +58,7 @@
         </div>
         <div></div>
     </div>
-    <script src="courses.js"></script>
+    <script src="../main.js"></script>
 </body>
 </html>
 <?php } ?>

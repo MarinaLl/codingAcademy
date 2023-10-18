@@ -39,7 +39,7 @@ function uploadPhoto($profileImageTmp, $profileImageName, $path) {
         move_uploaded_file($profileImageTmp, $path.$imagePath);
     
     } else {
-        echo "no se ha podido subir el fichero";
+        $imagePath = "src/defaultProfileImage.png";
     }
     
     return $imagePath;
@@ -354,23 +354,18 @@ function countTopCourses() {
     } else {
         $numLines = mysqli_num_rows($query);
         if ($numLines > 0) {
-            echo '<form action="courses.php" method="post" name="mostPopularEnrollment">';
+            echo '<form action="courses.php" method="post" name="mostPopularEnrollment" class="wrap">';
             while ($line = mysqli_fetch_array($query)) {
                 $courseCode = $line['course_code'];
+                
                 $sql = "SELECT * FROM course WHERE code = " . $courseCode;
                 $queryCourse = mysqli_query($connectTopCourses, $sql);
                 $course = mysqli_fetch_array($queryCourse);
+
                 $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
                 $queryTeacher = mysqli_query($connectTopCourses, $sql);
                 $teacher = mysqli_fetch_array($queryTeacher);
-                $courseImage = $course['photo'];
-                $courseName = $course['name'];
-                $teacherPhoto = $teacher['photo'];
-                $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
-                $courseDescription = $course['description'];
-                $courseDuration = $course['duration'];
-                $courseStartDate = $course['start'];
-                $courseDifficulty = formatString($course['difficulty']);
+
                 $sqlEnrolled = "SELECT * FROM enrollment WHERE course_code = ".$courseCode." AND student_email = '".$_SESSION['user']."'";
                 $queryEnrollments = mysqli_query($connectTopCourses, $sqlEnrolled);
                 
@@ -387,25 +382,24 @@ function countTopCourses() {
                 echo '
                 <div class="topComponent">
                 <div>
-                    <img src="../'.$courseImage.'" alt="">
+                    <img src="../'.$course['photo'].'" alt="">
                 </div>
                 <div>
                     <div>
-                        <h3>'.$courseName.'</h3>
+                        <h3>'.$course['name'].'</h3>
                         <div>
-                            <img src="../'.$teacherPhoto.'" alt="">
-                            <p>'.$teacherCompleteName.'</p>
+                            <img src="../'.$teacher['photo'].'" alt="">
+                            <p>'.$teacher['name']." ".$teacher['lastNames'].'</p>
                         </div>
                     </div>
-                    <div>'.$courseDescription.'</div>
-                    <div>'.$courseDuration.' Hours</div>
-                    <div>Level: '.$courseDifficulty.'</div>
+                    <div>'.$course['description'].'</div>
+                    <div>'.$course['duration'].' Hours</div>
+                    <div>Level: '.formatString($course['difficulty']).'</div>
                     '.$enrollButton.'
                 </div>
-            </div>
-                ';
-                echo '</form>';
+            </div>';
             }
+            echo '</form>';
         } else {
             echo 'No hay cursos en esta categoria';
         }
@@ -503,6 +497,7 @@ function showCourseList($courseCategory) {
                                 <p>'.$teacherCompleteName.'</p>
                             </div>
                             <div>
+                                <input type="hidden" name="courseCategory" value="'.$courseCategory.'">
                                 <button type="submit" name="buttonEnroll" value='.$course['code'].'>Enroll Now</button>
                             </div>
                             <div>
@@ -570,29 +565,42 @@ function showTeacherCourses() {
 }
 
 function showAllStudents($course) {
-    $sql = "SELECT 
-        s.photo AS photo, 
-        s.name AS name,
-        s.lastNames AS lastNames,
-        s.email AS email,
-        e.grade AS grade FROM (student s INNER JOIN enrollment e ON s.email = e.student_email) WHERE course_code = '$course'";
+	$connect = connectDataBase();
     
-    $connect = connectDataBase();
+	$sql = "SELECT
+    	s.photo AS photo,
+    	s.name AS name,
+    	s.lastNames AS lastNames,
+    	s.email AS email,
+    	e.grade AS grade FROM (student s INNER JOIN enrollment e ON s.email = e.student_email) WHERE course_code = '$course'";
 
-    $query = mysqli_query($connect, $sql);
-    echo '<form action="teacherEditGrade.php" method="post" name="studentsGrade"><table>';
-    while ($student = mysqli_fetch_assoc($query)) {
-        
-        echo '<tr>
-        <td><img src="../'.$student['photo'].'"></td>
-        <td>'.$student['name'].'</td>
-        <td>'.$student['lastNames'].'</td>
-        <td>'.$student['grade'].'</td>
-        <td><button type="submit" id="editGradeBtn" name="editGrade" value='.$student['email'].'><img src="../src/edit.png"></button></td>
-        <input type="hidden" name="studentGrade" value="'.$student['grade'].'"></tr>';
-    }
-    echo '</table></form>';
+	$query = mysqli_query($connect, $sql);
+
+	echo '<form action="teacherCourse.php" method="post" name="studentsGrade"><table>';
+    
+	while ($student = mysqli_fetch_assoc($query)) {
+    	echo '<tr>
+        	<td><img src="../'.$student['photo'].'"></td>
+        	<td>'.$student['name'].'</td>
+        	<td>'.$student['lastNames'].'</td>
+        	<td>
+            	<input type="number" min=0 max=10 name="studentGrades['.$student['email'].']" class="studentGrade" value="'.$student['grade'].'" step="0.01">
+        	</td>
+    	</tr>';
+	}
+	echo '</table>
+	<button type="submit" name="editGradesBtn" value="'.$course.'">UPDATE NOTES</button></form>';
 }
+
+function updateNotes($students, $course) {
+	$connect = connectDataBase();
+	foreach ($students as $email => $newGrade) {
+    	$sql = "UPDATE enrollment SET grade = '$newGrade' WHERE student_email = '$email' AND course_code = '$course'";
+    	$result = mysqli_query($connect, $sql);
+        echo '<meta http-equiv="refresh" content="0;url=teacher.php">';
+	}
+}
+
 
 function createContactForm() {
     $email = "";
@@ -642,17 +650,5 @@ function getCourseName($courseCode) {
         }
     }
     return null;
-}
-
-function changeStudentsGrade($studentEmail, $studentGrade) {
-    $sql = "UPDATE enrollment SET grade = $studentGrade WHERE email ='".$studentEmail."'";
-    $connect = connectDataBase();
-    if($query = mysqli_query($connect, $sql)){
-        echo "nota editada";
-        echo '<meta http-equiv="refresh" content="1;url=teacher.php">';
-        exit;
-    } else {
-        echo mysqli_error($connect);
-    }
 }
 ?>
