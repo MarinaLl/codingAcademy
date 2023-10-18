@@ -539,7 +539,6 @@ function showTeacherCourses() {
     $connect = connectDataBase();
 
     $query = mysqli_query($connect, $sql);
-    echo '<form action="teacherCourse.php" method="post" name="mostPopularEnrollment" class="wrap">';
     while ($course = mysqli_fetch_assoc($query)) {
         // Count the number of students for each course
         $course_code = mysqli_real_escape_string($connect, $course['code']);
@@ -564,15 +563,13 @@ function showTeacherCourses() {
         echo '<p>' . $numStudents . ' Students</p>';
         echo '</div></button>';*/
         echo'
-            <div class="teacherComponent">
+            <div id="'.$course_code.'" class="teacherComponent">
                 <img src="../' . $course['photo'] . '" alt="">
                 <h2>' . $course['name'] . '</h2>
                 <p>' . $numStudents . ' Students</p>
             </div>
         ';
     }
-    echo '</form>';
-
 }
 
 function showAllStudents($course) {
@@ -594,8 +591,8 @@ function showAllStudents($course) {
         <td>'.$student['name'].'</td>
         <td>'.$student['lastNames'].'</td>
         <td>'.$student['grade'].'</td>
-        <td><button type="submit" name="editGrade" value='.$student['email'].'><img src="../src/edit.png"></button></td>
-        <input type="hidden" name="studentGrade" value="'.$student['grade'].'"</tr>';
+        <td><button type="submit" id="editGradeBtn" name="editGrade" value='.$student['email'].'><img src="../src/edit.png"></button></td>
+        <input type="hidden" name="studentGrade" value="'.$student['grade'].'"></tr>';
     }
     echo '</table></form>';
 }
@@ -631,5 +628,34 @@ function createContactForm() {
         <div><textarea id="message" name="message" rows="4" cols="50"></textarea></div>
         <div><button type="submit" id="sendMessage" name="sendMessage">SEND MESSAGE</button></div>
     ';
+}
+
+function getCourseName($courseCode) {
+    $sql = "SELECT name FROM course WHERE code = ".$courseCode." AND teacher_email = '".$_SESSION['user']."'";
+    $connect = connectDataBase();
+    $query = mysqli_query($connect, $sql);
+
+    if ($query == false){
+        mysqli_error($connect);
+    } else {
+        $numLines = mysqli_num_rows($query);
+        if ($numLines > 0) {
+            $course = mysqli_fetch_array($query);
+            return $course['name'];
+        }
+    }
+    return null;
+}
+
+function changeStudentsGrade($studentEmail, $studentGrade) {
+    $sql = "UPDATE enrollment SET grade = $studentGrade WHERE email ='".$studentEmail."'";
+    $connect = connectDataBase();
+    if($query = mysqli_query($connect, $sql)){
+        echo "nota editada";
+        echo '<meta http-equiv="refresh" content="1;url=teacher.php">';
+        exit;
+    } else {
+        echo mysqli_error($connect);
+    }
 }
 ?>

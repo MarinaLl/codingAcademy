@@ -5,6 +5,9 @@
         logout("../");
     } else {
         addHeader("../");
+        if(isset($_GET['course'])) {
+            include("teacherCourse.php");
+        } else {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
     <title>Teacher Panel</title>
+    <script src="teacher.js"></script>
 </head>
 <body>
     <div class="grid-container">
@@ -27,4 +31,4 @@
     
 </body>
 </html>
-<?php } ?>
+<?php }} ?>
