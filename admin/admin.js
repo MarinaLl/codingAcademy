@@ -78,27 +78,49 @@ window.addEventListener('load', function() {
         }
     });
 
-    const editCoursebtn = document.getElementById("editBtn");
+    const editCourse = document.querySelectorAll(".editCourseTableBtn");
+    
+   /* editCoursebtns.forEach(function (editCourseBtn){ 
+        editCourseBtn.addEventListener('click', function(event){
+            event.preventDefault();
+            console.log("editar curso");
+    
+            popUpBackground.style.display = 'block';
+            console.log('cargado edit');
+    
+            //cargar contenido php
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'editCourse.php', true);
+    
+            xhr.onload = function() {
+                if (xhr.status === 200){
+                    popUp.innerHTML = xhr.responseText;
+                }
+            };
+    
+            xhr.send();
+        });
+    });*/
+    const editCourseBtns = document.getElementById('editBtn');
 
-    editCoursebtn.addEventListener('click', function(event){
-        event.preventDefault();
-        console.log("editar curso");
+     editCourseBtns.addEventListener('click', function(event){
+         event.preventDefault();
+         console.log("editar curso");
+         popUpBackground.style.display = 'block';
+         console.log('cargado edit');
 
-        popUpBackground.style.display = 'block';
-        console.log('cargado edit');
+        // cargar contenido php
+         let xhr = new XMLHttpRequest();
+         xhr.open('GET', 'editCourse.php', true);
 
-        //cargar contenido php
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'editCourse.php', true);
+         xhr.onload = function() {
+             if (xhr.status === 200){
+                 popUp.innerHTML = xhr.responseText;
+             }
+         };
 
-        xhr.onload = function() {
-            if (xhr.status === 200){
-                popUp.innerHTML = xhr.responseText;
-            }
-        };
-
-        xhr.send();
-    });
+         xhr.send();
+     });
 
     const editTeacher = document.getElementById("editTeacher");
 

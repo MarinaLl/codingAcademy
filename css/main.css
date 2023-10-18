@@ -1209,24 +1209,55 @@ form[name=contactForm] div button {
   border-radius: 10px;
   font-size: 12px;
   font-weight: 700;
-  font-weight: 700;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.aboutUsContainer {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+.aboutUsContainer h2 {
+  text-align: center;
+  font-size: 30px;
 }
-.aboutUsContainer div:nth-child(1) {
-  grid-area: 1/1/2/6;
+.aboutUsContainer > p {
+  text-align: center;
+  width: 715px;
+  margin: 30px auto;
+  font-size: 20px;
+  color: #5A5A5A;
 }
-.aboutUsContainer div:nth-child(2) {
-  grid-area: 2/1/3/6;
+.aboutUsContainer > div {
+  width: 1142px;
+  height: 220px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #007A78;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
 }
-.aboutUsContainer div:nth-child(3) {
-  grid-area: 3/1/4/6;
+.aboutUsContainer > div > div {
+  width: 271px;
+  height: 173px;
+  border-radius: 20px;
+  background-color: #1CA9A6;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: white;
 }
-.aboutUsContainer div:nth-child(4) {
-  grid-area: 4/1/5/6;
+.aboutUsContainer > div > div img {
+  position: relative;
+  top: 34px;
+  left: 29px;
+}
+.aboutUsContainer > div > div h3 {
+  position: relative;
+  top: 38px;
+  left: 190px;
+  color: #000;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-top: 20px;
+  color: white;
+  padding: 0;
 }/*# sourceMappingURL=main.css.map */
