@@ -17,7 +17,6 @@
 
 <body>
     <?php
-    $code = $_SESSION['code'];
     $connect = connectDataBase();
     if ($_POST) {
         $courseName = $_POST['courseName'];

@@ -1,4 +1,10 @@
-window.addEventListener('load', function() {
+document.addEventListener("DOMContentLoaded", function() {
+    // select elements for popups
+    const createNewTeacher = document.getElementById('createTeacherBtn');
+    const createNewCourse = document.getElementById('createCourseBtn');
+    const popUpBackground = document.getElementById('popupBackground');
+    const popUp = document.getElementById('popup');
+
     console.log("Admin.js cargado");
 
     // select elements from html
@@ -28,11 +34,6 @@ window.addEventListener('load', function() {
     });
 
     
-    // select elements for popups
-    const createNewTeacher = document.getElementById('createTeacherBtn');
-    const createNewCourse = document.getElementById('createCourseBtn');
-    const popUpBackground = document.getElementById('popupBackground');
-    const popUp = document.getElementById('popup');
     
     // loads into popup createCourse.php data
     createNewCourse.addEventListener('click', function(){
@@ -78,7 +79,6 @@ window.addEventListener('load', function() {
         }
     });
 
-    const editCourse = document.querySelectorAll(".editCourseTableBtn");
     
    /* editCoursebtns.forEach(function (editCourseBtn){ 
         editCourseBtn.addEventListener('click', function(event){
@@ -101,26 +101,8 @@ window.addEventListener('load', function() {
             xhr.send();
         });
     });*/
-    const editCourseBtns = document.getElementById('editBtn');
 
-     editCourseBtns.addEventListener('click', function(event){
-         event.preventDefault();
-         console.log("editar curso");
-         popUpBackground.style.display = 'block';
-         console.log('cargado edit');
-
-        // cargar contenido php
-         let xhr = new XMLHttpRequest();
-         xhr.open('GET', 'editCourse.php', true);
-
-         xhr.onload = function() {
-             if (xhr.status === 200){
-                 popUp.innerHTML = xhr.responseText;
-             }
-         };
-
-         xhr.send();
-     });
+    
 
     const editTeacher = document.getElementById("editTeacher");
 
@@ -144,4 +126,21 @@ window.addEventListener('load', function() {
         xhr.send();
     });
 
+    function editCourse() {
+        console.log("editar curso");
+        popUpBackground.style.display = 'block';
+        console.log('cargado edit');
+    
+       // cargar contenido php
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'editCourse.php', true);
+    
+        xhr.onload = function() {
+            if (xhr.status === 200){
+                popUp.innerHTML = xhr.responseText;
+            }
+        };
+    
+        xhr.send();
+    }
 });

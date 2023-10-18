@@ -597,8 +597,8 @@ function updateNotes($students, $course) {
 	foreach ($students as $email => $newGrade) {
     	$sql = "UPDATE enrollment SET grade = '$newGrade' WHERE student_email = '$email' AND course_code = '$course'";
     	$result = mysqli_query($connect, $sql);
-        echo '<meta http-equiv="refresh" content="0;url=teacher.php">';
 	}
+    echo '<meta http-equiv="refresh" content="0;url=teacher.php">';
 }
 
 
