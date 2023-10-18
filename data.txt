@@ -1,0 +1,3 @@
+alicia@gmail.com, asasa,123456789,Alicia,Pérez García,28,alic_perez.jpg,(MAT101, AAAA, BBBB);alicia@gmail.com,asasa,123456789,Alicia,Pérez García,28,alic_perez.jpg,(MAT101, AAAA, BBBB);alicia@gmail.com, asasa,123456789,Alicia,Pérez-García,28,alic_perez.jpg,(MAT101, AAAA, BBBB);alicia@gmail.com,asasa,123456789,Alicia,Pérez-García,28,alic_perez.jpg,(MAT101, AAAA, BBBB);alicia@gmail.com,asasa,123456789,Alicia,Pérez-García,28,alic_perez.jpg,(MAT101, AAAA, BBBB);alicia@gmail.com,asasa,123456789,Alicia,Pérez-García,28,alic_perez.jpg,(MAT101, AAAA, BBBB);alicia@gmail.com,asasa,123456789,Alicia,Pérez-García,28,alic_perez.jpg,(MAT101, AAAA, BBBB);
+
+

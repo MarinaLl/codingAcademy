@@ -20,6 +20,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const editProfilePopup = document.getElementById("editProfilePopup");
 
 
+  editProfileBtn.addEventListener('click', function(){
+    popUpBackground.style.display = 'block';
+    console.log('cargado perfil');
+    
+    // cargar contenido php
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'editProfile.php', true);
+
+    xhr.onload = function() {
+        if (xhr.status === 200){
+          editProfilePopup.innerHTML = xhr.responseText;
+        }
+    };
+
+    xhr.send();
+    
+});
+
+   // hide popup when clicking black screen
+  popUpBackground.addEventListener('click', function(event){
+    if(event.target === this){
+        popUpBackground.style.display = 'none';     
+  }
+});
+
+
 });
 
 
