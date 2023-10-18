@@ -84,26 +84,10 @@ document.addEventListener("DOMContentLoaded", function() {
     editCoursebtns.forEach(function (editCourseBtn){ 
         editCourseBtn.addEventListener('click', function(event){
             console.log(editCourseBtn.value);
-            event.preventDefault();
             console.log("editar curso");
     
             popUpBackground.style.display = 'block';
             console.log('cargado edit');
-            
-
-    
-            //cargar contenido php
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', 'editCourse.php', true);
-    
-            xhr.onload = function() {
-                if (xhr.status === 200){
-                    popUp.innerHTML = "<?php $code = "+editCourseBtn.value+"; echo $code; ?>"
-                    popUp.innerHTML += xhr.responseText;
-                }
-            };
-    
-            xhr.send();
         });
     });
 
@@ -131,38 +115,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
 });
-
-function editCourse(){
-    // Crear el elemento <div id="popupBackground" class="popupBackground">
-    const popupBackground = document.createElement('div');
-    popupBackground.id = 'popupBackground';
-    popupBackground.classList.add('popupBackground');
-
-    // Crear el elemento <div id="popup">
-    const popup = document.createElement('div');
-    popup.id = 'popup';
-
-    // Agregar el elemento 'popup' como hijo de 'popupBackground'
-    popupBackground.appendChild(popup);
-
-    // Agregar el elemento 'popupBackground' al cuerpo del documento (o al contenedor deseado)
-    document.body.appendChild(popupBackground);
-    console.log("editar curso");
+const popUpBackground = document.getElementById('popUpBackground');
+function editCourse(code){
     
-    popupBackground.style.display = 'block';
+    console.log(code);
+    
+    popUpBackground.style.display = 'block';
     console.log('cargado edit');
     
-
-
-    //cargar contenido php
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'editCourse.php', true);
-
-    xhr.onload = function() {
-        if (xhr.status === 200){
-            popup.innerHTML = xhr.responseText;
-        }
-    };
-
-    xhr.send();
 }

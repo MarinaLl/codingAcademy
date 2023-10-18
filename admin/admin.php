@@ -18,47 +18,18 @@
         <script src="admin.js"></script>  
     </head>
     <body>
-        <?php  
-            if($_POST) {
-                if(isset($_POST['buttonDis'])) {
-                    $teacher = $_POST['buttonDis'];
-                    disableTeacher($teacher);
-                    echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
-                    exit;
-                } else if (isset($_POST['buttonEdit'])) {
-                    echo $_POST['buttonEdit'];
-                    $_SESSION['email'] = $_POST['buttonEdit'];
-                    echo '<meta http-equiv="refresh" content="0;url=editTeacher.php">';
-                }
-            
-                if(isset($_POST['buttonDisCourse'])){
-                    $code = $_POST['buttonDisCourse'];
-                    disableCourse($code);
-                    echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
-                    exit;
-                } else if (isset($_POST['buttonEditCourse'])) {
-                    //echo $_POST['buttonEditCourse'];
-                    $_SESSION['code'] = $_POST['buttonEditCourse'];
-                    echo '<script src="admin.js">editCourse()</script>';
-                }
-            }
-        ?>
+        
     <div class="grid-container">
         <div></div>
         <div>
             <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
             <button id="createTeacherBtn">Add New Teacher</button>
             <button id="createCourseBtn">Add New Course</button>
-            <!-- <div id="popupBackground" class="popupBackground">
-                <div id="popup">
-                    
-                </div>
-            </div> -->
             <div id="form-container">
                 
                 <button id="btnCourse" class="btnFolderStyle">Courses</button>
                 <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
-            
+                
                 <div id="teacher-form">
                     <form action="admin.php" method="post" name="disableTeacher">
                         <table>
@@ -78,7 +49,7 @@
                 </div>
                 
                 <div id="course-form">
-                    <form action="admin.php" id="courseForm" method="post" name="disableCourse">
+                    <form action="" id="courseForm" method="post" name="disableCourse">
                         <table>
                             <tr>
                                 <th>Photo</th>
@@ -97,7 +68,37 @@
                     </form>
                 </div>
             </div>
-            
+            <div id="popUpBackground" class="popupBackground">
+                <div id="popup">
+                <?php
+                    
+                    if($_POST) {
+                        if(isset($_POST['buttonDis'])) {
+                            $teacher = $_POST['buttonDis'];
+                            disableTeacher($teacher);
+                            echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
+                            exit;
+                        } else if (isset($_POST['buttonEdit'])) {
+                            echo $_POST['buttonEdit'];
+                            $_SESSION['email'] = $_POST['buttonEdit'];
+                            echo '<meta http-equiv="refresh" content="0;url=editTeacher.php">';
+                        }
+                    
+                        if(isset($_POST['buttonDisCourse'])){
+                            $code = $_POST['buttonDisCourse'];
+                            disableCourse($code);
+                            echo '<meta http-equiv="refresh" content="0;url='.$_SERVER['PHP_SELF'].'">';
+                            exit;
+                        } else if (isset($_POST['buttonEditCourse'])) {
+                            $code = $_POST['buttonEditCourse'];
+                            echo 'Hacemos include';
+                            $array = $_POST;
+                            include('editCourse.php');
+                        }
+                    }
+                ?>
+                </div>
+            </div>
             <?php }?>
         </div>
         <div></div>

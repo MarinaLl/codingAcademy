@@ -115,7 +115,7 @@ function showAllCourses(){
                 <td>'.$line['start'].'</td>
                 <td>'.$line['end'].'</td>
                 <td>'.$active.'</td>
-                <td><button class="editCourseTableBtn editTableBtn"  type="submit" name="buttonEditCourse" value='.$line['code'].'></button></td>
+                <td><button class="editCourseTableBtn editTableBtn"  type="submit" name="buttonEditCourse" value='.$line['code'].' onclick=" editCourse('.$line['code'].'); "></button></td>
                 <td><button class="disCourseTableBtn disTableBtn" type="submit" name="buttonDisCourse" value='.$line['code'].'></button></td>
             </tr>
             ';
@@ -689,5 +689,75 @@ function importStudents($receivedData) {
 	// Enviar una respuesta de vuelta al cliente (puede ser un simple mensaje)
 	$response = ['message' => 'Datos recibidos correctamente'];
 	echo json_encode($response);
+}
+
+function editCoursePopUp($array, $code) {
+    $connect = connectDataBase();
+    if (isset($array['changeData'])) {
+        $courseName = $array['courseName'];
+        $courseDescription = $array['courseDescription'];
+        $courseCategory = $array['courseCategory'];
+        $courseDuration = $array['courseDuration'];
+        $courseTeacher = $array['courseTeacher'];
+        $courseStartDate = $array['courseStart'];
+        $courseEndDate = $array['courseEnd'];
+        $coursePhoto = $_FILES['coursePhoto']['tmp_name'];
+        if ($coursePhoto == null) {
+            $sql = "SELECT photo FROM course WHERE code = '".$code."'";
+
+            
+
+            $query = mysqli_query($connect, $sql);
+
+            $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
+
+            echo $line[0];
+            $courseImage = $line[0];
+
+        } else {
+            $courseImage = uploadPhoto($coursePhoto, $_FILES['coursePhoto']['name'], "../");
+        }
+
+
+        editCourse($code, $courseName, $courseDescription, $courseCategory, $courseDuration, $courseStartDate, $courseEndDate, $courseTeacher, $courseImage);
+    } else {
+
+        $sql = "SELECT * FROM course WHERE code = '$code'";
+        $query = mysqli_query($connect, $sql);
+
+        if ($query == false) {
+            mysqli_error($connect);
+        } else {
+            $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            echo ' <form action="editCourse.php" method="post" enctype="multipart/form-data">
+            <label for="courseName">Course Name</label>
+            <input type="text" name="courseName" value="' . $line['name'] . '" id="courseName"><br>
+            <label for="courseDescription">Description</label>
+            <textarea name="courseDescription" value="' . $line['description'] . '" id="courseDescription" cols="30" rows="10">' . $line['description'] . '</textarea><br>
+            <label for="category">Category</label>
+            <select name="courseCategory" id="courseCategory" >
+                <option value="'. $line['category'] .'" default>'. $line['category'] .'</option>
+                <option value="beginner-friendly">Beginner Friendly</option>
+                <option value="web-development">Web Development</option>
+                <option value="game-developmen">Game Development</option>
+                <option value="computer-science">Computer Science</option>
+            </select><br>
+            <label for="courseDuration">Duration</label>
+            <input type="number" name="courseDuration" value=' . $line['duration'] . ' id="courseDuration"><br>
+            <label for="courseStart">Course Start</label>
+            <input type="date" name="courseStart" value=' . $line['start'] . ' id="courseStart"><br>
+            <label for="courseEnd">Course Start</label>
+            <input type="date" name="courseEnd" value=' . $line['end'] . ' id="courseEnd"><br>
+            <label for="courseTeacher">Teacher</label>
+            <select name="courseTeacher" id="courseTeacher">
+                <option value="' . $line['teacher_email'] . '" default>' . $line['teacher_email'] . '</option>
+                <?php listTeacherNames(); ?>
+            </select><br>
+            <label for="coursePhoto">Photo</label>
+            <input type="file" name="coursePhoto" value=' . $line['photo'] . ' id="coursePhoto">
+            <input type="submit" name="changeData" value="Confirm">
+        </form>';
+        }
+    }
 }
 ?>
