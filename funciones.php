@@ -795,6 +795,27 @@ function compareDates($date) {
 	}
 }
 
+function getActiveCourses() {
+    $sql = "SELECT COUNT(*) FROM course WHERE active = 1";
+    $connect = connectDataBase();
+    $query = mysqli_query($connect, $sql);
+    $count = mysqli_fetch_row($query);
+    return $count[0];
+}
 
+function getActualStudents() {
+    $sql = "SELECT COUNT(*) FROM student WHERE active = 1";
+    $connect = connectDataBase();
+    $query = mysqli_query($connect, $sql);
+    $count = mysqli_fetch_row($query);
+    return $count[0];
+}
 
+function getActualTeachers() {
+    $sql = "SELECT COUNT(*) FROM teacher WHERE active = 1";
+    $connect = connectDataBase();
+    $query = mysqli_query($connect, $sql);
+    $count = mysqli_fetch_row($query);
+    return $count[0];
+}
 ?>

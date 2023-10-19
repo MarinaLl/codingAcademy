@@ -19,19 +19,19 @@
             <div>
                 <div>
                     <img src="src/Rectangle-28.png">
-                    <h3>XX</h3>
+                    <h3><?php echo getActiveCourses();?></h3>
                     <p>Active Courses</p>
                     <div><p>COURSES</p></div>
                 </div>
                 <div>
                     <img src="src/Rectangle-31.png">
-                    <h3>XX</h3>
+                    <h3><?php echo getActualStudents();?></h3>
                     <p>Actual Students</p>
                     <div><p>STUDENTS</p></div>
                 </div>
                 <div>
                     <img src="src/Rectangle-34.png">
-                    <h3>XX</h3>
+                    <h3><?php echo getActualTeachers();?></h3>
                     <p>Professional Teachers</p>
                     <div><p>TEACHERS</p></div>
                 </div>
