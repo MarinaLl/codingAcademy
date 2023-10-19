@@ -60,10 +60,7 @@
                         <p>Computer Science</p>
                     </div>
                 </div>
-                <h2 id="popular">MOST POPULAR</h2>
-                <div class="wrap">
-                    <?php countTopCourses(); ?>
-                </div>
+                <?php countTopCourses(); ?>
         </div>
         <div></div>
     </div>

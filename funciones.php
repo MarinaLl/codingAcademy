@@ -153,7 +153,8 @@ function editCourse($code, $courseName, $courseDescription, $courseCategory, $co
                 $endDate
                 $courseTeacher
                 $coursePhoto
-            WHERE code = '$code'";
+            WHERE code = $code";
+    echo $sql;
     $connectEditCourse = connectDataBase();
 
     if($query = mysqli_query($connectEditCourse, $sql)){
@@ -354,53 +355,65 @@ function countTopCourses() {
         echo mysqli_error($connectTopCourses);
     } else {
         $numLines = mysqli_num_rows($query);
+        $coursesVisible = false;
         if ($numLines > 0) {
-            echo '<form action="courses.php" method="post" name="mostPopularEnrollment" class="wrap">';
+            
             while ($line = mysqli_fetch_array($query)) {
                 $courseCode = $line['course_code'];
                 
                 $sql = "SELECT * FROM course WHERE code = " . $courseCode;
                 $queryCourse = mysqli_query($connectTopCourses, $sql);
                 $course = mysqli_fetch_array($queryCourse);
-
-                $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
-                $queryTeacher = mysqli_query($connectTopCourses, $sql);
-                $teacher = mysqli_fetch_array($queryTeacher);
-
-                $sqlEnrolled = "SELECT * FROM enrollment WHERE course_code = ".$courseCode." AND student_email = '".$_SESSION['user']."'";
-                $queryEnrollments = mysqli_query($connectTopCourses, $sqlEnrolled);
                 
-                if($queryEnrollments) {
-                    if(mysqli_num_rows($queryEnrollments) > 0) {
-                        $enrollButton = "";
+                if(compareDates($course['start'])) {
+                    $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
+                    $queryTeacher = mysqli_query($connectTopCourses, $sql);
+                    $teacher = mysqli_fetch_array($queryTeacher);
+    
+                    $sqlEnrolled = "SELECT * FROM enrollment WHERE course_code = ".$courseCode." AND student_email = '".$_SESSION['user']."'";
+                    $queryEnrollments = mysqli_query($connectTopCourses, $sqlEnrolled);
+                    
+                    if($queryEnrollments) {
+                        if(mysqli_num_rows($queryEnrollments) > 0) {
+                            $enrollButton = "";
+                        } else {
+                            $enrollButton = '<div><button type="submit" name="buttonEnroll" value="'.$courseCode.'">Enroll</button></div>';
+                        }
                     } else {
-                        $enrollButton = '<div><button type="submit" name="buttonEnroll" value="'.$courseCode.'">Enroll</button></div>';
+                        echo mysqli_error($connectTopCourses);
                     }
-                } else {
-                    echo mysqli_error($connectTopCourses);
-                }
-                
-                echo '
-                <div class="topComponent">
-                <div>
-                    <img src="../'.$course['photo'].'" alt="">
-                </div>
-                <div>
+                    if(!$coursesVisible) {
+                        echo 
+                            '<h2 id="popular">MOST POPULAR</h2>
+                                <div class="wrap">
+                            <form action="courses.php" method="post" name="mostPopularEnrollment" class="wrap">';
+                            $coursesVisible = true;
+                    }
+                    echo '
+                    <div class="topComponent">
                     <div>
-                        <h3>'.$course['name'].'</h3>
-                        <div>
-                            <img src="../'.$teacher['photo'].'" alt="">
-                            <p>'.$teacher['name']." ".$teacher['lastNames'].'</p>
-                        </div>
+                        <img src="../'.$course['photo'].'" alt="">
                     </div>
-                    <div>'.$course['description'].'</div>
-                    <div>'.$course['duration'].' Hours</div>
-                    <div>Level: '.formatString($course['difficulty']).'</div>
-                    '.$enrollButton.'
-                </div>
-            </div>';
+                    <div>
+                        <div>
+                            <h3>'.$course['name'].'</h3>
+                            <div>
+                                <img src="../'.$teacher['photo'].'" alt="">
+                                <p>'.$teacher['name']." ".$teacher['lastNames'].'</p>
+                            </div>
+                        </div>
+                        <div>'.$course['description'].'</div>
+                        <div>'.$course['duration'].' Hours</div>
+                        <div>Level: '.formatString($course['difficulty']).'</div>
+                        '.$enrollButton.'
+                        </div>
+                    </div>';
+
+                }
+
             }
             echo '</form>';
+            echo '</div>';
         } else {
             echo 'No hay cursos en esta categoria';
         }
@@ -444,6 +457,11 @@ function showStudentCourses($user){
             
             for($i = 0; $i < $numLines; $i++){
                 $line = mysqli_fetch_array($query);
+                if(compareDates($line['courseEnd'])) {
+                    $unenrollButton = '<button type="submit" name="buttonUnenroll" value='.$line['courseCode'].'>Unenroll</button>';
+                } else {
+                    $unenrollButton = "";
+                }
                     echo '
                     <div class="card">
                         <div><img src="../'.$line['coursePhoto'].'"></div>
@@ -451,7 +469,7 @@ function showStudentCourses($user){
                             <h3>'.$line['courseName'].'</h3>
                             <h4>'.$line['teacherName'].' '.$line['teacherLastNames'].'</h4>
                             <p>'.$line['grade'].'</p>
-                            <button type="submit" name="buttonUnenroll" value='.$line['courseCode'].'>Unenroll</button> 
+                            '.$unenrollButton.'
                         </div>
                     </div>';
                         
@@ -474,49 +492,48 @@ function showCourseList($courseCategory) {
         mysqli_error($connect);
     } else {
         $numLines = mysqli_num_rows($query);
-        
-        if ($numLines > 0) {
+            $cont = 0;
                 for($i = 0; $i < $numLines; $i++){
                     $course = mysqli_fetch_array($query);
-                    $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
-                    $queryTeacher = mysqli_query($connect, $sql);
-                    $teacher = mysqli_fetch_array($queryTeacher);
-                    $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
-                    $difficulty = formatString($course['difficulty']);
-
-                    echo '<div class="cardComponent">';
-                    echo '
-                        <div>
-                            <img src="../'.$course['photo'].'">
-                        </div>
-                        <div class="gridComponent">
+                    if (compareDates($course['start'])) {
+                        $cont++;
+                        $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
+                        $queryTeacher = mysqli_query($connect, $sql);
+                        $teacher = mysqli_fetch_array($queryTeacher);
+                        $teacherCompleteName = $teacher['name']." ".$teacher['lastNames'];
+                        $difficulty = formatString($course['difficulty']);
+    
+                        echo '<div class="cardComponent">';
+                        echo '
                             <div>
-                                <h3>'.$course['name'].'</h3>
+                                <img src="../'.$course['photo'].'">
                             </div>
-                            <div>
-                                <img src="../'.$teacher['photo'].'">
-                                <p>'.$teacherCompleteName.'</p>
-                            </div>
-                            <div>
-                                <input type="hidden" name="courseCategory" value="'.$courseCategory.'">
-                                <button type="submit" name="buttonEnroll" value='.$course['code'].'>Enroll Now</button>
-                            </div>
-                            <div>
-                                <p>'.$course['description'].'</p>
-                            </div>
-                            <div class="bottomCard">'.$course['duration'].' Hours</div>
-                            <div class="bottomCard">Starts: '.$course['start'].'</div>
-                            <div class="bottomCard">Level: '.$difficulty.'</div>
-                        </div>';
-                        
-                        echo '</div>';
+                            <div class="gridComponent">
+                                <div>
+                                    <h3>'.$course['name'].'</h3>
+                                </div>
+                                <div>
+                                    <img src="../'.$teacher['photo'].'">
+                                    <p>'.$teacherCompleteName.'</p>
+                                </div>
+                                <div>
+                                    <input type="hidden" name="courseCategory" value="'.$courseCategory.'">
+                                    <button type="submit" name="buttonEnroll" value='.$course['code'].'>Enroll Now</button>
+                                </div>
+                                <div>
+                                    <p>'.$course['description'].'</p>
+                                </div>
+                                <div class="bottomCard">'.$course['duration'].' Hours</div>
+                                <div class="bottomCard">Starts: '.$course['start'].'</div>
+                                <div class="bottomCard">Level: '.$difficulty.'</div>
+                            </div>';
+                            
+                            echo '</div>';
+                    }
                 }
-            
-        } else {
-            echo 'No hay cursos en esta categoria';
-        }
-        
-        
+            if($cont == 0) {
+                echo 'No hay cursos en esta categoria';
+            }
     }
 }
 
@@ -765,6 +782,17 @@ function editCourseForm($code){
         <div><input type="submit" value="Confirm"></div>
     </form>';
     }
+}
+
+function compareDates($date) {
+	$actualDate = new DateTime();
+	$dateToCompare = new DateTime($date);
+
+	if ($dateToCompare < $actualDate) {
+    	return false;
+	} else {
+    	return true;
+	}
 }
 
 
