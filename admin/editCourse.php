@@ -37,8 +37,6 @@
             echo $line[0];
             $courseImage = $line[0];
 
-        } else {
-            editCoursePopUp($array, $code);
         }
 
         editCourse($code, $courseName, $courseDescription, $courseCategory, $courseDuration, $courseStartDate, $courseEndDate, $courseTeacher, $courseImage);
