@@ -34,7 +34,7 @@
                 <h1>Hello, <?php echo $_SESSION['completeName']; ?></h1>
             </div>
             <div>
-                <button id="editProfileButton">Edit Profile</button>
+                <a id="editProfileButton" href="editProfile.php">Edit Profile</a>
             </div>
             <div>
                 <h2>My Courses</h2>
@@ -50,11 +50,11 @@
                     </div>
                 </form>
             </div>
-            <div id="popupBackground" class="popupBackground">
+            <!-- <div id="popupBackground" class="popupBackground">
                 <div id="editProfilePopup">
                     
                 </div>
-            </div>
+            </div> -->
         </div>
         <div></div>
     </div>
