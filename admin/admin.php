@@ -15,8 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/main.css">
         <title>Administrator Panel</title>
-        <script src="admin.js"></script>  
-        <script src="../strings.js"></script>
+        <script src="admin.js"></script>
     </head>
     <body>
         <?php  
@@ -50,6 +49,7 @@
             <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
             <button id="createTeacherBtn">Add New Teacher</button>
             <button id="createCourseBtn">Add New Course</button>
+            <a href="../string.php">Import Students</a>
             
             <div id="form-container">
                 

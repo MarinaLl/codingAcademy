@@ -157,7 +157,7 @@ function editCourse($code, $courseName, $courseDescription, $courseCategory, $co
 
     if($query = mysqli_query($connectEditCourse, $sql)){
         echo "curso editado";
-        echo '<meta http-equiv="refresh" content="0;url=admin.php">';
+        //echo '<meta http-equiv="refresh" content="0;url=admin.php">';
         exit;
     } else {
         echo mysqli_error($connectEditCourse);
