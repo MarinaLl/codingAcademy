@@ -143,15 +143,16 @@ function editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $te
 }
 
 function editCourse($code, $courseName, $courseDescription, $courseCategory, $courseDuration, $startDate, $endDate, $courseTeacher, $coursePhoto) {
+    
     $sql = "UPDATE course 
-            SET name = '$courseName', 
-                description = '$courseDescription', 
-                category = '$courseCategory', 
-                duration = '$courseDuration',
-                start = '$startDate',
-                end = '$endDate',
-                teacher_email = '$courseTeacher',
-                photo = '$coursePhoto'
+            SET $courseName
+                $courseDescription
+                $courseCategory
+                $courseDuration
+                $startDate
+                $endDate
+                $courseTeacher
+                $coursePhoto
             WHERE code = '$code'";
     $connectEditCourse = connectDataBase();
 

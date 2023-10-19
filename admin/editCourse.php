@@ -19,24 +19,28 @@
     <?php
     $connect = connectDataBase();
     if ($_POST) {
-        $courseName = $_POST['courseName'];
-        $courseDescription = $_POST['courseDescription'];
-        $courseCategory = $_POST['courseCategory'];
-        $courseDuration = $_POST['courseDuration'];
-        $courseTeacher = $_POST['courseTeacher'];
-        $courseStartDate = $_POST['courseStart'];
-        $courseEndDate = $_POST['courseEnd'];
+        
+        $courseName = "name = '".$_POST['courseName']."',";
+        $courseDescription = "description = '".$_POST['courseDescription']."',";
+        $courseCategory = "category = '".$_POST['courseCategory']."',";
+        $courseDuration = "duration = '".$_POST['courseDuration']."',";
+        $startDate = "start = '".$_POST['courseStart']."',";
+        $endDate = "end = '".$_POST['courseEnd']."',";
+        $courseTeacher = "teacher_email = '".$_POST['courseTeacher']."',";
         $coursePhoto = $_FILES['coursePhoto']['tmp_name'];
+        
         if ($coursePhoto == null) {
             $sql = "SELECT photo FROM course WHERE code = '".$code."'";
 
             $query = mysqli_query($connect, $sql);
 
-            $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
-
-            echo $line[0];
-            $courseImage = $line[0];
-
+            $line = mysqli_fetch_array($query);
+            
+            
+            $courseImage = "";
+        } else {
+            
+            $courseImage = "photo = '".uploadPhoto($coursePhoto, $_FILES['coursePhoto']['name'], "../")."'";
         }
 
         editCourse($code, $courseName, $courseDescription, $courseCategory, $courseDuration, $courseStartDate, $courseEndDate, $courseTeacher, $courseImage);
