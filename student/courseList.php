@@ -32,7 +32,7 @@
             $categoryName = ucwords($categoryName); echo $categoryName;
             ?></h1>
         <div>
-            <h3 id="allCourses">All Courses</h3>
+            <h3 id="allCourses"><a href="courses.php">All Courses</a></h3>
             <h3 id="filterBy">Filter by</h3>
         </div>
         <form action="courseList.php" method="post" name="courseEnrollment">
