@@ -32,9 +32,8 @@
 
                 $query = mysqli_query($connect, $sql);
 
-                $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                $line = mysqli_fetch_array($query);
 
-                echo $line[0];
                 $profileImage = $line[0];
                 
             }else {
