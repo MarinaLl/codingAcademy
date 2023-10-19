@@ -115,7 +115,7 @@ function showAllCourses(){
                 <td>'.$line['start'].'</td>
                 <td>'.$line['end'].'</td>
                 <td>'.$active.'</td>
-                <td><button class="editCourseTableBtn editTableBtn"  type="submit" name="buttonEditCourse" value='.$line['code'].'></button></td>
+                <td><button class="editCourseTableBtn editTableBtn" type="submit" name="buttonEditCourse" value='.$line['code'].'></button></td>
                 <td><button class="disCourseTableBtn disTableBtn" type="submit" name="buttonDisCourse" value='.$line['code'].'></button></td>
             </tr>
             ';
@@ -690,4 +690,73 @@ function importStudents($receivedData) {
 	$response = ['message' => 'Datos recibidos correctamente'];
 	echo json_encode($response);
 }
+
+function editTeacherForm($email){
+    $connect = connectDataBase();
+    $sql = "SELECT * FROM teacher WHERE email = '$email'";
+        $query = mysqli_query($connect, $sql);
+
+        if ($query == false){
+            mysqli_error($connect);
+        } else {
+            $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
+            echo '<form action="editTeacher.php" method="post" enctype="multipart/form-data" name="editTeacher">
+                <div><label for="teacherName">Name</label></div>
+                <div><input type="text" name="teacherName" value="'.$line['name'].'" id="teacherName"></div>
+                <div><label for="teacherLastNames">Last Names</label></div>
+                <div><input type="text" name="teacherLastNames" value="'.$line['lastNames'].'" id="teacherLastNames"></div>
+                <div><label for="teacherDni">DNI</label></div>
+                <div><input type="text" name="teacherDni" value="'.$line['dni'].'" id="teacherDni"></div>
+                <div><label for="teacherTitle">Title</label></div>
+                <div><input type="text" name="teacherTitle" value="'.$line['title'].'" id="teacherTitle"></div>
+                <div><label for="teacherEmail">Email</label></div>
+                <div><input type="email" name="teacherEmail" value="'.$line['email'].'" id="teacherEmail"></div>
+                <div><label>Photo</label></div>
+                <div><label for="teacherPhoto" id="teacherPhotoBtn">Photo</label><input type="file" name="teacherPhoto" value='.$line['photo'].' id="teacherPhoto"></div>
+                <div><input type="submit" value="Confirm"></div>';
+        }
+}
+
+function editCourseForm($code){
+    $connect = connectDataBase();
+    $sql = "SELECT * FROM course WHERE code = '$code'";
+    $query = mysqli_query($connect, $sql);
+
+    if ($query == false) {
+        mysqli_error($connect);
+    } else {
+        $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
+        echo ' <form action="editCourse.php" method="post" enctype="multipart/form-data" name="editCourse">
+        <div><label for="courseName">Course Name</label></div>
+        <div><input type="text" name="courseName" value="' . $line['name'] . '" id="courseName"></div>
+        <div><label for="category">Category</label></div>
+        <div><select name="courseCategory" id="courseCategory" >
+        <option value="'. $line['category'] .'" default>'. $line['category'] .'</option>
+        <option value="beginner-friendly">Beginner Friendly</option>
+        <option value="web-development">Web Development</option>
+        <option value="game-developmen">Game Development</option>
+        <option value="computer-science">Computer Science</option>
+        </select></div>
+        <div><label for="courseTeacher">Teacher</label></div>
+        <div><select name="courseTeacher" id="courseTeacher">
+        <option value="' . $line['teacher_email'] . '" default>' . $line['teacher_email'] . '</option>
+        <?php listTeacherNames(); ?>
+        </select></div>
+        <div><label for="courseDuration">Duration</label></div>
+        <div><input type="number" name="courseDuration" value=' . $line['duration'] . ' id="courseDuration"></div>
+        <div><label for="courseStart">Course Start</label></div>
+        <div><input type="date" name="courseStart" value=' . $line['start'] . ' id="courseStart"></div>
+        <div><label for="courseEnd">Course End</label></div>
+        <div><input type="date" name="courseEnd" value=' . $line['end'] . ' id="courseEnd"></div>
+        <div><label for="coursePhoto">Photo</label></div>
+        <div><input type="file" name="coursePhoto" value=' . $line['photo'] . ' id="coursePhoto"></div>
+        <div><label for="courseDescription">Description</label></div>
+        <div><textarea name="courseDescription" value="' . $line['description'] . '" id="courseDescription" cols="30" rows="10">' . $line['description'] . '</textarea></div>
+        <div><input type="submit" value="Confirm"></div>
+    </form>';
+    }
+}
+
+
+
 ?>

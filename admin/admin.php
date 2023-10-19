@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="../css/main.css">
         <title>Administrator Panel</title>
         <script src="admin.js"></script>  
+        <script src="../strings.js"></script>
     </head>
     <body>
         <?php  
@@ -39,7 +40,7 @@
                 } else if (isset($_POST['buttonEditCourse'])) {
                     //echo $_POST['buttonEditCourse'];
                     $_SESSION['code'] = $_POST['buttonEditCourse'];
-                    echo '<script src="admin.js">editCourse()</script>';
+                    echo '<meta http-equiv="refresh" content="0;url=editCourse.php">';
                 }
             }
         ?>
@@ -49,16 +50,12 @@
             <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
             <button id="createTeacherBtn">Add New Teacher</button>
             <button id="createCourseBtn">Add New Course</button>
-            <!-- <div id="popupBackground" class="popupBackground">
-                <div id="popup">
-                    
-                </div>
-            </div> -->
+            
             <div id="form-container">
                 
                 <button id="btnCourse" class="btnFolderStyle">Courses</button>
                 <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
-            
+
                 <div id="teacher-form">
                     <form action="admin.php" method="post" name="disableTeacher">
                         <table>
@@ -78,7 +75,7 @@
                 </div>
                 
                 <div id="course-form">
-                    <form action="admin.php" id="courseForm" method="post" name="disableCourse">
+                    <form action="admin.php" method="post" name="disableCourse">
                         <table>
                             <tr>
                                 <th>Photo</th>
@@ -97,7 +94,11 @@
                     </form>
                 </div>
             </div>
-            
+            <div id="popupBackground" class="popupBackground" style="display: none;">
+                <div id="popup">
+                    
+                </div>
+            </div>
             <?php }?>
         </div>
         <div></div>

@@ -1,6 +1,7 @@
 <?php
     session_start();
     include('../funciones.php');
+    addHeader('../');
     if ($_SESSION['role'] != 'admin') {
         logout("../");
     } else {
@@ -10,11 +11,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Edit Teacher</title>
 </head>
 <body>
     <?php
-    $email = $_SESSION['user'];
+    $email = $_SESSION['email'];
     $connect = connectDataBase();
     if($_POST){
             $teacherName = $_POST['teacherName'];
@@ -42,34 +44,23 @@
             $teacherDni = $_POST['teacherDni'];
 
             editTeacher($email, $teacherEmail, $teacherName, $teacherLastNames, $teacherTitle, $teacherDni, $profileImage);
-        
+            echo '<meta http-equiv="refresh" content="0;url=admin.php">';
 
     } else {
+    ?>
+    <div class="grid-container">
+        <div></div>
+        <div>
+            <div class="popupBackground">
+                <div id="popup">
+                    <h4 class="popup-title">Edit Teacher</h4>
+                    <?php editTeacherForm($email); ?>
+                </div>
+            </div>
+        </div>
+        <div></div>
+    </div>
     
-        $sql = "SELECT * FROM teacher WHERE email = '$email'";
-        $query = mysqli_query($connect, $sql);
-
-        if ($query == false){
-            mysqli_error($connect);
-        } else {
-            $line = mysqli_fetch_array($query, MYSQLI_ASSOC);
-            echo '<form action="editTeacher.php" method="post" enctype="multipart/form-data" name="editTeacher">
-                <label for="teacherName">Name</label>
-                <input type="text" name="teacherName" value="'.$line['name'].'" id="teacherName"><br>
-                <label for="teacherLastNames">Last Names</label>
-                <input type="text" name="teacherLastNames" value="'.$line['lastNames'].'" id="teacherLastNames"><br>
-                <label for="teacherTitle">Title</label>
-                <input type="text" name="teacherTitle" value="'.$line['title'].'" id="teacherTitle"><br>
-                <label for="teacherPhoto">Photo</label>
-                <input type="file" name="teacherPhoto" value='.$line['photo'].' id="teacherPhoto"><br>
-                <label for="teacherEmail">Email</label>
-                <input type="email" name="teacherEmail" value="'.$line['email'].'" id="teacherEmail"><br>
-                <label for="teacherDni">DNI</label>
-                <input type="text" name="teacherDni" value="'.$line['dni'].'" id="teacherDni"><br>
-                <input type="submit" value="Confirma">';
-                echo $line['photo'];
-        }
-    }?>
+    <?php }}?>
 </body>
 </html>
-<?php } ?>
