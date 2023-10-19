@@ -55,7 +55,6 @@
                 
                 <button id="btnCourse" class="btnFolderStyle">Courses</button>
                 <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
-
                 <div id="teacher-form">
                     <form action="admin.php" method="post" name="disableTeacher">
                         <table>

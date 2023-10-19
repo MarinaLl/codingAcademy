@@ -38,7 +38,7 @@
             $courseImage = $line[0];
 
         } else {
-            $courseImage = uploadPhoto($coursePhoto, $_FILES['coursePhoto']['name'], "../");
+            editCoursePopUp($array, $code);
         }
 
         editCourse($code, $courseName, $courseDescription, $courseCategory, $courseDuration, $courseStartDate, $courseEndDate, $courseTeacher, $courseImage);
