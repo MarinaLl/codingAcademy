@@ -635,3 +635,25 @@ form[name="contactForm"] {
         }
     }
 }
+
+form[name="studentsGrade"]{
+    @include boxSize(904px, fit-content, $boxRadius);
+    background-color: $primaryColor;
+    padding: 21px 54px;
+    table {
+        width: 100%;
+        color: white;
+
+        th{
+            text-align: left;
+        }
+        img {
+            @include boxSize(32px, 32px, 50%);
+        }
+        button {
+            @include browsePhotoBtn(100%);
+            background-color: #018C8A;
+            box-shadow: $boxShadow;
+        }
+    }
+}

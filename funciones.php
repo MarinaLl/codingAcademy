@@ -157,8 +157,8 @@ function editCourse($code, $courseName, $courseDescription, $courseCategory, $co
     $connectEditCourse = connectDataBase();
 
     if($query = mysqli_query($connectEditCourse, $sql)){
-        echo "curso editado";
-        //echo '<meta http-equiv="refresh" content="0;url=admin.php">';
+        //echo "curso editado";
+        echo '<meta http-equiv="refresh" content="0;url=admin.php">';
         exit;
     } else {
         echo mysqli_error($connectEditCourse);
@@ -578,7 +578,12 @@ function showAllStudents($course) {
 	$query = mysqli_query($connect, $sql);
 
 	echo '<form action="teacherCourse.php" method="post" name="studentsGrade"><table>';
-    
+    echo '<tr>
+        <th>Photo</th>
+        <th>Name</th>
+        <th>Last Names</th>
+        <th>Grade</th>
+    </tr>';
 	while ($student = mysqli_fetch_assoc($query)) {
     	echo '<tr>
         	<td><img src="../'.$student['photo'].'"></td>
@@ -589,8 +594,12 @@ function showAllStudents($course) {
         	</td>
     	</tr>';
 	}
-	echo '</table>
-	<button type="submit" name="editGradesBtn" value="'.$course.'">UPDATE NOTES</button></form>';
+    
+	echo '
+    <tr>
+	    <td colspan="4"><button type="submit" name="editGradesBtn" value="'.$course.'">UPDATE NOTES</button></td>
+    </tr>
+    </table></form>';
 }
 
 function updateNotes($students, $course) {
