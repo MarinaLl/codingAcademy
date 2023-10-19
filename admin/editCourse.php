@@ -28,7 +28,7 @@
         $endDate = "end = '".$_POST['courseEnd']."',";
         $courseTeacher = "teacher_email = '".$_POST['courseTeacher']."',";
         $coursePhoto = $_FILES['coursePhoto']['tmp_name'];
-        
+
         if ($coursePhoto == null) {
             $sql = "SELECT photo FROM course WHERE code = '".$code."'";
 
@@ -43,7 +43,7 @@
             $courseImage = "photo = '".uploadPhoto($coursePhoto, $_FILES['coursePhoto']['name'], "../")."'";
         }
 
-        editCourse($code, $courseName, $courseDescription, $courseCategory, $courseDuration, $courseStartDate, $courseEndDate, $courseTeacher, $courseImage);
+        editCourse($code, $courseName, $courseDescription, $courseCategory, $courseDuration, $startDate, $endDate, $courseTeacher, $courseImage);
     } else {
         ?>
         <div class="grid-container">
