@@ -1370,13 +1370,37 @@ form[name=studentsGrade] {
   border-radius: 20px;
   background-color: #007A78;
   padding: 21px 54px;
+  margin: 0 auto;
 }
 form[name=studentsGrade] table {
   width: 100%;
   color: white;
-}
-form[name=studentsGrade] table th {
+  border-collapse: separate;
+  border-spacing: 0px 10px;
   text-align: left;
+}
+form[name=studentsGrade] table th:last-child {
+  text-align: right;
+}
+form[name=studentsGrade] table td:first-child:not(tr:last-child td), form[name=studentsGrade] table th:first-child {
+  padding-left: 10px;
+}
+form[name=studentsGrade] table tr:not(tr:first-child) {
+  height: 57px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+form[name=studentsGrade] table tr:not(tr:first-child) td {
+  background: #018C8A;
+}
+form[name=studentsGrade] table tr:not(tr:first-child) td:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+form[name=studentsGrade] table tr:not(tr:first-child) td:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  text-align: center;
 }
 form[name=studentsGrade] table img {
   width: 32px;
@@ -1396,6 +1420,9 @@ form[name=studentsGrade] table button {
   cursor: pointer;
   background-color: #007A78;
   padding: 15px 35px;
-  background-color: #018C8A;
+  background-color: #1CA9A6;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+form[name=studentsGrade] table input[type=number] {
+  float: right;
 }/*# sourceMappingURL=main.css.map */

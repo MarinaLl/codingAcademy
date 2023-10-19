@@ -640,20 +640,49 @@ form[name="studentsGrade"]{
     @include boxSize(904px, fit-content, $boxRadius);
     background-color: $primaryColor;
     padding: 21px 54px;
+    margin: 0 auto;
     table {
         width: 100%;
         color: white;
+        border-collapse: separate;
+        border-spacing: 0px 10px;
+        text-align: left;
 
-        th{
-            text-align: left;
+        th:last-child{ text-align: right;}
+        
+        td:first-child:not(tr:last-child td), th:first-child {
+            padding-left: 10px;
+        }
+        tr:not(tr:first-child){
+            height: 57px;
+            border-radius: $boxRadius;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);;
+
+            td{
+                background: #018C8A;
+                &:first-child{
+                    border-top-left-radius: $boxRadius;
+                    border-bottom-left-radius: $boxRadius;
+                }
+                &:last-child{
+                    border-top-right-radius: $boxRadius;
+                    border-bottom-right-radius: $boxRadius;
+                    text-align: center;
+                }
+
+            }
         }
         img {
             @include boxSize(32px, 32px, 50%);
         }
         button {
             @include browsePhotoBtn(100%);
-            background-color: #018C8A;
+            background-color: #1CA9A6;
             box-shadow: $boxShadow;
+         
+        }
+        input[type="number"]{
+            float: right;
         }
     }
 }
