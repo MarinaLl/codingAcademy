@@ -27,6 +27,17 @@
     <div id="next">&#10095;</div>
     
     <div id="indicator-container"></div>
+    <div class="grid-container">
+        <div></div>
+        <div>
+
+        </div>
+        <div></div>
+    </div>
+    <div id="testimonials">
+        <h4>TESTIMONIALS</h4>
+
+    </div>
     
     <script src="main.js"></script>
 

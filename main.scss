@@ -686,3 +686,9 @@ form[name="studentsGrade"]{
         }
     }
 }
+
+#testimonials{
+    h4 {
+        @include title(32px, 400);
+    }
+}

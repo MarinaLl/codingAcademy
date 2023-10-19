@@ -10,12 +10,11 @@
   background-position: center;
 }
 .loginContainer > div:last-child {
-  border-left: 2px solid grey;
+  border-left: 2px solid red;
   display: grid;
   grid-template-columns: 378px;
   grid-template-rows: auto 137px 261px auto;
   text-align: center;
-  justify-items: center;
 }
 .loginContainer > div:last-child div:nth-child(1) {
   grid-area: 1/1/2/2;
