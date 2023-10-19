@@ -25,7 +25,7 @@ if (isset($_SESSION['user'])) {
             $completeName = $row['name']." ".$row['lastNames'];
             $_SESSION['completeName'] = $completeName;
             if (is_null($row['photo'])) {
-                $_SESSION['photo'] = 'img/defaultProfileImage.png';
+                $_SESSION['photo'] = 'src/defaultProfileImage.png';
             } else {
                 $_SESSION['photo'] = $row['photo'];
             }
