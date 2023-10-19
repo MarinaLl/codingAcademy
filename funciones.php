@@ -691,7 +691,7 @@ function importStudents($receivedData) {
 			$name = $fila[3];
 			$lastname = $fila[4];
 			$age = $fila[5];
-			$img = $fila[6];
+			$img = "src/defaultProfileImage.png";
 
 			$sql = "INSERT INTO student (email, password, dni, name, lastNames, age, photo) VALUES ('$email', '$pass', '$dni', '$name', '$lastname', $age, '$img')";
 			mysqli_query($connect, $sql);
