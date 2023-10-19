@@ -636,15 +636,15 @@ function createContactForm() {
     if (isset($_SESSION['user'])) {
         $email = $_SESSION['user'];
 
-        $sql = "SELECT name, lastNames FROM student WHERE email = '".$_SESSION['user']."'";
+        $sql = "SELECT name, lastNames FROM ".$_SESSION['role']." WHERE email = '".$_SESSION['user']."'";
         $connect = connectDataBase();
         $query = mysqli_query($connect, $sql);
-        if ($query == false){
+        if ($query == false) {
             mysqli_error($connect);
         } else {
-            $student = mysqli_fetch_array($query);
-            $name = $student['name'];
-            $lastNames = $student['lastNames'];
+            $user = mysqli_fetch_array($query);
+            $name = $user['name'];
+            $lastNames = $user['lastNames'];
         }
     }
     echo '
