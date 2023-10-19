@@ -153,7 +153,8 @@ function editCourse($code, $courseName, $courseDescription, $courseCategory, $co
                 $endDate
                 $courseTeacher
                 $coursePhoto
-            WHERE code = '$code'";
+            WHERE code = $code";
+    echo $sql;
     $connectEditCourse = connectDataBase();
 
     if($query = mysqli_query($connectEditCourse, $sql)){
@@ -354,8 +355,9 @@ function countTopCourses() {
         echo mysqli_error($connectTopCourses);
     } else {
         $numLines = mysqli_num_rows($query);
+        $coursesVisible = false;
         if ($numLines > 0) {
-            echo '<form action="courses.php" method="post" name="mostPopularEnrollment" class="wrap">';
+            
             while ($line = mysqli_fetch_array($query)) {
                 $courseCode = $line['course_code'];
                 
@@ -363,7 +365,7 @@ function countTopCourses() {
                 $queryCourse = mysqli_query($connectTopCourses, $sql);
                 $course = mysqli_fetch_array($queryCourse);
                 
-                if(!compareDates($course['start'])) {
+                if(compareDates($course['start'])) {
                     $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
                     $queryTeacher = mysqli_query($connectTopCourses, $sql);
                     $teacher = mysqli_fetch_array($queryTeacher);
@@ -380,7 +382,13 @@ function countTopCourses() {
                     } else {
                         echo mysqli_error($connectTopCourses);
                     }
-                    
+                    if(!$coursesVisible) {
+                        echo 
+                            '<h2 id="popular">MOST POPULAR</h2>
+                                <div class="wrap">
+                            <form action="courses.php" method="post" name="mostPopularEnrollment" class="wrap">';
+                            $coursesVisible = true;
+                    }
                     echo '
                     <div class="topComponent">
                     <div>
@@ -400,10 +408,12 @@ function countTopCourses() {
                         '.$enrollButton.'
                         </div>
                     </div>';
+
                 }
 
             }
             echo '</form>';
+            echo '</div>';
         } else {
             echo 'No hay cursos en esta categoria';
         }
@@ -482,11 +492,11 @@ function showCourseList($courseCategory) {
         mysqli_error($connect);
     } else {
         $numLines = mysqli_num_rows($query);
-        
-        if ($numLines > 0) {
+            $cont = 0;
                 for($i = 0; $i < $numLines; $i++){
                     $course = mysqli_fetch_array($query);
-                    if (!compareDates($course['start'])) {
+                    if (compareDates($course['start'])) {
+                        $cont++;
                         $sql = "SELECT name, lastNames, photo FROM teacher WHERE email = '".$course['teacher_email']."'";
                         $queryTeacher = mysqli_query($connect, $sql);
                         $teacher = mysqli_fetch_array($queryTeacher);
@@ -521,12 +531,9 @@ function showCourseList($courseCategory) {
                             echo '</div>';
                     }
                 }
-            
-        } else {
-            echo 'No hay cursos en esta categoria';
-        }
-        
-        
+            if($cont == 0) {
+                echo 'No hay cursos en esta categoria';
+            }
     }
 }
 

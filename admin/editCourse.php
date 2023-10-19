@@ -26,11 +26,11 @@
         $courseDuration = "duration = '".$_POST['courseDuration']."',";
         $startDate = "start = '".$_POST['courseStart']."',";
         $endDate = "end = '".$_POST['courseEnd']."',";
-        $courseTeacher = "teacher_email = '".$_POST['courseTeacher']."',";
+        $courseTeacher = "teacher_email = '".$_POST['courseTeacher']."'";
         $coursePhoto = $_FILES['coursePhoto']['tmp_name'];
 
         if ($coursePhoto == null) {
-            $sql = "SELECT photo FROM course WHERE code = '".$code."'";
+            $sql = "SELECT photo FROM course WHERE code = ".$code."";
 
             $query = mysqli_query($connect, $sql);
 
@@ -39,8 +39,7 @@
             
             $courseImage = "";
         } else {
-            
-            $courseImage = "photo = '".uploadPhoto($coursePhoto, $_FILES['coursePhoto']['name'], "../")."'";
+            $courseImage = ", photo = '".uploadPhoto($coursePhoto, $_FILES['coursePhoto']['name'], "../")."'";
         }
 
         editCourse($code, $courseName, $courseDescription, $courseCategory, $courseDuration, $startDate, $endDate, $courseTeacher, $courseImage);
