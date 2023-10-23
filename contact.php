@@ -2,13 +2,16 @@
     session_start();
     include("funciones.php");
     addHeader("");
+    $emailSent = "hidden";
     if($_POST) {
+        $emailSent = "";
+        /* Send an email using PHPMailer and MercuryMail Server
         $to = "d.duque.dev@gmail.com";
         $completeName = $_POST['name']." ".$_POST['lastNames'];
         $subject = "Coding Academy Contact Email";
         $message = $_POST['message'];
         $additional_headers = "From: ".$completeName." with email: ".$_POST['email'];
-        
+        */
     }
 ?>
 <!DOCTYPE html>
@@ -34,6 +37,7 @@
                     ?>
                 </div>
             </div>
+            <?php echo '<h1 id="emailSent" '.$emailSent.'>Your email has been successfully sent.</h1>'?>
         </div>
         <div></div>
     </div>

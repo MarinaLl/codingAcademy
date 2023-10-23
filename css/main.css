@@ -1434,3 +1434,7 @@ form[name=studentsGrade] table input[type=number] {
   line-height: normal;
   padding-top: 20px;
 }/*# sourceMappingURL=main.css.map */
+
+#emailSent {
+  text-align: center;
+}

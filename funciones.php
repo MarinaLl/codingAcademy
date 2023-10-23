@@ -24,6 +24,9 @@ function loginRedirect() {
 function addHeader($path) {
     include(''.$path.'header.php');
 }
+function addFooter($path) {
+    include(''.$path.'footer.php');
+}
 function logout($path) {
     session_destroy();
     echo '<meta http-equiv="refresh" content="0;url='.$path.'login.php">';

@@ -33,20 +33,15 @@
                         echo '
                         <a id="signUpBtn" href="'.$path.'register.php">Sign Up</a>
                         <a id="logInBtn" href="'.$path.'login.php">Log In</a>
-                        
                         ';
                     }
                 echo "</div>";
             echo "</div>";
             ?>
-        
-        <?php
-        ?>
-        
     </header>
 </body>
 </html>
 <?php
 } else {
-    header('Location: index.php');
+    echo '<meta http-equiv="refresh" content="0;url=index.php">';
 }?>

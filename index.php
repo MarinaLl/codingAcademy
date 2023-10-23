@@ -1,7 +1,10 @@
 <?php 
     session_start();
     include('funciones.php');
-    addHeader("");
+    if(isset($_SESSION['user'])) {
+        loginRedirect();
+    } else {
+        addHeader("");
 ?>
 
 <!DOCTYPE html>
@@ -16,9 +19,10 @@
 <body>
     <div id="slider-container">
         <div id="slider">
-            <div class="slide"><img src="src/Python-Banner.png" alt="Imagen 1"></div>
-            <div class="slide"><img src="src/Terminal-Banner.png" alt="Imagen 2"></div>
-            <div class="slide"><img src="src/HTMLCSSJS-Banner.png" alt="Imagen 3"></div>
+            <!-- Las imagenes actuales son con las medidas que deben tener, es decir: 1440x700 -->
+            <div class="slide"><img src="src/Python-Banner-2.png" alt="Imagen 1"></div>
+            <div class="slide"><img src="src/Terminal-Banner-2.png" alt="Imagen 2"></div>
+            <div class="slide"><img src="src/HTMLCSSJS-Banner-2.png" alt="Imagen 3"></div>
             <!-- Agrega más imágenes según sea necesario -->
         </div>
     </div>
@@ -43,3 +47,4 @@
 
 </body>
 </html>
+<?php addFooter(""); } ?>

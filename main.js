@@ -64,6 +64,16 @@ document.addEventListener('DOMContentLoaded', function () {
 				updateIndicators();
 		
 			}
+			/* Este metodo no me funciona con Google Chrome
+			function animateSlide(timestamp) {
+                const newTransformValue = -currentSlide * 100 + 'vw';
+                document.getElementById('slider').style.transform = 'translate3d(' + newTransformValue + ', 0, 0)';
+                updateIndicators();
+                requestAnimationFrame(animateSlide);
+            }
+
+            requestAnimationFrame(animateSlide);
+			*/
 		
 			const prev = document.getElementById("prev");
 			const next = document.getElementById("next");
