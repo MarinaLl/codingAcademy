@@ -1,0 +1,19 @@
+footer {
+  background-color: #007A78;
+  height: 108px;
+}
+footer div:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+footer div:nth-child(2) div:first-child a {
+  padding-right: 55px;
+  color: white;
+  text-decoration: none;
+}
+footer div:nth-child(2) div:last-child a {
+  margin-right: 11px;
+  text-decoration: none;
+}/*# sourceMappingURL=footer.css.map */

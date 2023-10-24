@@ -5,6 +5,7 @@
 @import 'scss/popUP.scss';
 @import 'scss/popUpCourse.scss';
 @import 'scss/login.scss';
+@import 'scss/footer.scss';
 
 *{
     padding: 0;
@@ -690,5 +691,68 @@ form[name="studentsGrade"]{
 #testimonials{
     h4 {
         @include title(32px, 400);
+        text-align: center;
+        margin-top: 44px;
+        margin-bottom: 34px;
+    }
+    h5 {
+        @include labelStyles();
+        text-align: left;
+        font-weight: 700;
+        margin-bottom: 14px;
+    }
+    > div {
+        $cuadricula: 
+            (1, 1, 2, 2),
+            (1, 2, 2, 3),
+            (2, 1, 3, 2),
+            (2, 2, 3, 3);
+
+        @include grid(repeat(2, 1fr), repeat(2, 172px));
+        @include generateGridArea(div, $cuadricula);
+
+        background-color: $primaryColor;
+        border-radius: $boxRadius;
+        box-shadow: $boxShadow;
+        padding: 25px;
+        > div {
+            $cuadricula:
+                (1, 1, 2, 2),
+                (2, 1, 3, 2),
+                (1, 2, 3, 3);
+
+            @include grid(repeat(2, 1fr), repeat(2, 1fr));
+            @include generateGridArea(div, $cuadricula);
+            margin: 10px;
+            background-color: #1CA9A6;
+            border-radius: $boxRadius;
+            box-shadow: $boxShadow;
+            img {
+                width: 78px;
+                height: 78px;
+                margin-left: 30px;
+                margin-top: 30px;
+            }
+            h6 {
+                color: rgb(72, 72, 72);
+                font-size: 12px;
+                font-weight: 700;
+                width: 120px;
+                text-align: center;
+                margin-left: 8px;
+            }
+            p {
+                width: 390px;
+                height: 136px;
+                color: white;
+                font-size: 12px;
+                text-align: justify;
+                font-style: italic;
+                font-weight: 400;
+                margin-top: 30px;
+                margin-left: -130px;
+            }
+        }
+        margin-bottom: 60px;
     }
 }

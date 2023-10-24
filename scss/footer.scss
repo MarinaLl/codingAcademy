@@ -1,0 +1,27 @@
+@import 'mixin.scss';
+@import 'variables.scss';
+
+footer {
+    background-color: $primaryColor;
+    height: 108px;
+    div {
+        &:nth-child(2){
+            @include flex(row, center, space-between);
+            div {
+                &:first-child {
+                    a {
+                        padding-right: 55px;
+                        color: white;
+                        text-decoration: none;
+                    }
+                }
+                &:last-child {
+                    a {
+                        margin-right: 11px;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
