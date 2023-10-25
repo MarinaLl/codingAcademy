@@ -592,6 +592,7 @@ function showAllStudents($course) {
     	s.photo AS photo,
     	s.name AS name,
     	s.lastNames AS lastNames,
+        s.dni AS DNI,
     	s.email AS email,
     	e.grade AS grade FROM (student s INNER JOIN enrollment e ON s.email = e.student_email) WHERE course_code = '$course'";
 
@@ -602,6 +603,8 @@ function showAllStudents($course) {
         <th>Photo</th>
         <th>Name</th>
         <th>Last Names</th>
+        <th>DNI</th>
+        <th>Email</th>
         <th>Grade</th>
     </tr>';
 	while ($student = mysqli_fetch_assoc($query)) {
@@ -609,6 +612,8 @@ function showAllStudents($course) {
         	<td><img src="../'.$student['photo'].'"></td>
         	<td>'.$student['name'].'</td>
         	<td>'.$student['lastNames'].'</td>
+            <td>'.$student['DNI'].'</td>
+            <td>'.$student['email'].'</td>
         	<td>
             	<input type="number" min=0 max=10 name="studentGrades['.$student['email'].']" class="studentGrade" value="'.$student['grade'].'" step="0.01">
         	</td>
@@ -617,7 +622,7 @@ function showAllStudents($course) {
     
 	echo '
     <tr>
-	    <td colspan="4"><button type="submit" name="editGradesBtn" value="'.$course.'">UPDATE NOTES</button></td>
+	    <td colspan="6"><button type="submit" name="editGradesBtn" value="'.$course.'">UPDATE NOTES</button></td>
     </tr>
     </table></form>';
 }
