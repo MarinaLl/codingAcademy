@@ -81,8 +81,7 @@ form[name="editCourse"]{
 input[type="submit"]{
     @include boxSize(175px, 55px, $buttonRadius);
     @include defaultBtn(none, #FFF);
-    margin-right: 5px;
-    margin-top: 29px;
+    margin-top: 20px;
     background-color: $primaryColor;
     float: right;
     cursor: pointer;

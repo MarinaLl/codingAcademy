@@ -21,11 +21,11 @@
                 (4, 1, 5, 2)
             );
 
-            border-left: 2px solid red;
+            border-left: 2px solid grey;
             @include grid(378px, auto 137px 261px auto);
             @include generateGridArea(div, $areasCuadricula);
             text-align: center;
-            
+            justify-content: center;
 
             div {
                 img {
@@ -77,10 +77,17 @@
     
                     }
                 }
-            }
-            
 
-            
+                p { 
+                    color: $danger;
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+        }
+
+        &:last-child#register{
+            margin: 0;
         }
     }
 

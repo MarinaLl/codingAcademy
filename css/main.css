@@ -260,8 +260,7 @@ input[type=submit] {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-right: 5px;
-  margin-top: 29px;
+  margin-top: 20px;
   background-color: #007A78;
   float: right;
   cursor: pointer;
@@ -450,11 +449,12 @@ input[type=reset] {
   background-position: center;
 }
 .loginContainer > div:last-child {
-  border-left: 2px solid red;
+  border-left: 2px solid grey;
   display: grid;
   grid-template-columns: 378px;
   grid-template-rows: auto 137px 261px auto;
   text-align: center;
+  justify-content: center;
 }
 .loginContainer > div:last-child div:nth-child(1) {
   grid-area: 1/1/2/2;
@@ -557,6 +557,11 @@ input[type=reset] {
 }
 .loginContainer > div:last-child div form[name=register] input:nth-child(8) {
   grid-area: 5/1/6/4;
+}
+.loginContainer > div:last-child div p {
+  color: #8e0000;
+  padding: 0;
+  margin: 0;
 }
 
 footer {

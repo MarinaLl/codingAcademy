@@ -4,6 +4,7 @@ session_start();
 if (isset($_SESSION['user'])) {
     loginRedirect();
 } else {
+    $incorrectCredentials = "";
     if ($_POST) {
         
         $email = $_POST['userEmail'];
@@ -31,12 +32,12 @@ if (isset($_SESSION['user'])) {
             }
             loginRedirect();
         } else {
-            echo "Correo electrónico o contraseña incorrectos.";
+            $incorrectCredentials = "Incorrect credentials";
         }
 
         $connect->close();
 
-    } else { ?>
+    } ?>
     <!DOCTYPE html>
     <html>
         <head>
@@ -48,7 +49,7 @@ if (isset($_SESSION['user'])) {
         <body>
             <div class="loginContainer">
                 <div></div>
-                <div>
+                <div id="register">
                     <div>
                         <img src="src/codingAcademyLogo2copia.png" alt="codingAcademy">
                     </div>
@@ -59,6 +60,7 @@ if (isset($_SESSION['user'])) {
                         <form action="login.php" method="post" enctype="multipart/form-data" name="login">
                             <input type="email" name="userEmail" id="userEmail" placeholder="Email">
                             <input type="password" name="userPassword" id="userPassword" placeholder="Password">
+                            <p><?php echo $incorrectCredentials; ?></p>
                             <input type="submit" value="Log In" id="loginBtn">
                         </form>
                     </div>
@@ -70,5 +72,4 @@ if (isset($_SESSION['user'])) {
         </body>
     </html>
     <?php }
-}
 ?>
