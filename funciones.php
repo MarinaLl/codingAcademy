@@ -394,21 +394,21 @@ function countTopCourses() {
                     }
                     echo '
                     <div class="topComponent">
-                    <div>
-                        <img src="../'.$course['photo'].'" alt="">
-                    </div>
-                    <div>
                         <div>
-                            <h3>'.$course['name'].'</h3>
-                            <div>
-                                <img src="../'.$teacher['photo'].'" alt="">
-                                <p>'.$teacher['name']." ".$teacher['lastNames'].'</p>
-                            </div>
+                            <img src="../'.$course['photo'].'" alt="">
                         </div>
-                        <div>'.$course['description'].'</div>
-                        <div>'.$course['duration'].' Hours</div>
-                        <div>Level: '.formatString($course['difficulty']).'</div>
-                        '.$enrollButton.'
+                        <div>
+                            <div>
+                                <h3>'.$course['name'].'</h3>
+                                <div>
+                                    <img src="../'.$teacher['photo'].'" alt="">
+                                    <p>'.$teacher['name']." ".$teacher['lastNames'].'</p>
+                                </div>
+                            </div>
+                            <div>'.$course['description'].'</div>
+                            <div>'.$course['duration'].' Hours</div>
+                            <div>Level: '.formatString($course['difficulty']).'</div>
+                            '.$enrollButton.'
                         </div>
                     </div>';
 

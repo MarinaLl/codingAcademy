@@ -47,8 +47,8 @@
         <div></div>
         <div>
             <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
-            <button id="createTeacherBtn">Add New Teacher</button>
-            <button id="createCourseBtn">Add New Course</button>
+            <button id="createTeacherBtn"></button>
+            <button id="createCourseBtn"></button>
             <a href="../string.php">Import Students</a>
             
             <div id="form-container">
