@@ -666,7 +666,7 @@ form[name="contactForm"] {
 }
 
 form[name="studentsGrade"]{
-    @include boxSize(904px, fit-content, $boxRadius);
+    @include boxSize(auto, fit-content, $boxRadius);
     background-color: $primaryColor;
     padding: 21px 54px;
     margin: 0 auto;
@@ -677,7 +677,10 @@ form[name="studentsGrade"]{
         border-spacing: 0px 10px;
         text-align: left;
 
-        th:last-child{ text-align: right;}
+        th:last-child { 
+            text-align: right;
+            padding-right: 25px;
+        }
         
         td:first-child:not(tr:last-child td), th:first-child {
             padding-left: 10px;
@@ -688,6 +691,7 @@ form[name="studentsGrade"]{
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);;
 
             td{
+                
                 background: #018C8A;
                 &:first-child{
                     border-top-left-radius: $boxRadius;
@@ -703,6 +707,7 @@ form[name="studentsGrade"]{
         }
         img {
             @include boxSize(32px, 32px, 50%);
+            margin-left: 7px;
         }
         button {
             @include browsePhotoBtn(100%);
@@ -710,8 +715,21 @@ form[name="studentsGrade"]{
             box-shadow: $boxShadow;
          
         }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
         input[type="number"]{
+            color: white;
+            -moz-appearance: textfield;
+            font-size: 20px;
+            background-color: #018C8A;
+            border: none;
             float: right;
+            width: 50px;
+            margin-right: 15px;
         }
     }
 }
