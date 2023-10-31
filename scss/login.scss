@@ -41,41 +41,45 @@
                 }
 
                 form{
-                    @include boxSize(378px, 261px);
-                    
-                    
-                    input {
-                        @include textbox(378px);
-                        border: 1px solid rgba(0, 0, 0, 0.24);
-                        padding: 0;
-                        
-                        &[type="submit"]{
-                            @include browsePhotoBtn(378px);
-                            font-weight: bold;
+                    &[name="login"]{
+
+                        @include boxSize(378px, 261px);
+                        input {
+                            @include textbox(378px);
+                            border: 1px solid rgba(0, 0, 0, 0.24);
+                            padding: 0;
+                            
+                            &[type="submit"]{
+                                @include browsePhotoBtn(378px);
+                                font-weight: bold;
+                            }
                         }
                     }
-    
+                    
                     &[name="register"]{
-                        @include grid(repeat(3, 1fr), repeat(8, 1fr));
-                        
-                        
-                        label{ @include labelStyles(); }
-    
                         $areasCuadricula: (
                             (1, 1, 2, 2),
                             (1, 2, 2, 4),
                             (2, 1, 3, 2),
-                            (2, 2, 3, 3),
-                            (2, 3, 3, 4),
-                            (3, 1, 4, 4),
-                            (4, 1, 5, 4),
-                            (5, 1, 6, 4)
-                            );
-    
-    
-                        @include generateGridArea(input, $areasCuadricula);
-    
-                    }
+                            (2, 2, 3, 4),
+                            (3, 1, 4, 2),
+                            (3, 2, 4, 3),
+                            (3, 3, 4, 4),
+                            (4, 1, 5, 2),
+                            (4, 2, 5, 3),
+                            (4, 3, 5, 4),
+                            (5, 1, 6, 4),
+                            (6, 1, 7, 4),
+                            (7, 1, 8, 4),
+                            (8, 1, 9, 4),
+                            (9, 1, 10, 4)
+                        );
+
+                        @include grid(134px 66px 158px, repeat(9, auto));
+                        @include generateGridArea(div, $areasCuadricula);
+                        div {text-align: left;}
+                        label{ @include labelStyles(); }
+                        input { @include textbox(100%); }
                 }
 
                 p { 
@@ -86,9 +90,7 @@
             }
         }
 
-        &:last-child#register{
-            margin: 0;
-        }
     }
 
+}
 }

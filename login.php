@@ -49,7 +49,7 @@ if (isset($_SESSION['user'])) {
         <body>
             <div class="loginContainer">
                 <div></div>
-                <div id="register">
+                <div>
                     <div>
                         <img src="src/codingAcademyLogo2copia.png" alt="codingAcademy">
                     </div>

@@ -37,27 +37,35 @@ if (isset($_SESSION['user'])) {
             ?>
             <div class="loginContainer">
                 <div></div>
-                <div>
-                    <img src="src/codingAcademyLogo2copia.png" alt="codingAcademy">
-                    <h1>Sign Up</h1>
-                    <form action="register.php" method="post" enctype="multipart/form-data" name="register">
-                        <!-- <label for="userName">Name</label>
-                        <label for="userLastnames">Last Names</label> -->
-                        <input type="text" name="userName" id="userName" placeholder="Name">
-                        <input type="text" name="userLastnames" id="userLastnames" placeholder="Last Names">
-                        <!-- <label for="userDni">DNI</label>
-                        <label for="userAge">Age</label>
-                        <label for="userPhoto">Photo</label> -->
-                        <input type="text" name="userDni" id="userDni" placeholder="DNI">
-                        <input type="text" name="userAge" id="userAge" placeholder="Age">
-                        <input type="file" name="userPhoto" id="userPhoto">
-                        <!-- <label for="userEmail">Email</label>
-                        <label for="userPassword">Password</label> -->
-                        <input type="email" name="userEmail" id="userEmail" placeholder="Email">
-                        <input type="password" name="userPassword" id="userPassword" placeholder="Password">
-                        <input type="submit" value="Sign Up" id="registerBtn">
-                    </form>
-                    <a id="linkLogin" href="login.php">I already have an account.</a>
+                <div  id="register">
+                    <div>
+                        <img src="src/codingAcademyLogo2copia.png" alt="codingAcademy">
+                    </div>
+                    <div>
+                        <h1>Sign Up</h1>
+                    </div>
+                    <div>
+                        <form action="register.php" method="post" enctype="multipart/form-data" name="register">
+                            <div><label for="userName">Name</label></div>
+                            <div><label for="userLastnames">Last Names</label></div>
+                            <div><input type="text" name="userName" id="userName" placeholder="Name"></div>
+                            <div><input type="text" name="userLastnames" id="userLastnames" placeholder="Last Names"></div>
+                            <div><label for="userDni">DNI</label></div>
+                            <div><label for="userAge">Age</label></div>
+                            <div><label for="userPhoto">Photo</label></div>
+                            <div><input type="text" name="userDni" id="userDni" placeholder="DNI"></div>
+                            <div><input type="text" name="userAge" id="userAge" placeholder="Age"></div>
+                            <div><input type="file" name="userPhoto" id="userPhoto"></div>
+                            <div><label for="userEmail">Email</label></div>
+                            <div><input type="email" name="userEmail" id="userEmail" placeholder="Email"></div>
+                            <div><label for="userPassword">Password</label></div>
+                            <div><input type="password" name="userPassword" id="userPassword" placeholder="Password"></div>
+                            <div><input type="submit" value="Sign Up" id="registerBtn"></div>
+                        </form>
+                    </div>
+                    <div>
+                        <a id="linkLogin" href="login.php">I already have an account.</a>
+                    </div>
                 </div>
             </div>
     <?php 
