@@ -19,7 +19,10 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('boton curso');
 
         courseForm.style.visibility = 'visible';
+        btnCourses.style.zIndex = 1;
+        
         teacherForm.style.visibility = 'hidden';
+        btnTeacher.style.zIndex = 0;
     });
 
     // show teachers folder
@@ -30,7 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('boton prof');
 
         courseForm.style.visibility = 'hidden';
+        btnCourses.style.zIndex = "0";
         teacherForm.style.visibility = 'visible';
+        btnTeacher.style.zIndex = "1";
     });
 
     
