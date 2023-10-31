@@ -48,18 +48,18 @@ if (isset($_SESSION['user'])) {
                         <form action="register.php" method="post" enctype="multipart/form-data" name="register">
                             <div><label for="userName">Name</label></div>
                             <div><label for="userLastnames">Last Names</label></div>
-                            <div><input type="text" name="userName" id="userName" placeholder="Name"></div>
-                            <div><input type="text" name="userLastnames" id="userLastnames" placeholder="Last Names"></div>
+                            <div><input type="text" name="userName" id="userName" ></div>
+                            <div><input type="text" name="userLastnames" id="userLastnames" ></div>
                             <div><label for="userDni">DNI</label></div>
                             <div><label for="userAge">Age</label></div>
                             <div><label for="userPhoto">Photo</label></div>
-                            <div><input type="text" name="userDni" id="userDni" placeholder="DNI"></div>
-                            <div><input type="text" name="userAge" id="userAge" placeholder="Age"></div>
+                            <div><input type="text" name="userDni" id="userDni" ></div>
+                            <div><input type="text" name="userAge" id="userAge" ></div>
                             <div><input type="file" name="userPhoto" id="userPhoto"></div>
                             <div><label for="userEmail">Email</label></div>
-                            <div><input type="email" name="userEmail" id="userEmail" placeholder="Email"></div>
+                            <div><input type="email" name="userEmail" id="userEmail"></div>
                             <div><label for="userPassword">Password</label></div>
-                            <div><input type="password" name="userPassword" id="userPassword" placeholder="Password"></div>
+                            <div><input type="password" name="userPassword" id="userPassword"></div>
                             <div><input type="submit" value="Sign Up" id="registerBtn"></div>
                         </form>
                     </div>

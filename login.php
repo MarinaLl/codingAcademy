@@ -49,7 +49,7 @@ if (isset($_SESSION['user'])) {
         <body>
             <div class="loginContainer">
                 <div></div>
-                <div>
+                <div id="login">
                     <div>
                         <img src="src/codingAcademyLogo2copia.png" alt="codingAcademy">
                     </div>
@@ -62,10 +62,10 @@ if (isset($_SESSION['user'])) {
                             <input type="password" name="userPassword" id="userPassword" placeholder="Password">
                             <p><?php echo $incorrectCredentials; ?></p>
                             <input type="submit" value="Log In" id="loginBtn">
+                            <a id="linkRegister" href="register.php">No account yet? Sign Up now.</a>
                         </form>
                     </div>
                     <div>
-                        <a id="linkRegister" href="register.php">No account yet? Sign Up now.</a>
                     </div>
                 </div>
             </div>

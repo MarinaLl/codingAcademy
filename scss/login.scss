@@ -22,7 +22,12 @@
             );
 
             border-left: 2px solid grey;
-            @include grid(378px, auto 137px 261px auto);
+            &#login {
+                @include grid(378px, 240px 130px 300px auto);
+            }
+            &#register{
+                @include grid(378px, 240px 130px 401px auto);
+            }
             @include generateGridArea(div, $areasCuadricula);
             text-align: center;
             justify-content: center;
@@ -37,16 +42,16 @@
                     @include boxSize(378px, fit-content);
                     @include title(64px, 500);
                     padding: 0;
-                    margin-top: -50px;
+                   
                 }
 
                 form{
                     &[name="login"]{
-
+                        margin-top: 50px;
                         @include boxSize(378px, 261px);
                         input {
                             @include textbox(378px);
-                            border: 1px solid rgba(0, 0, 0, 0.24);
+                            border: 2px solid rgba(0, 0, 0, 0.24);
                             padding: 0;
                             
                             &[type="submit"]{
@@ -77,9 +82,27 @@
 
                         @include grid(134px 66px 158px, repeat(9, auto));
                         @include generateGridArea(div, $areasCuadricula);
-                        div {text-align: left;}
-                        label{ @include labelStyles(); }
-                        input { @include textbox(100%); }
+                        
+                        > div {
+                            text-align: left;
+                        
+                            > label{ 
+                                @include labelStyles(); 
+                                font-size: 16px;
+                                font-weight: bold;
+                            }
+                            > input { 
+                                @include textbox(calc(100% - 15px)); 
+                                height: 51px;
+                                margin-bottom: 10px;
+                                
+                                &[type="submit"]{
+                                    @include browsePhotoBtn(100%);
+                                    font-weight: bold;
+                                    padding: 0;
+                                }
+                            }
+                        }
                 }
 
                 p { 
@@ -87,10 +110,15 @@
                     padding: 0;
                     margin: 0;
                 }
+
+                
             }
         }
 
+        a {
+            text-decoration: none;
+            color: $primaryColor;
+        }
     }
-
 }
 }

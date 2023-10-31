@@ -32,13 +32,9 @@
         <div id="studentPanel">
             <div>
                 <h1>Hello, <?php echo $_SESSION['completeName']; ?></h1>
-            </div>
-            <div>
                 <a id="editProfileButton" href="editProfile.php">Edit Profile</a>
             </div>
-            <div>
-                <h2>My Courses</h2>
-            </div>
+            <h2>My Courses</h2>
             <div>
                 <form action="student.php" method="post" name="unenrollCourse">
                     <div class="wrap">
@@ -50,11 +46,6 @@
                     </div>
                 </form>
             </div>
-            <!-- <div id="popupBackground" class="popupBackground">
-                <div id="editProfilePopup">
-                    
-                </div>
-            </div> -->
         </div>
         <div></div>
     </div>
