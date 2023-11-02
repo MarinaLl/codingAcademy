@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/main.css">
+    <script src="admin.js"></script>
 </head>
 <body>
     
@@ -46,47 +47,60 @@
     
             <h1 class="popup-title">Add new teacher</h1>
             <form action="createTeacher.php" method="post" enctype="multipart/form-data" name="createTeacher">
-                <div class="popup-container">
-                    <div class="name">
-                        <label for="teacherName">Name</label><br>
-                        <input type="text" name="teacherName" id="teacherName" class="textbox">
-                    </div>
-                    <div class="lastnames">
-                        <label for="teacherLastNames">Last names</label><br>
-                        <input type="text" name="teacherLastNames" id="teacherLastNames" class="textbox">
-                    </div>
-                    <div class="dni">
-                        <label for="teacherDni">DNI</label><br>
-                        <input type="text" name="teacherDni" id="teacherDni" class="textbox">
-                    </div>
                 
-                    <div class="title">
-                        <label for="teacherTitle">Title</label><br>
-                        <input type="text" name="teacherTitle" id="teacherTitle" class="textbox">
+                    <div>
+                        <label for="teacherName">Name</label>
                     </div>
-                    <div class="photo">
-                        <label for="teacherPhotoText">Photo</label><br>
+                    <div>
+                        <label for="teacherLastNames">Last names</label>
+                    </div>
+                    <div>
+                        <label for="teacherDni">DNI</label>
+                    </div>
+                    <div>
+                        <input type="text" name="teacherName" id="teacherName" class="textbox" required>
+                    </div>
+                    <div>
+                        <input type="text" name="teacherLastNames" id="teacherLastNames" class="textbox" required>
+                    </div>
+                    <div>
+                        <input type="text" name="teacherDni" id="teacherDni" class="textbox" required>
+                    </div>
+                    <div>
+                        <label for="teacherTitle">Title</label>
+                    </div>
+                    <div>
+                        <input type="text" name="teacherTitle" id="teacherTitle" class="textbox" required>
+                    </div>
+                    <div>
+                        <label for="teacherPhotoText">Photo</label>
+                    </div>
+                    <div>
                         <input type="text" name="teacherPhotoText" id="teacherPhotoText" class="textbox" readonly>
                         <label for="teacherPhoto" id="teacherPhotoBtn">Browse</label>
-                        <input type="file" name="teacherPhoto" id="teacherPhoto">
+                        <input type="file" name="teacherPhoto" id="teacherPhoto" required>
                     </div>
-                    <div class="email">
-                        <label for="teacherEmail">Email</label><br>
-                        <input type="email" name="teacherEmail" id="teacherEmail" class="textbox">
+                    <div>
+                        <label for="teacherEmail">Email</label>
                     </div>
-                    <div class="password">
-                        <label for="teacherPass">Password</label><br>
-                        <input type="password" name="teacherPass" id="teacherPass" class="textbox">
+                    <div>
+                        <label for="teacherPass">Password</label>
                     </div>
-                    <div class="buttons">
+                    <div>
+                        <input type="email" name="teacherEmail" id="teacherEmail" class="textbox" required>
+                    </div>
+                    <div>
+                        <input type="password" name="teacherPass" id="teacherPass" class="textbox" required>
+                    </div>
+                    <div>
                         <input id="confirmBtn" type="submit" value="Confirm">
                         <input id="cancelBtn" type="reset" value="Cancel">  
                     </div>
                     
-                </div>
+                
                     
             </form>
-            <script src="admin.js"></script>
+            
     <?php }}?>
 </body>
 </html>

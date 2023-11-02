@@ -87,8 +87,8 @@ function showAllTeachers(){
                 <td>'.$line['title'].'</td>
                 <td>'.$line['dni'].'</td>
                 <td>'.$active.'</td>
-                <td><button class="editTableBtn" type="submit" id="editTeacher" name="buttonEdit" value='.$line['email'].'></button></td>
-                <td><button class="disTableBtn" type="submit" name="buttonDis" value='.$line['email'].'></button></td>
+                <td><button title="Edit teacher" class="editTableBtn" type="submit" id="editTeacher" name="buttonEdit" value='.$line['email'].'></button></td>
+                <td><button title="Disable teacher" class="disTableBtn" type="submit" name="buttonDis" value='.$line['email'].'></button></td>
             </tr>
             ';
         }
@@ -118,8 +118,8 @@ function showAllCourses(){
                 <td>'.$line['start'].'</td>
                 <td>'.$line['end'].'</td>
                 <td>'.$active.'</td>
-                <td><button class="editCourseTableBtn editTableBtn" type="submit" name="buttonEditCourse" value='.$line['code'].'></button></td>
-                <td><button class="disCourseTableBtn disTableBtn" type="submit" name="buttonDisCourse" value='.$line['code'].'></button></td>
+                <td><button title="Edit course" class="editCourseTableBtn editTableBtn" type="submit" name="buttonEditCourse" value='.$line['code'].'></button></td>
+                <td><button title="Disable course" class="disCourseTableBtn disTableBtn" type="submit" name="buttonDisCourse" value='.$line['code'].'></button></td>
             </tr>
             ';
         }

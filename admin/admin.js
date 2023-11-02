@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const createNewCourse = document.getElementById('createCourseBtn');
     const popUpBackground = document.getElementById('popupBackground');
     const popUp = document.getElementById('popup');
+    const cancelBtn = document.getElementById('cancelBtn');
 
     console.log("Admin.js cargado");
 
@@ -83,6 +84,15 @@ document.addEventListener("DOMContentLoaded", function() {
             popUpBackground.style.display = 'none';     
         }
     });
+
     
+    if(cancelBtn){
+        console.log('hay boton reset');
+        cancelBtn.addEventListener('click', function(){
+            popUpBackground.style.display = 'none';
+        });
+    } else {
+        console.log('no boton reset');
+    }
     
 });

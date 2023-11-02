@@ -91,9 +91,37 @@ form[name="createTeacher"]{
         (7, 1, 8, 3),
         (7, 3, 8, 5),
         (8, 1, 9, 3),
-        (8, 3, 9, 5)
+        (8, 3, 9, 5),
+        (9, 1, 10, 5)
     );
+      
 
+    @include grid(217px 179px 179px 310px, repeat(9, auto));
+    @include generateGridArea(div, $areasCuadricula);
+    justify-content: center;
+
+    label { 
+        @include labelStyles(); 
+        
+        &#teacherPhotoBtn { 
+            @include browsePhotoBtn(175px);
+        }
+    }
+    input:not([type="submit"], [type="reset"]) { 
+        @include textbox(calc(100% - 20px)); 
+        
+        &[type="file"]{ display: none; }
+
+        &#teacherPhotoText, &[name="teacherTitle"]{ width: 321px; }
+
+    }
+
+    input{
+        &[type="submit"] {
+            margin-top: 29px;
+            margin-right: 10px;
+        }
+    }
 
 
 }

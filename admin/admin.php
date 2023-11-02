@@ -46,15 +46,16 @@
     <div class="grid-container">
         <div></div>
         <div>
-            <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
-            <button id="createTeacherBtn"></button>
-            <button id="createCourseBtn"></button>
-            <a href="../string.php">Import Students</a>
+            <div id="admin-title">
+                <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
+                <a id="import" href="../string.php">Import Students</a>
+            </div>
             
             <div id="form-container">
-                
                 <button id="btnCourse" class="btnFolderStyle">Courses</button>
                 <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
+                <button id="createTeacherBtn" title="Add new teacher"></button>
+                <button id="createCourseBtn" title="Add new course"></button>
                 <div id="teacher-form">
                     <form action="admin.php" method="post" name="disableTeacher">
                         <table>
@@ -81,7 +82,7 @@
                                 <th>Course Name</th>
                                 <th>Teacher</th>
                                 <th>Category</th>
-                                <th>Duration</th>
+                                <th>Duration (h)</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Active</th>

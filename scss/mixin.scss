@@ -95,3 +95,13 @@
     font-weight: 700;
     line-height: normal;
 }
+
+@mixin adminFakeBtnIcon($url){
+    width: 32px;
+    height: 32px;
+    background-image: url($url);
+    margin: 20px 10px;
+    margin-right: 40px;
+    background-color: transparent;
+    border: none;
+}
