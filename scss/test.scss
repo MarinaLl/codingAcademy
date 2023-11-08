@@ -3,12 +3,12 @@
 
 .portfolioDisc {
 	width: 300px;
-    height: 0px;
+    height: 81px;
 	padding-top: 0px;
     overflow:hidden;
     
     transition: all 0.2s linear;
-    margin-top:300px;
+    margin-top:219px;
 	position:absolute;
 	background-color:white;
 	font-size: 15px;
@@ -16,6 +16,7 @@
 	text-align:center;
 	color: black;
     font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+	border: 1px solid green;
 }
 
 .port {
@@ -27,7 +28,7 @@
 
 
 .port:hover .portfolioDisc {
-	margin-top:221px;
+	margin-top: 0;
     height: 300px;
 	padding-top: 10px;
 	

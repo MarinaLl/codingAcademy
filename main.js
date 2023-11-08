@@ -149,3 +149,4 @@ document.addEventListener('DOMContentLoaded', function () {
   const editProfilePopup = document.getElementById("editProfilePopup");
 
 });
+

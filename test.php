@@ -13,7 +13,13 @@
 
     <div width="100%" align="center">Hover<br /><br />
         <div class="port">
-        <div class="portfolioDisc">Image<br />description<br />here</div>
+        <div class="portfolioDisc">
+            <p>nombre curso</p>
+            <p>techer</p>
+            <p>techer</p>
+            <p>techer</p>
+            <p>techer</p>
+        </div>
     </div>
 
 </body>
