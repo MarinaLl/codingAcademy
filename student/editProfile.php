@@ -59,48 +59,59 @@
         <div></div>
         <div>
             <div class="popupBackground">
-                <div id="popup">
-                    <h4 class="popup-title">Edit profile</h4>
-
-                </div>
-                <form action="editProfile.php" method="post" enctype="multipart/form-data" name="editProfile">
-                        <?php echo '
-                        <div>
-                            <label for="studentPhoto"><img src=../'.$student['photo'].'></label>
-                            <input type="file" name="studentPhoto" id="studentPhoto" value="'.$student['photo'].'">
-                        </div>
-                        <div>
-                            <label for="studentName">Name</label><br>
-                            <input type="text" name="studentName" id="studentName" value="'.$student['name'].'" class="textbox">
-                        </div>
-                        <div>
-                            <label for="studentLastNames">Last names</label><br>
-                            <input type="text" name="studentLastNames" id="studentLastNames" value="'.$student['lastNames'].'" class="textbox">
-                        </div>
-                        <div>
-                            <label for="studentDni">DNI</label><br>
-                            <input type="text" name="studentDni" id="studentDni" value="'.$student['dni'].'" class="textbox">
-                        </div>
-                        <div>
-                            <label for="studentAge">Age</label><br>
-                            <input type="text" name="studentAge" id="studentAge" value="'.$student['age'].'" class="textbox">
-                        </div>
-                        <div>
-                            <label for="studentEmail">Email</label><br>
-                            <input type="email" name="studentEmail" id="studentEmail" value="'.$student['email'].'" class="textbox">
-                        </div>
-                        <div>
-                            <label for="studentPassword">Password</label><br>
-                            <input type="password" name="studentPassword" id="studentPassword" class="textbox" readonly>
+                <div id="popup-edit">
+                    <form action="editProfile.php" method="post" enctype="multipart/form-data" name="editProfile">
+                            <?php echo '
+                            <div>
+                                <label for="studentPhoto"><img src=../'.$student['photo'].'></label>
+                                <input type="file" name="studentPhoto" id="studentPhoto" value="'.$student['photo'].'">
+                                <img src="../src/close.png" id="editClose">
+                                </div>
+                            <div>
+                                <label for="studentName">Name</label>
+                            </div>
+                            <div>
+                                <input type="text" name="studentName" id="studentName" value="'.$student['name'].'" class="textbox">
+                            </div>
+                            <div>
+                                <label for="studentLastNames">Last names</label>
+                            </div>
+                            <div>
+                                <input type="text" name="studentLastNames" id="studentLastNames" value="'.$student['lastNames'].'" class="textbox">
+                            </div>
+                            <div>
+                                <label for="studentDni">DNI</label>
+                            </div>
+                            <div>
+                                <label for="studentAge">Age</label>
+                            </div>
+                            <div>
+                                <input type="text" name="studentDni" id="studentDni" value="'.$student['dni'].'" class="textbox">
+                            </div>
+                            <div>
+                                <input type="text" name="studentAge" id="studentAge" value="'.$student['age'].'" class="textbox">
+                            </div>
+                            <div>
+                                <label for="studentEmail">Email</label>
+                            </div>
+                            <div>
+                                <input type="email" name="studentEmail" id="studentEmail" value="'.$student['email'].'" class="textbox">
+                            </div>
+                            <div>
+                                <label for="studentPassword">Password</label>
+                            </div>
+                            <div>
+                                <input type="password" name="studentPassword" id="studentPassword" class="textbox" readonly>
+                            </div>
                             <div id="studentPasswordBtn">Change</div>
-                        </div>
-                        <div class="buttons">
-                            <input id="cancelBtn" type="reset" value="Cancel">  
-                            <input id="confirmBtn" type="submit" value="Confirm">
-                        </div>
-                        ';?>
-                        
-                    </form>
+                            <div class="buttons" id="editBtns">
+                                <input id="cancelBtn" type="reset" value="Cancel">  
+                                <input id="confirmBtn" type="submit" value="Confirm">
+                            </div>
+                            ';?>
+                            
+                        </form>
+                </div>
             </div>
                 <script src="../main.js"></script>
         </div>

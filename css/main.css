@@ -349,6 +349,140 @@ form[name=createTeacher] input[type=submit] {
   margin-right: 10px;
 }
 
+#popup-edit {
+  width: 450px;
+  height: 750px;
+}
+
+form[name=editProfile] {
+  width: 400px;
+  height: 749px;
+  display: grid;
+  grid-template-columns: 290px auto;
+  grid-template-rows: repeat(12, auto);
+  margin: 0 auto;
+}
+form[name=editProfile] div:nth-child(1) {
+  grid-area: 1/1/2/3;
+}
+form[name=editProfile] div:nth-child(2) {
+  grid-area: 2/1/3/3;
+}
+form[name=editProfile] div:nth-child(3) {
+  grid-area: 3/1/4/3;
+}
+form[name=editProfile] div:nth-child(4) {
+  grid-area: 4/1/5/3;
+}
+form[name=editProfile] div:nth-child(5) {
+  grid-area: 5/1/6/3;
+}
+form[name=editProfile] div:nth-child(6) {
+  grid-area: 6/1/7/2;
+}
+form[name=editProfile] div:nth-child(7) {
+  grid-area: 6/2/7/3;
+}
+form[name=editProfile] div:nth-child(8) {
+  grid-area: 7/1/8/2;
+}
+form[name=editProfile] div:nth-child(9) {
+  grid-area: 7/2/8/3;
+}
+form[name=editProfile] div:nth-child(10) {
+  grid-area: 8/1/9/3;
+}
+form[name=editProfile] div:nth-child(11) {
+  grid-area: 9/1/10/3;
+}
+form[name=editProfile] div:nth-child(12) {
+  grid-area: 10/1/11/3;
+}
+form[name=editProfile] div:nth-child(13) {
+  grid-area: 11/1/12/2;
+}
+form[name=editProfile] div:nth-child(14) {
+  grid-area: 11/2/12/3;
+}
+form[name=editProfile] div:nth-child(15) {
+  grid-area: 12/1/13/3;
+}
+form[name=editProfile] div:first-child {
+  margin: 0 auto;
+}
+form[name=editProfile] div:first-child label > img {
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: -20px;
+  margin-top: 10px;
+}
+form[name=editProfile] div:first-child input[type=file] {
+  display: none;
+}
+form[name=editProfile] div:first-child #editClose {
+  width: 32px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+form[name=editProfile] #editBtns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+form[name=editProfile] #studentPasswordBtn {
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 105px;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #8e0000;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: -10px;
+}
+form[name=editProfile] label {
+  color: #000;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+form[name=editProfile] input:not([type=submit], [type=reset]) {
+  border: none;
+  color: black;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: calc(100% - 15px);
+  height: 55px;
+  border-radius: 15px;
+  background-color: #D9D9D9;
+  margin-bottom: 18px;
+  padding-left: 10px;
+  height: 55px;
+  margin-bottom: 0px;
+  margin-top: -10px;
+}
+form[name=editProfile] input[type=submit], form[name=editProfile] input[type=reset] {
+  height: 50px;
+  margin: 0px;
+}
+
 input[type=submit] {
   width: 175px;
   height: 55px;

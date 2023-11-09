@@ -148,5 +148,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const popUpBackground = document.getElementById("popupBackground");
   const editProfilePopup = document.getElementById("editProfilePopup");
 
+  const cancelBtn = document.getElementById("cancelBtn");
+
+  if (cancelBtn != null){
+	cancelBtn.addEventListener('click', function(){
+		// window.location.href = "student/student.php";
+		console.log('cancel');
+	});
+  }
 });
 

@@ -26,4 +26,77 @@
   margin-top: 0;
   height: 300px;
   padding-top: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+.slider {
+  position: relative;
+  max-width: 40rem;
+  height: 26.625rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.slider .slide {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 26.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1s;
+}
+.slider .slide > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+button {
+  background: none;
+  border: none;
+}
+button .fas {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-slide {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  height: 5.5rem;
+  width: 5.5rem;
+  cursor: pointer;
+}
+.btn-slide.prev {
+  left: 3rem;
+  transform: translate(-50%, -50%);
+}
+.btn-slide.next {
+  right: 3rem;
+  transform: translate(50%, -50%);
+}
+
+.dots-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.dots-container .dot {
+  width: 25px;
+  height: 5px;
+  margin: 15px 5px;
+  border-radius: 0.5rem;
+  background: rgba(39, 39, 39, 0.5);
+  cursor: pointer;
+}
+.dots-container .dot.active {
+  background: #272727;
 }/*# sourceMappingURL=test.css.map */
