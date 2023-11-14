@@ -1921,4 +1921,5 @@ form[name=studentsGrade] table input[type=number] {
      -moz-appearance: none;
           appearance: none;
   padding-right: 2vh;
+  transition: all 0.5ms ease-in;
 }/*# sourceMappingURL=main.css.map */

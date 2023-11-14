@@ -36,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     xhr.send();
     
-});
+    
+  });
 
    // hide popup when clicking black screen
   popUpBackground.addEventListener('click', function(event){
@@ -45,9 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+var firstFilter = true;
 
 });
 
 
-  
   
