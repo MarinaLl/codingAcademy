@@ -3,7 +3,7 @@ function connectDataBase() {
     $host = 'localhost';
     $dbName = 'codingacademy';
     $dbUsername = 'root';
-    $dbPass = '';
+    $dbPass = ''; // Change to 'root' once uploaded to server
 
     $connect = mysqli_connect($host, $dbUsername, $dbPass, $dbName);
 
@@ -37,9 +37,10 @@ function logout($path) {
 function uploadPhoto($profileImageTmp, $profileImageName, $path) {
     if(is_uploaded_file($profileImageTmp)){
         $date = time();
-        $imageName = str_replace(' ', '-', $profileImageName);
-        $imagePath = "img/".$date."-".$imageName;
+        $imageName = str_replace(' ', '_', $profileImageName);
+        $imagePath = "img/".$date.$imageName;
         move_uploaded_file($profileImageTmp, $path.$imagePath);
+	//copy($profileImageTmp, $imagePath);
     
     } else {
         $imagePath = "src/defaultProfileImage.png";
