@@ -53,6 +53,8 @@ header > div div:last-child #logInBtn:hover {
   cursor: pointer;
 }
 header > div div:last-child img {
-  width: 50px;
-  margin-right: -40px;
+  width: 40px;
+  height: 40px;
+  margin-right: -30px;
+  border-radius: 50%;
 }/*# sourceMappingURL=header.css.map */

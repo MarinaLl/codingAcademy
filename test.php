@@ -11,30 +11,21 @@
     <script src="main.js"></script>
     <script>showPrize();</script>
 
- <h2>Image slider</h2>
-	<div class="slider">
-  	<div class="slide">
-        	<img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80" alt="Photo1"/>
-    	</div>
-  	<div class="slide">
-        	<img src="https://images.unsplash.com/photo-1619266465172-02a857c3556d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80" alt="Photo3"/>
-    	</div>
-  	<div class="slide">
-        	<img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80" alt="Photo2"/>
-    	</div>
-  	<div class="slide">
-        	<img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80" alt="Photo3"/>
-    	</div>
-
-    	<button class="btn-slide prev"><i class="fas fa-3x fa-chevron-circle-left"></i></button>
-    	<button class="btn-slide next"><i class="fas fa-3x fa-chevron-circle-right"></i></button>
- 	 
-	</div>
-	<div class="dots-container">
-        	<span class="dot active" data-slide="0"></span>
-        	<span class="dot" data-slide="1"></span>
-        	<span class="dot" data-slide="2"></span>
-  	<span class="dot" data-slide="3"></span>
+	<div class="card">
+		<div id="img">
+			<img src="src/javascript.png" alt="js">
+		</div>
+		<div>
+			<h3>Javascript</h3>
+			<div id="desc">
+				<img src="src/gato.webp" alt="gato">
+				<p>Marina Llambrich</p>
+			</div>
+			<div id="nota">
+				<p>Grade: 10</p>
+				<img src="src/close.png" alt="">
+			</div>
+		</div>
 	</div>
 
     <script src="test.js"></script>

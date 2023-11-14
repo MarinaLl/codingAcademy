@@ -1,102 +1,60 @@
-.portfolioDisc {
-  width: 300px;
-  height: 81px;
-  padding-top: 0px;
-  overflow: hidden;
-  transition: all 0.2s linear;
-  margin-top: 219px;
-  position: absolute;
-  background-color: white;
-  font-size: 15px;
-  line-height: 18px;
-  text-align: center;
-  color: black;
-  font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
-  border: 1px solid green;
+.card {
+  width: 269px;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 20px;
+  border: 1px solid grey;
+  font-family: "Inter", sans-serif;
 }
-
-.port {
-  background-color: red;
-  width: 300px;
-  height: 300px;
-  position: relative;
-}
-
-.port:hover .portfolioDisc {
-  margin-top: 0;
-  height: 300px;
-  padding-top: 10px;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
-.slider {
-  position: relative;
-  max-width: 40rem;
-  height: 26.625rem;
-  margin: 0 auto;
-  overflow: hidden;
-}
-.slider .slide {
-  position: absolute;
-  top: 0;
+.card > div:first-child {
   width: 100%;
-  height: 26.625rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 1s;
+  height: 160px;
 }
-.slider .slide > img {
+.card > div:first-child > img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 20px 20px 0px 0px;
 }
-
-button {
-  background: none;
-  border: none;
+.card > div:last-child {
+  width: 100%;
+  height: 81px;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid green;
+  transition: height 1s;
 }
-button .fas {
-  color: rgba(255, 255, 255, 0.5);
+.card > div:last-child:hover {
+  height: 100px;
 }
-
-.btn-slide {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  height: 5.5rem;
-  width: 5.5rem;
-  cursor: pointer;
+.card > div:last-child h3 {
+  margin: 0px;
+  padding: 0px;
 }
-.btn-slide.prev {
-  left: 3rem;
-  transform: translate(-50%, -50%);
-}
-.btn-slide.next {
-  right: 3rem;
-  transform: translate(50%, -50%);
-}
-
-.dots-container {
+.card > div:last-child #desc {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  position: relative;
 }
-.dots-container .dot {
-  width: 25px;
-  height: 5px;
-  margin: 15px 5px;
-  border-radius: 0.5rem;
-  background: rgba(39, 39, 39, 0.5);
-  cursor: pointer;
+.card > div:last-child #desc img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
-.dots-container .dot.active {
-  background: #272727;
+.card > div:last-child #nota {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#test {
+  width: 100px;
+  height: 81px;
+  background-color: red;
+  transition: height 2s;
+}
+#test:hover {
+  height: 200px;
 }/*# sourceMappingURL=test.css.map */
