@@ -496,7 +496,10 @@ function showStudentCourses($user){
 
 function showCourseList($courseCategory) {
     $sql = "SELECT * FROM course WHERE category = '".$courseCategory."' AND active = 1 AND code NOT IN (SELECT course_code FROM enrollment WHERE student_email = '".$_SESSION['user']."')";
-    
+    if (isset($_GET['filter'])) {
+        $order =  "ORDER BY ".$_GET['filter'];
+        $sql = $sql.$order;
+    }
     $connect = connectDataBase();
 
     $query = mysqli_query($connect, $sql);

@@ -1,5 +1,5 @@
 <?php
-    if (!isset($category)) {
+    if (!isset($category) && !isset($_GET['filter'])) {
         if ($_POST) {
             session_start();
             include("../funciones.php");
@@ -14,7 +14,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const filterBy = document.getElementById("filterByOptions");
+            filterBy.addEventListener('change', function(){
+                let w = window.location.href;
+                if (w.includes('filter')) {
+                    let url = window.location.href.split('&');
+                    w = url[0];
+                } 
+                window.location.href = w + "&filter=" + filterBy.value;
+                
+                
+            });
+        });
+    </script>
     <title>Courses</title>
 </head>
 <body>

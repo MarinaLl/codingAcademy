@@ -65,7 +65,7 @@
                             <div>
                                 <label for="studentPhoto"><img src=../'.$student['photo'].'></label>
                                 <input type="file" name="studentPhoto" id="studentPhoto" value="'.$student['photo'].'">
-                                <img src="../src/close.png" id="editClose">
+                                <a class="closeBtn" href="student.php"><img src="../src/close.png" id="editClose"></a>
                                 </div>
                             <div>
                                 <label for="studentName">Name</label>
@@ -105,7 +105,7 @@
                             </div>
                             <div id="studentPasswordBtn">Change</div>
                             <div class="buttons" id="editBtns">
-                                <input id="cancelBtn" type="reset" value="Cancel">  
+                            <input id="cancelBtn" type="reset" value="Cancel">
                                 <input id="confirmBtn" type="submit" value="Confirm">
                             </div>
                             ';?>
