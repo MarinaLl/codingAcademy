@@ -33,13 +33,15 @@
             ?></h1>
         <div>
             <h3 id="allCourses"><a href="courses.php">All Courses</a></h3>
-            <label id="filterBy" for="filterByOptions">Filter by </label>
-            <select id="filterByOptions" name="filterByOptions">
-                <option value=""></option>
-                <option value="duration">Duration</option>
-                <option value="difficulty">Difficulty</option>
-                <option value="start">Start Date</option>
-            </select>
+            <div>
+                <label id="filterBy" for="filterByOptions">Filter by </label>
+                <select id="filterByOptions" name="filterByOptions">
+                    <option value="">select option</option>
+                    <option value="duration">Duration</option>
+                    <option value="difficulty">Difficulty</option>
+                    <option value="start">Start Date</option>
+                </select>
+            </div>
         </div>
         <form action="courseList.php" method="post" name="courseEnrollment">
             <?php
