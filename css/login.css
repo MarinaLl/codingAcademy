@@ -17,12 +17,22 @@
 .loginContainer > div:last-child#login {
   display: grid;
   grid-template-columns: 378px;
-  grid-template-rows: 240px 130px 300px auto;
+  grid-template-rows: 240px 130px 320px auto;
+}
+.loginContainer > div:last-child#login img {
+  margin-top: 50px;
+  margin-bottom: -50px;
 }
 .loginContainer > div:last-child#register {
   display: grid;
   grid-template-columns: 378px;
-  grid-template-rows: 240px 130px 401px auto;
+  grid-template-rows: 200px 100px 401px auto;
+}
+.loginContainer > div:last-child#register img {
+  margin-bottom: -50px;
+}
+.loginContainer > div:last-child#register h1 {
+  margin: 0px;
 }
 .loginContainer > div:last-child div:nth-child(1) {
   grid-area: 1/1/2/2;
@@ -36,10 +46,6 @@
 .loginContainer > div:last-child div:nth-child(4) {
   grid-area: 4/1/5/2;
 }
-.loginContainer > div:last-child div img {
-  margin-top: 50px;
-  margin-bottom: -50px;
-}
 .loginContainer > div:last-child div h1 {
   width: 378px;
   height: -moz-fit-content;
@@ -50,7 +56,7 @@
   font-weight: 500;
   line-height: normal;
   padding-top: 20px;
-  padding: 0;
+  padding: 0px;
 }
 .loginContainer > div:last-child div form[name=login] {
   margin-top: 50px;

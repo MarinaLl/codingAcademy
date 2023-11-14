@@ -43,6 +43,7 @@ if (isset($_SESSION['user'])) {
         <head>
             <title>Log In</title>
             <link rel="stylesheet" href="css/main.css">
+            <link rel="icon" href="src/codingAcademyLogo2copia.png">
             
             <script src="main.js">contest();</script>
         </head>

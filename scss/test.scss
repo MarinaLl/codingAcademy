@@ -28,11 +28,11 @@
 			padding: 10px;
 			border: 1px solid green;
 			transition: height 1s;
+			overflow: hidden;
 			
 
 			&:hover {
-				height: 100px;
-				
+				height: 180px;
 			}
 
 			h3 {
@@ -50,27 +50,30 @@
 					border-radius: 50%;
 				}
 			}
-
 			#nota{
 				display: flex;
 				flex-direction: row;
 				align-items: center;
 				justify-content: space-between;
+
+				img {
+					width: 30px;
+
+				}
+				p {
+					font-weight: bold;
+				}
+
+			}
+
+			#date{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+				
 			}
 			
 		}
-	}
-}
-
-  
-  
-  
-#test {
-	width: 100px;
-	height: 81px;
-	background-color: red;
-	transition: height 2s;
-	&:hover{
-		height: 200px;
 	}
 }

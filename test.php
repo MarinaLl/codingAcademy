@@ -21,9 +21,16 @@
 				<img src="src/gato.webp" alt="gato">
 				<p>Marina Llambrich</p>
 			</div>
+			<div id="date">
+				<p>From: 10/11/2023</p>
+				<p>To: 10/12/2023</p>
+			</div>
+
 			<div id="nota">
-				<p>Grade: 10</p>
-				<img src="src/close.png" alt="">
+				<button>
+					<img src="src/basura.png" alt="">
+				</button>
+				<p>Grade: X.XX/10</p>
 			</div>
 		</div>
 	</div>

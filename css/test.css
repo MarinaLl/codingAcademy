@@ -24,9 +24,10 @@
   padding: 10px;
   border: 1px solid green;
   transition: height 1s;
+  overflow: hidden;
 }
 .card > div:last-child:hover {
-  height: 100px;
+  height: 180px;
 }
 .card > div:last-child h3 {
   margin: 0px;
@@ -48,13 +49,15 @@
   align-items: center;
   justify-content: space-between;
 }
-
-#test {
-  width: 100px;
-  height: 81px;
-  background-color: red;
-  transition: height 2s;
+.card > div:last-child #nota img {
+  width: 30px;
 }
-#test:hover {
-  height: 200px;
+.card > div:last-child #nota p {
+  font-weight: bold;
+}
+.card > div:last-child #date {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }/*# sourceMappingURL=test.css.map */

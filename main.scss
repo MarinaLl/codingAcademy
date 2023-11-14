@@ -92,6 +92,8 @@ h2 {
         visibility: hidden;
         position: absolute;
         background-color: #00a3a0;
+        overflow: scroll;
+        overflow-x: hidden;
     }
 
     div:nth-child(6){
@@ -99,6 +101,8 @@ h2 {
         color: white;
         background-color: $primaryColor;
         position: absolute;
+        overflow: scroll;
+        overflow-x: hidden;
     }
     table {
         width: 100%;
@@ -221,47 +225,91 @@ h2 {
 }
 .card{
     width: 270px;
-    height: 240px;
+    height: fit-content;
     border-radius: 20px;
     box-shadow: $boxShadow;
     border: 1px solid lightgray;
     margin-right: 20px;
-    position: relative;
+    margin-bottom: 50px;
+    
 
         > div {
-            width: 270px;
+            width: 100%;
             
-            border-radius: 20px 20px 0px 0px;
+            //border-radius: 20px 20px 0px 0px;
             &:first-child{
                 height: 158px;
+
+                > img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 20px 20px 0px 0px;
+                    object-fit: cover;
+                }
             }
+
             &:last-child {
                 height: 81px;
+                box-sizing: border-box;
+                padding: 10px;
+                transition: height 1s;
                 overflow: hidden;
-                transition: all 0.2s linear;
-                position: absolute;
+                cursor: pointer;
+                
+
                 &:hover {
-                    margin-top: 0;
-                    height: 240px;
+                    height: 160px;
+                    
+                }
+
+                h3 {
+                    margin: 5px auto;
+                }
+
+                .card-prof {
+                    display: flex;
+				    flex-direction: row;
+				    align-items: center;
+				    img {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        margin-right: 10px;
+                    }
+                    h4{
+                        color: gray;
+                        
+                    }
+                }
+                .card-date{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 5px;
+                }
+                .card-grade {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 5px auto;
+
+                    button {
+                        background-image: url("../src/basura.png");
+                        width: 30px;
+                        height: 30px;
+                        background-color: transparent;
+                        border: none;
+                        cursor: pointer;
+                    }
+                    p {
+                        font-weight: bold;
+                    }
                 }
             }
             
-            img{
-                width: 100%;
-                height: 100%;
-                border-radius: 20px 20px 0px 0px;
-                object-fit: cover;
-            }
         }
-    h3 {
-        margin-top: 16px;
-        margin-left: 18px;
-    }
-    h4{
-        margin-top: 13px;
-        color: gray;
-        margin-left: 18px;
-    }
     
     
 }
@@ -309,22 +357,24 @@ h2 {
         padding: 15px;
         
         $cuadricula: 
-            (1, 1, 2, 3),
-          (2, 1, 3, 3),
-          (1, 3, 3, 5),
-          (3, 1, 4, 5),
-          (4, 1, 5, 2),
-          (4, 2, 5, 3),
-          (4, 3, 5, 5);
+        (1, 1, 2, 3),
+        (1, 3, 3, 4),
+        (2, 1, 3, 3),
+        (3, 1, 4, 4),
+        (4, 1, 5, 2),
+        (4, 2, 5, 3),
+        (4, 3, 5, 4);
         
-        @include grid(repeat(4, 1fr), repeat(4, 1fr));
+        box-sizing: border-box;
+        @include grid(repeat(3, 1fr), repeat(4, 1fr));
         @include generateGridArea(div, $cuadricula);
 
         div{
             
-            &:nth-child(2){
+            &:nth-child(3){
                 display: flex;
-                
+                flex-direction: row;
+                align-items: center;
                 img {
                     @include boxSize(24px, 24px, 50%);
                 }
@@ -355,6 +405,29 @@ h2 {
     }
 
 
+}
+
+// SCROLLBAR
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #007A78; 
+    border-radius: 10px;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 163, 160); 
 }
 
 
@@ -474,6 +547,7 @@ h2 {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     position: relative;
     cursor: pointer;
+    margin: 10px;
 
     img{
         width: 100%;

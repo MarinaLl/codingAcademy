@@ -64,9 +64,9 @@
         <div></div>
     </div>
     
+    <?php addFooter(""); } ?>
     
     <script src="main.js"></script>
 
 </body>
 </html>
-<?php addFooter(""); } ?>

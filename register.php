@@ -10,6 +10,7 @@ if (isset($_SESSION['user'])) {
         <head>
             <title>Sign Up</title>
             <link rel="stylesheet" href="css/main.css">
+            <link rel="icon" href="src/codingAcademyLogo2copia.png">
         </head>
         <body>
             <?php 

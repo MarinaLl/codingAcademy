@@ -75,7 +75,7 @@
                 <input type="date" name="courseStart" id="courseStart">
             </div>
             <div>
-                <label for="courseEnd">Course Start</label>
+                <label for="courseEnd">Course End</label>
                 <input type="date" name="courseEnd" id="courseEnd">
             </div>
             <div>

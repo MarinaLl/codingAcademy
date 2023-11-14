@@ -24,7 +24,9 @@
         <div>
             <h1>Hello, <?php echo $_SESSION['completeName']; ?></h1>
             <h2>My Courses</h2>
-            <?php showTeacherCourses()?>
+            <div class="wrap">
+                <?php showTeacherCourses()?>
+            </div>
         </div>
         <div></div>
     </div>

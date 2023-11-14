@@ -691,12 +691,19 @@ input[type=reset] {
 .loginContainer > div:last-child#login {
   display: grid;
   grid-template-columns: 378px;
-  grid-template-rows: 240px 130px 300px auto;
+  grid-template-rows: 240px 130px 320px auto;
+}
+.loginContainer > div:last-child#login img {
+  margin-top: 50px;
+  margin-bottom: -50px;
 }
 .loginContainer > div:last-child#register {
   display: grid;
   grid-template-columns: 378px;
-  grid-template-rows: 240px 130px 401px auto;
+  grid-template-rows: 200px 100px 401px auto;
+}
+.loginContainer > div:last-child#register img {
+  margin-bottom: -50px;
 }
 .loginContainer > div:last-child div:nth-child(1) {
   grid-area: 1/1/2/2;
@@ -710,10 +717,6 @@ input[type=reset] {
 .loginContainer > div:last-child div:nth-child(4) {
   grid-area: 4/1/5/2;
 }
-.loginContainer > div:last-child div img {
-  margin-top: 50px;
-  margin-bottom: -50px;
-}
 .loginContainer > div:last-child div h1 {
   width: 378px;
   height: -moz-fit-content;
@@ -724,7 +727,7 @@ input[type=reset] {
   font-weight: 500;
   line-height: normal;
   padding-top: 20px;
-  padding: 0;
+  padding: 0px;
 }
 .loginContainer > div:last-child div form[name=login] {
   margin-top: 50px;
@@ -871,6 +874,8 @@ input[type=reset] {
 footer {
   background-color: #007A78;
   height: 108px;
+  position: relative;
+  bottom: 0;
 }
 footer div:nth-child(2) {
   display: flex;
@@ -1016,6 +1021,8 @@ h2 {
   visibility: hidden;
   position: absolute;
   background-color: #00a3a0;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 #form-container div:nth-child(6) {
   width: 1268px;
@@ -1024,6 +1031,8 @@ h2 {
   color: white;
   background-color: #007A78;
   position: absolute;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 #form-container table {
   width: 100%;
@@ -1139,45 +1148,79 @@ h2 {
 
 .card {
   width: 270px;
-  height: 240px;
+  height: -moz-fit-content;
+  height: fit-content;
   border-radius: 20px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: 1px solid lightgray;
   margin-right: 20px;
-  position: relative;
+  margin-bottom: 50px;
 }
 .card > div {
-  width: 270px;
-  border-radius: 20px 20px 0px 0px;
+  width: 100%;
 }
 .card > div:first-child {
   height: 158px;
 }
-.card > div:last-child {
-  height: 81px;
-  overflow: hidden;
-  transition: all 0.2s linear;
-  position: absolute;
-}
-.card > div:last-child:hover {
-  margin-top: 0;
-  height: 240px;
-}
-.card > div img {
+.card > div:first-child > img {
   width: 100%;
   height: 100%;
   border-radius: 20px 20px 0px 0px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.card h3 {
-  margin-top: 16px;
-  margin-left: 18px;
+.card > div:last-child {
+  height: 81px;
+  box-sizing: border-box;
+  padding: 10px;
+  transition: height 1s;
+  overflow: hidden;
+  cursor: pointer;
 }
-.card h4 {
-  margin-top: 13px;
+.card > div:last-child:hover {
+  height: 160px;
+}
+.card > div:last-child h3 {
+  margin: 5px auto;
+}
+.card > div:last-child .card-prof {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.card > div:last-child .card-prof img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.card > div:last-child .card-prof h4 {
   color: gray;
-  margin-left: 18px;
+}
+.card > div:last-child .card-date {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+.card > div:last-child .card-grade {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px auto;
+}
+.card > div:last-child .card-grade button {
+  background-image: url("../src/basura.png");
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.card > div:last-child .card-grade p {
+  font-weight: bold;
 }
 
 .courseList {
@@ -1233,21 +1276,22 @@ h2 {
 .cardComponent > div + div {
   width: 100%;
   padding: 15px;
+  box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
 }
 .cardComponent > div + div div:nth-child(1) {
   grid-area: 1/1/2/3;
 }
 .cardComponent > div + div div:nth-child(2) {
-  grid-area: 2/1/3/3;
+  grid-area: 1/3/3/4;
 }
 .cardComponent > div + div div:nth-child(3) {
-  grid-area: 1/3/3/5;
+  grid-area: 2/1/3/3;
 }
 .cardComponent > div + div div:nth-child(4) {
-  grid-area: 3/1/4/5;
+  grid-area: 3/1/4/4;
 }
 .cardComponent > div + div div:nth-child(5) {
   grid-area: 4/1/5/2;
@@ -1256,17 +1300,19 @@ h2 {
   grid-area: 4/2/5/3;
 }
 .cardComponent > div + div div:nth-child(7) {
-  grid-area: 4/3/5/5;
+  grid-area: 4/3/5/4;
 }
-.cardComponent > div + div div:nth-child(2) {
+.cardComponent > div + div div:nth-child(3) {
   display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.cardComponent > div + div div:nth-child(2) img {
+.cardComponent > div + div div:nth-child(3) img {
   width: 24px;
   height: 24px;
   border-radius: 50%;
 }
-.cardComponent > div + div div:nth-child(2) p {
+.cardComponent > div + div div:nth-child(3) p {
   color: gray;
 }
 .cardComponent > div + div div button {
@@ -1298,6 +1344,28 @@ h2 {
 }
 .cardComponent > div + div p {
   text-align: justify;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #007A78;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 163, 160);
 }
 
 #courseCategoriesContainer {
@@ -1436,6 +1504,7 @@ h2 {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   position: relative;
   cursor: pointer;
+  margin: 10px;
 }
 .teacherComponent img {
   width: 100%;

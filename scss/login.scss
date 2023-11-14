@@ -23,26 +23,34 @@
 
             border-left: 2px solid grey;
             &#login {
-                @include grid(378px, 240px 130px 300px auto);
+                @include grid(378px, 240px 130px 320px auto);
+                img {
+                    margin-top: 50px;
+                    margin-bottom: -50px;
+                }
             }
             &#register{
-                @include grid(378px, 240px 130px 401px auto);
+                @include grid(378px, 200px 100px 401px auto);
+
+                img {
+                    margin-bottom: -50px;
+                }
+                h1 {
+                    margin: 0px;
+                }
             }
             @include generateGridArea(div, $areasCuadricula);
             text-align: center;
             justify-content: center;
 
             div {
-                img {
-                    margin-top: 50px;
-                    margin-bottom: -50px
-                }
+                
 
                 h1{
                     @include boxSize(378px, fit-content);
                     @include title(64px, 500);
-                    padding: 0;
-                   
+                    padding: 0px;
+                    
                 }
 
                 form{

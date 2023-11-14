@@ -462,7 +462,7 @@ function showStudentCourses($user){
             for($i = 0; $i < $numLines; $i++){
                 $line = mysqli_fetch_array($query);
                 if(compareDates($line['courseEnd'])) {
-                    $unenrollButton = '<button type="submit" name="buttonUnenroll" value='.$line['courseCode'].'>Unenroll</button>';
+                    $unenrollButton = '<button type="submit" name="buttonUnenroll" value='.$line['courseCode'].'></button>';
                 } else {
                     $unenrollButton = "";
                 }
@@ -471,9 +471,18 @@ function showStudentCourses($user){
                         <div><img src="../'.$line['coursePhoto'].'"></div>
                         <div>
                             <h3>'.$line['courseName'].'</h3>
-                            <h4>'.$line['teacherName'].' '.$line['teacherLastNames'].'</h4>
-                            <p>'.$line['grade'].'</p>
-                            '.$unenrollButton.'
+                            <div class="card-prof">
+                                <img src="../'.$line['teacherPhoto'].'">
+                                <h4>'.$line['teacherName'].' '.$line['teacherLastNames'].'</h4>
+                            </div>
+                            <div class="card-date">
+                                <p>From: '.$line['courseStart'].'</p>
+                                <p>To: '.$line['courseEnd'].'</p>
+                            </div>
+                            <div class="card-grade">
+                                '.$unenrollButton.'
+                                <p>Grade: '.$line['grade'].'/10</p>
+                            </div>
                         </div>
                     </div>';
                         
@@ -517,12 +526,12 @@ function showCourseList($courseCategory) {
                                     <h3>'.$course['name'].'</h3>
                                 </div>
                                 <div>
-                                    <img src="../'.$teacher['photo'].'">
-                                    <p>'.$teacherCompleteName.'</p>
-                                </div>
-                                <div>
                                     <input type="hidden" name="courseCategory" value="'.$courseCategory.'">
                                     <button type="submit" name="buttonEnroll" value='.$course['code'].'>Enroll Now</button>
+                                </div>
+                                <div>
+                                    <img src="../'.$teacher['photo'].'">
+                                    <p>'.$teacherCompleteName.'</p>
                                 </div>
                                 <div>
                                     <p>'.$course['description'].'</p>
