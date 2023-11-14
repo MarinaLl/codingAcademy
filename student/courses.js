@@ -42,11 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
    // hide popup when clicking black screen
   popUpBackground.addEventListener('click', function(event){
     if(event.target === this){
-        popUpBackground.style.display = 'none';     
-  }
+        popUpBackground.style.display = 'none';
+    }
 });
-
-var firstFilter = true;
 
 });
 

@@ -152,9 +152,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (cancelBtn != null){
 	cancelBtn.addEventListener('click', function(){
-		// window.location.href = "student/student.php";
+		history.pushState(null, null, "student.php");
+		location.reload();
 		console.log('cancel');
 	});
   }
+
 });
 
