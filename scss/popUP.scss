@@ -25,20 +25,49 @@ form[name="editTeacher"]{
     (7, 1, 8, 4);
 
     width: 925px;
-    @include grid(321px 443px 150px, repeat(7, auto));
+    @include grid(321px 443px 150px, repeat(6, auto) 250px);
     @include generateGridArea(div, $cuadricula);
     margin: 0 auto;
+
+    div {
+        &:last-child{
+            display: flex;
+            justify-content: flex-end;
+            align-items: end;
+            margin-right: 10px;
+        }
+    }
 
     label {
         @include labelStyles();
     }
 
-    input:not(input[type="submit"]) {
-        @include textbox(90%);
-        #teacherPhoto { display: none; }
+    input:not(input[type="submit"], input[type="reset"]) {
+        @include textbox(calc(100% - 20px));
+
+        &#teacherPhoto { display: none; }
     }
 
-    #teacherPhotoBtn{@include browsePhotoBtn(175px);}       
+    #div-edit-teacher-browse{
+        display: flex;
+    }
+
+    #edit-teacher-browse-text {
+        display: flex;
+        align-items: center;
+        
+        @include textbox(80%);
+        height: 55px;
+        margin-left: 0px;
+    }
+
+    #teacherPhotoBtn{
+        @include browsePhotoBtn(155px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+    }      
 }
 
 form[name="editCourse"]{
@@ -66,12 +95,47 @@ form[name="editCourse"]{
     @include grid(repeat(2, 293px) 310px, repeat(11, auto));
     @include generateGridArea(div, $cuadricula);
     
+    div {
+        &#photo-browse-div{
+            display: flex;
+        }
+    }
+
     label {
         @include labelStyles();
+
+        &#edit-course-browse-text {
+            @include textbox(calc(70% - 20px));
+            display: flex;
+            align-items: center;
+            height: 55px;
+            margin-left: 0px;
+        }
+
+        &#edit-course-browse {
+            @include browsePhotoBtn(150px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0px;
+        }
     }
-    input:not(input[type="submit"]), textarea, select {
-        @include textbox(90%);
-        #teacherPhoto { display: none; }
+    input:not(input[type="submit"], input[type="reset"]), textarea, select {
+        @include textbox(calc(100% - 20px));
+        
+        &#courseEnd{
+            width: 273px;
+        }
+
+        &#coursePhoto {
+            display: none;
+        }
+    }
+    
+    textarea { resize: none; }
+
+    input[type="reset"]{
+        margin-top: 20px;
     }
 }
 

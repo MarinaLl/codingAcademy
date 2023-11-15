@@ -764,8 +764,15 @@ function editTeacherForm($email){
                 <div><label for="teacherEmail">Email</label></div>
                 <div><input type="email" name="teacherEmail" value="'.$line['email'].'" id="teacherEmail"></div>
                 <div><label>Photo</label></div>
-                <div><label for="teacherPhoto" id="teacherPhotoBtn">Photo</label><input type="file" name="teacherPhoto" value='.$line['photo'].' id="teacherPhoto"></div>
-                <div><input type="submit" value="Confirm"></div>';
+                <div id="div-edit-teacher-browse">
+                    <label for="teacherPhoto" id="edit-teacher-browse-text">'.$line['photo'].'</label>
+                    <label for="teacherPhoto" id="teacherPhotoBtn">Browse</label>
+                    <input type="file" name="teacherPhoto" value='.$line['photo'].' id="teacherPhoto">
+                </div>
+                <div>
+                    <input type="reset" value="Cancel">
+                    <input type="submit" value="Confirm">
+                </div>';
         }
 }
 
@@ -801,10 +808,17 @@ function editCourseForm($code){
         <div><label for="courseEnd">Course End</label></div>
         <div><input type="date" name="courseEnd" value=' . $line['end'] . ' id="courseEnd"></div>
         <div><label for="coursePhoto">Photo</label></div>
-        <div><input type="file" name="coursePhoto" value=' . $line['photo'] . ' id="coursePhoto"></div>
+        <div id="photo-browse-div">
+            <input type="file" name="coursePhoto" value=' . $line['photo'] . ' id="coursePhoto">
+            <label for="coursePhoto" id="edit-course-browse-text">'.$line['photo'].'</label>
+            <label for="coursePhoto" id="edit-course-browse">Browse</label>
+        </div>
         <div><label for="courseDescription">Description</label></div>
         <div><textarea name="courseDescription" value="' . $line['description'] . '" id="courseDescription" cols="30" rows="10">' . $line['description'] . '</textarea></div>
-        <div><input type="submit" value="Confirm"></div>
+        <div>
+            <input type="submit" value="Confirm">
+            <input type="reset" value="Cancel">
+        </div>
     </form>';
     }
 }

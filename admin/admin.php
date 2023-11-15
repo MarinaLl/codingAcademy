@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="../css/main.css">
         <title>Administrator Panel</title>
         <script src="admin.js"></script>
+        <script src="import_students.js"></script>
     </head>
     <body>
         <?php  
@@ -49,6 +50,7 @@
             <div id="admin-title">
                 <h1>Hello, <?php echo $_SESSION['completeName'];?></h1>
                 <a id="import" href="../string.php">Import Students</a>
+                <input type="file" id="fileInput"/>
             </div>
             
             <div id="form-container">

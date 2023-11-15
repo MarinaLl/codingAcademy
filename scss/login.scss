@@ -98,16 +98,31 @@
                                 @include labelStyles(); 
                                 font-size: 16px;
                                 font-weight: bold;
+
+                                &#fileLabel {
+                                    @include browsePhotoBtn(calc(100% - 15px));
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    cursor: pointer;
+                                    height: 50px;
+                                    font-size: 18px;
+                                    padding: 0px;
+
+                                }
                             }
                             > input { 
                                 @include textbox(calc(100% - 15px)); 
                                 height: 51px;
                                 margin-bottom: 10px;
                                 
+                                &#userPhoto { display: none; }
+                                
                                 &[type="submit"]{
-                                    @include browsePhotoBtn(100%);
+                                    @include browsePhotoBtn(calc(100% - 5px));
                                     font-weight: bold;
                                     padding: 0;
+                                    float: left;
                                 }
                             }
                         }
