@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resultado del Premio</title>
 </head>
 <body>
-    <script src="main.js"></script>
-    <script>openWindow();</script>
+	<div id="prize">
+    	<?php
+        if (isset($_GET['prize'])) {
+            $prize =  $_GET['prize'];
+            echo "<h1>Felicidades, has ganado: $prize</h1>";
+        }
+    	?>
+	</div>
 </body>
 </html>

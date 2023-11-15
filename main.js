@@ -1,14 +1,18 @@
 
 
-function openWindow(){
-	const newWindow = window.open("test.php", "_blank", "width=500, height=500");
+function openWindow() {
+	// Obtener el premio
+	const premio = contest();
+
+	// Abrir la ventana emergente y pasar el premio como parámetro
+	const nuevaVentana = window.open("contest.php?prize=" + encodeURIComponent(premio), "_blank", "width=500, height=500");
 }
+
 
 function contest() {
     let prizeList = ['Sale', 'Free Course', 'Nothing'];
     let i = Math.floor(Math.random() * prizeList.length);
 
-    
 	return prizeList[i];
 
    

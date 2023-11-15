@@ -30,6 +30,9 @@ if (isset($_SESSION['user'])) {
             } else {
                 $_SESSION['photo'] = $row['photo'];
             }
+            if($row['firstLogin'] == 0) {
+                # Añadir cosas
+            }
             loginRedirect();
         } else {
             $incorrectCredentials = "Incorrect credentials";
