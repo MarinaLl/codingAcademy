@@ -56,7 +56,7 @@
                 <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
                 <div>
                     <form id="searchBarForm" action="admin.php">
-                        <input type="search" id="searchBar" method="GET" placeholder="Search">
+                        <input type="search" id="searchBar" name="search" method="GET" placeholder="Search">
                         <button id="btnSearch" type="submit"></Button>
                     </form>
                     <button id="createTeacherBtn" title="Add new teacher"></button>

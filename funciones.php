@@ -70,7 +70,7 @@ function createNewTeacher($email, $password, $name, $lastNames, $title, $photo, 
 function showAllTeachers(){
     $sql = "SELECT * FROM teacher WHERE active = 1";
     if(isset($_GET['search'])) {
-        $sql = $sql." AND name LIKE ".$_GET['search'];
+        $sql = $sql." AND name LIKE '%".$_GET['search']."%'";
     }
     $connectShowTeachers = connectDataBase();
     
@@ -100,7 +100,9 @@ function showAllTeachers(){
 
 function showAllCourses(){
     $sql = "SELECT * FROM course WHERE active = 1";
-
+    if(isset($_GET['search'])) {
+        $sql = $sql." AND name LIKE '%".$_GET['search']."%'";
+    }
     $connectShowCourses = connectDataBase();
 
     $query = mysqli_query($connectShowCourses, $sql);

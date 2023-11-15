@@ -95,4 +95,9 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('no boton reset');
     }
     
+    let btnSearch = document.getElementById('btnSearch');
+    let inputSearch = document.getElementById('searchBar');
+    btnSearch.addEventListener('click', function() {
+        window.location.href;
+    });
 });
