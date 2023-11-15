@@ -69,7 +69,9 @@ function createNewTeacher($email, $password, $name, $lastNames, $title, $photo, 
 }
 function showAllTeachers(){
     $sql = "SELECT * FROM teacher WHERE active = 1";
-
+    if(isset($_GET['search'])) {
+        $sql = $sql." AND name LIKE ".$_GET['search'];
+    }
     $connectShowTeachers = connectDataBase();
     
     $query = mysqli_query($connectShowTeachers, $sql);

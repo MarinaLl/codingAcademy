@@ -85,8 +85,49 @@ h2 {
         }
 
     }
+    > div:first-of-type {
+        margin-right: 40px;
+        display: flex;
+        flex-direction: row;
+        height: fit-content;
+        width: fit-content;
+        float: right;
+        align-items: center;
+        #searchBarForm {
+            display: flex;
+            flex-direction: row;
+            border: #007A78 1px solid;
+            border-radius: $boxRadius;
+            width: 250px;
+            height: 32px;
+            >input {
+                width: 80%;
+                height: 100%;
+                border-radius: $boxRadius;
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
+                border: none;
+                padding-left: 15px;
+            }
+    
+            > button {
+                width: 20%;
+                height: 100%;
+                float: right;
+                background-image: url("../src/search.png");
+                background-size: 28px;
+                background-repeat: no-repeat;
+                background-color: $primaryColor;
+                background-position: center;
+                border-radius: $boxRadius;
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+                border: none;
+            }
+        }
+    }
 
-    div:nth-child(5) {
+    #teacher-form {
         @include boxSize($adminFormWidth, $adminFormHeight, 0px 0px 20px 20px);
         color: white;
         visibility: hidden;
@@ -96,7 +137,7 @@ h2 {
         overflow-x: hidden;
     }
 
-    div:nth-child(6){
+    #course-form{
         @include boxSize($adminFormWidth, $adminFormHeight, 0px 0px 20px 20px);
         color: white;
         background-color: $primaryColor;

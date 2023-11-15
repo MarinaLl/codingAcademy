@@ -54,8 +54,14 @@
             <div id="form-container">
                 <button id="btnCourse" class="btnFolderStyle">Courses</button>
                 <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
-                <button id="createTeacherBtn" title="Add new teacher"></button>
-                <button id="createCourseBtn" title="Add new course"></button>
+                <div>
+                    <form id="searchBarForm" action="admin.php">
+                        <input type="search" id="searchBar" method="GET" placeholder="Search">
+                        <button id="btnSearch" type="submit"></Button>
+                    </form>
+                    <button id="createTeacherBtn" title="Add new teacher"></button>
+                    <button id="createCourseBtn" title="Add new course"></button>
+                </div>
                 <div id="teacher-form">
                     <form action="admin.php" method="post" name="disableTeacher">
                         <table>

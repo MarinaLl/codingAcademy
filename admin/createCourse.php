@@ -32,7 +32,7 @@
             
         } else {
     ?>
-    <h1 class="popup-title">Create New Course</h1>
+    <h1 id="createCourseTitle">Create New Course</h1>
     <form action="createCourse.php" method="post" enctype="multipart/form-data">
         <div class="popup-container-course">
             <div>
@@ -90,7 +90,7 @@
             </div>
             <div>
                 <input type="submit" value="Confirm">
-                <input type="reset" value="Cancel">
+                <input type="reset" value="Cancel" id="reset-btn-course-popup">
             </div>
         </div>
         

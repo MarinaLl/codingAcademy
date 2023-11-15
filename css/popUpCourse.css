@@ -1,3 +1,17 @@
+#createCourseTitle {
+  margin: 0px;
+  color: #000;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+
+#reset-btn-course-popup {
+  margin-top: 20px;
+}
+
 .popup-container-course {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -114,6 +128,7 @@
   margin-bottom: 18px;
   padding-left: 10px;
   height: 100px;
+  resize: none;
 }
 .popup-container-course div:last-child {
   grid-area: 6/1/7/5;
