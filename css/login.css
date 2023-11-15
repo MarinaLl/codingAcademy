@@ -158,6 +158,27 @@
   font-size: 16px;
   font-weight: bold;
 }
+.loginContainer > div:last-child div form[name=register] > div > label#fileLabel {
+  width: calc(100% - 15px);
+  height: 55px;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  background-color: #007A78;
+  padding: 15px 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+  font-size: 18px;
+  padding: 0px;
+}
 .loginContainer > div:last-child div form[name=register] > div > input {
   border: none;
   color: black;
@@ -174,8 +195,11 @@
   height: 51px;
   margin-bottom: 10px;
 }
+.loginContainer > div:last-child div form[name=register] > div > input#userPhoto {
+  display: none;
+}
 .loginContainer > div:last-child div form[name=register] > div > input[type=submit] {
-  width: 100%;
+  width: calc(100% - 5px);
   height: 55px;
   border-radius: 15px;
   border: none;
@@ -189,6 +213,7 @@
   padding: 15px 35px;
   font-weight: bold;
   padding: 0;
+  float: left;
 }
 .loginContainer > div:last-child div form p {
   color: #8e0000;
