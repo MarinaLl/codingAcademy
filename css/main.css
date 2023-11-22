@@ -496,6 +496,7 @@ form[name=editProfile] div:first-child label > img {
   border-radius: 50%;
   margin-bottom: -20px;
   margin-top: 10px;
+  cursor: pointer;
 }
 form[name=editProfile] div:first-child input[type=file] {
   display: none;
