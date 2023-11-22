@@ -80,7 +80,7 @@ if (isset($_SESSION['user'])) {
                             <input type="submit" value="Log In" id="loginBtn">
                             <a id="linkRegister" href="register.php">No account yet? Sign Up now.</a>
                         </form>
-                        <p><?php echo $incorrectCredentials; ?></p>
+                        <p class="incorrectMessage"><?php echo $incorrectCredentials; ?></p>
                     </div>
                     <div>
                     </div>

@@ -1,6 +1,11 @@
 @import 'variables.scss';
 @import 'mixin.scss';
 
+.incorrectMessage {
+    color: $danger;
+    height: 14px;
+    margin-top: 1vh;
+}
 
 .loginContainer {
     @include grid(65% 35%, 100vh);
@@ -126,12 +131,6 @@
                                 }
                             }
                         }
-                }
-
-                p { 
-                    color: $danger;
-                    padding: 0;
-                    margin: 0;
                 }
 
                 

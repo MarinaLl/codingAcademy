@@ -13,7 +13,8 @@ if (isset($_SESSION['user'])) {
             <link rel="icon" href="src/codingAcademyLogo2copia.png">
         </head>
         <body>
-            <?php 
+            <?php
+                $incorrectCredentials = "";
                 if ($_POST){
                     $username = $_POST['userName'];
                     $userLastNames = $_POST['userLastnames'];
@@ -31,10 +32,10 @@ if (isset($_SESSION['user'])) {
                         # Añadir Pop Up Concurso
                         echo '<meta http-equiv="refresh" content="0;url=login.php">';
                     } else {
-                        echo "Email already in use or invalid DNI";
+                        $incorrectCredentials = "Incorrect credentials";
                         # Añadir mensaje de que el dni no es valido o ya esta en uso
                     }
-                } else {
+                }
             ?>
             <div class="loginContainer">
                 <div></div>
@@ -69,12 +70,10 @@ if (isset($_SESSION['user'])) {
                     </div>
                     <div>
                         <a id="linkLogin" href="login.php">I already have an account.</a>
+                        <p class="incorrectMessage"><?php echo $incorrectCredentials; ?></p>
                     </div>
                 </div>
             </div>
-    <?php 
-                }
-}
-?>
+    <?php } ?>
         </body>
     </html>
