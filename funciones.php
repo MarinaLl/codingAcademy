@@ -84,7 +84,7 @@ function showAllTeachers(){
             $line = mysqli_fetch_array($query);
             $active = ($line['active'] == 1) ? 'Yes' : 'No';
             echo '<tr>
-                <td><img src=../'.$line['photo'].'></td>
+                <td><img src=../'.$line['photo'].' alt=""></td>
                 <td>'.$line['name'].' '.$line['lastNames'].'</td>
                 <td>'.$line['email'].'</td>
                 <td>'.$line['title'].'</td>
@@ -115,7 +115,7 @@ function showAllCourses(){
             $line = mysqli_fetch_array($query);
             $active = ($line['active'] == 1) ? 'Yes' : 'No';
             echo '<tr>
-                <td><img src=../'.$line['photo'].'></td>
+                <td><img src=../'.$line['photo'].' alt=""></td>
                 <td>'.$line['name'].'</td>
                 <td>'.$line['teacher_email'].'</td>
                 <td>'.$line['category'].'</td>
@@ -472,11 +472,11 @@ function showStudentCourses($user){
                 }
                     echo '
                     <div class="card">
-                        <div><img src="../'.$line['coursePhoto'].'"></div>
+                        <div><img src="../'.$line['coursePhoto'].'" alt=""></div>
                         <div>
                             <h3>'.$line['courseName'].'</h3>
                             <div class="card-prof">
-                                <img src="../'.$line['teacherPhoto'].'">
+                                <img src="../'.$line['teacherPhoto'].'" alt="">
                                 <h4>'.$line['teacherName'].' '.$line['teacherLastNames'].'</h4>
                             </div>
                             <div class="card-date">
@@ -526,7 +526,7 @@ function showCourseList($courseCategory) {
                         echo '<div class="cardComponent">';
                         echo '
                             <div>
-                                <img src="../'.$course['photo'].'">
+                                <img src="../'.$course['photo'].'" alt="">
                             </div>
                             <div class="gridComponent">
                                 <div>
@@ -537,7 +537,7 @@ function showCourseList($courseCategory) {
                                     <button type="submit" name="buttonEnroll" value='.$course['code'].'>Enroll Now</button>
                                 </div>
                                 <div>
-                                    <img src="../'.$teacher['photo'].'">
+                                    <img src="../'.$teacher['photo'].'" alt="">
                                     <p>'.$teacherCompleteName.'</p>
                                 </div>
                                 <div>
@@ -588,7 +588,7 @@ function showTeacherCourses() {
         echo '<button type="submit" name="buttonCourse" value='.$course['code'].'>';
         echo '<input type="hidden" name="courseName" value="'.$course['name'].'">';
         echo '<div class="cardComponent">';
-        echo '<img src="../' . $course['photo'] . '">';
+        echo '<img src="../' . $course['photo'] . '" alt="">';
         echo '<h2>' . $course['name'] . '</h2>';
         echo '<p>' . $numStudents . ' Students</p>';
         echo '</div></button>';*/
@@ -626,7 +626,7 @@ function showAllStudents($course) {
     </tr>';
 	while ($student = mysqli_fetch_assoc($query)) {
     	echo '<tr>
-        	<td><img src="../'.$student['photo'].'"></td>
+        	<td><img src="../'.$student['photo'].'" alt=""></td>
         	<td>'.$student['name'].'</td>
         	<td>'.$student['lastNames'].'</td>
             <td>'.$student['DNI'].'</td>
@@ -677,12 +677,12 @@ function createContactForm() {
         <div><h4>TALK WITH OUR TEAM</h4></div>
         <div><label for="name">NAME</label></div>
         <div><label for="lastNames">LAST NAMES</label></div>
-        <div><input type="text" name="name" value="'.$name.'"></div>
-        <div><input type="text" name="lastNames" value="'.$lastNames.'"></div>
+        <div><input type="text" name="name" id="name" value="'.$name.'"></div>
+        <div><input type="text" name="lastNames" id="lastNames" value="'.$lastNames.'"></div>
         <div><label for="email">EMAIL</label></div>
-        <div><input type="text" name="email" value="'.$email.'"></div>
+        <div><input type="text" name="email" id="email" value="'.$email.'"></div>
         <div><label for="message">MESSAGE</label></div>
-        <div><textarea id="message" name="message" rows="4" cols="50"></textarea></div>
+        <div><textarea id="message" name="message" id="message" rows="4" cols="50"></textarea></div>
         <div><button type="submit" id="sendMessage" name="sendMessage">SEND MESSAGE</button></div>
     ';
 }
