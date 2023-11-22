@@ -721,26 +721,28 @@ function importStudents($receivedData) {
 			$sql = "INSERT INTO student (email, password, dni, name, lastNames, age, photo) VALUES ('$email', '$pass', '$dni', '$name', '$lastname', $age, '$img')";
 			mysqli_query($connect, $sql);
 			
-			echo "Fila $indice: <br>";
+			//echo "Fila $indice: <br>";
 			foreach ($fila as $clave => $valor) {
 				// Si el valor es un array, recorrer también ese array
 				if (is_array($valor)) {
-					echo "  Subarray: <br>";
+					//echo "  Subarray: <br>";
 					foreach ($valor as $subclave => $subvalor) {
-						echo "    [$subclave] => $subvalor <br>";
+						//echo "    [$subclave] => $subvalor <br>";
 						$sql2 = "INSERT INTO enrollment (student_email, course_code) VALUES ('$email', '$subvalor')";
 						mysqli_query($connect, $sql2);
 					}
 				} else {
-					echo "  [$clave] => $valor <br>";
+					//echo "  [$clave] => $valor <br>";
 				}
 			}
-			echo "<br>";
+			//echo "<br>";
 		}
 	}
 	// Enviar una respuesta de vuelta al cliente (puede ser un simple mensaje)
 	$response = ['message' => 'Datos recibidos correctamente'];
-	echo json_encode($response);
+	// echo json_encode($response);
+    echo '<script>alert("Import ended succesfull");</script>';
+    echo '<meta http-equiv="refresh" content="0;url=admin.php">';
 }
 
 function editTeacherForm($email){
@@ -764,8 +766,15 @@ function editTeacherForm($email){
                 <div><label for="teacherEmail">Email</label></div>
                 <div><input type="email" name="teacherEmail" value="'.$line['email'].'" id="teacherEmail"></div>
                 <div><label>Photo</label></div>
-                <div><label for="teacherPhoto" id="teacherPhotoBtn">Photo</label><input type="file" name="teacherPhoto" value='.$line['photo'].' id="teacherPhoto"></div>
-                <div><input type="submit" value="Confirm"></div>';
+                <div id="div-edit-teacher-browse">
+                    <label for="teacherPhoto" id="edit-teacher-browse-text">'.$line['photo'].'</label>
+                    <label for="teacherPhoto" id="teacherPhotoBtn">Browse</label>
+                    <input type="file" name="teacherPhoto" value='.$line['photo'].' id="teacherPhoto">
+                </div>
+                <div>
+                    <input type="reset" value="Cancel">
+                    <input type="submit" value="Confirm">
+                </div>';
         }
 }
 
@@ -801,10 +810,17 @@ function editCourseForm($code){
         <div><label for="courseEnd">Course End</label></div>
         <div><input type="date" name="courseEnd" value=' . $line['end'] . ' id="courseEnd"></div>
         <div><label for="coursePhoto">Photo</label></div>
-        <div><input type="file" name="coursePhoto" value=' . $line['photo'] . ' id="coursePhoto"></div>
+        <div id="photo-browse-div">
+            <input type="file" name="coursePhoto" value=' . $line['photo'] . ' id="coursePhoto">
+            <label for="coursePhoto" id="edit-course-browse-text">'.$line['photo'].'</label>
+            <label for="coursePhoto" id="edit-course-browse">Browse</label>
+        </div>
         <div><label for="courseDescription">Description</label></div>
         <div><textarea name="courseDescription" value="' . $line['description'] . '" id="courseDescription" cols="30" rows="10">' . $line['description'] . '</textarea></div>
-        <div><input type="submit" value="Confirm"></div>
+        <div>
+            <input type="submit" value="Confirm">
+            <input type="reset" value="Cancel">
+        </div>
     </form>';
     }
 }

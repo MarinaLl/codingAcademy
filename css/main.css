@@ -84,7 +84,7 @@ form[name=editTeacher] {
   width: 925px;
   display: grid;
   grid-template-columns: 321px 443px 150px;
-  grid-template-rows: repeat(7, auto);
+  grid-template-rows: repeat(6, auto) 250px;
   margin: 0 auto;
 }
 form[name=editTeacher] div:nth-child(1) {
@@ -126,6 +126,12 @@ form[name=editTeacher] div:nth-child(12) {
 form[name=editTeacher] div:nth-child(13) {
   grid-area: 7/1/8/4;
 }
+form[name=editTeacher] div:last-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  margin-right: 10px;
+}
 form[name=editTeacher] label {
   color: #000;
   text-align: center;
@@ -135,25 +141,46 @@ form[name=editTeacher] label {
   line-height: normal;
   margin-left: 10px;
 }
-form[name=editTeacher] input:not(input[type=submit]) {
+form[name=editTeacher] input:not(input[type=submit], input[type=reset]) {
   border: none;
   color: black;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  width: 90%;
+  width: calc(100% - 20px);
   height: 55px;
   border-radius: 15px;
   background-color: #D9D9D9;
   margin-bottom: 18px;
   padding-left: 10px;
 }
-form[name=editTeacher] input:not(input[type=submit]) #teacherPhoto {
+form[name=editTeacher] input:not(input[type=submit], input[type=reset])#teacherPhoto {
   display: none;
 }
+form[name=editTeacher] #div-edit-teacher-browse {
+  display: flex;
+}
+form[name=editTeacher] #edit-teacher-browse-text {
+  display: flex;
+  align-items: center;
+  border: none;
+  color: black;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 80%;
+  height: 55px;
+  border-radius: 15px;
+  background-color: #D9D9D9;
+  margin-bottom: 18px;
+  padding-left: 10px;
+  height: 55px;
+  margin-left: 0px;
+}
 form[name=editTeacher] #teacherPhotoBtn {
-  width: 175px;
+  width: 155px;
   height: 55px;
   border-radius: 15px;
   border: none;
@@ -165,6 +192,10 @@ form[name=editTeacher] #teacherPhotoBtn {
   cursor: pointer;
   background-color: #007A78;
   padding: 15px 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
 }
 
 form[name=editCourse] {
@@ -225,6 +256,9 @@ form[name=editCourse] div:nth-child(16) {
 form[name=editCourse] div:nth-child(17) {
   grid-area: 11/1/12/4;
 }
+form[name=editCourse] div#photo-browse-div {
+  display: flex;
+}
 form[name=editCourse] label {
   color: #000;
   text-align: center;
@@ -234,22 +268,67 @@ form[name=editCourse] label {
   line-height: normal;
   margin-left: 10px;
 }
-form[name=editCourse] input:not(input[type=submit]), form[name=editCourse] textarea, form[name=editCourse] select {
+form[name=editCourse] label#edit-course-browse-text {
   border: none;
   color: black;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  width: 90%;
+  width: calc(70% - 20px);
+  height: 55px;
+  border-radius: 15px;
+  background-color: #D9D9D9;
+  margin-bottom: 18px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  height: 55px;
+  margin-left: 0px;
+}
+form[name=editCourse] label#edit-course-browse {
+  width: 150px;
+  height: 55px;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  background-color: #007A78;
+  padding: 15px 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+}
+form[name=editCourse] input:not(input[type=submit], input[type=reset]), form[name=editCourse] textarea, form[name=editCourse] select {
+  border: none;
+  color: black;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: calc(100% - 20px);
   height: 55px;
   border-radius: 15px;
   background-color: #D9D9D9;
   margin-bottom: 18px;
   padding-left: 10px;
 }
-form[name=editCourse] input:not(input[type=submit]) #teacherPhoto, form[name=editCourse] textarea #teacherPhoto, form[name=editCourse] select #teacherPhoto {
+form[name=editCourse] input:not(input[type=submit], input[type=reset])#courseEnd, form[name=editCourse] textarea#courseEnd, form[name=editCourse] select#courseEnd {
+  width: 273px;
+}
+form[name=editCourse] input:not(input[type=submit], input[type=reset])#coursePhoto, form[name=editCourse] textarea#coursePhoto, form[name=editCourse] select#coursePhoto {
   display: none;
+}
+form[name=editCourse] textarea {
+  resize: none;
+}
+form[name=editCourse] input[type=reset] {
+  margin-top: 20px;
 }
 
 form[name=createTeacher] {
@@ -847,6 +926,27 @@ input[type=reset] {
   font-size: 16px;
   font-weight: bold;
 }
+.loginContainer > div:last-child div form[name=register] > div > label#fileLabel {
+  width: calc(100% - 15px);
+  height: 55px;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  background-color: #007A78;
+  padding: 15px 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 50px;
+  font-size: 18px;
+  padding: 0px;
+}
 .loginContainer > div:last-child div form[name=register] > div > input {
   border: none;
   color: black;
@@ -863,8 +963,11 @@ input[type=reset] {
   height: 51px;
   margin-bottom: 10px;
 }
+.loginContainer > div:last-child div form[name=register] > div > input#userPhoto {
+  display: none;
+}
 .loginContainer > div:last-child div form[name=register] > div > input[type=submit] {
-  width: 100%;
+  width: calc(100% - 5px);
   height: 55px;
   border-radius: 15px;
   border: none;
@@ -878,6 +981,7 @@ input[type=reset] {
   padding: 15px 35px;
   font-weight: bold;
   padding: 0;
+  float: left;
 }
 .loginContainer > div:last-child div form p {
   color: #8e0000;
@@ -1001,6 +1105,9 @@ h2 {
   text-decoration: underline;
   color: white;
   cursor: pointer;
+}
+#admin-title #fileInput {
+  display: none;
 }
 
 #form-container {
@@ -2062,4 +2169,35 @@ form[name=studentsGrade] table input[type=number] {
           appearance: none;
   padding-right: 2vh;
   transition: all 0.5ms ease-in;
+}
+
+#tableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#tableContainer table th, #tableContainer table td {
+  border: 1px solid black;
+}
+#tableContainer table th {
+  text-align: left;
+}
+#tableContainer button {
+  width: 150px;
+  height: 55px;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  background-color: #007A78;
+  padding: 15px 35px;
+  height: 40px;
+  padding: 0px;
+  font-size: 16px;
+  border-radius: 10px;
+  float: right;
+  margin-top: 10px;
 }/*# sourceMappingURL=main.css.map */

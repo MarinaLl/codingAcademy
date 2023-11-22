@@ -77,10 +77,10 @@ if (isset($_SESSION['user'])) {
                         <form action="login.php" method="post" enctype="multipart/form-data" name="login">
                             <input type="email" name="userEmail" id="userEmail" placeholder="Email">
                             <input type="password" name="userPassword" id="userPassword" placeholder="Password">
-                            <p><?php echo $incorrectCredentials; ?></p>
                             <input type="submit" value="Log In" id="loginBtn">
                             <a id="linkRegister" href="register.php">No account yet? Sign Up now.</a>
                         </form>
+                        <p><?php echo $incorrectCredentials; ?></p>
                     </div>
                     <div>
                     </div>

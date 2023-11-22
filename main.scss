@@ -62,6 +62,8 @@ h2 {
 
         &:hover { @include hoverLinks(underline, white); }
     }
+
+    #fileInput { display: none; }
 }
 
 #form-container{
@@ -991,4 +993,28 @@ form[name="studentsGrade"]{
     appearance: none;
     padding-right: 2vh;
     transition: all 0.5ms ease-in;
+}
+
+#tableContainer{
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        th, td {
+            border: 1px solid black;
+        }
+
+        th {
+            text-align: left;
+        }
+        
+    }
+    button {
+        @include browsePhotoBtn(150px);
+        height: 40px;
+        padding: 0px;
+        font-size: 16px;
+        border-radius: 10px;
+        float: right;
+        margin-top: 10px;
+    }
 }

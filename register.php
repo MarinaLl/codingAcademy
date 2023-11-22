@@ -31,7 +31,7 @@ if (isset($_SESSION['user'])) {
                         # Añadir Pop Up Concurso
                         echo '<meta http-equiv="refresh" content="0;url=login.php">';
                     } else {
-                        echo "Email usado o DNI no valido";
+                        echo "Email already in use or invalid DNI";
                         # Añadir mensaje de que el dni no es valido o ya esta en uso
                     }
                 } else {
@@ -46,21 +46,24 @@ if (isset($_SESSION['user'])) {
                         <h1>Sign Up</h1>
                     </div>
                     <div>
-                        <form action="register.php" method="post" enctype="multipart/form-data" name="register">
+                    <form action="register.php" method="post" enctype="multipart/form-data" name="register">
                             <div><label for="userName">Name</label></div>
                             <div><label for="userLastnames">Last Names</label></div>
-                            <div><input type="text" name="userName" id="userName" ></div>
-                            <div><input type="text" name="userLastnames" id="userLastnames" ></div>
+                            <div><input type="text" name="userName" id="userName" required></div>
+                            <div><input type="text" name="userLastnames" id="userLastnames" required></div>
                             <div><label for="userDni">DNI</label></div>
                             <div><label for="userAge">Age</label></div>
                             <div><label for="userPhoto">Photo</label></div>
-                            <div><input type="text" name="userDni" id="userDni" ></div>
-                            <div><input type="text" name="userAge" id="userAge" ></div>
-                            <div><input type="file" name="userPhoto" id="userPhoto"></div>
+                            <div><input type="text" name="userDni" id="userDni" required></div>
+                            <div><input type="text" name="userAge" id="userAge" required></div>
+                            <div>
+                                <input type="file" name="userPhoto" id="userPhoto">
+                                <label for="userPhoto" id="fileLabel">Browse</label>
+                            </div>
                             <div><label for="userEmail">Email</label></div>
-                            <div><input type="email" name="userEmail" id="userEmail"></div>
+                            <div><input type="email" name="userEmail" id="userEmail" required></div>
                             <div><label for="userPassword">Password</label></div>
-                            <div><input type="password" name="userPassword" id="userPassword"></div>
+                            <div><input type="password" name="userPassword" id="userPassword" required></div>
                             <div><input type="submit" value="Sign Up" id="registerBtn"></div>
                         </form>
                     </div>
