@@ -528,4 +528,30 @@ input[type=reset] {
   margin-right: 20px;
   cursor: pointer;
   padding-left: 0;
+}
+
+.cancel-button {
+  width: 175px;
+  height: 55px;
+  border-radius: 15px;
+  border: 2px solid #007A78;
+  color: #007A78;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: white;
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  padding-left: 0;
+}
+.cancel-button a {
+  text-decoration: none;
+  color: #007A78;
+}
+
+.cancel-new {
+  margin-top: 29px;
 }/*# sourceMappingURL=popUP.css.map */

@@ -772,7 +772,8 @@ function editTeacherForm($email){
                     <input type="file" name="teacherPhoto" value='.$line['photo'].' id="teacherPhoto">
                 </div>
                 <div>
-                    <input type="reset" value="Cancel">
+                    <button class="cancel-button"><a href="admin.php">Cancel</a></button> 
+
                     <input type="submit" value="Confirm">
                 </div>';
         }
@@ -819,7 +820,7 @@ function editCourseForm($code){
         <div><textarea name="courseDescription" value="' . $line['description'] . '" id="courseDescription" cols="30" rows="10">' . $line['description'] . '</textarea></div>
         <div>
             <input type="submit" value="Confirm">
-            <input type="reset" value="Cancel">
+            <button class="cancel-button"><a href="admin.php">Cancel</a></button>
         </div>
     </form>';
     }

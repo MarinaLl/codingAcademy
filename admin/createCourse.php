@@ -87,7 +87,8 @@
             </div>
             <div>
                 <input type="submit" value="Confirm">
-                <input type="reset" value="Cancel" id="reset-btn-course-popup">
+                <button class="cancel-button cancel-new" ><a href="admin.php">Cancel</a></button> 
+
             </div>
         </div>
         

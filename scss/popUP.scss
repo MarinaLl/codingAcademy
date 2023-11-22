@@ -137,6 +137,7 @@ form[name="editCourse"]{
     input[type="reset"]{
         margin-top: 20px;
     }
+    
 }
 
 form[name="createTeacher"]{
@@ -294,4 +295,24 @@ input[type="reset"]{
     margin-right: 20px;
     cursor: pointer;
     padding-left: 0;
+}
+
+.cancel-button{
+    @include boxSize(175px, 55px, $buttonRadius);
+    @include defaultBtn(2px solid $primaryColor, $primaryColor);
+    background-color: white;
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    padding-left: 0;
+
+    a {
+        text-decoration: none;
+        color: $primaryColor;
+    }
+}
+
+.cancel-new{
+    margin-top: 29px;
 }

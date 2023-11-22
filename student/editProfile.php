@@ -60,7 +60,7 @@
                     <form action="editProfile.php" method="post" enctype="multipart/form-data" name="editProfile">
                             <?php echo '
                             <div>
-                                <label for="studentPhoto"><img src=../'.$student['photo'].'></label>
+                                <label for="studentPhoto" title="Click to change photo"><img src=../'.$student['photo'].'></label>
                                 <input type="file" name="studentPhoto" id="studentPhoto" value="'.$student['photo'].'">
                                 <a class="closeBtn" href="student.php"><img src="../src/close.png" id="editClose"></a>
                                 </div>

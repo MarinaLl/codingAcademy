@@ -94,7 +94,7 @@
                     </div>
                     <div>
                         <input id="confirmBtn" type="submit" value="Confirm">
-                        <input id="cancelBtn" type="reset" value="Cancel">  
+                        <button class="cancel-button cancel-new" ><a href="admin.php">Cancel</a></button> 
                     </div>
                     
                 
