@@ -223,6 +223,11 @@ form[name="editProfile"]{
                     border-radius: 50%;
                     margin-bottom: -20px;
                     margin-top: 10px;
+
+                }
+                &:hover {
+                    cursor: pointer;
+                    opacity: 10%;
                 }
             }
             input[type="file"]{ display: none; }

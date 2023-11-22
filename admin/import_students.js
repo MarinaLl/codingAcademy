@@ -32,11 +32,12 @@ function processData(fileContent) {
   tableContainerDiv.setAttribute('id', 'tableContainer');
   tableContainerDiv.style.width = "90%";
   tableContainerDiv.style.margin = "0 auto";
+  tableContainerDiv.style.height = "90%";
 
   const importStudentsHeading = document.createElement('h1');
   importStudentsHeading.textContent = 'Import Students';
 
-  tableContainerDiv.appendChild(importStudentsHeading);
+  // tableContainerDiv.appendChild(importStudentsHeading);
 
   popUp.appendChild(tableContainerDiv);
 
@@ -45,6 +46,19 @@ function processData(fileContent) {
 
   // Crear una tabla
   const table = document.createElement('table');
+
+  // Crear una fila de encabezados (thead)
+  const headerRow = table.createTHead().insertRow();
+    
+  // Nombres de las columnas
+  const columnNames = ["Email", "Password", "Phone Number", "Name", "Last Name", "Age", "Photo", "Enrolled Courses"];
+
+  // Crear celdas de encabezado (th) con los nombres de las columnas
+  columnNames.forEach(columnName => {
+      const th = document.createElement('th');
+      th.textContent = columnName;
+      headerRow.appendChild(th);
+  });
 
   // Dividir las líneas usando el punto y coma como separador
   const lines = fileContent.split(';');
@@ -101,6 +115,7 @@ function processData(fileContent) {
   // Agregar la tabla al contenedor
   //const tableContainer = document.getElementById('tableContainer');
   tableContainerDiv.innerHTML = '';
+  tableContainerDiv.appendChild(importStudentsHeading);
   tableContainerDiv.appendChild(table);
 
 

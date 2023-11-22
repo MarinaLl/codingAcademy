@@ -2162,6 +2162,29 @@ form[name=studentsGrade] table input[type=number] {
   width: 100%;
   border-collapse: collapse;
 }
-#tableContainer table td {
+#tableContainer table th, #tableContainer table td {
   border: 1px solid black;
+}
+#tableContainer table th {
+  text-align: left;
+}
+#tableContainer button {
+  width: 150px;
+  height: 55px;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  background-color: #007A78;
+  padding: 15px 35px;
+  height: 40px;
+  padding: 0px;
+  font-size: 16px;
+  border-radius: 10px;
+  float: right;
+  margin-top: 10px;
 }/*# sourceMappingURL=main.css.map */

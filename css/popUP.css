@@ -427,6 +427,10 @@ form[name=editProfile] div:first-child label > img {
   margin-bottom: -20px;
   margin-top: 10px;
 }
+form[name=editProfile] div:first-child label:hover {
+  cursor: pointer;
+  opacity: 10%;
+}
 form[name=editProfile] div:first-child input[type=file] {
   display: none;
 }

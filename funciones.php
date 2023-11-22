@@ -721,26 +721,28 @@ function importStudents($receivedData) {
 			$sql = "INSERT INTO student (email, password, dni, name, lastNames, age, photo) VALUES ('$email', '$pass', '$dni', '$name', '$lastname', $age, '$img')";
 			mysqli_query($connect, $sql);
 			
-			echo "Fila $indice: <br>";
+			//echo "Fila $indice: <br>";
 			foreach ($fila as $clave => $valor) {
 				// Si el valor es un array, recorrer también ese array
 				if (is_array($valor)) {
-					echo "  Subarray: <br>";
+					//echo "  Subarray: <br>";
 					foreach ($valor as $subclave => $subvalor) {
-						echo "    [$subclave] => $subvalor <br>";
+						//echo "    [$subclave] => $subvalor <br>";
 						$sql2 = "INSERT INTO enrollment (student_email, course_code) VALUES ('$email', '$subvalor')";
 						mysqli_query($connect, $sql2);
 					}
 				} else {
-					echo "  [$clave] => $valor <br>";
+					//echo "  [$clave] => $valor <br>";
 				}
 			}
-			echo "<br>";
+			//echo "<br>";
 		}
 	}
 	// Enviar una respuesta de vuelta al cliente (puede ser un simple mensaje)
 	$response = ['message' => 'Datos recibidos correctamente'];
-	echo json_encode($response);
+	// echo json_encode($response);
+    echo '<script>alert("Import ended succesfull");</script>';
+    echo '<meta http-equiv="refresh" content="0;url=admin.php">';
 }
 
 function editTeacherForm($email){
