@@ -890,10 +890,12 @@ input[type=reset] {
 }
 
 footer {
+  justify-self: flex-end;
+  margin-top: auto;
+  bottom: 0;
+  width: 100%;
   background-color: #007A78;
   height: 108px;
-  position: relative;
-  bottom: 0;
 }
 footer div:nth-child(2) {
   display: flex;
@@ -915,6 +917,12 @@ footer div:nth-child(2) div:last-child a {
   padding: 0;
   margin: 0;
   font-family: "Inter", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
 }
 
 h1 {
@@ -1199,6 +1207,10 @@ h2 {
   text-decoration: underline;
 }
 
+.courseCategories {
+  margin-bottom: 20vh;
+}
+
 .wrap {
   display: flex;
   flex-wrap: wrap;
@@ -1286,6 +1298,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 12vh;
 }
 .courseList > div {
   display: flex;

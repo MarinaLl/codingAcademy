@@ -1,12 +1,22 @@
-
-
 function openWindow() {
-	// Obtener el premio
-	const premio = contest();
+    // Tamaño de la ventana
+    var width = 500;
+    var height = 500;
 
-	// Abrir la ventana emergente y pasar el premio como parámetro
-	const nuevaVentana = window.open("contest.php?prize=" + encodeURIComponent(premio), "_blank", "width=500, height=500");
+    // Calcula el centro de la pantalla
+    var left = (screen.width - width) / 2;
+    var top = (screen.height - height) / 2;
+
+    var options = 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left;
+
+    // Obtener el premio
+    const premio = contest();
+    console.log("AAA");
+
+    // Abrir la ventana emergente y pasar el premio como parámetro
+    const nuevaVentana = window.open("contest.php?prize=" + encodeURIComponent(premio), "_blank", options);
 }
+
 
 
 function contest() {

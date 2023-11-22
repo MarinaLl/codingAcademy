@@ -32,7 +32,7 @@
     <script src="../main.js"></script>
     <div class="grid-container">
         <div></div>
-        <div>
+        <div class="courseCategories">
                 <h1 class="pageTitle">COURSES</h1>
                 <div id="courseCategoriesContainer">
                     <div id="beginner-friendly" class="categoryBox">
@@ -64,7 +64,7 @@
         </div>
         <div></div>
     </div>
-    
+    <?php addFooter("../"); ?>
 </body>
 </html>
 <?php }} ?>

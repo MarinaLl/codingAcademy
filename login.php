@@ -30,8 +30,23 @@ if (isset($_SESSION['user'])) {
             } else {
                 $_SESSION['photo'] = $row['photo'];
             }
-            if($row['firstLogin'] == 0) {
-                # Añadir cosas
+            if($row['role'] == 'student') {
+                $sql = "SELECT firstLogin FROM student WHERE email = '$email'";
+                $connectFirstLogin = connectDataBase();
+                $result = $connect->query($sql);
+                $row = $result->fetch_assoc();
+                if($row['firstLogin'] == 0) {
+                    $sql = "UPDATE student 
+                            SET firstLogin = 1
+                            WHERE email = '$email'";
+                    if($query = mysqli_query($connectFirstLogin, $sql)){
+                        echo('<script src="main.js"></script>');
+                        echo('<script>openWindow();</script>');
+                    } else {
+                        echo mysqli_error($connectFirstLogin);
+                    }
+                }
+                
             }
             loginRedirect();
         } else {
@@ -47,8 +62,6 @@ if (isset($_SESSION['user'])) {
             <title>Log In</title>
             <link rel="stylesheet" href="css/main.css">
             <link rel="icon" href="src/codingAcademyLogo2copia.png">
-            
-            <script src="main.js">contest();</script>
         </head>
         <body>
             <div class="loginContainer">
