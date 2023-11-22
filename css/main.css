@@ -1098,6 +1098,9 @@ h2 {
   color: white;
   cursor: pointer;
 }
+#admin-title #fileInput {
+  display: none;
+}
 
 #form-container {
   width: 1268px;
@@ -2153,4 +2156,12 @@ form[name=studentsGrade] table input[type=number] {
           appearance: none;
   padding-right: 2vh;
   transition: all 0.5ms ease-in;
+}
+
+#tableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#tableContainer table td {
+  border: 1px solid black;
 }/*# sourceMappingURL=main.css.map */

@@ -26,13 +26,19 @@ function handleFileSelect(event) {
 
 function processData(fileContent) {
 
-    popupBackground.style.display = 'block';
+  popupBackground.style.display = 'block';
 
-    const tableContainerDiv = document.createElement("div");
-    tableContainerDiv.setAttribute('id', 'tableContainer');
+  const tableContainerDiv = document.createElement("div");
+  tableContainerDiv.setAttribute('id', 'tableContainer');
+  tableContainerDiv.style.width = "90%";
+  tableContainerDiv.style.margin = "0 auto";
 
-    popUp.appendChild(tableContainerDiv);
+  const importStudentsHeading = document.createElement('h1');
+  importStudentsHeading.textContent = 'Import Students';
 
+  tableContainerDiv.appendChild(importStudentsHeading);
+
+  popUp.appendChild(tableContainerDiv);
 
   // Crear un array para almacenar todos los arrays de datos generados
   const allDataArrays = [];
@@ -103,7 +109,7 @@ function processData(fileContent) {
   const insertDataBtn = document.createElement("button");
   insertDataBtn.setAttribute('id', 'insertDataButton');
   insertDataBtn.innerHTML = "Insert data";
-  popUp.appendChild(insertDataBtn);
+  tableContainerDiv.appendChild(insertDataBtn);
 
   document.getElementById('insertDataButton').addEventListener('click', function() {
             // Array de ejemplo

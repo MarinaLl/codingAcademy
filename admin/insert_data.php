@@ -1,5 +1,5 @@
 <?php
-include("funciones.php");
+include("../funciones.php");
 
 // Verificar si se recibieron datos
 if (isset($_POST['data'])) {
