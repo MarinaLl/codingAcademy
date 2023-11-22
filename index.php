@@ -11,9 +11,6 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="css/main.css">
-    <style>
-
-    </style>
 </head>
 <body>
     <div id="slider-container"> 

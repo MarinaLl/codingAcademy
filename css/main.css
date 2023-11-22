@@ -498,6 +498,10 @@ form[name=editProfile] div:first-child label > img {
   margin-top: 10px;
   cursor: pointer;
 }
+form[name=editProfile] div:first-child label:hover {
+  cursor: pointer;
+  opacity: 10%;
+}
 form[name=editProfile] div:first-child input[type=file] {
   display: none;
 }
@@ -767,6 +771,12 @@ input[type=reset] {
   padding-left: 0;
 }
 
+.incorrectMessage {
+  color: #8e0000;
+  height: 14px;
+  margin-top: 1vh;
+}
+
 .loginContainer {
   display: grid;
   grid-template-columns: 65% 35%;
@@ -983,11 +993,6 @@ input[type=reset] {
   font-weight: bold;
   padding: 0;
   float: left;
-}
-.loginContainer > div:last-child div form p {
-  color: #8e0000;
-  padding: 0;
-  margin: 0;
 }
 .loginContainer > div:last-child a {
   text-decoration: none;

@@ -11,10 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/main.css">
-        <title>Administrator Panel</title>
         <script src="admin.js"></script>
         <script src="import_students.js"></script>
     </head>
@@ -58,7 +55,7 @@
                 <button id="btnTeacher" class="btnFolderStyle">Teachers</button>
                 <div>
                     <form id="searchBarForm" action="admin.php">
-                        <input type="search" id="searchBar" name="search" method="GET" placeholder="Search">
+                        <input type="search" id="searchBar" name="search" placeholder="Search">
                         <button id="btnSearch" type="submit"></Button>
                     </form>
                     <button id="createTeacherBtn" title="Add new teacher"></button>
